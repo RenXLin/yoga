@@ -105,15 +105,14 @@
 		CD0DBA88196DA52200C3A2A8 /* xlk.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA16196DA52200C3A2A8 /* xlk.png */; };
 		CD0DBA89196DA52200C3A2A8 /* xlk1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA17196DA52200C3A2A8 /* xlk1.png */; };
 		CD0DBA8A196DA52200C3A2A8 /* 开机画面01_240x320.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA19196DA52200C3A2A8 /* 开机画面01_240x320.jpg */; };
-		CD0DBA8C196DA52200C3A2A8 /* 开机画面01_480x800 - 副本.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA1B196DA52200C3A2A8 /* 开机画面01_480x800 - 副本.jpg */; };
-		CD0DBA8D196DA52200C3A2A8 /* 开机画面01_480x800.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA1C196DA52200C3A2A8 /* 开机画面01_480x800.jpg */; };
+		CD0DBA8D196DA52200C3A2A8 /* start01_480x800.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA1C196DA52200C3A2A8 /* start01_480x800.jpg */; };
 		CD0DBA8E196DA52200C3A2A8 /* 开机画面02_240x320.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA1D196DA52200C3A2A8 /* 开机画面02_240x320.jpg */; };
 		CD0DBA8F196DA52200C3A2A8 /* 开机画面02_320x480.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA1E196DA52200C3A2A8 /* 开机画面02_320x480.jpg */; };
-		CD0DBA90196DA52200C3A2A8 /* 开机画面02_480x800 - 副本.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA1F196DA52200C3A2A8 /* 开机画面02_480x800 - 副本.jpg */; };
+		CD0DBA90196DA52200C3A2A8 /* start02_480x800.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA1F196DA52200C3A2A8 /* start02_480x800.jpg */; };
 		CD0DBA91196DA52200C3A2A8 /* 开机画面02_480x800.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA20196DA52200C3A2A8 /* 开机画面02_480x800.jpg */; };
 		CD0DBA92196DA52200C3A2A8 /* 开机画面03_240x320.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA21196DA52200C3A2A8 /* 开机画面03_240x320.jpg */; };
 		CD0DBA93196DA52200C3A2A8 /* 开机画面03_320x480.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA22196DA52200C3A2A8 /* 开机画面03_320x480.jpg */; };
-		CD0DBA94196DA52200C3A2A8 /* 开机画面03_480x800.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA23196DA52200C3A2A8 /* 开机画面03_480x800.jpg */; };
+		CD0DBA94196DA52200C3A2A8 /* start03_480x800.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA23196DA52200C3A2A8 /* start03_480x800.jpg */; };
 		CD0DBA95196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA24196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_01.jpg */; };
 		CD0DBA96196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_02 - 副本.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA25196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_02 - 副本.jpg */; };
 		CD0DBA98196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA27196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_03.jpg */; };
@@ -248,15 +247,14 @@
 		CD0DBA16196DA52200C3A2A8 /* xlk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xlk.png; sourceTree = "<group>"; };
 		CD0DBA17196DA52200C3A2A8 /* xlk1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xlk1.png; sourceTree = "<group>"; };
 		CD0DBA19196DA52200C3A2A8 /* 开机画面01_240x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面01_240x320.jpg"; sourceTree = "<group>"; };
-		CD0DBA1B196DA52200C3A2A8 /* 开机画面01_480x800 - 副本.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面01_480x800 - 副本.jpg"; sourceTree = "<group>"; };
-		CD0DBA1C196DA52200C3A2A8 /* 开机画面01_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面01_480x800.jpg"; sourceTree = "<group>"; };
+		CD0DBA1C196DA52200C3A2A8 /* start01_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start01_480x800.jpg; sourceTree = "<group>"; };
 		CD0DBA1D196DA52200C3A2A8 /* 开机画面02_240x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_240x320.jpg"; sourceTree = "<group>"; };
 		CD0DBA1E196DA52200C3A2A8 /* 开机画面02_320x480.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_320x480.jpg"; sourceTree = "<group>"; };
-		CD0DBA1F196DA52200C3A2A8 /* 开机画面02_480x800 - 副本.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_480x800 - 副本.jpg"; sourceTree = "<group>"; };
+		CD0DBA1F196DA52200C3A2A8 /* start02_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start02_480x800.jpg; sourceTree = "<group>"; };
 		CD0DBA20196DA52200C3A2A8 /* 开机画面02_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_480x800.jpg"; sourceTree = "<group>"; };
 		CD0DBA21196DA52200C3A2A8 /* 开机画面03_240x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_240x320.jpg"; sourceTree = "<group>"; };
 		CD0DBA22196DA52200C3A2A8 /* 开机画面03_320x480.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_320x480.jpg"; sourceTree = "<group>"; };
-		CD0DBA23196DA52200C3A2A8 /* 开机画面03_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_480x800.jpg"; sourceTree = "<group>"; };
+		CD0DBA23196DA52200C3A2A8 /* start03_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start03_480x800.jpg; sourceTree = "<group>"; };
 		CD0DBA24196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方_频道推广_300x450_01.jpg"; sourceTree = "<group>"; };
 		CD0DBA25196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_02 - 副本.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方_频道推广_300x450_02 - 副本.jpg"; sourceTree = "<group>"; };
 		CD0DBA27196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方_频道推广_300x450_03.jpg"; sourceTree = "<group>"; };
@@ -276,6 +274,7 @@
 		CD4A479419702D4A00973A29 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD4A479619702E7400973A29 /* 开机画面01_320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开机画面01_320x480.png"; sourceTree = "<group>"; };
 		CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方_频道推广_300x450_02.png"; sourceTree = "<group>"; };
+		CD4A479A1970348700973A29 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = include.h; path = yoga/include.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				CD4A479419702D4A00973A29 /* icon.png */,
+				CD4A479A1970348700973A29 /* include.h */,
 				CD0DB9C2196DA52200C3A2A8 /* 切图 */,
 				CD0DBA18196DA52200C3A2A8 /* 图标 */,
 				CD0DB999196DA50300C3A2A8 /* yoga */,
@@ -472,15 +472,14 @@
 			children = (
 				CD4A479619702E7400973A29 /* 开机画面01_320x480.png */,
 				CD0DBA19196DA52200C3A2A8 /* 开机画面01_240x320.jpg */,
-				CD0DBA1B196DA52200C3A2A8 /* 开机画面01_480x800 - 副本.jpg */,
-				CD0DBA1C196DA52200C3A2A8 /* 开机画面01_480x800.jpg */,
+				CD0DBA1C196DA52200C3A2A8 /* start01_480x800.jpg */,
 				CD0DBA1D196DA52200C3A2A8 /* 开机画面02_240x320.jpg */,
 				CD0DBA1E196DA52200C3A2A8 /* 开机画面02_320x480.jpg */,
-				CD0DBA1F196DA52200C3A2A8 /* 开机画面02_480x800 - 副本.jpg */,
+				CD0DBA1F196DA52200C3A2A8 /* start02_480x800.jpg */,
 				CD0DBA20196DA52200C3A2A8 /* 开机画面02_480x800.jpg */,
 				CD0DBA21196DA52200C3A2A8 /* 开机画面03_240x320.jpg */,
 				CD0DBA22196DA52200C3A2A8 /* 开机画面03_320x480.jpg */,
-				CD0DBA23196DA52200C3A2A8 /* 开机画面03_480x800.jpg */,
+				CD0DBA23196DA52200C3A2A8 /* start03_480x800.jpg */,
 				CD0DBA24196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_01.jpg */,
 				CD0DBA25196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_02 - 副本.jpg */,
 				CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */,
@@ -599,7 +598,7 @@
 				CD0DBA35196DA52200C3A2A8 /* a.png in Resources */,
 				CD0DBA5A196DA52200C3A2A8 /* icon9_1.png in Resources */,
 				CD0DBA7D196DA52200C3A2A8 /* video_icon7.png in Resources */,
-				CD0DBA8D196DA52200C3A2A8 /* 开机画面01_480x800.jpg in Resources */,
+				CD0DBA8D196DA52200C3A2A8 /* start01_480x800.jpg in Resources */,
 				CD0DBA71196DA52200C3A2A8 /* video_icon1.png in Resources */,
 				CD0DBA3B196DA52200C3A2A8 /* btnblue3.png in Resources */,
 				CD0DBA63196DA52200C3A2A8 /* ssk.png in Resources */,
@@ -620,7 +619,7 @@
 				CD0DBA4A196DA52200C3A2A8 /* icon1_1.png in Resources */,
 				CD0DBA83196DA52200C3A2A8 /* video_jd1.png in Resources */,
 				CD0DBA9D196DA52200C3A2A8 /* 瑜伽魔方LOGO_120x120.jpg in Resources */,
-				CD0DBA94196DA52200C3A2A8 /* 开机画面03_480x800.jpg in Resources */,
+				CD0DBA94196DA52200C3A2A8 /* start03_480x800.jpg in Resources */,
 				CD0DBAA1196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png in Resources */,
 				CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */,
 				CD0DBA7B196DA52200C3A2A8 /* video_icon6.png in Resources */,
@@ -659,7 +658,7 @@
 				CD0DBAA5196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png in Resources */,
 				CD0DBA70196DA52200C3A2A8 /* video_icon.png in Resources */,
 				CD0DBA58196DA52200C3A2A8 /* icon8_1.png in Resources */,
-				CD0DBA90196DA52200C3A2A8 /* 开机画面02_480x800 - 副本.jpg in Resources */,
+				CD0DBA90196DA52200C3A2A8 /* start02_480x800.jpg in Resources */,
 				CD0DBA74196DA52200C3A2A8 /* video_icon2_1.png in Resources */,
 				CD0DBA6D196DA52200C3A2A8 /* title_icon5.png in Resources */,
 				CD0DBA59196DA52200C3A2A8 /* icon9.png in Resources */,
@@ -667,7 +666,6 @@
 				CD0DBA4D196DA52200C3A2A8 /* icon3.png in Resources */,
 				CD0DBA76196DA52200C3A2A8 /* video_icon3_1.png in Resources */,
 				CD0DBA43196DA52200C3A2A8 /* btngreen_press.png in Resources */,
-				CD0DBA8C196DA52200C3A2A8 /* 开机画面01_480x800 - 副本.jpg in Resources */,
 				CD0DBA60196DA52200C3A2A8 /* jmd_bg.png in Resources */,
 				CD0DBA8F196DA52200C3A2A8 /* 开机画面02_320x480.jpg in Resources */,
 				CD0DBA96196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_02 - 副本.jpg in Resources */,
