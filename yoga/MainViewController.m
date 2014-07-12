@@ -33,6 +33,11 @@
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor grayColor];
     
+    //添加白色底板
+//    UIView *whiteView = [UIView alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>);
+    
+    
+    
     
 }
 
