@@ -38,6 +38,8 @@
     whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:whiteView];
 
+//    UIView view_FM = [[UIView alloc] ini];
+    
     
     
     
