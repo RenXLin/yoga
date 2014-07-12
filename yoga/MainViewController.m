@@ -34,13 +34,19 @@
     self.view.backgroundColor = [UIColor grayColor];
     
     //添加白色底板
-//    UIView *whiteView = [UIView alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>);
-    
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, 10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.height*3/5)];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:whiteView];
+
     
     
     
 }
-
+//本视图仅支持竖屏：
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
 
 - (void)didReceiveMemoryWarning
 {

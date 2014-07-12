@@ -10,7 +10,6 @@
 #import "MainViewController.h"
 
 
-
 @implementation AppDelegate
 {
     UIScrollView * launchScrollView;
@@ -59,7 +58,7 @@
         [self StartBtnClick];
     }
 
-    
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -82,8 +81,8 @@
     [launchScrollView removeFromSuperview];
     [pageControl removeFromSuperview];
     MainViewController *mvc = [[MainViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mvc];
-    self.window.rootViewController = nav;
+    
+    self.window.rootViewController = mvc;
 
 }
 
