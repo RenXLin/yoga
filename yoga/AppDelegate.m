@@ -58,7 +58,7 @@
 //        [self StartBtnClick];
 //    }
 
-    NSLog(@"renxiaolin");
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
