@@ -28,6 +28,14 @@
     }
     return self;
 }
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
 -(BOOL)shouldAutorotate
 {
     return NO;
@@ -36,7 +44,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.view.backgroundColor = [UIColor blackColor];
     UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     scrolView.backgroundColor =[UIColor grayColor];
     

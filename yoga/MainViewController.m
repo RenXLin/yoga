@@ -9,8 +9,8 @@
 #import "MainViewController.h"
 #import "RL_FMViewController.h"
 #import "RL_TVViewController.h"
-
-
+#import "RL_LoginViewController.h"
+#import "RL_SettingViewController.h"
 
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -145,11 +145,14 @@
 //登陆：
 -(void)loginBtnClick
 {
-
+    RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
+    [self presentViewController:login animated:YES completion:nil];
 }
 //设置：
 -(void)SettingBtnClick
 {
+    RL_SettingViewController *settingV = [[RL_SettingViewController alloc] init];
+    [self presentViewController:settingV animated:YES completion:nil];
 
 }
 
