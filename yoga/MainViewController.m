@@ -79,7 +79,6 @@
         
         for (int j = 0; j < 3; j++) {
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(GAP_WITH *(j + 1) + j * rect_width, GAP_WITH *(i + 1) + i * rect_width , rect_width, rect_width)];
-            view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"color_bg" ofType:@"png"]]];
             view.tag = i * 3 + j+1; //(1 2...9)
             view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
             view.contentMode = UIViewContentModeScaleToFill;
