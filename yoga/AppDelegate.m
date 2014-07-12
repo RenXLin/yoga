@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
+
+
 
 @implementation AppDelegate
 {
@@ -20,7 +23,7 @@
     //判断是否首次启动
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
     BOOL isFirst = [usrDef boolForKey:@"isFirst"];
-    if (!isFirst) {
+//    if (!isFirst) {
         NSLog(@"第一次启动应用");
         [usrDef setBool:YES forKey:@"isFirst"];
         [usrDef synchronize];
@@ -37,26 +40,29 @@
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * [UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
             imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start0%d_480x800.jpg",i+1]];
             [launchScrollView addSubview:imageView];
+            if (i == 2) {
+                UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                btn.frame = CGRectMake(imageView.frame.size.width/2 - 50, imageView.frame.size.height / 4, 100, 30);
+                [btn setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"c_bg1" ofType:@"png"]] forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(StartBtnClick) forControlEvents:UIControlEventTouchUpInside];
+                [btn setTitle:@"开始" forState:UIControlStateNormal];
+                [imageView addSubview:btn];
+                imageView.userInteractionEnabled = YES;
+            }
         }
         pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/3, [UIScreen mainScreen].bounds.size.height * 4/5, [UIScreen mainScreen].bounds.size.width/3, 20)];
         pageControl.numberOfPages = 3;
         pageControl.currentPage = 0;
         [pageControl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
         [self.window addSubview:pageControl];
-    }
+//    }
 
-    
-    
-    
-    
-    
-    
-    
     
     self.window.backgroundColor = [UIColor redColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 -(void)pageTurn:(UIPageControl *)pageCotr
 {
     [launchScrollView setContentOffset:CGPointMake(pageCotr.currentPage * launchScrollView.frame.size.width, 0)];
@@ -68,7 +74,17 @@
     pageControl.currentPage = page;
     
 }
+-(void)StartBtnClick
+{
+    NSLog(@"start");
+    [launchScrollView removeFromSuperview];
+    [pageControl removeFromSuperview];
+    MainViewController *mvc = [[MainViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mvc];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
 
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

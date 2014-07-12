@@ -132,6 +132,7 @@
 		CD4A479519702D4A00973A29 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479419702D4A00973A29 /* icon.png */; };
 		CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479619702E7400973A29 /* 开机画面01_320x480.png */; };
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
+		CD8E510C1970D34C00771960 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E510B1970D34C00771960 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +276,8 @@
 		CD4A479619702E7400973A29 /* 开机画面01_320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开机画面01_320x480.png"; sourceTree = "<group>"; };
 		CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方_频道推广_300x450_02.png"; sourceTree = "<group>"; };
 		CD4A479A1970348700973A29 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = include.h; path = yoga/include.h; sourceTree = "<group>"; };
+		CD8E510A1970D34C00771960 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CD8E510B1970D34C00771960 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +343,7 @@
 			children = (
 				CD0DB9A2196DA50300C3A2A8 /* AppDelegate.h */,
 				CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */,
+				CD8E510D1970D35900771960 /* Controllers */,
 				CD0DB9A5196DA50300C3A2A8 /* Images.xcassets */,
 				CD0DB99A196DA50300C3A2A8 /* Supporting Files */,
 			);
@@ -499,6 +503,15 @@
 				CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */,
 			);
 			path = "图标";
+			sourceTree = "<group>";
+		};
+		CD8E510D1970D35900771960 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD8E510A1970D34C00771960 /* MainViewController.h */,
+				CD8E510B1970D34C00771960 /* MainViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -710,6 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0DB9A4196DA50300C3A2A8 /* AppDelegate.m in Sources */,
+				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
