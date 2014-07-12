@@ -148,6 +148,16 @@
 		CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51341971586E00771960 /* AFURLResponseSerialization.m */; };
 		CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51361971586E00771960 /* AFURLSessionManager.m */; };
 		CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E514119717DA500771960 /* RL_RegistViewController.m */; };
+		CD8E514419718A6500771960 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514319718A6500771960 /* AVFoundation.framework */; };
+		CD8E514619718A7400771960 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514519718A7400771960 /* AudioToolbox.framework */; };
+		CD8E514819718A8600771960 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514719718A8600771960 /* CoreMedia.framework */; };
+		CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514919718AAD00771960 /* MediaPlayer.framework */; };
+		CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514B19718AB800771960 /* OpenGLES.framework */; };
+		CD8E514E19718AC000771960 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514D19718AC000771960 /* QuartzCore.framework */; };
+		CD8E515019718AE300771960 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514F19718AE300771960 /* libbz2.1.0.dylib */; };
+		CD8E515219718AEE00771960 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515119718AEE00771960 /* libz.dylib */; };
+		CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515319718B0100771960 /* libstdc++.dylib */; };
+		CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515519718B0900771960 /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +333,16 @@
 		CD8E51361971586E00771960 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		CD8E514019717DA500771960 /* RL_RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_RegistViewController.h; sourceTree = "<group>"; };
 		CD8E514119717DA500771960 /* RL_RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_RegistViewController.m; sourceTree = "<group>"; };
+		CD8E514319718A6500771960 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CD8E514519718A7400771960 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CD8E514719718A8600771960 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CD8E514919718AAD00771960 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CD8E514B19718AB800771960 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CD8E514D19718AC000771960 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CD8E514F19718AE300771960 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
+		CD8E515119718AEE00771960 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CD8E515319718B0100771960 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		CD8E515519718B0900771960 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,9 +350,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */,
-				CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */,
+				CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */,
+				CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */,
+				CD8E515219718AEE00771960 /* libz.dylib in Frameworks */,
+				CD8E515019718AE300771960 /* libbz2.1.0.dylib in Frameworks */,
+				CD8E514E19718AC000771960 /* QuartzCore.framework in Frameworks */,
+				CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */,
+				CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */,
 				CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */,
+				CD8E514819718A8600771960 /* CoreMedia.framework in Frameworks */,
+				CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */,
+				CD8E514619718A7400771960 /* AudioToolbox.framework in Frameworks */,
+				CD8E514419718A6500771960 /* AVFoundation.framework in Frameworks */,
+				CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +406,16 @@
 		CD0DB992196DA50300C3A2A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD8E515519718B0900771960 /* libiconv.dylib */,
+				CD8E515319718B0100771960 /* libstdc++.dylib */,
+				CD8E515119718AEE00771960 /* libz.dylib */,
+				CD8E514F19718AE300771960 /* libbz2.1.0.dylib */,
+				CD8E514D19718AC000771960 /* QuartzCore.framework */,
+				CD8E514B19718AB800771960 /* OpenGLES.framework */,
+				CD8E514919718AAD00771960 /* MediaPlayer.framework */,
+				CD8E514719718A8600771960 /* CoreMedia.framework */,
+				CD8E514519718A7400771960 /* AudioToolbox.framework */,
+				CD8E514319718A6500771960 /* AVFoundation.framework */,
 				CD0DB993196DA50300C3A2A8 /* Foundation.framework */,
 				CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */,
 				CD0DB997196DA50300C3A2A8 /* UIKit.framework */,
@@ -907,6 +947,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-objc";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -939,6 +980,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "-objc";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
