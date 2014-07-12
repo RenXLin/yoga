@@ -134,6 +134,8 @@
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
 		CD8E510C1970D34C00771960 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E510B1970D34C00771960 /* MainViewController.m */; };
 		CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5115197131DE00771960 /* RL_FMViewController.m */; };
+		CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5118197147A700771960 /* RL_TVViewController.m */; };
+		CD8E511B19714D4800771960 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8E511A19714D4800771960 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,6 +283,9 @@
 		CD8E510B1970D34C00771960 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		CD8E5114197131DE00771960 /* RL_FMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_FMViewController.h; sourceTree = "<group>"; };
 		CD8E5115197131DE00771960 /* RL_FMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_FMViewController.m; sourceTree = "<group>"; };
+		CD8E5117197147A700771960 /* RL_TVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_TVViewController.h; sourceTree = "<group>"; };
+		CD8E5118197147A700771960 /* RL_TVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_TVViewController.m; sourceTree = "<group>"; };
+		CD8E511A19714D4800771960 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +315,7 @@
 		CD0DB987196DA50300C3A2A8 = {
 			isa = PBXGroup;
 			children = (
+				CD8E511A19714D4800771960 /* Default-568h@2x.png */,
 				CD4A479419702D4A00973A29 /* icon.png */,
 				CD4A479A1970348700973A29 /* include.h */,
 				CD0DB9C2196DA52200C3A2A8 /* 切图 */,
@@ -515,6 +521,8 @@
 				CD8E510B1970D34C00771960 /* MainViewController.m */,
 				CD8E5114197131DE00771960 /* RL_FMViewController.h */,
 				CD8E5115197131DE00771960 /* RL_FMViewController.m */,
+				CD8E5117197147A700771960 /* RL_TVViewController.h */,
+				CD8E5118197147A700771960 /* RL_TVViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -687,6 +695,7 @@
 				CD0DBA60196DA52200C3A2A8 /* jmd_bg.png in Resources */,
 				CD0DBA8F196DA52200C3A2A8 /* 开机画面02_320x480.jpg in Resources */,
 				CD0DBA96196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_02 - 副本.jpg in Resources */,
+				CD8E511B19714D4800771960 /* Default-568h@2x.png in Resources */,
 				CD0DBA3A196DA52200C3A2A8 /* btnblue1.png in Resources */,
 				CD0DBA41196DA52200C3A2A8 /* btngreen3.png in Resources */,
 				CD0DBA36196DA52200C3A2A8 /* a1.png in Resources */,
@@ -727,6 +736,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
 				CD0DB9A4196DA50300C3A2A8 /* AppDelegate.m in Sources */,
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,

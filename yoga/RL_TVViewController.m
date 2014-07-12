@@ -1,27 +1,25 @@
 //
-//  RL_FMViewController.m
+//  RL_TVViewController.m
 //  yoga
 //
 //  Created by renxlin on 14-7-12.
 //  Copyright (c) 2014年 任小林. All rights reserved.
 //
 
-#import "RL_FMViewController.h"
+#import "RL_TVViewController.h"
 
-
-#define GAP_WITH  2.5  //定义白色边框的大小：
-
-@interface RL_FMViewController ()
+@interface RL_TVViewController ()
 
 @end
 
-@implementation RL_FMViewController
+@implementation RL_TVViewController
 {
     //当前节目
     UILabel *_currentProgram;
     //当前在线人数
     UILabel *_onlinePeople;
 }
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,7 +36,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     scrolView.backgroundColor =[UIColor grayColor];
     
@@ -48,51 +46,22 @@
     UIView *nav = [self myNavgationBar:CGRectMake(0, 0, scrolView.frame.size.width, 44) andTitle:@"瑜伽FM"];
     [scrolView addSubview:nav];
     
-    
-    //添加白色底板
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height +10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
-    whiteView.backgroundColor = [UIColor whiteColor];
-    [scrolView addSubview:whiteView];
-    NSMutableArray *colorArray =[[NSMutableArray alloc] init];
-    UIColor *color1 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
-    UIColor *color2 = [UIColor colorWithRed:0.04f green:0.91f blue:0.49f alpha:1.00f];
-    UIColor *color3 = [UIColor colorWithRed:0.98f green:0.38f blue:0.31f alpha:1.00f];
-    UIColor *color4 = [UIColor colorWithRed:1.00f green:0.50f blue:0.13f alpha:1.00f];
-    UIColor *color5 = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
-    UIColor *color6 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
-    UIColor *color7 = [UIColor colorWithRed:0.05f green:0.93f blue:0.38f alpha:1.00f];
-    UIColor *color8 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
-    UIColor *color9 = [UIColor colorWithRed:1.00f green:0.82f blue:0.11f alpha:1.00f];
-    [colorArray addObject:color1];
-    [colorArray addObject:color2];
-    [colorArray addObject:color3];
-    [colorArray addObject:color4];
-    [colorArray addObject:color5];
-    [colorArray addObject:color6];
-    [colorArray addObject:color7];
-    [colorArray addObject:color8];
-    [colorArray addObject:color9];
-    CGFloat rect_width = (whiteView.frame.size.width - GAP_WITH * 4) / 3;
-    for (int i = 0; i < 3 ; i++) {
-        for (int j = 0; j < 3; j++) {
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(GAP_WITH *(j + 1) + j * rect_width, GAP_WITH *(i + 1) + i * rect_width , rect_width, rect_width)];
-            view.tag = i * 3 + j+1; //(1 2...9)
-            view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
-            view.contentMode = UIViewContentModeScaleToFill;
-            [whiteView addSubview:view];
-        }
-    }
+    //添加视频播放视图
+    UIView *TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width, 250)];
+    TVPlayView.backgroundColor = [UIColor blackColor];
+    TVPlayView.alpha = 0.2;
+    [scrolView addSubview:TVPlayView];
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,whiteView.frame.origin.y + whiteView.frame.size.height +30, self.view.frame.size.width, 30)];
-    titleLabel.text = @"瑜伽 FM ";
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,TVPlayView.frame.origin.y + TVPlayView.frame.size.height +30, self.view.frame.size.width, 30)];
+    titleLabel.text = @"瑜伽 TV ";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [scrolView addSubview:titleLabel];
     
     //加入imageView
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
-    imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fm" ofType:@"png"]];
+    imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"]];
     [scrolView addSubview:imageV];
     
     //显示节目菜单按钮
@@ -134,10 +103,14 @@
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [scrolView addSubview:settingView];
-
+    
     
     scrolView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
     scrolView.bounces = NO;
+
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,6 +119,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 -(void)backBtnClick
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -153,7 +127,7 @@
 
 -(void)loginBtnClick
 {
-
+    
 }
 -(void)SettingBtnClick
 {
@@ -190,7 +164,7 @@
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];
-
+    
     //点赞
     UIButton *good = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     good.frame = CGRectMake(view.frame.size.width - goodTimes.frame.size.width - share.frame.size.width - 35, 0, 35, view.frame.size.height);
@@ -200,8 +174,6 @@
     
     return view;
 }
-
-
 /*
 #pragma mark - Navigation
 
