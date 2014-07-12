@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-
+#import "RL_FMViewController.h"
 
 
 
@@ -127,6 +127,17 @@
     NSLog(@"gestuer tap");
     UIView *view = tap.view;
     NSLog(@"%d",view.tag);
+    if (view.tag == 1) {
+        //推出魔方音乐视图控制器：
+        RL_FMViewController * fmV= [[RL_FMViewController alloc] init];
+        [self presentViewController:fmV animated:YES completion:nil];
+    }
+    
+    
+    
+    
+    
+    
 }
 //登陆：
 -(void)loginBtnClick
