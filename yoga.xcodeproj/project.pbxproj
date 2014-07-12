@@ -147,6 +147,7 @@
 		CD8E513D1971586E00771960 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51321971586E00771960 /* AFURLRequestSerialization.m */; };
 		CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51341971586E00771960 /* AFURLResponseSerialization.m */; };
 		CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51361971586E00771960 /* AFURLSessionManager.m */; };
+		CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E514119717DA500771960 /* RL_RegistViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +321,8 @@
 		CD8E51341971586E00771960 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		CD8E51351971586E00771960 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		CD8E51361971586E00771960 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		CD8E514019717DA500771960 /* RL_RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_RegistViewController.h; sourceTree = "<group>"; };
+		CD8E514119717DA500771960 /* RL_RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_RegistViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -562,6 +565,8 @@
 				CD8E511D19714EED00771960 /* RL_LoginViewController.m */,
 				CD8E511F1971561A00771960 /* RL_SettingViewController.h */,
 				CD8E51201971561A00771960 /* RL_SettingViewController.m */,
+				CD8E514019717DA500771960 /* RL_RegistViewController.h */,
+				CD8E514119717DA500771960 /* RL_RegistViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -812,6 +817,7 @@
 			files = (
 				CD8E513C1971586E00771960 /* AFURLConnectionOperation.m in Sources */,
 				CD8E511E19714EED00771960 /* RL_LoginViewController.m in Sources */,
+				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
 				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
 				CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */,

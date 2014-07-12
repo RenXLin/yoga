@@ -1,25 +1,22 @@
 //
-//  RL_LoginViewController.m
+//  RL_RegistViewController.m
 //  yoga
 //
 //  Created by renxlin on 14-7-12.
 //  Copyright (c) 2014年 任小林. All rights reserved.
-//  登陆
+//
 
-#import "RL_LoginViewController.h"
-#import "AFNetworking.h"
 #import "RL_RegistViewController.h"
 
-
-@interface RL_LoginViewController ()
+@interface RL_RegistViewController ()
 
 @end
 
-@implementation RL_LoginViewController
+@implementation RL_RegistViewController
 {
-    UITextField *_account;
+    UITextField *_phoneNum;
+    UITextField *_verifyNum;
     UITextField *_passWord;
-
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,34 +26,62 @@
     }
     return self;
 }
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor grayColor];
     
+    self.view.backgroundColor = [UIColor grayColor];
     UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
     [self.view addSubview:nav];
     
-    _account = [[UITextField alloc] init];
-    _account.frame = CGRectMake(10, 70, self.view.frame.size.width-20, 50);
-    _account.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _account.layer.cornerRadius = 10;
-    _account.placeholder = @"please input your account";
-    _account.clearButtonMode = UITextFieldViewModeAlways;
-    _account.textColor = [UIColor redColor];
-    _account.backgroundColor = [UIColor whiteColor];
-    _account.delegate = self;
-    _account.tag = 100;
-    _account.returnKeyType = UIReturnKeyDone;
-    [self.view addSubview:_account];
+    _phoneNum = [[UITextField alloc] init];
+    _phoneNum.frame = CGRectMake(10, 70, self.view.frame.size.width- 120, 50);
+    _phoneNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
+    _phoneNum.layer.cornerRadius = 10;
+    _phoneNum.placeholder = @"请输入手机号码";
+    _phoneNum.clearButtonMode = UITextFieldViewModeAlways;
+    _phoneNum.textColor = [UIColor redColor];
+    _phoneNum.backgroundColor = [UIColor whiteColor];
+    _phoneNum.delegate = self;
+    _phoneNum.tag = 100;
+    _phoneNum.returnKeyType = UIReturnKeyDone;
+    [self.view addSubview:_phoneNum];
+    
+    UIButton *verify = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    verify.frame = CGRectMake(_phoneNum.frame.size.width+20, 70, 80, 50);
+    verify.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
+    [verify setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [verify setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    verify.layer.cornerRadius = 10;
+    verify.tag = 1;
+    [verify addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:verify];
+
+    
+    _verifyNum = [[UITextField alloc] init];
+    _verifyNum.frame = CGRectMake(10, 130, 300, 50);
+    _verifyNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
+    _verifyNum.layer.cornerRadius = 10;
+    _verifyNum.placeholder = @"验证码";
+    _verifyNum.clearButtonMode = UITextFieldViewModeAlways;
+    _verifyNum.textColor = [UIColor redColor];
+    _verifyNum.backgroundColor = [UIColor whiteColor];
+    _verifyNum.delegate = self;
+    _verifyNum.tag = 100;
+    _verifyNum.returnKeyType = UIReturnKeyDone;
+    [self.view addSubview:_verifyNum];
     
     _passWord = [[UITextField alloc] init];
-    _passWord.frame = CGRectMake(10, 130, 300, 50);
+    _passWord.frame = CGRectMake(10, 190, 300, 50);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _passWord.layer.cornerRadius = 10;
-    _passWord.placeholder = @"please input your text";
+    _passWord.placeholder = @"请输入密码";
     _passWord.clearButtonMode = UITextFieldViewModeAlways;
     _passWord.textColor = [UIColor redColor];
     _passWord.backgroundColor = [UIColor whiteColor];
@@ -65,31 +90,28 @@
     _passWord.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:_passWord];
 
-    //btn 注册
     UIButton *assign = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    assign.frame = CGRectMake(10, 200, 150, 50);
+    assign.frame = CGRectMake(10, 250, self.view.frame.size.width - 20, 50);
     assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
     [assign setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     assign.layer.cornerRadius = 10;
-    assign.tag = 1;
+    assign.tag = 2;
     [assign addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:assign];
     
-    //btn 登陆
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btn.frame = CGRectMake(self.view.frame.size.width - 150, 200, 150, 50);
-    btn.backgroundColor = [UIColor greenColor];
-    [btn setTitle:@"登陆" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    btn.layer.cornerRadius = 10;
-    btn.tag = 2;
-    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_account resignFirstResponder];
+    [_phoneNum resignFirstResponder];
     [_passWord resignFirstResponder];
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -99,38 +121,19 @@
 }
 -(void)btnClick:(UIButton *)btn
 {
-    NSLog(@"%d",btn.tag);
-    if (btn.tag == 2) {
-        NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:_account.text,@"username",
-                                                                        _passWord.text,@"password",nil];
-        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-
-        [manager POST:@"http://www.chinayogaonline.com/api/login" parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"success");
-            NSLog(@"%@",responseObject);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"failed");
-            NSLog(@"%@",error);
-        }];
-    }else if(btn.tag == 1){
-        RL_RegistViewController *rvc =[[RL_RegistViewController alloc] init];
-        [self presentViewController:rvc animated:YES completion:nil];
+    NSLog(@"click %@",btn);
+    if (btn.tag == 1) {
+        //获取验证码：
+        
+        
+        
+    }else if(btn.tag == 2){
+        //注册
+        
+        
     }
     
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
-    
-    
-    
-    
-    
-}
-
 -(UIView *)myNavgationBar:(CGRect)rect andTitle:(NSString *)tit
 {
     UIView *view = [[UIView alloc] initWithFrame:rect];
@@ -154,6 +157,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 /*
 #pragma mark - Navigation
