@@ -7,6 +7,7 @@
 //
 
 #import "RL_RegistViewController.h"
+#import "AFNetworking.h"
 
 @interface RL_RegistViewController ()
 
@@ -124,7 +125,16 @@
     NSLog(@"click %@",btn);
     if (btn.tag == 1) {
         //获取验证码：
-        
+        AFHTTPRequestOperationManager *regsieMg = [AFHTTPRequestOperationManager manager];
+        NSDictionary *paramterDic = [NSDictionary dictionaryWithObject:_phoneNum.text forKey:@"mobile"];
+        regsieMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        [regsieMg POST:SENDVERTIFY_URL parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"success");
+            NSLog(@"%@",[responseObject objectForKey:@"msg"]);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"faled");
+            NSLog(@"%@",error);
+        }];
         
         
     }else if(btn.tag == 2){
