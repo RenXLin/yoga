@@ -11,6 +11,7 @@
 #import "RL_TVViewController.h"
 #import "RL_LoginViewController.h"
 #import "RL_SettingViewController.h"
+#import "SC_AudioOnLineViewController.h"
 
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -125,7 +126,7 @@
 {
     NSLog(@"gestuer tap");
     UIView *view = tap.view;
-    NSLog(@"%d",view.tag);
+    NSLog(@"%ld",(long)view.tag);
     if (view.tag == 1) {
         //推出魔方FM视图控制器：
         RL_FMViewController * fmV= [[RL_FMViewController alloc] init];
@@ -134,6 +135,9 @@
         //瑜伽TV
         RL_TVViewController *TVV = [[RL_TVViewController alloc] init];
         [self presentViewController:TVV animated:YES completion:nil];
+    }else if (view.tag == 7){
+        SC_AudioOnLineViewController *avc = [[SC_AudioOnLineViewController alloc]init];
+        [self presentViewController:avc animated:YES completion:nil];
     }
     
     
