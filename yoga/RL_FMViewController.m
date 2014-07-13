@@ -7,6 +7,7 @@
 //
 
 #import "RL_FMViewController.h"
+#import "MarqueeLabel.h"
 
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -18,7 +19,7 @@
 @implementation RL_FMViewController
 {
     //当前节目
-    UILabel *_currentProgram;
+    MarqueeLabel *_currentProgram;
     //当前在线人数
     UILabel *_onlinePeople;
 }
@@ -120,11 +121,18 @@
     [scrolView addSubview:fileBtn];
     
     //加入当前节目label 走马灯显示
-    _currentProgram = [[UILabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30)];
-    _currentProgram.text = @"当前无节目";
-    _currentProgram.textColor = [UIColor whiteColor];
+    _currentProgram = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
+    _currentProgram.numberOfLines = 1;
+    _currentProgram.opaque = NO;
+    _currentProgram.enabled = YES;
+    _currentProgram.shadowOffset = CGSizeMake(0.0, -1.0);
     _currentProgram.textAlignment = NSTextAlignmentCenter;
+    _currentProgram.textColor = [UIColor whiteColor];
+    _currentProgram.backgroundColor = [UIColor clearColor];
+    _currentProgram.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
+    _currentProgram.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
     [scrolView addSubview:_currentProgram];
+
     
     // logoView
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _currentProgram.frame.origin.y +_currentProgram.frame.size.height + 30, 150, 40)];

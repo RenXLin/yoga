@@ -139,6 +139,7 @@
 		CD4A479519702D4A00973A29 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479419702D4A00973A29 /* icon.png */; };
 		CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479619702E7400973A29 /* 开机画面01_320x480.png */; };
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
+		CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CD86EF1019718FC200CD25B9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD86EF0119718FC200CD25B9 /* CHANGELOG.md */; };
 		CD86EF1119718FC200CD25B9 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD86EF0C19718FC200CD25B9 /* libffmpeg.a */; };
 		CD86EF1219718FC200CD25B9 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD86EF0D19718FC200CD25B9 /* libopenssl.a */; };
@@ -326,6 +327,8 @@
 		CD4A479619702E7400973A29 /* 开机画面01_320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开机画面01_320x480.png"; sourceTree = "<group>"; };
 		CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方_频道推广_300x450_02.png"; sourceTree = "<group>"; };
 		CD4A479A1970348700973A29 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = include.h; path = yoga/include.h; sourceTree = "<group>"; };
+		CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		CD86EF0119718FC200CD25B9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		CD86EF0419718FC200CD25B9 /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
 		CD86EF0519718FC200CD25B9 /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
@@ -486,6 +489,7 @@
 		CD0DB999196DA50300C3A2A8 /* yoga */ = {
 			isa = PBXGroup;
 			children = (
+				CD813ACB1972DA1E0040E1EB /* Views */,
 				CD08AEF6197282EF00C50184 /* Modes */,
 				CD8E51221971581C00771960 /* Library */,
 				CD0DB9A2196DA50300C3A2A8 /* AppDelegate.h */,
@@ -650,6 +654,15 @@
 				CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */,
 			);
 			path = "图标";
+			sourceTree = "<group>";
+		};
+		CD813ACB1972DA1E0040E1EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */,
+				CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		CD86EF0019718FC200CD25B9 /* Vitamio */ = {
@@ -974,6 +987,7 @@
 				CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */,
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
 				9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */,
+				CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 				9DD40712197251250061D1DE /* UIFactory.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
