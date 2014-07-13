@@ -57,7 +57,7 @@
 //参数 token(登录时获取)
 
 //发送验证码：
-#define SENDVERTIFY_URL    @"http://www.chinayogaonline.com/api/sendCode"
+#define GETVERTIFY_URL    @"http://www.chinayogaonline.com/api/sendCode?mobile="
 //参数：mobile（手机号）
 
 //当前正要播放的FM

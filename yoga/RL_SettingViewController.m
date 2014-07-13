@@ -31,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor grayColor];
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"设置"];
     [self.view addSubview:nav];
 
     //loginview
@@ -88,7 +88,14 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+-(void)loginBtnClick
+{
 
+}
+-(void)SettingBtnClick
+{
+
+}
 /*
 #pragma mark - Navigation
 
