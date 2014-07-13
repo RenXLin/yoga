@@ -15,6 +15,7 @@
     #import <Foundation/Foundation.h>
     #import "include.h"
     #import "UIFactory.h"
+    #import "UserInfo.h"
 
 
 
