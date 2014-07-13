@@ -176,6 +176,7 @@
         
         SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
         audioView.Title = @"音频点播";
+        audioView.audio = @"audio";
         audioView.modalPresentationStyle = UIModalPresentationCustom;
         audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:audioView animated:YES completion:nil];

@@ -14,5 +14,5 @@
     NSMutableArray *dataArray;
 }
 @property (nonatomic,copy) NSString *Title;
-
+@property (nonatomic,copy) NSString *audio;
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A8BBBE41972C42800DBEA30 /* SC_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBBE31972C42800DBEA30 /* SC_Model.m */; };
+		3A8BBBE71972C46600DBEA30 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBBE61972C46600DBEA30 /* AudioCell.m */; };
 		9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */; };
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
@@ -181,6 +183,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A8BBBE21972C42800DBEA30 /* SC_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_Model.h; sourceTree = "<group>"; };
+		3A8BBBE31972C42800DBEA30 /* SC_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_Model.m; sourceTree = "<group>"; };
+		3A8BBBE51972C46600DBEA30 /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
+		3A8BBBE61972C46600DBEA30 /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
 		9DD4070B197245310061D1DE /* SC_AudioOnLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_AudioOnLineViewController.h; sourceTree = "<group>"; };
 		9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_AudioOnLineViewController.m; sourceTree = "<group>"; };
 		9DD40710197251250061D1DE /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
@@ -421,6 +427,10 @@
 				CD08AEF81972830F00C50184 /* UserInfo.m */,
 				CD08AEFA1972882B00C50184 /* HelpClass.h */,
 				CD08AEFB1972882B00C50184 /* HelpClass.m */,
+				3A8BBBE21972C42800DBEA30 /* SC_Model.h */,
+				3A8BBBE31972C42800DBEA30 /* SC_Model.m */,
+				3A8BBBE51972C46600DBEA30 /* AudioCell.h */,
+				3A8BBBE61972C46600DBEA30 /* AudioCell.m */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -947,6 +957,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8BBBE71972C46600DBEA30 /* AudioCell.m in Sources */,
 				CD8E513C1971586E00771960 /* AFURLConnectionOperation.m in Sources */,
 				CD8E511E19714EED00771960 /* RL_LoginViewController.m in Sources */,
 				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
@@ -957,6 +968,7 @@
 				CD0DB9A4196DA50300C3A2A8 /* AppDelegate.m in Sources */,
 				CD8E513D1971586E00771960 /* AFURLRequestSerialization.m in Sources */,
 				CD08AEF91972830F00C50184 /* UserInfo.m in Sources */,
+				3A8BBBE41972C42800DBEA30 /* SC_Model.m in Sources */,
 				CD8E513B1971586E00771960 /* AFSecurityPolicy.m in Sources */,
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
 				CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */,

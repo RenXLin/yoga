@@ -7,11 +7,14 @@
 //
 
 #import "SC_AudioOnLineViewController.h"
-
+#import "SC_Model.h"
+#import "AudioCell.h"
 @interface SC_AudioOnLineViewController ()
 {
     //当前在线人数
     UILabel *_onlinePeople;
+    UITableView *TableView;
+    UITextField *inputTf;
 }
 @end
 
@@ -53,9 +56,49 @@
     self.view.backgroundColor = KCOLOR(57, 61, 64, 1);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
-
-    [self creatUI];
     
+    //数据源初始化
+    dataArray = [[NSMutableArray alloc]init];
+    [self creatUI];
+    [self request];
+    
+}
+
+- (void)request
+{
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL];
+    //      待加入缓冲提示：
+    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            
+            NSLog(@"%@",responseObject);
+            
+            if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
+            {
+                
+                for(NSDictionary *dict in [responseObject objectForKey:@"data"])
+                {
+                    SC_Model *model = [[SC_Model alloc]init];
+                    [model setValuesForKeysWithDictionary:dict];
+                    [dataArray addObject:model];
+                }
+                
+            }
+            
+            
+            [TableView reloadData];
+        }else{
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+
 }
 
 - (void)creatUI
@@ -96,7 +139,8 @@
     UIImageView *iputImg = [UIFactory createImageViewWithFrame:CGRectMake(5,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 260,35) imageName:@"white_btn.png"];
     [bgView addSubview:iputImg];
     
-    UITextField *inputTf = [UIFactory createTextFieldWithFrame:CGRectMake(10,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 250,35) borderStyle:UITextBorderStyleNone placeHolder:@"输入关键词搜索" secureEntry:NO delegate:self];
+    inputTf = [UIFactory createTextFieldWithFrame:CGRectMake(10,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 250,35) borderStyle:UITextBorderStyleNone placeHolder:@"输入关键词搜索" secureEntry:NO delegate:self];
+    
     inputTf.font = Kfont(13);
     
     [bgView addSubview:inputTf];
@@ -111,9 +155,11 @@
     [searchBtn addSubview:searchImg];
     
     
-    UITableView *TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, 310, 350) style:UITableViewStylePlain];
+    TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, 310, 350) style:UITableViewStylePlain];
     TableView.delegate = self;
     TableView.dataSource = self;
+    TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    TableView.backgroundColor = KCOLOR(240, 240, 240, 1);
     [bgImgView addSubview:TableView];
     
     
@@ -208,18 +254,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellName = @"cellName";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
+    AudioCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+        cell = [[AudioCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellName];
         
+        
+        UIImageView *lineImg1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,cell.frame.size.width, 1)];
+        
+        
+        lineImg1.backgroundColor = KCOLOR(227, 227, 227, 1);
+        
+        [cell.contentView addSubview:lineImg1];
+        ;
+        cell.backgroundColor = KCOLOR(240, 240, 240, 1);
     }
+    
+    cell.model = [dataArray objectAtIndex:indexPath.row];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -231,6 +288,17 @@
 -(void)backBtnClick:(UIButton *)btn
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [inputTf resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

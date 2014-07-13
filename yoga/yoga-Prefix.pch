@@ -17,6 +17,7 @@
     #import "UIFactory.h"
     #import "UserInfo.h"
     #import "HelpClass.h"
+    #import"AFHTTPRequestOperationManager.h"
 
 
 

@@ -92,7 +92,8 @@
 ////参数：
 //
 ////音频点播列表
-//#define AUDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getAodList"
+#define AUDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getAodList"
+//#define  @"http://www.chinayogaonline.com/api/getVodCategoryList"
 ////参数：cid（分类ID），keywords，limit，offset
 //
 ////音频点播详情
@@ -104,7 +105,7 @@
 ////参数：aid(当前正在播放的音频ID)
 //
 ////视频点播列表
-//http://www.chinayogaonline.com/api/getVodList
+#define VIDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getVodList"
 ////参数：mobile
 //
 ////视频点播详情
