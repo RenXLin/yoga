@@ -99,7 +99,7 @@
 }
 -(void)btnClick:(UIButton *)btn
 {
-    NSLog(@"%d",btn.tag);
+    NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 2) {
         NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:_account.text,@"username",
                                                                         _passWord.text,@"password",nil];

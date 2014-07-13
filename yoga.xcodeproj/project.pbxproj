@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */; };
 		CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB993196DA50300C3A2A8 /* Foundation.framework */; };
 		CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */; };
 		CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB997196DA50300C3A2A8 /* UIKit.framework */; };
@@ -176,6 +177,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9DD4070B197245310061D1DE /* SC_AudioOnLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_AudioOnLineViewController.h; sourceTree = "<group>"; };
+		9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_AudioOnLineViewController.m; sourceTree = "<group>"; };
 		CD0DB990196DA50300C3A2A8 /* yoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0DB993196DA50300C3A2A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -664,6 +667,8 @@
 				CD8E51201971561A00771960 /* RL_SettingViewController.m */,
 				CD8E514019717DA500771960 /* RL_RegistViewController.h */,
 				CD8E514119717DA500771960 /* RL_RegistViewController.m */,
+				9DD4070B197245310061D1DE /* SC_AudioOnLineViewController.h */,
+				9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -927,6 +932,7 @@
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
 				CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */,
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
+				9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
 				CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */,
