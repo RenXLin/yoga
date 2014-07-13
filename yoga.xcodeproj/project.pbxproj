@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */; };
+		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
+		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
 		CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB993196DA50300C3A2A8 /* Foundation.framework */; };
 		CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */; };
 		CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB997196DA50300C3A2A8 /* UIKit.framework */; };
@@ -179,6 +181,9 @@
 /* Begin PBXFileReference section */
 		9DD4070B197245310061D1DE /* SC_AudioOnLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_AudioOnLineViewController.h; sourceTree = "<group>"; };
 		9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_AudioOnLineViewController.m; sourceTree = "<group>"; };
+		9DD40710197251250061D1DE /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
+		9DD40711197251250061D1DE /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
+		9DD4071319725ED50061D1DE /* 放大镜0017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大镜0017.png"; sourceTree = "<group>"; };
 		CD0DB990196DA50300C3A2A8 /* yoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0DB993196DA50300C3A2A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -406,8 +411,11 @@
 		CD0DB987196DA50300C3A2A8 = {
 			isa = PBXGroup;
 			children = (
+				9DD40710197251250061D1DE /* UIFactory.h */,
+				9DD40711197251250061D1DE /* UIFactory.m */,
 				CD8E511A19714D4800771960 /* Default-568h@2x.png */,
 				CD4A479419702D4A00973A29 /* icon.png */,
+				9DD4071319725ED50061D1DE /* 放大镜0017.png */,
 				CD4A479A1970348700973A29 /* include.h */,
 				CD0DB9C2196DA52200C3A2A8 /* 切图 */,
 				CD0DBA18196DA52200C3A2A8 /* 图标 */,
@@ -850,6 +858,7 @@
 				CD0DBA64196DA52200C3A2A8 /* title.png in Resources */,
 				CD0DBA53196DA52200C3A2A8 /* icon6.png in Resources */,
 				CD0DBA81196DA52200C3A2A8 /* video_icon_1.png in Resources */,
+				9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */,
 				CD0DB9A6196DA50300C3A2A8 /* Images.xcassets in Resources */,
 				CD0DBA7F196DA52200C3A2A8 /* video_icon8.png in Resources */,
 				CD0DBA3E196DA52200C3A2A8 /* btngreen.9.png in Resources */,
@@ -934,6 +943,7 @@
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
 				9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
+				9DD40712197251250061D1DE /* UIFactory.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
 				CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */,
 				CD8E513A1971586E00771960 /* AFNetworkReachabilityManager.m in Sources */,

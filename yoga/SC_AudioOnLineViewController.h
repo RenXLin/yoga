@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SC_AudioOnLineViewController : UIViewController
+@interface SC_AudioOnLineViewController : UIViewController<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
+
+{
+    NSMutableArray *dataArray;
+}
+@property (nonatomic,copy) NSString *Title;
 
 @end

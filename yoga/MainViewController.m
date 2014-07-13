@@ -11,7 +11,7 @@
 #import "RL_TVViewController.h"
 #import "RL_LoginViewController.h"
 #import "RL_SettingViewController.h"
-
+#import "SC_AudioOnLineViewController.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -134,6 +134,24 @@
         //瑜伽TV
         RL_TVViewController *TVV = [[RL_TVViewController alloc] init];
         [self presentViewController:TVV animated:YES completion:nil];
+    }else if(view.tag == 4){
+        //音频点播
+        
+        SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
+        audioView.Title = @"音频点播";
+        audioView.modalPresentationStyle = UIModalPresentationCustom;
+        audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:audioView animated:YES completion:nil];
+        
+    }else if(view.tag == 6){
+        //音频点播
+        
+        SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
+        audioView.Title = @"视屏点播";
+        audioView.modalPresentationStyle = UIModalPresentationCustom;
+        audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:audioView animated:YES completion:nil];
+        
     }
     
     
