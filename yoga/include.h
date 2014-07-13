@@ -43,6 +43,9 @@
 
 
 
+#define NOT_refreshOnlinePeople   @"Notification_refreshOnlinePeople"
+
+
 
 //登录：
 #define LOGIN_url  @"http://www.chinayogaonline.com/api/login?username=%@&password=%@"

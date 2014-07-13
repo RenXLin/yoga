@@ -42,11 +42,21 @@
 {
     return NO;
 }
+//刷新在线人数 method
+-(void)refreshPeople
+{
+    UserInfo *info =[UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor blackColor];
+    //刷新当前人数通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
+
+    
     UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     scrolView.backgroundColor =[UIColor grayColor];
     

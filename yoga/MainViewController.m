@@ -26,6 +26,8 @@
     //当前在线人数
     UILabel *_onlinePeople;
 
+    //定时器定时刷新在线人数：
+    NSTimer *_timer;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,13 +41,23 @@
 {
     return YES;
 }
+//刷新在线人数 method
+-(void)refreshPeople
+{
+    UserInfo *info =[UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor grayColor];
-
+    
+    //5s刷新一次
+    _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
+    
     //标题
     UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 5, 100, 30)];
     label.text = @"瑜伽魔方";
@@ -230,7 +242,21 @@
 {
     return NO;
 }
-
+-(void)refreshOnlinePeople
+{
+    //获取当前在线人数；
+    AFHTTPRequestOperationManager *ma = [AFHTTPRequestOperationManager manager];
+    ma.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [ma GET:GETOnliePeople parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _onlinePeople.text = [NSString stringWithFormat:@"当前在线人数:%@",[[responseObject objectForKey:@"data"] objectForKey:@"count"]];
+        UserInfo *info = [UserInfo shareUserInfo];
+        info.onliePeople = _onlinePeople.text;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOT_refreshOnlinePeople object:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
+    }];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

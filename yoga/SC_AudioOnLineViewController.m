@@ -38,6 +38,13 @@
     return NO;
 }
 
+//刷新在线人数 method
+-(void)refreshPeople
+{
+    UserInfo *info =[UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,7 +52,8 @@
     
     self.view.backgroundColor = KCOLOR(57, 61, 64, 1);
     
-   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
+
     [self creatUI];
     
 }
