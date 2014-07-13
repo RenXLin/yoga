@@ -128,15 +128,20 @@
         AFHTTPRequestOperationManager *regsieMg = [AFHTTPRequestOperationManager manager];
         NSDictionary *paramterDic = [NSDictionary dictionaryWithObject:_phoneNum.text forKey:@"mobile"];
         regsieMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        [regsieMg POST:SENDVERTIFY_URL parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"success");
-            NSLog(@"%@",[responseObject objectForKey:@"msg"]);
+        [regsieMg GET:[NSString stringWithFormat:@"%@%@",GETVERTIFY_URL,_phoneNum.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"success:\n%@",responseObject);
+            if ([[responseObject objectForKey:@"msg"] isEqualToString:@"ok"]) {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码已发送" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"手机格式错误" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"faled");
-            NSLog(@"%@",error);
+            NSLog(@"Failed:%@",error);
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
         }];
-        
-        
     }else if(btn.tag == 2){
         //注册
         
