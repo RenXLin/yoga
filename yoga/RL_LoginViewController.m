@@ -108,15 +108,17 @@
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         NSString *URLStr = [NSString stringWithFormat:LOGIN_url,_account.text,_passWord.text];
+//      待加入缓冲提示：
         [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             if ([[responseObject objectForKey:@"code"] intValue] == 200) {
                 NSLog(@"登陆成功");
                 
-                
                 UserInfo *userInfo = [UserInfo shareUserInfo];
                 userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
                 userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
+                //返回上级视图：
+                [self dismissViewControllerAnimated:YES completion:nil];
             }else{
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];

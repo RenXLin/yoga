@@ -112,7 +112,7 @@
 //http://www.chinayogaonline.com/api/getMofangInfo
 //
 ////获取在线人数
-//http://www.chinayogaonline.com/api/getOnlineNumber
+#define GETOnliePeople  @"http://www.chinayogaonline.com/api/getOnlineNumber"
 //
 ////创建订单，支付宝支付前调用
 //http://www.chinayogaonline.com/api/createOrder

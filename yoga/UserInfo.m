@@ -22,5 +22,4 @@ static UserInfo *_shareUserInfo;
     return _shareUserInfo;
 }
 
-
 @end

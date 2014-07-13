@@ -120,7 +120,8 @@
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, KscreenWidth -(loginView.frame.size.width + loginView.frame.origin.x)*2 , loginView.frame.size.height)];
-    _onlinePeople.text = @"在线人数：1234";//暂定
+    UserInfo *info = [UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.font = Kfont(12);
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.adjustsFontSizeToFitWidth = YES;

@@ -43,7 +43,8 @@
     
     //当前在线人数
     UILabel * _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
-    _onlinePeople.text = @"当前在线人数：1人";//暂定
+    UserInfo *info = [UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];

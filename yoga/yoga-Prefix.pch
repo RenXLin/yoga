@@ -16,6 +16,7 @@
     #import "include.h"
     #import "UIFactory.h"
     #import "UserInfo.h"
+    #import "HelpClass.h"
 
 
 

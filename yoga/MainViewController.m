@@ -12,6 +12,7 @@
 #import "RL_LoginViewController.h"
 #import "RL_SettingViewController.h"
 #import "SC_AudioOnLineViewController.h"
+#import "AFNetworking.h"
 
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -21,7 +22,11 @@
 @end
 
 @implementation MainViewController
+{
+    //当前在线人数
+    UILabel *_onlinePeople;
 
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,7 +45,7 @@
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor grayColor];
-    
+
     //标题
     UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 5, 100, 30)];
     label.text = @"瑜伽魔方";
@@ -106,18 +111,36 @@
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginView.frame = CGRectMake((self.view.frame.size.width - 80 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:loginView];
     
+    //当前在线人数
+    _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
+//    _onlinePeople.text = [NSString stringWithFormat:@"当前在线人数:%@",info.onliePeople];//暂定
+    _onlinePeople.adjustsFontSizeToFitWidth = YES;
+    _onlinePeople.textAlignment = NSTextAlignmentCenter;
+    _onlinePeople.textColor = [UIColor whiteColor];
+    [self.view addSubview:_onlinePeople];
+    
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 80, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:settingView];
-    
+
+    //获取当前在线人数；
+    AFHTTPRequestOperationManager *ma = [AFHTTPRequestOperationManager manager];
+    ma.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [ma GET:GETOnliePeople parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _onlinePeople.text = [NSString stringWithFormat:@"当前在线人数:%@",[[responseObject objectForKey:@"data"] objectForKey:@"count"]];
+        UserInfo *info = [UserInfo shareUserInfo];
+        info.onliePeople = _onlinePeople.text;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+
 }
 
 

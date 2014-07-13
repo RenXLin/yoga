@@ -11,6 +11,7 @@
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
 		CD08AEF91972830F00C50184 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD08AEF81972830F00C50184 /* UserInfo.m */; };
+		CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CD08AEFB1972882B00C50184 /* HelpClass.m */; };
 		CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB993196DA50300C3A2A8 /* Foundation.framework */; };
 		CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */; };
 		CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB997196DA50300C3A2A8 /* UIKit.framework */; };
@@ -187,6 +188,8 @@
 		9DD4071319725ED50061D1DE /* 放大镜0017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大镜0017.png"; sourceTree = "<group>"; };
 		CD08AEF71972830F00C50184 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		CD08AEF81972830F00C50184 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		CD08AEFA1972882B00C50184 /* HelpClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpClass.h; sourceTree = "<group>"; };
+		CD08AEFB1972882B00C50184 /* HelpClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpClass.m; sourceTree = "<group>"; };
 		CD0DB990196DA50300C3A2A8 /* yoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0DB993196DA50300C3A2A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -416,6 +419,8 @@
 			children = (
 				CD08AEF71972830F00C50184 /* UserInfo.h */,
 				CD08AEF81972830F00C50184 /* UserInfo.m */,
+				CD08AEFA1972882B00C50184 /* HelpClass.h */,
+				CD08AEFB1972882B00C50184 /* HelpClass.m */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -947,6 +952,7 @@
 				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
 				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
+				CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */,
 				CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */,
 				CD0DB9A4196DA50300C3A2A8 /* AppDelegate.m in Sources */,
 				CD8E513D1971586E00771960 /* AFURLRequestSerialization.m in Sources */,
