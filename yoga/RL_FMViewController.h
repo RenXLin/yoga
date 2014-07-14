@@ -10,8 +10,8 @@
 
 @interface RL_FMViewController : UIViewController
 
-
-
+//用于区分是fm还是音乐，公用一个视图控制器：
+@property (nonatomic,strong)NSString *FM_AV;
 
 
 @end

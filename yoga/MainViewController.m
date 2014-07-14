@@ -165,6 +165,7 @@
     if (view.tag == 1) {
         //推出魔方FM视图控制器：
         RL_FMViewController * fmV= [[RL_FMViewController alloc] init];
+        fmV.FM_AV = @"瑜伽FM";
         [self presentViewController:fmV animated:YES completion:nil];
     }else if(view.tag == 3){
         //瑜伽TV
@@ -181,6 +182,11 @@
         audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:audioView animated:YES completion:nil];
         
+    }else if (view.tag == 5){
+        //瑜伽音乐
+        RL_FMViewController * AV= [[RL_FMViewController alloc] init];
+        AV.FM_AV = @"瑜伽音乐";
+        [self presentViewController:AV animated:YES completion:nil];
     }else if(view.tag == 6){
         //音频点播
         

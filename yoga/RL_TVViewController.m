@@ -8,6 +8,8 @@
 
 #import "RL_TVViewController.h"
 #import "MarqueeLabel.h"
+#import "AFNetworking.h"
+#import "CurrentProgram.h"
 
 
 @interface RL_TVViewController ()
@@ -16,10 +18,12 @@
 
 @implementation RL_TVViewController
 {
-    //当前节目
-     MarqueeLabel *_currentProgram;
+    //当前广告
+     MarqueeLabel *_ad;
     //当前在线人数
     UILabel *_onlinePeople;
+    //存储当前节目数据类型实例
+    CurrentProgram *_programMode;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -90,20 +94,20 @@
     [scrolView addSubview:fileBtn];
     
     //加入当前节目label 走马灯显示
-    _currentProgram = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
-    _currentProgram.numberOfLines = 1;
-    _currentProgram.opaque = NO;
-    _currentProgram.enabled = YES;
-    _currentProgram.shadowOffset = CGSizeMake(0.0, -1.0);
-    _currentProgram.textAlignment = NSTextAlignmentCenter;
-    _currentProgram.textColor = [UIColor whiteColor];
-    _currentProgram.backgroundColor = [UIColor clearColor];
-    _currentProgram.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
-    _currentProgram.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
-    [scrolView addSubview:_currentProgram];
+    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
+    _ad.numberOfLines = 1;
+    _ad.opaque = NO;
+    _ad.enabled = YES;
+    _ad.shadowOffset = CGSizeMake(0.0, -1.0);
+    _ad.textAlignment = NSTextAlignmentCenter;
+    _ad.textColor = [UIColor whiteColor];
+    _ad.backgroundColor = [UIColor clearColor];
+    _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
+    _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
+    [scrolView addSubview:_ad];
     
     // logoView
-    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _currentProgram.frame.origin.y +_currentProgram.frame.size.height + 30, 150, 40)];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [scrolView addSubview:logoView];
     
@@ -134,6 +138,20 @@
     scrolView.bounces = NO;
 
     
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:GETCurrentFM_url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success:%@",responseObject);
+        _programMode = [[CurrentProgram alloc] init];
+        [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
+        _ad.text = _programMode.ad;
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed:%@",error);
+        
+    }];
     
 }
 
