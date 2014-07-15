@@ -43,9 +43,16 @@
 
 
 
+#define NOT_refreshOnlinePeople   @"Notification_refreshOnlinePeople"
+
+
 
 //登录：
+
 #define LOGIN_url  @"http://www.chinayogaonline.com/api/login?"
+
+#define LOGIN_url  @"http://www.chinayogaonline.com/api/login?username=%@&password=%@"
+
 //参数 username password
 
 //注册：
@@ -61,7 +68,8 @@
 //参数：mobile（手机号）
 
 //当前正要播放的FM
-#define  GETCurrentFM_url   @"http://www.chinayogaonline.com/api/getCurrentFM"
+//#define  GETCurrentFM_url   @"http://www.chinayogaonline.com/api/getCurrentFM"
+#define  GETCurrentFM_url   @"http://www.chinayogaonline.com/api/getTestFm"
 //参数：无
 
 //取某一天的FM节目单
@@ -74,10 +82,12 @@
 
 ////当前正要播放的音乐
 //#define CURRENTPLAYAUDIO_URL @"http://www.chinayogaonline.com/api/getCurrentMusic"
+#define  CURRENTPLAYAUDIO_URL  @"http://www.chinayogaonline.com/api/getTestMusic"
 ////参数：无
 //
 ////音乐播放节目单
 //#define AUDIOLIST_URL  @"http://www.chinayogaonline.com/api/getMusicPlayList"
+#define AUDIOLIST_URL  @"http://www.chinayogaonline.com/api/getTestTv"
 ////参数：无
 //
 ////音频点播分类列表
@@ -89,7 +99,8 @@
 ////参数：
 //
 ////音频点播列表
-//#define AUDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getAodList"
+#define AUDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getAodList"
+//#define  @"http://www.chinayogaonline.com/api/getVodCategoryList"
 ////参数：cid（分类ID），keywords，limit，offset
 //
 ////音频点播详情
@@ -101,7 +112,7 @@
 ////参数：aid(当前正在播放的音频ID)
 //
 ////视频点播列表
-//http://www.chinayogaonline.com/api/getVodList
+#define VIDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getVodList"
 ////参数：mobile
 //
 ////视频点播详情
@@ -112,7 +123,7 @@
 //http://www.chinayogaonline.com/api/getMofangInfo
 //
 ////获取在线人数
-//http://www.chinayogaonline.com/api/getOnlineNumber
+#define GETOnliePeople  @"http://www.chinayogaonline.com/api/getOnlineNumber"
 //
 ////创建订单，支付宝支付前调用
 //http://www.chinayogaonline.com/api/createOrder

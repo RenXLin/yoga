@@ -12,6 +12,7 @@
 #import "RL_LoginViewController.h"
 #import "RL_SettingViewController.h"
 #import "SC_AudioOnLineViewController.h"
+#import "AFNetworking.h"
 
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -21,7 +22,13 @@
 @end
 
 @implementation MainViewController
+{
+    //当前在线人数
+    UILabel *_onlinePeople;
 
+    //定时器定时刷新在线人数：
+    NSTimer *_timer;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,12 +41,22 @@
 {
     return YES;
 }
+//刷新在线人数 method
+-(void)refreshPeople
+{
+    UserInfo *info =[UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor grayColor];
+    
+    //5s刷新一次
+    _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
     //标题
     UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 5, 100, 30)];
@@ -106,18 +123,36 @@
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginView.frame = CGRectMake((self.view.frame.size.width - 80 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:loginView];
     
+    //当前在线人数
+    _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
+//    _onlinePeople.text = [NSString stringWithFormat:@"当前在线人数:%@",info.onliePeople];//暂定
+    _onlinePeople.adjustsFontSizeToFitWidth = YES;
+    _onlinePeople.textAlignment = NSTextAlignmentCenter;
+    _onlinePeople.textColor = [UIColor whiteColor];
+    [self.view addSubview:_onlinePeople];
+    
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 80, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:settingView];
-    
+
+    //获取当前在线人数；
+    AFHTTPRequestOperationManager *ma = [AFHTTPRequestOperationManager manager];
+    ma.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [ma GET:GETOnliePeople parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _onlinePeople.text = [NSString stringWithFormat:@"当前在线人数:%@",[[responseObject objectForKey:@"data"] objectForKey:@"count"]];
+        UserInfo *info = [UserInfo shareUserInfo];
+        info.onliePeople = _onlinePeople.text;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+
 }
 
 
@@ -130,6 +165,7 @@
     if (view.tag == 1) {
         //推出魔方FM视图控制器：
         RL_FMViewController * fmV= [[RL_FMViewController alloc] init];
+        fmV.FM_AV = @"瑜伽FM";
         [self presentViewController:fmV animated:YES completion:nil];
     }else if(view.tag == 3){
         //瑜伽TV
@@ -141,10 +177,16 @@
         
         SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
         audioView.Title = @"音频点播";
+        audioView.audio = @"audio";
         audioView.modalPresentationStyle = UIModalPresentationCustom;
         audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:audioView animated:YES completion:nil];
         
+    }else if (view.tag == 5){
+        //瑜伽音乐
+        RL_FMViewController * AV= [[RL_FMViewController alloc] init];
+        AV.FM_AV = @"瑜伽音乐";
+        [self presentViewController:AV animated:YES completion:nil];
     }else if(view.tag == 6){
         //音频点播
         
@@ -207,7 +249,21 @@
 {
     return NO;
 }
-
+-(void)refreshOnlinePeople
+{
+    //获取当前在线人数；
+    AFHTTPRequestOperationManager *ma = [AFHTTPRequestOperationManager manager];
+    ma.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [ma GET:GETOnliePeople parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _onlinePeople.text = [NSString stringWithFormat:@"当前在线人数:%@",[[responseObject objectForKey:@"data"] objectForKey:@"count"]];
+        UserInfo *info = [UserInfo shareUserInfo];
+        info.onliePeople = _onlinePeople.text;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOT_refreshOnlinePeople object:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
+    }];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

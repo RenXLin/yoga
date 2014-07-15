@@ -44,6 +44,7 @@
     _account.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _account.layer.cornerRadius = 10;
     _account.placeholder = @"please input your account";
+    _account.text = @"15529403212";
     _account.clearButtonMode = UITextFieldViewModeAlways;
     _account.textColor = [UIColor redColor];
     _account.backgroundColor = [UIColor whiteColor];
@@ -56,11 +57,13 @@
     _passWord.frame = CGRectMake(10, 130, 300, 50);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _passWord.layer.cornerRadius = 10;
+    _passWord.text = @"12345678";
     _passWord.placeholder = @"please input your text";
     _passWord.clearButtonMode = UITextFieldViewModeAlways;
     _passWord.textColor = [UIColor redColor];
     _passWord.backgroundColor = [UIColor whiteColor];
     _passWord.delegate = self;
+    _passWord.secureTextEntry = YES;
     _passWord.tag = 100;
     _passWord.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:_passWord];
@@ -101,16 +104,34 @@
 {
     NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 2) {
-        NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:_account.text,@"username",_passWord.text,@"password",nil];
+//        NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:_account.text,@"username",_passWord.text,@"password",nil];
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
 
+
         [manager GET:[NSString stringWithFormat:@"%@username=%@&password=%@",LOGIN_url,_account.text,_passWord.text] parameters:nil  success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"success");
+
+        NSString *URLStr = [NSString stringWithFormat:LOGIN_url,_account.text,_passWord.text];
+//      待加入缓冲提示：
+        [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
             NSLog(@"%@",responseObject);
+            if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+                NSLog(@"登陆成功");
+                
+                UserInfo *userInfo = [UserInfo shareUserInfo];
+                userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
+                userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
+                //返回上级视图：
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"failed");
-            NSLog(@"%@",error);
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
         }];
     }else if(btn.tag == 1){
         RL_RegistViewController *rvc =[[RL_RegistViewController alloc] init];

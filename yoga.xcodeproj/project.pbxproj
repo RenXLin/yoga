@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A8BBBE41972C42800DBEA30 /* SC_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBBE31972C42800DBEA30 /* SC_Model.m */; };
+		3A8BBBE71972C46600DBEA30 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBBE61972C46600DBEA30 /* AudioCell.m */; };
 		9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */; };
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
+		CD08AEF91972830F00C50184 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD08AEF81972830F00C50184 /* UserInfo.m */; };
+		CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CD08AEFB1972882B00C50184 /* HelpClass.m */; };
 		CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB993196DA50300C3A2A8 /* Foundation.framework */; };
 		CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */; };
 		CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB997196DA50300C3A2A8 /* UIKit.framework */; };
@@ -132,9 +136,11 @@
 		CD0DBAA3196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA32196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png */; };
 		CD0DBAA4196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA33196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg */; };
 		CD0DBAA5196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */; };
+		CD38DD11197430A900D4C20D /* CurrentProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = CD38DD10197430A900D4C20D /* CurrentProgram.m */; };
 		CD4A479519702D4A00973A29 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479419702D4A00973A29 /* icon.png */; };
 		CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479619702E7400973A29 /* 开机画面01_320x480.png */; };
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
+		CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CD86EF1019718FC200CD25B9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD86EF0119718FC200CD25B9 /* CHANGELOG.md */; };
 		CD86EF1119718FC200CD25B9 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD86EF0C19718FC200CD25B9 /* libffmpeg.a */; };
 		CD86EF1219718FC200CD25B9 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD86EF0D19718FC200CD25B9 /* libopenssl.a */; };
@@ -179,11 +185,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A8BBBE21972C42800DBEA30 /* SC_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_Model.h; sourceTree = "<group>"; };
+		3A8BBBE31972C42800DBEA30 /* SC_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_Model.m; sourceTree = "<group>"; };
+		3A8BBBE51972C46600DBEA30 /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
+		3A8BBBE61972C46600DBEA30 /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
 		9DD4070B197245310061D1DE /* SC_AudioOnLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_AudioOnLineViewController.h; sourceTree = "<group>"; };
 		9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_AudioOnLineViewController.m; sourceTree = "<group>"; };
 		9DD40710197251250061D1DE /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
 		9DD40711197251250061D1DE /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
 		9DD4071319725ED50061D1DE /* 放大镜0017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大镜0017.png"; sourceTree = "<group>"; };
+		CD08AEF71972830F00C50184 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		CD08AEF81972830F00C50184 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		CD08AEFA1972882B00C50184 /* HelpClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpClass.h; sourceTree = "<group>"; };
+		CD08AEFB1972882B00C50184 /* HelpClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpClass.m; sourceTree = "<group>"; };
 		CD0DB990196DA50300C3A2A8 /* yoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0DB993196DA50300C3A2A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -310,10 +324,14 @@
 		CD0DBA32196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_80x80.png"; sourceTree = "<group>"; };
 		CD0DBA33196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_90x90.jpg"; sourceTree = "<group>"; };
 		CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_90x90.png"; sourceTree = "<group>"; };
+		CD38DD0F197430A900D4C20D /* CurrentProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentProgram.h; sourceTree = "<group>"; };
+		CD38DD10197430A900D4C20D /* CurrentProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentProgram.m; sourceTree = "<group>"; };
 		CD4A479419702D4A00973A29 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD4A479619702E7400973A29 /* 开机画面01_320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开机画面01_320x480.png"; sourceTree = "<group>"; };
 		CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方_频道推广_300x450_02.png"; sourceTree = "<group>"; };
 		CD4A479A1970348700973A29 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = include.h; path = yoga/include.h; sourceTree = "<group>"; };
+		CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		CD86EF0119718FC200CD25B9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		CD86EF0419718FC200CD25B9 /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
 		CD86EF0519718FC200CD25B9 /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
@@ -408,6 +426,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD08AEF6197282EF00C50184 /* Modes */ = {
+			isa = PBXGroup;
+			children = (
+				CD08AEF71972830F00C50184 /* UserInfo.h */,
+				CD08AEF81972830F00C50184 /* UserInfo.m */,
+				CD08AEFA1972882B00C50184 /* HelpClass.h */,
+				CD08AEFB1972882B00C50184 /* HelpClass.m */,
+				3A8BBBE21972C42800DBEA30 /* SC_Model.h */,
+				3A8BBBE31972C42800DBEA30 /* SC_Model.m */,
+				3A8BBBE51972C46600DBEA30 /* AudioCell.h */,
+				3A8BBBE61972C46600DBEA30 /* AudioCell.m */,
+				CD38DD0F197430A900D4C20D /* CurrentProgram.h */,
+				CD38DD10197430A900D4C20D /* CurrentProgram.m */,
+			);
+			name = Modes;
+			sourceTree = "<group>";
+		};
 		CD0DB987196DA50300C3A2A8 = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +494,8 @@
 		CD0DB999196DA50300C3A2A8 /* yoga */ = {
 			isa = PBXGroup;
 			children = (
+				CD813ACB1972DA1E0040E1EB /* Views */,
+				CD08AEF6197282EF00C50184 /* Modes */,
 				CD8E51221971581C00771960 /* Library */,
 				CD0DB9A2196DA50300C3A2A8 /* AppDelegate.h */,
 				CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */,
@@ -622,6 +659,15 @@
 				CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */,
 			);
 			path = "图标";
+			sourceTree = "<group>";
+		};
+		CD813ACB1972DA1E0040E1EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */,
+				CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		CD86EF0019718FC200CD25B9 /* Vitamio */ = {
@@ -929,19 +975,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8BBBE71972C46600DBEA30 /* AudioCell.m in Sources */,
 				CD8E513C1971586E00771960 /* AFURLConnectionOperation.m in Sources */,
 				CD8E511E19714EED00771960 /* RL_LoginViewController.m in Sources */,
 				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
 				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
+				CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */,
 				CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */,
 				CD0DB9A4196DA50300C3A2A8 /* AppDelegate.m in Sources */,
+				CD38DD11197430A900D4C20D /* CurrentProgram.m in Sources */,
 				CD8E513D1971586E00771960 /* AFURLRequestSerialization.m in Sources */,
+				CD08AEF91972830F00C50184 /* UserInfo.m in Sources */,
+				3A8BBBE41972C42800DBEA30 /* SC_Model.m in Sources */,
 				CD8E513B1971586E00771960 /* AFSecurityPolicy.m in Sources */,
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
 				CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */,
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
 				9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */,
+				CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 				9DD40712197251250061D1DE /* UIFactory.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,

@@ -7,6 +7,9 @@
 //
 
 #import "RL_FMViewController.h"
+#import "MarqueeLabel.h"
+#import "AFNetworking.h"
+#import "CurrentProgram.h"
 
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -17,10 +20,12 @@
 
 @implementation RL_FMViewController
 {
-    //当前节目
-    UILabel *_currentProgram;
+    //ad
+    MarqueeLabel *_ad;
     //当前在线人数
     UILabel *_onlinePeople;
+    //存储当前节目数据类型实例
+    CurrentProgram *_programMode;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,18 +47,27 @@
 {
     return NO;
 }
+//刷新在线人数 method
+-(void)refreshPeople
+{
+    UserInfo *info =[UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor blackColor];
+    //刷新当前人数通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
+    
     UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     scrolView.backgroundColor =[UIColor grayColor];
     
     [self.view addSubview:scrolView];
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, scrolView.frame.size.width, 44) andTitle:@"瑜伽FM"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, scrolView.frame.size.width, 44) andTitle:self.FM_AV];
     [scrolView addSubview:nav];
     
     
@@ -110,14 +124,21 @@
     [scrolView addSubview:fileBtn];
     
     //加入当前节目label 走马灯显示
-    _currentProgram = [[UILabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30)];
-    _currentProgram.text = @"当前无节目";
-    _currentProgram.textColor = [UIColor whiteColor];
-    _currentProgram.textAlignment = NSTextAlignmentCenter;
-    [scrolView addSubview:_currentProgram];
+    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
+    _ad.numberOfLines = 1;
+    _ad.opaque = NO;
+    _ad.enabled = YES;
+    _ad.shadowOffset = CGSizeMake(0.0, -1.0);
+    _ad.textAlignment = NSTextAlignmentCenter;
+    _ad.textColor = [UIColor whiteColor];
+    _ad.backgroundColor = [UIColor clearColor];
+    _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
+    _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
+    [scrolView addSubview:_ad];
+
     
     // logoView
-    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _currentProgram.frame.origin.y +_currentProgram.frame.size.height + 30, 150, 40)];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [scrolView addSubview:logoView];
     
@@ -130,7 +151,8 @@
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
-    _onlinePeople.text = @"当前在线人数：1234";//暂定
+    UserInfo *info = [UserInfo shareUserInfo];
+    _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
@@ -146,6 +168,30 @@
     
     scrolView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
     scrolView.bounces = NO;
+    
+    NSString *url;
+    if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
+        url = GETCurrentFM_url;
+    }else{
+        url = CURRENTPLAYAUDIO_URL;
+    }
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success:%@",responseObject);
+        _programMode = [[CurrentProgram alloc] init];
+        [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
+        _ad.text = _programMode.ad;
+        //加入FM播放器：
+        
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed:%@",error);
+        
+    }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
