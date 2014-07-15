@@ -150,7 +150,6 @@
 		CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5115197131DE00771960 /* RL_FMViewController.m */; };
 		CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5118197147A700771960 /* RL_TVViewController.m */; };
 		CD8E511B19714D4800771960 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8E511A19714D4800771960 /* Default-568h@2x.png */; };
-		CD8E511E19714EED00771960 /* RL_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E511D19714EED00771960 /* RL_LoginViewController.m */; };
 		CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51201971561A00771960 /* RL_SettingViewController.m */; };
 		CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51251971586E00771960 /* AFHTTPRequestOperation.m */; };
 		CD8E51381971586E00771960 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51271971586E00771960 /* AFHTTPRequestOperationManager.m */; };
@@ -352,8 +351,6 @@
 		CD8E5117197147A700771960 /* RL_TVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_TVViewController.h; sourceTree = "<group>"; };
 		CD8E5118197147A700771960 /* RL_TVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_TVViewController.m; sourceTree = "<group>"; };
 		CD8E511A19714D4800771960 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		CD8E511C19714EED00771960 /* RL_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_LoginViewController.h; sourceTree = "<group>"; };
-		CD8E511D19714EED00771960 /* RL_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_LoginViewController.m; sourceTree = "<group>"; };
 		CD8E511F1971561A00771960 /* RL_SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_SettingViewController.h; sourceTree = "<group>"; };
 		CD8E51201971561A00771960 /* RL_SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_SettingViewController.m; sourceTree = "<group>"; };
 		CD8E51241971586E00771960 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -715,8 +712,6 @@
 				CD8E5115197131DE00771960 /* RL_FMViewController.m */,
 				CD8E5117197147A700771960 /* RL_TVViewController.h */,
 				CD8E5118197147A700771960 /* RL_TVViewController.m */,
-				CD8E511C19714EED00771960 /* RL_LoginViewController.h */,
-				CD8E511D19714EED00771960 /* RL_LoginViewController.m */,
 				CD8E511F1971561A00771960 /* RL_SettingViewController.h */,
 				CD8E51201971561A00771960 /* RL_SettingViewController.m */,
 				CD8E514019717DA500771960 /* RL_RegistViewController.h */,
@@ -977,7 +972,6 @@
 			files = (
 				3A8BBBE71972C46600DBEA30 /* AudioCell.m in Sources */,
 				CD8E513C1971586E00771960 /* AFURLConnectionOperation.m in Sources */,
-				CD8E511E19714EED00771960 /* RL_LoginViewController.m in Sources */,
 				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
 				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
