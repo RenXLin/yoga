@@ -89,6 +89,7 @@
     btn.tag = 2;
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -107,8 +108,6 @@
 //        NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:_account.text,@"username",_passWord.text,@"password",nil];
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-
-
         [manager GET:[NSString stringWithFormat:@"%@username=%@&password=%@",LOGIN_url,_account.text,_passWord.text] parameters:nil  success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"success");
 
@@ -139,14 +138,11 @@
     }
     
 }
+         
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
-    
-    
-    
     
     
 }
@@ -170,6 +166,7 @@
     [view addSubview:title];
     return view;
 }
+         
 -(void)backBtnClick
 {
     [self dismissViewControllerAnimated:YES completion:nil];

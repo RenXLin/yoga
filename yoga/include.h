@@ -49,7 +49,7 @@
 
 //登录：
 
-#define LOGIN_url  @"http://www.chinayogaonline.com/api/login?"
+//#define LOGIN_url  @"http://www.chinayogaonline.com/api/login?"
 
 #define LOGIN_url  @"http://www.chinayogaonline.com/api/login?username=%@&password=%@"
 
