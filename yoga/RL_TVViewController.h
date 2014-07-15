@@ -7,7 +7,8 @@
 //  瑜伽TV视图控制器
 
 #import <UIKit/UIKit.h>
+#import "Vitamio.h"
 
-@interface RL_TVViewController : UIViewController
+@interface RL_TVViewController : UIViewController<VMediaPlayerDelegate>
 
 @end

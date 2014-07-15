@@ -13,6 +13,9 @@
 
 
 @interface RL_TVViewController ()
+{
+    VMediaPlayer *_mMpayer;
+}
 
 @end
 
@@ -141,18 +144,39 @@
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager GET:GETCurrentFM_url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:CURRENTPLAYVIDEO_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         _ad.text = _programMode.ad;
-        
-        
+        //加入FM播放器：
+        if (!_mMpayer) {
+            _mMpayer = [VMediaPlayer sharedInstance];
+            [_mMpayer setupPlayerWithCarrierView:TVPlayView withDelegate:self];
+            [_mMpayer setDataSource:[NSURL URLWithString:_programMode.path] header:nil];
+            [_mMpayer prepareAsync];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed:%@",error);
         
     }];
     
+}
+#pragma mark VMediaPlayerDelegate methods Required
+
+- (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
+{
+    [player start];
+}
+
+- (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
+{
+    NSLog(@"player complete");
+}
+
+- (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
+{
+	NSLog(@"player error");
 }
 
 - (void)didReceiveMemoryWarning

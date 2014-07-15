@@ -68,8 +68,8 @@
 //参数：mobile（手机号）
 
 //当前正要播放的FM
-//#define  GETCurrentFM_url   @"http://www.chinayogaonline.com/api/getCurrentFM"
-#define  GETCurrentFM_url   @"http://www.chinayogaonline.com/api/getTestFm"
+//#define  CURRENTPLAYFM_URL   @"http://www.chinayogaonline.com/api/getCurrentFM"
+#define  CURRENTPLAYFM_URL   @"http://www.chinayogaonline.com/api/getTestFm"
 //参数：无
 
 //取某一天的FM节目单
@@ -83,11 +83,15 @@
 ////当前正要播放的音乐
 //#define CURRENTPLAYAUDIO_URL @"http://www.chinayogaonline.com/api/getCurrentMusic"
 #define  CURRENTPLAYAUDIO_URL  @"http://www.chinayogaonline.com/api/getTestMusic"
+
+
+////当前正要播放的视频
+//#define CURRENTPLAYVIDEO_URL   @"http://www.chinayogaonline.com/api/getCurrentTV"
+#define CURRENTPLAYVIDEO_URL   @"http://www.chinayogaonline.com/api/getTestTv"
 ////参数：无
 //
 ////音乐播放节目单
-//#define AUDIOLIST_URL  @"http://www.chinayogaonline.com/api/getMusicPlayList"
-#define AUDIOLIST_URL  @"http://www.chinayogaonline.com/api/getTestTv"
+#define AUDIOLIST_URL  @"http://www.chinayogaonline.com/api/getMusicPlayList"
 ////参数：无
 //
 ////音频点播分类列表

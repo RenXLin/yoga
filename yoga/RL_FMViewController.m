@@ -12,10 +12,13 @@
 #import "CurrentProgram.h"
 
 
+
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
 @interface RL_FMViewController ()
-
+{
+    VMediaPlayer *_mMpayer;
+}
 @end
 
 @implementation RL_FMViewController
@@ -171,10 +174,11 @@
     
     NSString *url;
     if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
-        url = GETCurrentFM_url;
+        url = CURRENTPLAYFM_URL;
     }else{
         url = CURRENTPLAYAUDIO_URL;
     }
+    
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -183,7 +187,12 @@
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         _ad.text = _programMode.ad;
         //加入FM播放器：
-        
+        if (!_mMpayer) {
+            _mMpayer = [VMediaPlayer sharedInstance];
+            [_mMpayer setupPlayerWithCarrierView:self.view withDelegate:self];
+            [_mMpayer setDataSource:[NSURL URLWithString:_programMode.path] header:nil];
+            [_mMpayer prepareAsync];
+        }
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -193,6 +202,24 @@
     
     
 }
+
+#pragma mark VMediaPlayerDelegate methods Required
+
+- (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
+{
+    [player start];
+}
+
+- (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
+{
+    NSLog(@"player complete");
+}
+
+- (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
+{
+	NSLog(@"player error");
+}
+
 
 - (void)didReceiveMemoryWarning
 {

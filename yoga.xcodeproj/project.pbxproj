@@ -21,7 +21,6 @@
 		CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DB99F196DA50300C3A2A8 /* main.m */; };
 		CD0DB9A4196DA50300C3A2A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */; };
 		CD0DB9A6196DA50300C3A2A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0DB9A5196DA50300C3A2A8 /* Images.xcassets */; };
-		CD0DB9AD196DA50300C3A2A8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB9AC196DA50300C3A2A8 /* XCTest.framework */; };
 		CD0DB9AE196DA50300C3A2A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB993196DA50300C3A2A8 /* Foundation.framework */; };
 		CD0DB9AF196DA50300C3A2A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0DB997196DA50300C3A2A8 /* UIKit.framework */; };
 		CD0DB9B7196DA50300C3A2A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD0DB9B5196DA50300C3A2A8 /* InfoPlist.strings */; };
@@ -141,6 +140,8 @@
 		CD4A479519702D4A00973A29 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479419702D4A00973A29 /* icon.png */; };
 		CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479619702E7400973A29 /* 开机画面01_320x480.png */; };
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
+		CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6382781975834F00DFF19F /* libbz2.dylib */; };
+		CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63827A197583C900DFF19F /* CoreVideo.framework */; };
 		CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CD86EF1019718FC200CD25B9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD86EF0119718FC200CD25B9 /* CHANGELOG.md */; };
 		CD86EF1119718FC200CD25B9 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD86EF0C19718FC200CD25B9 /* libffmpeg.a */; };
@@ -168,7 +169,6 @@
 		CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514919718AAD00771960 /* MediaPlayer.framework */; };
 		CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514B19718AB800771960 /* OpenGLES.framework */; };
 		CD8E514E19718AC000771960 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514D19718AC000771960 /* QuartzCore.framework */; };
-		CD8E515019718AE300771960 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514F19718AE300771960 /* libbz2.1.0.dylib */; };
 		CD8E515219718AEE00771960 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515119718AEE00771960 /* libz.dylib */; };
 		CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515319718B0100771960 /* libstdc++.dylib */; };
 		CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515519718B0900771960 /* libiconv.dylib */; };
@@ -210,7 +210,6 @@
 		CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CD0DB9A5196DA50300C3A2A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD0DB9AB196DA50300C3A2A8 /* yogaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yogaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD0DB9AC196DA50300C3A2A8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CD0DB9B4196DA50300C3A2A8 /* yogaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "yogaTests-Info.plist"; sourceTree = "<group>"; };
 		CD0DB9B6196DA50300C3A2A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD0DB9B8196DA50300C3A2A8 /* yogaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = yogaTests.m; sourceTree = "<group>"; };
@@ -332,6 +331,8 @@
 		CD4A479619702E7400973A29 /* 开机画面01_320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开机画面01_320x480.png"; sourceTree = "<group>"; };
 		CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方_频道推广_300x450_02.png"; sourceTree = "<group>"; };
 		CD4A479A1970348700973A29 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = include.h; path = yoga/include.h; sourceTree = "<group>"; };
+		CD6382781975834F00DFF19F /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
+		CD63827A197583C900DFF19F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
 		CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		CD86EF0119718FC200CD25B9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -383,7 +384,6 @@
 		CD8E514919718AAD00771960 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CD8E514B19718AB800771960 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CD8E514D19718AC000771960 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CD8E514F19718AE300771960 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
 		CD8E515119718AEE00771960 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CD8E515319718B0100771960 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		CD8E515519718B0900771960 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -394,11 +394,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */,
+				CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */,
 				CD86EF1219718FC200CD25B9 /* libopenssl.a in Frameworks */,
 				CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */,
 				CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */,
 				CD8E515219718AEE00771960 /* libz.dylib in Frameworks */,
-				CD8E515019718AE300771960 /* libbz2.1.0.dylib in Frameworks */,
 				CD8E514E19718AC000771960 /* QuartzCore.framework in Frameworks */,
 				CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */,
 				CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */,
@@ -417,7 +418,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0DB9AD196DA50300C3A2A8 /* XCTest.framework in Frameworks */,
 				CD0DB9AF196DA50300C3A2A8 /* UIKit.framework in Frameworks */,
 				CD0DB9AE196DA50300C3A2A8 /* Foundation.framework in Frameworks */,
 			);
@@ -473,10 +473,11 @@
 		CD0DB992196DA50300C3A2A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD63827A197583C900DFF19F /* CoreVideo.framework */,
+				CD6382781975834F00DFF19F /* libbz2.dylib */,
 				CD8E515519718B0900771960 /* libiconv.dylib */,
 				CD8E515319718B0100771960 /* libstdc++.dylib */,
 				CD8E515119718AEE00771960 /* libz.dylib */,
-				CD8E514F19718AE300771960 /* libbz2.1.0.dylib */,
 				CD8E514D19718AC000771960 /* QuartzCore.framework */,
 				CD8E514B19718AB800771960 /* OpenGLES.framework */,
 				CD8E514919718AAD00771960 /* MediaPlayer.framework */,
@@ -486,7 +487,6 @@
 				CD0DB993196DA50300C3A2A8 /* Foundation.framework */,
 				CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */,
 				CD0DB997196DA50300C3A2A8 /* UIKit.framework */,
-				CD0DB9AC196DA50300C3A2A8 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1075,7 +1075,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-objc";
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1108,7 +1108,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				OTHER_LDFLAGS = "-objc";
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1125,6 +1125,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/Vitamio",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1140,6 +1141,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/Vitamio",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
