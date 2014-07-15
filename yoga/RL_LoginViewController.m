@@ -105,7 +105,7 @@
         AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
 
-        [manager POST:@"http://www.chinayogaonline.com/api/login" parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:[NSString stringWithFormat:@"%@username=%@&password=%@",LOGIN_url,_account.text,_passWord.text] parameters:nil  success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"success");
             NSLog(@"%@",responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
