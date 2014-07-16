@@ -75,7 +75,7 @@
     //添加视频播放视图
     UIView *TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, 250)];
     TVPlayView.backgroundColor = [UIColor blackColor];
-    TVPlayView.alpha = 0.2;
+//    TVPlayView.alpha = 0.2;
     [scrolView addSubview:TVPlayView];
     
     //当前节目
@@ -153,7 +153,7 @@
         if (!_mMpayer) {
             _mMpayer = [VMediaPlayer sharedInstance];
             [_mMpayer setupPlayerWithCarrierView:TVPlayView withDelegate:self];
-            [_mMpayer setDataSource:[NSURL URLWithString:_programMode.path] header:nil];
+            [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com/mp3/Dominefilunigenite.mp3"] header:nil];
             [_mMpayer prepareAsync];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -167,6 +167,7 @@
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
     [player start];
+    NSLog(@"start>>>>>>>>>>>>");
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
