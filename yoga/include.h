@@ -94,16 +94,23 @@
 #define AUDIOLIST_URL  @"http://www.chinayogaonline.com/api/getMusicPlayList"
 ////参数：无
 //
-////音频点播分类列表
-//#define  http://www.chinayogaonline.com/api/getAodCategoryList
+
 ////参数：
 //
-////视频点播分类列表
-//http://www.chinayogaonline.com/api/getVodCategoryList
+
+//
 ////参数：
 //
 ////音频点播列表
 #define AUDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getAodList"
+
+////音频点播分类列表
+#define  SORT_AUDIOLIST_URL@"http://www.chinayogaonline.com/api/getAodCategoryList"
+
+////视频点播列表
+#define VIDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getVodList"
+////视频点播分类列表
+#define  SORT_VODLIST_URL@"http://www.chinayogaonline.com/api/getVodCategoryList"
 //#define  @"http://www.chinayogaonline.com/api/getVodCategoryList"
 ////参数：cid（分类ID），keywords，limit，offset
 //
@@ -115,8 +122,7 @@
 //http://www.chinayogaonline.com/api/getNextAod
 ////参数：aid(当前正在播放的音频ID)
 //
-////视频点播列表
-#define VIDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getVodList"
+
 ////参数：mobile
 //
 ////视频点播详情

@@ -9,6 +9,9 @@
 #import "SC_AudioOnLineViewController.h"
 #import "SC_Model.h"
 #import "AudioCell.h"
+#import "ChineseInclude.h"
+#import "PinYinForObjc.h"
+#import "MLTableAlert.h"
 @interface SC_AudioOnLineViewController ()
 {
     //当前在线人数
@@ -59,6 +62,7 @@
     
     //数据源初始化
     dataArray = [[NSMutableArray alloc]init];
+    sortArray = [[NSMutableArray alloc]init];
     [self creatUI];
     [self request];
     
@@ -98,7 +102,7 @@
         
     }];
     
-
+    
 }
 
 - (void)creatUI
@@ -139,20 +143,40 @@
     UIImageView *iputImg = [UIFactory createImageViewWithFrame:CGRectMake(5,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 260,35) imageName:@"white_btn.png"];
     [bgView addSubview:iputImg];
     
-    inputTf = [UIFactory createTextFieldWithFrame:CGRectMake(10,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 250,35) borderStyle:UITextBorderStyleNone placeHolder:@"输入关键词搜索" secureEntry:NO delegate:self];
+    //    inputTf = [UIFactory createTextFieldWithFrame:CGRectMake(10,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 250,35) borderStyle:UITextBorderStyleNone placeHolder:@"输入关键词搜索" secureEntry:NO delegate:self];
+    //
+    //    inputTf.font = Kfont(13);
+    //
+    //    [bgView addSubview:inputTf];
     
-    inputTf.font = Kfont(13);
-    
-    [bgView addSubview:inputTf];
     
     
-    UIButton *searchBtn = [UIFactory createButtonWithFrame:CGRectMake(270, bgView.frame.size.height/2+(bgView.frame.size.height/2-30)/2, 30, 30) title:@"" bgImageName:@"btnblue.png" target:self action:@selector(sortBtnClick:)];
-    [searchBtn setBackgroundImage:[UIImage imageNamed:@"btnblue_press.png"] forState:UIControlStateHighlighted];
-    searchBtn.tag = 111;
-    [bgView addSubview:searchBtn];
+    mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,44)];
+    mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
+    mySearchBar.delegate = self;
     
-    UIImageView *searchImg = [UIFactory createImageViewWithFrame:CGRectMake(5,5, 25,25)imageName:@"放大镜0017.png"];
-    [searchBtn addSubview:searchImg];
+    //mySearchBar.backgroundImage = [UIImage imageNamed:@"white_btn.png"];
+    [mySearchBar setPlaceholder:@"请输入关键词搜索"];
+    [bgView addSubview:mySearchBar];
+    
+    searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
+    mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
+    
+    searchDisplayController.active = NO;
+    searchDisplayController.searchResultsDataSource = self;
+    
+    
+    searchDisplayController.searchResultsDelegate = self;
+    searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+64, 310, 350);
+    
+    //
+    //    UIButton *searchBtn = [UIFactory createButtonWithFrame:CGRectMake(270, bgView.frame.size.height/2+(bgView.frame.size.height/2-30)/2, 30, 30) title:@"" bgImageName:@"btnblue.png" target:self action:@selector(sortBtnClick:)];
+    //    [searchBtn setBackgroundImage:[UIImage imageNamed:@"btnblue_press.png"] forState:UIControlStateHighlighted];
+    //    searchBtn.tag = 111;
+    //    [bgView addSubview:searchBtn];
+    //
+    //    UIImageView *searchImg = [UIFactory createImageViewWithFrame:CGRectMake(5,5, 25,25)imageName:@"放大镜0017.png"];
+    //    [searchBtn addSubview:searchImg];
     
     
     TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, 310, 350) style:UITableViewStylePlain];
@@ -201,6 +225,69 @@
         case 0:
         {
             
+            AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+            manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+            
+            NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOLIST_URL:SORT_VODLIST_URL];
+            //      待加入缓冲提示：
+            [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"%@",responseObject);
+                if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+                    
+                    
+                    
+                    if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
+                    {
+                        
+                        for(NSDictionary *dict in [responseObject objectForKey:@"data"])
+                        {
+                            SC_Model *model = [[SC_Model alloc]init];
+                            [model setValuesForKeysWithDictionary:dict];
+                            [sortArray addObject:model];
+                            
+                            
+                            // create the alert
+                            self.alert = [MLTableAlert tableAlertWithTitle:@"Choose an option..." cancelButtonTitle:@"Cancel" numberOfRows:^NSInteger (NSInteger section)
+                                          {
+                                              return 1;
+                                          }
+                                                                  andCells:^UITableViewCell* (MLTableAlert *anAlert, NSIndexPath *indexPath)
+                                          {
+                                              static NSString *CellIdentifier = @"CellIdentifier";
+                                              UITableViewCell *cell = [anAlert.table dequeueReusableCellWithIdentifier:CellIdentifier];
+                                              if (cell == nil)
+                                                  cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                                              
+                                              
+                                              
+                                              return cell;
+                                          }];
+                            
+                            
+                            self.alert.height = 350;
+                            
+                            [self.alert configureSelectionBlock:^(NSIndexPath *selectedIndex){
+                                //self.resultLabel.text = [NSString stringWithFormat:@"Selected Index\nSection: %d Row: %d", selectedIndex.section, selectedIndex.row];
+                            } andCompletionBlock:^{
+                                //self.resultLabel.text = @"Cancel Button Pressed\nNo Cells Selected";
+                            }];
+                            
+                            // show the alert
+                            [self.alert show];
+                        }
+                    }
+                    
+                    
+                   
+                }else{
+                    
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
+            }];
+            
+
+            
         }
             break;
             //search
@@ -247,14 +334,22 @@
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
     
-
+    
     
     return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return dataArray.count;
+    if (tableView == searchDisplayController.searchResultsTableView) {
+        return searchResults.count;
+        
+        NSLog(@"%lu",(unsigned long)searchResults.count);
+    }
+    else {
+        return dataArray.count;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -276,7 +371,15 @@
         cell.backgroundColor = KCOLOR(240, 240, 240, 1);
     }
     
-    cell.model = [dataArray objectAtIndex:indexPath.row];
+    if (tableView == searchDisplayController.searchResultsTableView) {
+        cell.model = [searchResults objectAtIndex:indexPath.row];
+    }
+    else {
+        cell.model = [dataArray objectAtIndex:indexPath.row];
+    }
+    return cell;
+    
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -301,6 +404,42 @@
     return YES;
 }
 
+#pragma mark UISearchDisplayDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    searchResults = [[NSMutableArray alloc]init];
+    if (mySearchBar.text.length>0&&![ChineseInclude isIncludeChineseInString:mySearchBar.text]) {
+        for (int i=0; i<dataArray.count; i++) {
+            
+            SC_Model *model = (SC_Model *)[dataArray objectAtIndex:i];
+            if ([ChineseInclude isIncludeChineseInString:model.title]) {
+                NSString *tempPinYinHeadStr = [PinYinForObjc chineseConvertToPinYinHead:model.title];
+                NSRange titleHeadResult=[tempPinYinHeadStr rangeOfString:mySearchBar.text options:NSCaseInsensitiveSearch];
+                if (titleHeadResult.length>0) {
+                    [searchResults addObject:dataArray[i]];
+                }
+            }
+            else {
+                NSRange titleResult=[model.title rangeOfString:mySearchBar.text options:NSCaseInsensitiveSearch];
+                if (titleResult.length>0) {
+                    [searchResults addObject:dataArray[i]];
+                }
+            }
+        }
+    } else if (mySearchBar.text.length>0&&[ChineseInclude isIncludeChineseInString:mySearchBar.text]) {
+        for (SC_Model *model in dataArray) {
+            NSRange titleResult=[model.title rangeOfString:mySearchBar.text options:NSCaseInsensitiveSearch];
+            if (titleResult.length>0) {
+                [searchResults addObject:model];
+            }
+        }
+    }
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
+{
+    tableView.frame = CGRectMake(5, 5+95+64, 310, 350);
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -308,14 +447,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

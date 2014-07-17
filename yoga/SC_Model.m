@@ -9,5 +9,9 @@
 #import "SC_Model.h"
 
 @implementation SC_Model
-
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    
+    
+}
 @end
