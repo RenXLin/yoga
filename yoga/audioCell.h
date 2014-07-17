@@ -10,5 +10,7 @@
 @class SC_Model;
 @interface AudioCell : UITableViewCell
 @property (nonatomic,strong) SC_Model *model;
-
+@property (nonatomic,weak) UILabel *titleLab;
+@property (nonatomic,weak) UILabel *timeLab;
+@property (nonatomic,weak) UILabel *cgLab;
 @end

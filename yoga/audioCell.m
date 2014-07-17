@@ -10,8 +10,6 @@
 #import "SC_Model.h"
 @interface AudioCell()
 
-@property (nonatomic,weak) UILabel *titleLab;
-@property (nonatomic,weak) UILabel *timeLab;
 @end
 
 @implementation AudioCell
@@ -24,6 +22,11 @@
         // Initialization code
         
         
+        UILabel *cgLab = [UIFactory createLabelWithFrame:CGRectMake(0, 0, 280, 37) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:1];
+        [self.contentView addSubview:cgLab];
+        self.cgLab = cgLab;
+        
+        
         UILabel *titleLab = [UIFactory createLabelWithFrame:CGRectMake(10, 0, 150, 37) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:0];
         titleLab.numberOfLines = 0;
         [self.contentView addSubview:titleLab];
@@ -33,6 +36,9 @@
         [self.contentView addSubview:timeLab];
         
         self.timeLab = timeLab;
+        
+        
+        
         
         
         
@@ -50,6 +56,7 @@
 {
     self.titleLab.text = _model.title;
     self.timeLab.text = _model.timelength;
+    self.cgLab.text = _model.cname;
     
 }
 - (void)setingFrame

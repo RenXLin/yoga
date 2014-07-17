@@ -109,8 +109,13 @@
 
 ////视频点播列表
 #define VIDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getVodList"
+
+////音频点播分类列表
+#define  SORT_AUDIOPICKLIST_URL@"http://www.chinayogaonline.com/api/getAodCategoryList"
+////参数：
+//
 ////视频点播分类列表
-#define  SORT_VODLIST_URL@"http://www.chinayogaonline.com/api/getVodCategoryList"
+#define  SORT_VIDEOLIST_ULR@"http://www.chinayogaonline.com/api/getVodCategoryList"
 //#define  @"http://www.chinayogaonline.com/api/getVodCategoryList"
 ////参数：cid（分类ID），keywords，limit，offset
 //

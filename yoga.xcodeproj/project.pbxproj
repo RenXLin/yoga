@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A8BBBE41972C42800DBEA30 /* SC_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBBE31972C42800DBEA30 /* SC_Model.m */; };
-		3A8BBBE71972C46600DBEA30 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BBBE61972C46600DBEA30 /* AudioCell.m */; };
+		3A9A8FE31978283600A00425 /* SC_AudioOnLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE21978283600A00425 /* SC_AudioOnLineViewController.m */; };
+		3A9A8FE6197828B800A00425 /* SC_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE5197828B800A00425 /* SC_Model.m */; };
+		3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE81978292D00A00425 /* AudioCell.m */; };
 		3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517B1976BE2400CA643E /* PinYinForObjc.m */; };
 		3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517D1976BE2400CA643E /* ChineseInclude.m */; };
 		3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517F1976BE2400CA643E /* ChineseToPinyinResource.m */; };
@@ -17,8 +18,6 @@
 		3AC3518F1976BE2400CA643E /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC351861976BE2400CA643E /* PinyinFormatter.m */; };
 		3AC351901976BE2400CA643E /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC351881976BE2400CA643E /* PinyinHelper.m */; };
 		3AC351911976BE2400CA643E /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */; };
-		3AC351951976DA6900CA643E /* MLTableAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC351941976DA6900CA643E /* MLTableAlert.m */; };
-		9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */; };
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
 		CD08AEF91972830F00C50184 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD08AEF81972830F00C50184 /* UserInfo.m */; };
@@ -195,10 +194,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A8BBBE21972C42800DBEA30 /* SC_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_Model.h; sourceTree = "<group>"; };
-		3A8BBBE31972C42800DBEA30 /* SC_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_Model.m; sourceTree = "<group>"; };
-		3A8BBBE51972C46600DBEA30 /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
-		3A8BBBE61972C46600DBEA30 /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
+		3A9A8FE11978283600A00425 /* SC_AudioOnLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_AudioOnLineViewController.h; sourceTree = "<group>"; };
+		3A9A8FE21978283600A00425 /* SC_AudioOnLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_AudioOnLineViewController.m; sourceTree = "<group>"; };
+		3A9A8FE4197828B800A00425 /* SC_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_Model.h; sourceTree = "<group>"; };
+		3A9A8FE5197828B800A00425 /* SC_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_Model.m; sourceTree = "<group>"; };
+		3A9A8FE71978292D00A00425 /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
+		3A9A8FE81978292D00A00425 /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
 		3AC3517A1976BE2400CA643E /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
 		3AC3517B1976BE2400CA643E /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
 		3AC3517C1976BE2400CA643E /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
@@ -215,10 +216,6 @@
 		3AC351871976BE2400CA643E /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
 		3AC351881976BE2400CA643E /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
 		3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
-		3AC351931976DA6900CA643E /* MLTableAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLTableAlert.h; sourceTree = "<group>"; };
-		3AC351941976DA6900CA643E /* MLTableAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLTableAlert.m; sourceTree = "<group>"; };
-		9DD4070B197245310061D1DE /* SC_AudioOnLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SC_AudioOnLineViewController.h; sourceTree = "<group>"; };
-		9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_AudioOnLineViewController.m; sourceTree = "<group>"; };
 		9DD40710197251250061D1DE /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
 		9DD40711197251250061D1DE /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
 		9DD4071319725ED50061D1DE /* 放大镜0017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大镜0017.png"; sourceTree = "<group>"; };
@@ -459,8 +456,6 @@
 		3AC351921976BE3000CA643E /* search */ = {
 			isa = PBXGroup;
 			children = (
-				3AC351931976DA6900CA643E /* MLTableAlert.h */,
-				3AC351941976DA6900CA643E /* MLTableAlert.m */,
 				3AC3517A1976BE2400CA643E /* PinYinForObjc.h */,
 				3AC3517B1976BE2400CA643E /* PinYinForObjc.m */,
 				3AC3517C1976BE2400CA643E /* ChineseInclude.h */,
@@ -488,10 +483,10 @@
 				CD08AEF81972830F00C50184 /* UserInfo.m */,
 				CD08AEFA1972882B00C50184 /* HelpClass.h */,
 				CD08AEFB1972882B00C50184 /* HelpClass.m */,
-				3A8BBBE21972C42800DBEA30 /* SC_Model.h */,
-				3A8BBBE31972C42800DBEA30 /* SC_Model.m */,
-				3A8BBBE51972C46600DBEA30 /* AudioCell.h */,
-				3A8BBBE61972C46600DBEA30 /* AudioCell.m */,
+				3A9A8FE4197828B800A00425 /* SC_Model.h */,
+				3A9A8FE5197828B800A00425 /* SC_Model.m */,
+				3A9A8FE71978292D00A00425 /* AudioCell.h */,
+				3A9A8FE81978292D00A00425 /* AudioCell.m */,
 				CD38DD0F197430A900D4C20D /* CurrentProgram.h */,
 				CD38DD10197430A900D4C20D /* CurrentProgram.m */,
 			);
@@ -777,8 +772,8 @@
 				CD8E51201971561A00771960 /* RL_SettingViewController.m */,
 				CD8E514019717DA500771960 /* RL_RegistViewController.h */,
 				CD8E514119717DA500771960 /* RL_RegistViewController.m */,
-				9DD4070B197245310061D1DE /* SC_AudioOnLineViewController.h */,
-				9DD4070C197245310061D1DE /* SC_AudioOnLineViewController.m */,
+				3A9A8FE11978283600A00425 /* SC_AudioOnLineViewController.h */,
+				3A9A8FE21978283600A00425 /* SC_AudioOnLineViewController.m */,
 				CD51F4F51976D49200F9E81F /* VideoPlayerController.h */,
 				CD51F4F61976D49200F9E81F /* VideoPlayerController.m */,
 			);
@@ -1036,12 +1031,11 @@
 			files = (
 				3AC351901976BE2400CA643E /* PinyinHelper.m in Sources */,
 				3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */,
-				3AC351951976DA6900CA643E /* MLTableAlert.m in Sources */,
-				3A8BBBE71972C46600DBEA30 /* AudioCell.m in Sources */,
 				CD8E513C1971586E00771960 /* AFURLConnectionOperation.m in Sources */,
 				3AC3518D1976BE2400CA643E /* HanyuPinyinOutputFormat.m in Sources */,
 				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
+				3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */,
 				CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */,
 				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
 				CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */,
@@ -1049,17 +1043,17 @@
 				CD0DB9A4196DA50300C3A2A8 /* AppDelegate.m in Sources */,
 				CD38DD11197430A900D4C20D /* CurrentProgram.m in Sources */,
 				CD8E513D1971586E00771960 /* AFURLRequestSerialization.m in Sources */,
+				3A9A8FE6197828B800A00425 /* SC_Model.m in Sources */,
 				CD08AEF91972830F00C50184 /* UserInfo.m in Sources */,
-				3A8BBBE41972C42800DBEA30 /* SC_Model.m in Sources */,
 				3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */,
 				CD8E513B1971586E00771960 /* AFSecurityPolicy.m in Sources */,
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
 				CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */,
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
-				9DD4070D197245310061D1DE /* SC_AudioOnLineViewController.m in Sources */,
 				3AC3518F1976BE2400CA643E /* PinyinFormatter.m in Sources */,
 				CD3C48B51975676300AAEAB8 /* RL_LoginViewController.m in Sources */,
 				3AC3518E1976BE2400CA643E /* NSString+PinYin4Cocoa.m in Sources */,
+				3A9A8FE31978283600A00425 /* SC_AudioOnLineViewController.m in Sources */,
 				CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 				9DD40712197251250061D1DE /* UIFactory.m in Sources */,

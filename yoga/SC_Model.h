@@ -30,5 +30,5 @@
 @property (nonatomic,copy) NSString *Id;
 @property (nonatomic,copy) NSString *pid;
 
--(void)setValue:(id)value forUndefinedKey:(NSString *)key;
+
 @end

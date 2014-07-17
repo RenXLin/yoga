@@ -7,22 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MLTableAlert;
-@interface SC_AudioOnLineViewController : UIViewController<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIAlertViewDelegate>
+
+@interface SC_AudioOnLineViewController : UIViewController<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 
 {
+   
+        NSMutableArray *dataArray;
+        NSMutableArray *dataArray1;
+        NSMutableArray *searchResults;
+        UISearchBar *mySearchBar;
+        UISearchDisplayController *searchDisplayController;
+        
     
-    NSMutableArray *dataArray;
-    NSMutableArray *searchResults;
-    NSMutableArray *sortArray;
-    UISearchBar *mySearchBar;
-    UISearchDisplayController *searchDisplayController;
-    
-    
-    
-}
 
-@property (strong, nonatomic) MLTableAlert *alert;
+}
 @property (nonatomic,copy) NSString *Title;
 @property (nonatomic,copy) NSString *audio;
 @end
