@@ -21,7 +21,7 @@
 
 
 
--(void)setBtnDelegate:(id)target andSEL:(SEL)sel;
+-(void)setBtnDelegate:(id)target andSEL:(SEL)sel andSliderSel:(SEL)sliderChange andTapGesture:(SEL)GestureSel;
 
 
 

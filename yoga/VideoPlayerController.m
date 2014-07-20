@@ -14,6 +14,7 @@
 
 @interface VideoPlayerController ()
 {
+    UIScrollView *_scrollView;
     UIView *_carryView;
     VMediaPlayer *_mPlayer;
     MedioPlayTool *_mTools;
@@ -31,6 +32,8 @@
     UILabel *_onlinePeople;
     //存储当前节目数据类型实例
     CurrentProgram *_programMode;
+    
+    UIView *_TVPlayView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,6 +45,10 @@
     return self;
 }
 - (BOOL)shouldAutorotate
+{
+    return YES;
+}
+-(BOOL)prefersStatusBarHidden
 {
     return YES;
 }
@@ -59,14 +66,19 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)to duration:(NSTimeInterval)duration
 {
 	if (UIInterfaceOrientationIsLandscape(to)) {
-        //		self.backView.frame = self.view.bounds;
-        
+        _carryView.frame = self.view.bounds;
+        [_carryView removeFromSuperview];
+        [self.view addSubview:_carryView];
+        _TVPlayView.frame = _carryView.bounds;
+        [_mTools removeFromSuperview];
+        _mTools.frame = CGRectMake(0, _carryView.frame.size.height - 50, _carryView.frame.size.width, 50);
+        [_TVPlayView addSubview:_mTools];
+        NSLog(@"%@",NSStringFromCGRect(_carryView.frame));
         
 	} else {
-        //		self.backView.frame = kBackviewDefaultRect;
-        
-        
-        
+        _carryView.frame = CGRectMake(2, 70, self.view.frame.size.width-4, 300);
+        [_carryView removeFromSuperview];
+        [_scrollView addSubview:_carryView];
 	}
 	NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
 }
@@ -102,34 +114,34 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
     self.view.backgroundColor = [UIColor blackColor];
-    UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
-    scrolView.backgroundColor =[UIColor grayColor];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
+    _scrollView.backgroundColor =[UIColor grayColor];
     
-    [self.view addSubview:scrolView];
+    [self.view addSubview:_scrollView];
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, scrolView.frame.size.width, 44) andTitle:@"瑜伽TV"];
-    [scrolView addSubview:nav];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
+    [_scrollView addSubview:nav];
     
     //添加负载播放器和进度条视图；
     _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, 300)];
     _carryView.backgroundColor = [UIColor clearColor];
-    [scrolView addSubview:_carryView];
+    [_scrollView addSubview:_carryView];
     
     //添加工具条：
     _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60)];
-    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:)];
+    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
     [_carryView addSubview:_mTools];
     
     //添加视频播放视图
-    UIView *TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70)];
-    TVPlayView.backgroundColor = [UIColor blackColor];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70)];
+    _TVPlayView.backgroundColor = [UIColor blackColor];
     //    TVPlayView.alpha = 0.2;
-    [_carryView addSubview:TVPlayView];
+    [_carryView addSubview:_TVPlayView];
     _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
 						  UIActivityIndicatorViewStyleWhiteLarge];
-    _activityView.center = TVPlayView.center;
-	[TVPlayView addSubview:_activityView];
+    _activityView.center = _TVPlayView.center;
+	[_TVPlayView addSubview:_activityView];
     [_activityView startAnimating];
     
     //当前节目
@@ -137,18 +149,18 @@
     titleLabel.text = @"瑜伽 TV ";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    [scrolView addSubview:titleLabel];
+    [_scrollView addSubview:titleLabel];
     
     //加入imageView
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"]];
-    [scrolView addSubview:imageV];
+    [_scrollView addSubview:imageV];
     
     //显示节目菜单按钮
     UIButton *fileBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    fileBtn.frame = CGRectMake(scrolView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
+    fileBtn.frame = CGRectMake(_scrollView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
     [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
-    [scrolView addSubview:fileBtn];
+    [_scrollView addSubview:fileBtn];
     
     //加入当前节目label 走马灯显示
     _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
@@ -161,19 +173,19 @@
     _ad.backgroundColor = [UIColor clearColor];
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
     _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
-    [scrolView addSubview:_ad];
+    [_scrollView addSubview:_ad];
     
     // logoView
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
-    [scrolView addSubview:logoView];
+    [_scrollView addSubview:logoView];
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
     loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
-    [scrolView addSubview:loginView];
+    [_scrollView addSubview:loginView];
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
@@ -188,16 +200,16 @@
     settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
-    [scrolView addSubview:settingView];
+    [_scrollView addSubview:settingView];
     
     
-    scrolView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
-    scrolView.bounces = NO;
+    _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
+    _scrollView.bounces = NO;
     
 
     if (!_mPlayer) {
         _mPlayer = [VMediaPlayer sharedInstance];
-        [_mPlayer setupPlayerWithCarrierView:TVPlayView withDelegate:self];
+        [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
         [_mPlayer setDataSource:[NSURL URLWithString:self.itemMode.path] header:nil];
         [_mPlayer prepareAsync];
     }
@@ -208,24 +220,31 @@
 {
     NSLog(@"start>>>>>>>>>>>>");
     _duration  = [player getDuration];
-    int hour = _duration/3600;
-    int min = _duration % 3600 /60;
-    int sec = _duration % 60;
-    _mTools.totalPlay.text = [NSString stringWithFormat:@"%d:%d:%d",hour,min,sec];
+    int hour = _duration/(60 * 60 * 60);
+    int min = _duration / 3600;
+    int sec = _duration % 3600 / 60;
+    _mTools.totalPlay.text = [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec];
     [player start];
     [_activityView stopAnimating];
-    _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/3 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
+    _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/2 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
     
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
     NSLog(@"player complete");
+    [_mPlayer reset];
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
 	NSLog(@"player error");
+}
+
+- (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
+{
+    NSLog(@"跳转完成！");
+    [_activityView stopAnimating];
 }
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
@@ -233,16 +252,41 @@
     long current = [_mPlayer getCurrentPosition];
     float precrnt = (float)current / _duration;
     _mTools.playProgress.value = precrnt;
-    
-    int hour = current/3600;
-    int min = current % 3600 /60;
-    int sec = current % 60;
-    _mTools.havePlay.text = [NSString stringWithFormat:@"%d:%d:%d",hour,min,sec];
+    NSLog(@">>>>>>>>>>%ld/%ld",current,_duration)
+    int hour = current/(60 * 60 * 60);
+    int min = current / 3600;
+    int sec = current % 3600 / 60;
+    _mTools.havePlay.text = [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec];
     
 }
+
 -(void)stopPlayMedio
 {
     [_mPlayer reset];
+    
+}
+-(void)tapGesture:(UIGestureRecognizer *)g
+{
+    //跳跃点击
+    UISlider* s = (UISlider*)g.view;
+    if (s.highlighted)
+        return;
+    CGPoint pt = [g locationInView:s];
+    CGFloat percentage = pt.x / s.bounds.size.width;
+    CGFloat delta = percentage * (s.maximumValue - s.minimumValue);
+    CGFloat value = s.minimumValue + delta;
+    [s setValue:value animated:YES];
+    long seek = percentage * _duration;
+	NSLog(@"seek = %ld", seek);
+	[_activityView startAnimating];
+    [_mPlayer seekTo:seek];
+}
+-(void)sliderChange:(UISlider*)slider
+{
+    //拖到
+    [_activityView startAnimating];
+    long seek = _duration * slider.value;
+    [_mPlayer seekTo:seek];
     
 }
 -(void)playSettingChange:(UIButton *)btn
@@ -297,7 +341,8 @@
 
 -(void)backBtnClick
 {
-    [_mPlayer pause];
+    [_mPlayer reset];
+    [_mPlayer unSetupPlayer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

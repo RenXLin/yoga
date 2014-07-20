@@ -173,6 +173,7 @@
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
     NSLog(@"player complete");
+    [player reset];
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
@@ -189,6 +190,8 @@
 
 -(void)backBtnClick
 {
+    [_mMpayer reset];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
