@@ -79,6 +79,10 @@
         _carryView.frame = CGRectMake(2, 70, self.view.frame.size.width-4, 300);
         [_carryView removeFromSuperview];
         [_scrollView addSubview:_carryView];
+        _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
+        [_mTools removeFromSuperview];
+        _mTools.frame = CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60);
+        [_scrollView addSubview:_mTools];
 	}
 	NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
 }
@@ -294,6 +298,35 @@
     NSLog(@"%d",btn.tag);
     if (btn.tag == 1) {
         //full screen or not
+        if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+            self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+//            _carryView.frame = self.view.bounds;
+//            [_carryView removeFromSuperview];
+//            [self.view addSubview:_carryView];
+//            _TVPlayView.frame = _carryView.bounds;
+//            [_mTools removeFromSuperview];
+//            _mTools.frame = CGRectMake(0, _carryView.frame.size.height - 50, _carryView.frame.size.width, 50);
+//            [_TVPlayView addSubview:_mTools];
+//            NSLog(@"%@",NSStringFromCGRect(_carryView.frame));
+            
+            [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:YES];
+            
+            _carryView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+
+        }else {
+//            _carryView.frame = CGRectMake(2, 70, self.view.frame.size.width-4, 300);
+//            [_carryView removeFromSuperview];
+//            [_scrollView addSubview:_carryView];
+//            _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
+//            [_mTools removeFromSuperview];
+//            _mTools.frame = CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60);
+//            [_scrollView addSubview:_mTools];
+            
+//            [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:YES];
+//            
+//            _carryView.transform = CGAffineTransformMakeRotation(M_PI/2);
+            
+        }
         
     }else if (btn.tag == 2){
         //last program
