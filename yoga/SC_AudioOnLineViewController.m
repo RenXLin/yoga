@@ -11,6 +11,9 @@
 #import "AudioCell.h"
 #import "ChineseInclude.h"
 #import "PinYinForObjc.h"
+#import "VideoPlayerController.h"
+
+
 @interface SC_AudioOnLineViewController ()
 {
     //当前在线人数
@@ -534,6 +537,12 @@
         }];
         
         sortBtn.selected = NO;
+    }else if (tableView == TableView){
+        //推出播放器视图：
+        VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
+        vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
+        [self presentViewController:vpc animated:YES completion:nil];
+
     }
     
     

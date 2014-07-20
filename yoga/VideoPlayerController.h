@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Vitamio.h"
+#import "SC_Model.h"
 
-@interface VideoPlayerController : UIViewController
+
+@interface VideoPlayerController : UIViewController<VMediaPlayerDelegate>
+
+@property(nonatomic,strong)SC_Model *itemMode;
+
 
 @end

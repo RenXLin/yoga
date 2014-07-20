@@ -181,6 +181,7 @@
 		CD8E515219718AEE00771960 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515119718AEE00771960 /* libz.dylib */; };
 		CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515319718B0100771960 /* libstdc++.dylib */; };
 		CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515519718B0900771960 /* libiconv.dylib */; };
+		CDF0535C197BAFB60097FAAA /* MedioPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,6 +415,8 @@
 		CD8E515119718AEE00771960 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CD8E515319718B0100771960 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		CD8E515519718B0900771960 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		CDF0535A197BAFB60097FAAA /* MedioPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedioPlayTool.h; sourceTree = "<group>"; };
+		CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedioPlayTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -544,9 +547,9 @@
 		CD0DB999196DA50300C3A2A8 /* yoga */ = {
 			isa = PBXGroup;
 			children = (
+				CD8E51221971581C00771960 /* Library */,
 				CD813ACB1972DA1E0040E1EB /* Views */,
 				CD08AEF6197282EF00C50184 /* Modes */,
-				CD8E51221971581C00771960 /* Library */,
 				CD0DB9A2196DA50300C3A2A8 /* AppDelegate.h */,
 				CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */,
 				CD8E510D1970D35900771960 /* Controllers */,
@@ -752,6 +755,8 @@
 			children = (
 				CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */,
 				CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */,
+				CDF0535A197BAFB60097FAAA /* MedioPlayTool.h */,
+				CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1049,6 +1054,7 @@
 				CD8E513B1971586E00771960 /* AFSecurityPolicy.m in Sources */,
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
 				CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */,
+				CDF0535C197BAFB60097FAAA /* MedioPlayTool.m in Sources */,
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
 				3AC3518F1976BE2400CA643E /* PinyinFormatter.m in Sources */,
 				CD3C48B51975676300AAEAB8 /* RL_LoginViewController.m in Sources */,

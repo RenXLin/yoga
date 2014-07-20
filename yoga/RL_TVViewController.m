@@ -153,7 +153,7 @@
         if (!_mMpayer) {
             _mMpayer = [VMediaPlayer sharedInstance];
             [_mMpayer setupPlayerWithCarrierView:TVPlayView withDelegate:self];
-            [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com/mp3/Dominefilunigenite.mp3"] header:nil];
+            [_mMpayer setDataSource:[NSURL URLWithString:@"rtmp://223.4.116.174/vod/mp4:201404/shenyongpei_Iyengar_B_pre_T4.f4v"] header:nil];
             [_mMpayer prepareAsync];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
