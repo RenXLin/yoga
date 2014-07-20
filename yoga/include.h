@@ -42,6 +42,9 @@
 #define SVProgressHUDShow2(m) [SVProgressHUD showWithStatus:m maskType:SVProgressHUDMaskTypeBlack]
 
 
+#define KDEVICE [UIDevice currentDevice].model
+
+
 
 #define NOT_refreshOnlinePeople   @"Notification_refreshOnlinePeople"
 

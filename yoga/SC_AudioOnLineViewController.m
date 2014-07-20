@@ -61,7 +61,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    NSLog(@"--------------%@",KDEVICE);
     self.view.backgroundColor = KCOLOR(57, 61, 64, 1);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
@@ -184,7 +184,14 @@
 //    [searchBtn addSubview:searchImg];
     
     
-    TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, 310, 350) style:UITableViewStylePlain];
+    if([KDEVICE isEqualToString:@"iPad Simulator"])
+    {
+        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5+95+64-500 ) style:UITableViewStylePlain];
+    }else
+    {
+      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5+95+64 ) style:UITableViewStylePlain];
+    }
+    
     TableView.delegate = self;
     TableView.dataSource = self;
     TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -195,11 +202,30 @@
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
     [loginView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     loginView.tag = 112;
     [bgImgView addSubview:loginView];
+    
+        //settting View
+    UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [settingView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
+    settingView.tag = 113;
+    [bgImgView addSubview:settingView];
+    
+    
+    if([KDEVICE isEqualToString:@"iPad Simulator"])
+    {
+        loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 120, 120);
+        settingView.frame = CGRectMake(KscreenWidth-160, TableView.frame.origin.y+TableView.frame.size.height+5, 120, 120);
+        
+    }else{
+        loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
+        settingView.frame = CGRectMake(KscreenWidth-74, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
+        
+    }
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, KscreenWidth -(loginView.frame.size.width + loginView.frame.origin.x)*2 , loginView.frame.size.height)];
@@ -212,13 +238,8 @@
     _onlinePeople.textColor = [UIColor whiteColor];
     [bgImgView addSubview:_onlinePeople];
     
-    //settting View
-    UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.frame = CGRectMake(KscreenWidth-74, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
-    [settingView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
-    settingView.tag = 113;
-    [bgImgView addSubview:settingView];
+
+
 }
 
 
@@ -485,6 +506,10 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if([KDEVICE isEqualToString:@"iPad Simulator"])
+    {
+        return 80;
+    }
     return 37;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -601,7 +626,6 @@
 {
     tableView.frame = CGRectMake(5, 5+95+64, 310, 350);
 }
-
 
 
 
