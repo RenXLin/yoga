@@ -349,7 +349,7 @@
             
             _carryView.transform = CGAffineTransformMakeRotation(-M_PI/2);
 
-        }        
+        }
     }else if (btn.tag == 2){
         //last program
     
