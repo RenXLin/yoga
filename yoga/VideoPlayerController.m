@@ -21,6 +21,7 @@
     NSTimer *_seekTimser;
     UIActivityIndicatorView *_activityView;
     long _duration;
+    BOOL isFullScreen;
 }
 @end
 
@@ -79,6 +80,10 @@
         _carryView.frame = CGRectMake(2, 70, self.view.frame.size.width-4, 300);
         [_carryView removeFromSuperview];
         [_scrollView addSubview:_carryView];
+        _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
+        [_mTools removeFromSuperview];
+        _mTools.frame = CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60);
+        [_scrollView addSubview:_mTools];
 	}
 	NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
 }
@@ -124,7 +129,7 @@
     [_scrollView addSubview:nav];
     
     //添加负载播放器和进度条视图；
-    _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, 300)];
+    _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, (self.view.frame.size.width-4) * 3 /4)];
     _carryView.backgroundColor = [UIColor clearColor];
     [_scrollView addSubview:_carryView];
     
@@ -291,10 +296,60 @@
 }
 -(void)playSettingChange:(UIButton *)btn
 {
-    NSLog(@"%d",btn.tag);
+    NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 1) {
         //full screen or not
-        
+        if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+            self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+
+            if (isFullScreen == NO) {
+                
+            }else{
+                
+            
+            
+            }
+            
+        }else {
+            if (isFullScreen == NO) {
+                isFullScreen = YES;
+                _carryView.frame = CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width);
+                _TVPlayView.frame = _carryView.bounds;
+                [_mTools removeFromSuperview];
+                _mTools.frame = CGRectMake(0, _carryView.frame.size.height - 50, _carryView.frame.size.width, 50);
+                [_TVPlayView addSubview:_mTools];
+                _carryView.transform = CGAffineTransformRotate(_carryView.transform, M_PI / 2 );
+                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, M_PI / 2);
+                [self.view addSubview:_TVPlayView];
+                _carryView.center = self.view.center;
+                NSLog(@"%@ ,%@",NSStringFromCGPoint(self.view.center),NSStringFromCGPoint(_carryView.center))
+                
+                _carryView.transform = CGAffineTransformTranslate(_carryView.transform, self.view.center.x- _carryView.center.x, self.view.center.y - _carryView.center.y);
+                _TVPlayView.center = _carryView.center;
+                NSLog(@"%@,%@",NSStringFromCGRect(_carryView.frame),NSStringFromCGRect(_TVPlayView.frame));
+            }else{
+                NSLog(@"非全屏播放");
+                [_carryView removeFromSuperview];
+                [_TVPlayView removeFromSuperview];
+                [_mTools removeFromSuperview];
+
+                _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, (self.view.frame.size.width-4) * 3 /4)];
+                [self.view addSubview:_carryView];
+                
+                _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60)];
+                    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
+                [_carryView addSubview:_mTools];
+                
+                _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
+                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI /2);
+                [_carryView addSubview:_TVPlayView];
+            }
+            
+            [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:YES];
+            
+            _carryView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+
+        }        
     }else if (btn.tag == 2){
         //last program
     

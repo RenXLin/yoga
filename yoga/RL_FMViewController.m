@@ -189,17 +189,16 @@
         //加入FM播放器：
         if (!_mMpayer) {
             _mMpayer = [VMediaPlayer sharedInstance];
-            [_mMpayer setupPlayerWithCarrierView:self.view withDelegate:self];
+            [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
             [_mMpayer setDataSource:[NSURL URLWithString:_programMode.path] header:nil];
             [_mMpayer prepareAsync];
         }
-        
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed:%@",error);
         
     }];
     
+
     
 }
 
