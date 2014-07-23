@@ -145,17 +145,17 @@
 		CD0DBAA5196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */; };
 		CD38DD11197430A900D4C20D /* CurrentProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = CD38DD10197430A900D4C20D /* CurrentProgram.m */; };
 		CD3C48B51975676300AAEAB8 /* RL_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3C48B41975676300AAEAB8 /* RL_LoginViewController.m */; };
+		CD43E4D4198016C700FB9D74 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD43E4C5198016C700FB9D74 /* CHANGELOG.md */; };
+		CD43E4D5198016C700FB9D74 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD43E4D0198016C700FB9D74 /* libffmpeg.a */; };
+		CD43E4D6198016C700FB9D74 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD43E4D1198016C700FB9D74 /* libopenssl.a */; };
+		CD43E4D7198016C700FB9D74 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD43E4D2198016C700FB9D74 /* libVitamio.a */; };
+		CD43E4D8198016C700FB9D74 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD43E4D3198016C700FB9D74 /* LICENSE */; };
 		CD4A479519702D4A00973A29 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479419702D4A00973A29 /* icon.png */; };
 		CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479619702E7400973A29 /* 开机画面01_320x480.png */; };
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
 		CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD51F4F61976D49200F9E81F /* VideoPlayerController.m */; };
 		CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6382781975834F00DFF19F /* libbz2.dylib */; };
 		CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63827A197583C900DFF19F /* CoreVideo.framework */; };
-		CD69C2AD197D746E0046E979 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = CD69C299197D746E0046E979 /* CHANGELOG.md */; };
-		CD69C2AE197D746E0046E979 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD69C2A4197D746E0046E979 /* libffmpeg.a */; };
-		CD69C2AF197D746E0046E979 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD69C2A5197D746E0046E979 /* libopenssl.a */; };
-		CD69C2B0197D746E0046E979 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD69C2A6197D746E0046E979 /* libVitamio.a */; };
-		CD69C2B1197D746E0046E979 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD69C2A7197D746E0046E979 /* LICENSE */; };
 		CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CD8E510C1970D34C00771960 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E510B1970D34C00771960 /* MainViewController.m */; };
 		CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5115197131DE00771960 /* RL_FMViewController.m */; };
@@ -353,6 +353,19 @@
 		CD38DD10197430A900D4C20D /* CurrentProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentProgram.m; sourceTree = "<group>"; };
 		CD3C48B31975676300AAEAB8 /* RL_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_LoginViewController.h; sourceTree = "<group>"; };
 		CD3C48B41975676300AAEAB8 /* RL_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_LoginViewController.m; sourceTree = "<group>"; };
+		CD43E4C5198016C700FB9D74 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		CD43E4C8198016C700FB9D74 /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
+		CD43E4C9198016C700FB9D74 /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
+		CD43E4CA198016C700FB9D74 /* VMediaExtracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracter.h; sourceTree = "<group>"; };
+		CD43E4CB198016C700FB9D74 /* VMediaExtracterDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracterDef.h; sourceTree = "<group>"; };
+		CD43E4CC198016C700FB9D74 /* VMediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayer.h; sourceTree = "<group>"; };
+		CD43E4CD198016C700FB9D74 /* VMediaPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayerDelegate.h; sourceTree = "<group>"; };
+		CD43E4CE198016C700FB9D74 /* VPlayerManageDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPlayerManageDef.h; sourceTree = "<group>"; };
+		CD43E4CF198016C700FB9D74 /* VSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSingleton.h; sourceTree = "<group>"; };
+		CD43E4D0198016C700FB9D74 /* libffmpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libffmpeg.a; sourceTree = "<group>"; };
+		CD43E4D1198016C700FB9D74 /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopenssl.a; sourceTree = "<group>"; };
+		CD43E4D2198016C700FB9D74 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
+		CD43E4D3198016C700FB9D74 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD4A479419702D4A00973A29 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD4A479619702E7400973A29 /* 开机画面01_320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开机画面01_320x480.png"; sourceTree = "<group>"; };
 		CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方_频道推广_300x450_02.png"; sourceTree = "<group>"; };
@@ -361,19 +374,6 @@
 		CD51F4F61976D49200F9E81F /* VideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerController.m; sourceTree = "<group>"; };
 		CD6382781975834F00DFF19F /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		CD63827A197583C900DFF19F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		CD69C299197D746E0046E979 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
-		CD69C29C197D746E0046E979 /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
-		CD69C29D197D746E0046E979 /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
-		CD69C29E197D746E0046E979 /* VMediaExtracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracter.h; sourceTree = "<group>"; };
-		CD69C29F197D746E0046E979 /* VMediaExtracterDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracterDef.h; sourceTree = "<group>"; };
-		CD69C2A0197D746E0046E979 /* VMediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayer.h; sourceTree = "<group>"; };
-		CD69C2A1197D746E0046E979 /* VMediaPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayerDelegate.h; sourceTree = "<group>"; };
-		CD69C2A2197D746E0046E979 /* VPlayerManageDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPlayerManageDef.h; sourceTree = "<group>"; };
-		CD69C2A3197D746E0046E979 /* VSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSingleton.h; sourceTree = "<group>"; };
-		CD69C2A4197D746E0046E979 /* libffmpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libffmpeg.a; sourceTree = "<group>"; };
-		CD69C2A5197D746E0046E979 /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopenssl.a; sourceTree = "<group>"; };
-		CD69C2A6197D746E0046E979 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
-		CD69C2A7197D746E0046E979 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
 		CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		CD8E510A1970D34C00771960 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -429,15 +429,15 @@
 				CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */,
 				CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */,
 				CD8E515219718AEE00771960 /* libz.dylib in Frameworks */,
+				CD43E4D5198016C700FB9D74 /* libffmpeg.a in Frameworks */,
+				CD43E4D6198016C700FB9D74 /* libopenssl.a in Frameworks */,
 				CD8E514E19718AC000771960 /* QuartzCore.framework in Frameworks */,
 				CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */,
 				CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */,
 				CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */,
-				CD69C2B0197D746E0046E979 /* libVitamio.a in Frameworks */,
-				CD69C2AF197D746E0046E979 /* libopenssl.a in Frameworks */,
+				CD43E4D7198016C700FB9D74 /* libVitamio.a in Frameworks */,
 				CD8E514819718A8600771960 /* CoreMedia.framework in Frameworks */,
 				CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */,
-				CD69C2AE197D746E0046E979 /* libffmpeg.a in Frameworks */,
 				CD8E514619718A7400771960 /* AudioToolbox.framework in Frameworks */,
 				CD8E514419718A6500771960 /* AVFoundation.framework in Frameworks */,
 				CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */,
@@ -714,38 +714,39 @@
 			path = "图标";
 			sourceTree = "<group>";
 		};
-		CD69C298197D746E0046E979 /* Vitamio-online */ = {
+		CD43E4C4198016C700FB9D74 /* Vitamio-online */ = {
 			isa = PBXGroup;
 			children = (
-				CD69C299197D746E0046E979 /* CHANGELOG.md */,
-				CD69C29A197D746E0046E979 /* include */,
-				CD69C2A4197D746E0046E979 /* libffmpeg.a */,
-				CD69C2A5197D746E0046E979 /* libopenssl.a */,
-				CD69C2A6197D746E0046E979 /* libVitamio.a */,
-				CD69C2A7197D746E0046E979 /* LICENSE */,
+				CD43E4C5198016C700FB9D74 /* CHANGELOG.md */,
+				CD43E4C6198016C700FB9D74 /* include */,
+				CD43E4D0198016C700FB9D74 /* libffmpeg.a */,
+				CD43E4D1198016C700FB9D74 /* libopenssl.a */,
+				CD43E4D2198016C700FB9D74 /* libVitamio.a */,
+				CD43E4D3198016C700FB9D74 /* LICENSE */,
 			);
-			path = "Vitamio-online";
+			name = "Vitamio-online";
+			path = "Library/Vitamio-online";
 			sourceTree = "<group>";
 		};
-		CD69C29A197D746E0046E979 /* include */ = {
+		CD43E4C6198016C700FB9D74 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				CD69C29B197D746E0046E979 /* Vitamio */,
+				CD43E4C7198016C700FB9D74 /* Vitamio */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		CD69C29B197D746E0046E979 /* Vitamio */ = {
+		CD43E4C7198016C700FB9D74 /* Vitamio */ = {
 			isa = PBXGroup;
 			children = (
-				CD69C29C197D746E0046E979 /* VDefines.h */,
-				CD69C29D197D746E0046E979 /* Vitamio.h */,
-				CD69C29E197D746E0046E979 /* VMediaExtracter.h */,
-				CD69C29F197D746E0046E979 /* VMediaExtracterDef.h */,
-				CD69C2A0197D746E0046E979 /* VMediaPlayer.h */,
-				CD69C2A1197D746E0046E979 /* VMediaPlayerDelegate.h */,
-				CD69C2A2197D746E0046E979 /* VPlayerManageDef.h */,
-				CD69C2A3197D746E0046E979 /* VSingleton.h */,
+				CD43E4C8198016C700FB9D74 /* VDefines.h */,
+				CD43E4C9198016C700FB9D74 /* Vitamio.h */,
+				CD43E4CA198016C700FB9D74 /* VMediaExtracter.h */,
+				CD43E4CB198016C700FB9D74 /* VMediaExtracterDef.h */,
+				CD43E4CC198016C700FB9D74 /* VMediaPlayer.h */,
+				CD43E4CD198016C700FB9D74 /* VMediaPlayerDelegate.h */,
+				CD43E4CE198016C700FB9D74 /* VPlayerManageDef.h */,
+				CD43E4CF198016C700FB9D74 /* VSingleton.h */,
 			);
 			path = Vitamio;
 			sourceTree = "<group>";
@@ -788,6 +789,7 @@
 		CD8E51221971581C00771960 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				CD43E4C4198016C700FB9D74 /* Vitamio-online */,
 				CD8E51231971586E00771960 /* AFNetworking */,
 			);
 			name = Library;
@@ -796,7 +798,6 @@
 		CD8E51231971586E00771960 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				CD69C298197D746E0046E979 /* Vitamio-online */,
 				CD8E51241971586E00771960 /* AFHTTPRequestOperation.h */,
 				CD8E51251971586E00771960 /* AFHTTPRequestOperation.m */,
 				CD8E51261971586E00771960 /* AFHTTPRequestOperationManager.h */,
@@ -943,6 +944,7 @@
 				CD0DBAA1196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png in Resources */,
 				CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */,
 				CD0DBA7B196DA52200C3A2A8 /* video_icon6.png in Resources */,
+				CD43E4D4198016C700FB9D74 /* CHANGELOG.md in Resources */,
 				CD0DBA56196DA52200C3A2A8 /* icon7_1.png in Resources */,
 				CD0DBA78196DA52200C3A2A8 /* video_icon4_1.png in Resources */,
 				CD0DBA66196DA52200C3A2A8 /* title_icon1.png in Resources */,
@@ -1009,7 +1011,7 @@
 				CD0DBA65196DA52200C3A2A8 /* title_icon.png in Resources */,
 				CD0DBA6F196DA52200C3A2A8 /* video_bottom.png in Resources */,
 				CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */,
-				CD69C2B1197D746E0046E979 /* LICENSE in Resources */,
+				CD43E4D8198016C700FB9D74 /* LICENSE in Resources */,
 				CD0DBA3F196DA52200C3A2A8 /* btngreen.png in Resources */,
 				CD0DBA4E196DA52200C3A2A8 /* icon3_1.png in Resources */,
 				CD0DBA92196DA52200C3A2A8 /* 开机画面03_240x320.jpg in Resources */,
@@ -1040,7 +1042,6 @@
 				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
 				3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */,
-				CD69C2AD197D746E0046E979 /* CHANGELOG.md in Sources */,
 				CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */,
 				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
 				CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */,
@@ -1194,6 +1195,7 @@
 					"$(PROJECT_DIR)/yoga/Vitamio",
 					"$(PROJECT_DIR)/yoga/Library/AFNetworking/Vitamio-online",
 					"$(PROJECT_DIR)/yoga/Library/AFNetworking/Vitamio",
+					"$(PROJECT_DIR)/yoga/Library/Vitamio-online",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1212,6 +1214,7 @@
 					"$(PROJECT_DIR)/yoga/Vitamio",
 					"$(PROJECT_DIR)/yoga/Library/AFNetworking/Vitamio-online",
 					"$(PROJECT_DIR)/yoga/Library/AFNetworking/Vitamio",
+					"$(PROJECT_DIR)/yoga/Library/Vitamio-online",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -332,17 +332,35 @@
                 [_carryView removeFromSuperview];
                 [_TVPlayView removeFromSuperview];
                 [_mTools removeFromSuperview];
-
+//
+//                _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, (self.view.frame.size.width-4) * 3 /4)];
+//                [self.view addSubview:_carryView];
+//                
+//                _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60)];
+//                    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
+//                [_carryView addSubview:_mTools];
+//                
+//                _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
+//                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI /2);
+//                [_carryView addSubview:_TVPlayView];
+//                
+                //添加负载播放器和进度条视图；
                 _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, (self.view.frame.size.width-4) * 3 /4)];
-                [self.view addSubview:_carryView];
+                _carryView.backgroundColor = [UIColor clearColor];
+                [_scrollView addSubview:_carryView];
                 
+                //添加工具条：
                 _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60)];
-                    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
+                [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
                 [_carryView addSubview:_mTools];
                 
-                _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
-                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI /2);
+                //添加视频播放视图
+                _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70)];
+                _TVPlayView.backgroundColor = [UIColor blackColor];
+                //    TVPlayView.alpha = 0.2;
                 [_carryView addSubview:_TVPlayView];
+
+                
             }
             
             [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:YES];
