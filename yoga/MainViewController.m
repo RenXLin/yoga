@@ -13,7 +13,8 @@
 #import "RL_SettingViewController.h"
 #import "SC_AudioOnLineViewController.h"
 #import "AFNetworking.h"
-
+#import "UserInfo.h"
+#import "SC_popView.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -28,6 +29,11 @@
 
     //定时器定时刷新在线人数：
     NSTimer *_timer;
+    
+    
+    UIButton *btn;
+    UIButton *btn1;
+    SC_popView *lplv;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -175,12 +181,35 @@
     }else if(view.tag == 4){
         //音频点播
         
-        SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
-        audioView.Title = @"音频点播";
-        audioView.audio = @"audio";
-        audioView.modalPresentationStyle = UIModalPresentationCustom;
-        audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:audioView animated:YES completion:nil];
+        
+        
+        
+        
+        
+        UserInfo *info = [UserInfo shareUserInfo];
+        if(info.token.length == 0)
+        {
+            
+            lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
+            //lplv.delegate = self;
+            [lplv showInView:self.view animated:YES];
+            
+            [self creatBtn];
+            
+            
+            
+            
+        }else
+        {
+            SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
+            audioView.Title = @"音频点播";
+            audioView.audio = @"audio";
+            audioView.modalPresentationStyle = UIModalPresentationCustom;
+            audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:audioView animated:YES completion:nil];
+        }
+        
+        
         
     }else if (view.tag == 5){
         //瑜伽音乐
@@ -190,11 +219,27 @@
     }else if(view.tag == 6){
         //音频点播
         
+        
+        UserInfo *info = [UserInfo shareUserInfo];
+        if(info.token.length == 0)
+        {
+            
+            lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
+            //lplv.delegate = self;
+            [lplv showInView:self.view animated:YES];
+            
+            [self creatBtn];
+            
+        }else
+        {
+
+        
         SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
         audioView.Title = @"视屏点播";
         audioView.modalPresentationStyle = UIModalPresentationCustom;
         audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:audioView animated:YES completion:nil];
+        }
         
 
     }else if (view.tag == 7){
@@ -209,6 +254,76 @@
     
     
 }
+
+//登录  升级按钮
+
+- (void)creatBtn
+{
+    if(KscreenHeight == 568 || KscreenHeight == 480)
+    {
+        btn = [[UIButton alloc]initWithFrame:CGRectMake(10, 80+5, (KscreenWidth-50)/2, 40)];
+        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(20+btn.frame.size.width, 80+5, btn.frame.size.width, 40)];
+        btn.titleLabel.font = Kfont(15);
+        btn1.titleLabel.font = Kfont(15);
+    }else
+    {
+        btn = [[UIButton alloc]initWithFrame:CGRectMake(20, 80+10, (KscreenWidth - 60-20)/2, 60)];
+        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(40+(KscreenWidth - 60-20)/2,80+10, btn.frame.size.width, 60)];
+        btn.titleLabel.font = Kfont(20);
+        btn1.titleLabel.font = Kfont(20);
+    }
+    
+    [btn setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"登录" forState:UIControlStateNormal];
+    btn.tag = 110;
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    
+    
+    [btn1 setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 setTitle:@"马上升级" forState:UIControlStateNormal];
+    btn1.tag = 111;
+    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    
+    [lplv.bgView addSubview:btn];
+    [lplv.bgView addSubview:btn1];
+}
+
+
+- (void)back:(UIButton *)button
+{
+    switch (button.tag-110) {
+        case 0:
+        {
+            
+            RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
+            [self presentViewController:login animated:YES completion:nil];
+            
+        }
+            break;
+        case 1:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [UIView animateWithDuration:.35 animations:^{
+        lplv.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        lplv.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [lplv removeFromSuperview];
+        }
+    }];
+
+}
+
 //登陆：
 -(void)loginBtnClick
 {

@@ -21,6 +21,8 @@
     
 
 }
+
+@property (strong, nonatomic) NSMutableArray *options;
 @property (nonatomic,copy) NSString *Title;
 @property (nonatomic,copy) NSString *audio;
 @end

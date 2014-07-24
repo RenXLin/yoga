@@ -12,9 +12,9 @@
 #import "ChineseInclude.h"
 #import "PinYinForObjc.h"
 #import "VideoPlayerController.h"
+#import "LeveyPopListView.h"
 
-
-@interface SC_AudioOnLineViewController ()
+@interface SC_AudioOnLineViewController ()<LeveyPopListViewDelegate>
 {
     //当前在线人数
     UILabel *_onlinePeople;
@@ -24,10 +24,11 @@
     UIButton *sortBtn;
     
 }
+
 @end
 
 @implementation SC_AudioOnLineViewController
-
+@synthesize options = _options;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -72,8 +73,62 @@
     [self creatUI];
     [self request];
     
+    [NSThread detachNewThreadSelector:@selector(request1) toTarget:self withObject:nil];
+    
 }
+- (void)request1
+{
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOPICKLIST_URL:SORT_VIDEOLIST_ULR];
+    //      待加入缓冲提示：
+    SVProgressHUDShow;
+    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            
+            [SVProgressHUD dismiss];
+            NSLog(@"%@",responseObject);
+            
+            if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
+            {
+                
+                for(NSDictionary *dict in [responseObject objectForKey:@"data"])
+                {
+                    
+                    
+                    SC_Model *model = [[SC_Model alloc]init];
+                    [model setValuesForKeysWithDictionary:dict];
+                    [dataArray1 addObject:model];
+                    
+                    _options = dataArray1;
+                    if(dataArray1.count!=0)
+                    {
+                        
+                    }
+                }
+                
+            }
+            
+            [TableView1 reloadData];
+            
+            
+        }else{
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+    //                }
+    //                btn.selected = YES;
+    //               [self show];
+    
+    
 
+
+}
 - (void)request
 {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
@@ -122,6 +177,8 @@
     UIView *nav = [self myNavgationBar:CGRectMake(0, 20, KscreenWidth, 44) andTitle:self.Title];
     [bgImgView addSubview:nav];
     
+    //
+    
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 64+5, KscreenWidth-10, 95)];
     bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
     UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
@@ -158,14 +215,14 @@
     
     
     mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,44)];
-    mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
+    //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
     mySearchBar.delegate = self;
     //mySearchBar.backgroundImage = [UIImage imageNamed:@"white_btn.png"];
     [mySearchBar setPlaceholder:@"请输入关键词搜索"];
     [bgView addSubview:mySearchBar];
     
     searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
-    mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
+    //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
 
     searchDisplayController.active = NO;
     searchDisplayController.searchResultsDataSource = self;
@@ -182,14 +239,15 @@
 //    
 //    UIImageView *searchImg = [UIFactory createImageViewWithFrame:CGRectMake(5,5, 25,25)imageName:@"放大镜0017.png"];
 //    [searchBtn addSubview:searchImg];
-    
+   
     
     if([KDEVICE isEqualToString:@"iPad Simulator"])
     {
-        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5+95+64-500 ) style:UITableViewStylePlain];
+        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5-95-64-140 ) style:UITableViewStylePlain];
     }else
     {
-      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5+95+64 ) style:UITableViewStylePlain];
+        
+      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5-95-64 - 74 ) style:UITableViewStylePlain];
     }
     
     TableView.delegate = self;
@@ -230,6 +288,7 @@
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, KscreenWidth -(loginView.frame.size.width + loginView.frame.origin.x)*2 , loginView.frame.size.height)];
     UserInfo *info = [UserInfo shareUserInfo];
+    _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.font = Kfont(12);
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
@@ -250,71 +309,14 @@
             //分类筛选
         case 0:
         {
-            if(btn.selected==NO)
+            if(dataArray1.count!=0)
             {
-                if(dataArray1.count == 0)
-                {
-                    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
-                    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-                    
-                    NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOPICKLIST_URL:SORT_VIDEOLIST_ULR];
-                    //      待加入缓冲提示：
-                    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"%@",responseObject);
-                        if ([[responseObject objectForKey:@"code"] intValue] == 200) {
-                            
-                            
-                            NSLog(@"%@",responseObject);
-                            
-                            if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
-                            {
-                                
-                                for(NSDictionary *dict in [responseObject objectForKey:@"data"])
-                                {
-                                    SC_Model *model = [[SC_Model alloc]init];
-                                    [model setValuesForKeysWithDictionary:dict];
-                                    [dataArray1 addObject:model];
-                                    
-                                    if(dataArray1.count!=0)
-                                    {
-                                        
-                                    }
-                                }
-                                
-                            }
-                            
-                            [TableView1 reloadData];
-                            
-                            
-                        }else{
-                            
-                        }
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        
-                    }];
-
-                }
-                btn.selected = YES;
-                [self show];
-                
-  
-            }else
-            {
-                btn.selected = NO;
-                if(btn.selected == NO)
-                {
-                    [UIView animateWithDuration:0.3 animations:^{
-                        TableView1.frame = CGRectMake(160, 160, 0, 0);
-                        
-                    }];
-                    
-                }
+                LeveyPopListView *lplv = [[LeveyPopListView alloc] initWithTitle:@"分类选择" options:_options];
+                lplv.delegate = self;
+                [lplv showInView:self.view animated:YES];
             }
             
-            
-            
-            
-            
+  
         }
             break;
             //search
@@ -349,12 +351,20 @@
     
     
     
-    [UIView animateWithDuration:0.3 animations:^{
+//    [UIView animateWithDuration:0.3 animations:^{
+//        
+////        UIImageView *aniImg = [[UIImageView alloc]initWithFrame:CGRectMake(20, 200, 280, 200)];
+////        
+////        [self.view addSubview:aniImg];
+////        
+//        
+//       
+//        
+//    }];
+    
+    [UIView animateWithDuration:.35 animations:^{
         
-//        UIImageView *aniImg = [[UIImageView alloc]initWithFrame:CGRectMake(20, 200, 280, 200)];
-//        
-//        [self.view addSubview:aniImg];
-//        
+        
         
         TableView1 = [[UITableView alloc]initWithFrame:CGRectMake(20, 200,280 , 171) style:UITableViewStylePlain];
         TableView1.delegate = self;
@@ -363,9 +373,11 @@
         
         TableView1.layer.cornerRadius = 5;
         TableView1.layer.masksToBounds = YES;
+        TableView1.alpha = 1;
+        TableView1.transform = CGAffineTransformMakeScale(1, 1);
         [self.view addSubview:TableView1];
-        
     }];
+
     
     
 
@@ -444,6 +456,7 @@
     //title
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
     title.text = tit;
+    title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
     
@@ -516,52 +529,8 @@
 {
     if(tableView == TableView1)
     {
-       if(dataArray.count!= 0)
-       {
-           [dataArray removeAllObjects];
-           
-           AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
-           manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-           SC_Model *model = [dataArray1 objectAtIndex:indexPath.row];
-           
-           NSString *URLStr = [NSString stringWithFormat:@"%@?cid=%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL,model.Id];
-           //      待加入缓冲提示：
-           [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-               NSLog(@"%@",responseObject);
-               if ([[responseObject objectForKey:@"code"] intValue] == 200) {
-                   
-                   NSLog(@"%@",responseObject);
-                   
-                   if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
-                   {
-                       
-                       for(NSDictionary *dict in [responseObject objectForKey:@"data"])
-                       {
-                           SC_Model *model = [[SC_Model alloc]init];
-                           [model setValuesForKeysWithDictionary:dict];
-                           [dataArray addObject:model];
-                       }
-                       
-                   }
-                   
-                   
-                   [TableView reloadData];
-               }else{
-                   
-               }
-           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-               
-           }];
-           
-           
-
-       }
-        [UIView animateWithDuration:0.3 animations:^{
-            TableView1.frame = CGRectMake(160, 160, 0, 0);
-            
-        }];
         
-        sortBtn.selected = NO;
+       
     }else if (tableView == TableView){
         //推出播放器视图：
         VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
@@ -626,6 +595,58 @@
 {
     tableView.frame = CGRectMake(5, 5+95+64, 310, 350);
 }
+
+
+#pragma mark - LeveyPopListView delegates
+- (void)leveyPopListView:(LeveyPopListView *)popListView didSelectedIndex:(NSInteger)anIndex
+{
+    if(dataArray.count!= 0)
+    {
+        [dataArray removeAllObjects];
+    }
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    SC_Model *model = [dataArray1 objectAtIndex:anIndex];
+    
+    NSString *URLStr = [NSString stringWithFormat:@"%@?cid=%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL,model.Id];
+    //      待加入缓冲提示：
+    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            
+            NSLog(@"%@",responseObject);
+            
+            if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
+            {
+                
+                for(NSDictionary *dict in [responseObject objectForKey:@"data"])
+                {
+                    SC_Model *model = [[SC_Model alloc]init];
+                    [model setValuesForKeysWithDictionary:dict];
+                    [dataArray addObject:model];
+                }
+                
+            }
+            
+            
+            [TableView reloadData];
+        }else{
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+
+
+}
+- (void)leveyPopListViewDidCancel
+{
+    
+    
+}
+
 
 
 

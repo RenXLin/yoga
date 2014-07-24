@@ -21,6 +21,10 @@
 #define Kdefaults  NSUserDefaults*defaults=[NSUserDefaults standardUserDefaults]
 
 
+//delegate
+#define Kdelegate AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate
+
+
 //字体
 #define Kfont(size) [UIFont systemFontOfSize:size]
 #define KboldFont(boldSize) [UIFont boldSystemFontOfSize:boldSize]
