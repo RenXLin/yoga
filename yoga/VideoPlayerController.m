@@ -197,7 +197,7 @@
     _ad.textColor = [UIColor whiteColor];
     _ad.backgroundColor = [UIColor clearColor];
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
-    _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
+    _ad.text = self.itemMode.ad;
     [_scrollView addSubview:_ad];
     
     // logoView

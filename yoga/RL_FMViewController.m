@@ -192,7 +192,7 @@
         NSLog(@"%@",pathUrl);
         pathUrl = [self removeSpace:pathUrl];
        
-        if (!_mMpayer) {
+        if (!_mMpayer && pathUrl) {
             _mMpayer = [VMediaPlayer sharedInstance];
             [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
             [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
