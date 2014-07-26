@@ -15,7 +15,8 @@
 @interface VideoPlayerController ()
 {
     UIScrollView *_scrollView;
-    UIView *_carryView;
+    UIView *_carryView_portrait;
+    UIView *_carryView_landscape;
     VMediaPlayer *_mPlayer;
     MedioPlayTool *_mTools;
     NSTimer *_seekTimser;
@@ -67,23 +68,25 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)to duration:(NSTimeInterval)duration
 {
 	if (UIInterfaceOrientationIsLandscape(to)) {
-        _carryView.frame = self.view.bounds;
-        [_carryView removeFromSuperview];
-        [self.view addSubview:_carryView];
-        _TVPlayView.frame = _carryView.bounds;
-        [_mTools removeFromSuperview];
-        _mTools.frame = CGRectMake(0, _carryView.frame.size.height - 50, _carryView.frame.size.width, 50);
-        [_TVPlayView addSubview:_mTools];
-        NSLog(@"%@",NSStringFromCGRect(_carryView.frame));
+
+        [_TVPlayView removeFromSuperview];
+        [_scrollView removeFromSuperview];
+        _TVPlayView.frame = self.view.bounds;
+        [self.view addSubview:_TVPlayView];
+        [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+
         
+        NSLog(@"%@",NSStringFromCGRect(_TVPlayView.frame));
+
 	} else {
-        _carryView.frame = CGRectMake(2, 70, self.view.frame.size.width-4, 300);
-        [_carryView removeFromSuperview];
-        [_scrollView addSubview:_carryView];
-        _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
-        [_mTools removeFromSuperview];
-        _mTools.frame = CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60);
-        [_scrollView addSubview:_mTools];
+        
+        [_TVPlayView removeFromSuperview];
+        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, 250);
+        [_scrollView addSubview:_TVPlayView];
+        [self.view addSubview:_scrollView];
+        
+        [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+
 	}
 	NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
 }
@@ -129,32 +132,49 @@
     [_scrollView addSubview:nav];
     
     //添加负载播放器和进度条视图；
-    _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, (self.view.frame.size.width-4) * 3 /4)];
-    _carryView.backgroundColor = [UIColor clearColor];
-    [_scrollView addSubview:_carryView];
-    
-    //添加工具条：
-    _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60)];
-    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
-    [_carryView addSubview:_mTools];
+    _carryView_portrait = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width, 250)];
+    _carryView_portrait.backgroundColor = [UIColor blackColor];
+//    [_scrollView addSubview:_carryView_portrait];
+    _carryView_portrait.autoresizesSubviews = YES;
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70)];
-    _TVPlayView.backgroundColor = [UIColor blackColor];
-    //    TVPlayView.alpha = 0.2;
-    [_carryView addSubview:_TVPlayView];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, 250)];
+    _TVPlayView.backgroundColor = [UIColor clearColor];
+    _TVPlayView.userInteractionEnabled = YES;
+    _TVPlayView.autoresizesSubviews = YES;
+    [_scrollView addSubview:_TVPlayView];
     _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
 						  UIActivityIndicatorViewStyleWhiteLarge];
     _activityView.center = _TVPlayView.center;
 	[_TVPlayView addSubview:_activityView];
     [_activityView startAnimating];
+//    _TVPlayView.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
+    
+    //添加工具条：
+    _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width, 60)];
+    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
+    [_TVPlayView addSubview:_mTools];
+    _mTools.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_carryView.frame.origin.y + _carryView.frame.size.height +30, self.view.frame.size.width, 30)];
-    titleLabel.text = @"瑜伽 TV ";
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height + 40, self.view.frame.size.width, 30)];
+    titleLabel.text = @"瑜伽视频";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [_scrollView addSubview:titleLabel];
+    
     
     //加入imageView
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
@@ -225,9 +245,12 @@
 {
     NSLog(@"start>>>>>>>>>>>>");
     _duration  = [player getDuration];
-    int hour = _duration/(60 * 60 * 60);
-    int min = _duration / 3600;
-    int sec = _duration % 3600 / 60;
+    long second = _duration / 1000;
+    
+    int hour = second / (60 * 60 * 60);
+    int min = second % 3600 /60;
+    int sec = second % 3600 % 60;
+    
     _mTools.totalPlay.text = [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec];
     [player start];
     [_activityView stopAnimating];
@@ -254,15 +277,23 @@
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
 {
+    static long lastDuration;
     long current = [_mPlayer getCurrentPosition];
-    float precrnt = (float)current / _duration;
-    _mTools.playProgress.value = precrnt;
-    NSLog(@">>>>>>>>>>%ld/%ld",current,_duration)
-    int hour = current/(60 * 60 * 60);
-    int min = current / 3600;
-    int sec = current % 3600 / 60;
-    _mTools.havePlay.text = [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec];
-    
+//    if (current > lastDuration)
+    {
+        lastDuration = current;
+        float precrnt = (float)current / _duration;
+        _mTools.playProgress.value = precrnt;
+        NSLog(@">>>>>>>>>>%ld/%ld",current,_duration)
+        long second = current / 1000;
+        
+        int hour = second/(60 * 60 * 60);
+        int min = second % 3600 /60;
+        int sec = second % 3600 % 60;
+        _mTools.havePlay.text = [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec];
+        
+    }
+   
 }
 
 -(void)stopPlayMedio
@@ -303,70 +334,49 @@
             self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
 
             if (isFullScreen == NO) {
-                
+                isFullScreen = YES;
+                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+
+                [_TVPlayView removeFromSuperview];
+                [_scrollView removeFromSuperview];
+                _TVPlayView.frame = self.view.bounds;
+                [self.view addSubview:_TVPlayView];
+
             }else{
-                
-            
-            
+                isFullScreen = NO;
+                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+                [_TVPlayView removeFromSuperview];
+                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, 250);
+                [_scrollView addSubview:_TVPlayView];
+                [self.view addSubview:_scrollView];
             }
             
         }else {
             if (isFullScreen == NO) {
                 isFullScreen = YES;
-                _carryView.frame = CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width);
-                _TVPlayView.frame = _carryView.bounds;
-                [_mTools removeFromSuperview];
-                _mTools.frame = CGRectMake(0, _carryView.frame.size.height - 50, _carryView.frame.size.width, 50);
-                [_TVPlayView addSubview:_mTools];
-                _carryView.transform = CGAffineTransformRotate(_carryView.transform, M_PI / 2 );
-                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, M_PI / 2);
+
+                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+                [_TVPlayView removeFromSuperview];
+                [_scrollView removeFromSuperview];
+                _TVPlayView.frame = self.view.bounds;
                 [self.view addSubview:_TVPlayView];
-                _carryView.center = self.view.center;
-                NSLog(@"%@ ,%@",NSStringFromCGPoint(self.view.center),NSStringFromCGPoint(_carryView.center))
                 
-                _carryView.transform = CGAffineTransformTranslate(_carryView.transform, self.view.center.x- _carryView.center.x, self.view.center.y - _carryView.center.y);
-                _TVPlayView.center = _carryView.center;
-                NSLog(@"%@,%@",NSStringFromCGRect(_carryView.frame),NSStringFromCGRect(_TVPlayView.frame));
             }else{
                 NSLog(@"非全屏播放");
-                [_carryView removeFromSuperview];
-                [_TVPlayView removeFromSuperview];
-                [_mTools removeFromSuperview];
-//
-//                _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, (self.view.frame.size.width-4) * 3 /4)];
-//                [self.view addSubview:_carryView];
-//                
-//                _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60)];
-//                    [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
-//                [_carryView addSubview:_mTools];
-//                
-//                _TVPlayView.frame = CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70);
-//                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI /2);
-//                [_carryView addSubview:_TVPlayView];
-//                
-                //添加负载播放器和进度条视图；
-                _carryView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, (self.view.frame.size.width-4) * 3 /4)];
-                _carryView.backgroundColor = [UIColor clearColor];
-                [_scrollView addSubview:_carryView];
-                
-                //添加工具条：
-                _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _carryView.frame.size.height -60, _carryView.frame.size.width, 60)];
-                [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
-                [_carryView addSubview:_mTools];
-                
-                //添加视频播放视图
-                _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, _carryView.frame.size.width-2, _carryView.frame.size.height-70)];
-                _TVPlayView.backgroundColor = [UIColor blackColor];
-                //    TVPlayView.alpha = 0.2;
-                [_carryView addSubview:_TVPlayView];
+                isFullScreen = NO;
+                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
 
-                
+                [_TVPlayView removeFromSuperview];
+                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, 250);
+                [_scrollView addSubview:_TVPlayView];
+                [self.view addSubview:_scrollView];
+
             }
             
             [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:YES];
             
-            _carryView.transform = CGAffineTransformMakeRotation(-M_PI/2);
-
+            _carryView_portrait.transform = CGAffineTransformMakeRotation(- M_PI/2);
+            
         }
     }else if (btn.tag == 2){
         //last program
