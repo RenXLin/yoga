@@ -18,6 +18,7 @@
 @interface RL_FMViewController ()
 {
     VMediaPlayer *_mMpayer;
+    MPMoviePlayerController *_mp3;
 }
 @end
 
@@ -176,7 +177,7 @@
     if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
         url = CURRENTPLAYFM_URL;
     }else{
-        url = CURRENTPLAYAUDIO_URL;
+        url = CURRENTPLAYVIDEO_URL;
     }
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
@@ -186,13 +187,14 @@
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         _ad.text = _programMode.ad;
-        //加入FM播放器：
+        
+        NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
+        NSLog(@"%@",pathUrl);
+        pathUrl = [self removeSpace:pathUrl];
+       
         if (!_mMpayer) {
             _mMpayer = [VMediaPlayer sharedInstance];
             [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
-            [_mMpayer setDataSource:[NSURL URLWithString:_programMode.path] header:nil];
-            NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
-            NSLog(@"%@",pathUrl);
             [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
             [_mMpayer prepareAsync];
         }
@@ -200,13 +202,26 @@
         NSLog(@"failed:%@",error);
         
     }];
-    
-
-    
 }
 
-#pragma mark VMediaPlayerDelegate methods Required
+-(NSString *)removeSpace:(NSString *)str
+{
+    NSArray *arr = [str componentsSeparatedByString:@" "];
+    NSString *resultStr = [arr componentsJoinedByString:@"%20"];
+    return resultStr;
+}
+-(void)playMovieAtURL:(NSString*)theURLStr
+{
+    _mp3 = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:theURLStr]];
+    _mp3.view.frame = CGRectMake(0, 64, 320, 200);
+    [self.view addSubview:_mp3.view];
+    _mp3.shouldAutoplay = YES;
+    [_mp3 play];
 
+}
+
+
+#pragma mark VMediaPlayerDelegate methods Required
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
     [player start];
@@ -222,7 +237,8 @@
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
 	NSLog(@"player error");
-    
+    UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"播放失败" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [aleart show];
 }
 
 

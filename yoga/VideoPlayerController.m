@@ -231,15 +231,23 @@
     _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
     _scrollView.bounces = NO;
     
-
+    NSString *urlStr = [self removeSpace:self.itemMode.path];
     if (!_mPlayer) {
         _mPlayer = [VMediaPlayer sharedInstance];
         [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
-        [_mPlayer setDataSource:[NSURL URLWithString:self.itemMode.path] header:nil];
+        [_mPlayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
         NSLog(@"%@",self.itemMode.path);
         [_mPlayer prepareAsync];
     }
 }
+
+-(NSString *)removeSpace:(NSString *)str
+{
+    NSArray *arr = [str componentsSeparatedByString:@" "];
+    NSString *resultStr = [arr componentsJoinedByString:@"%20"];
+    return resultStr;
+}
+
 #pragma mark VMediaPlayerDelegate methods Required
 
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
