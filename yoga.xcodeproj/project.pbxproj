@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A9A8FE6197828B800A00425 /* SC_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE5197828B800A00425 /* SC_Model.m */; };
 		3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE81978292D00A00425 /* AudioCell.m */; };
+		3AA9D5EE19837772003068D4 /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D5ED19837772003068D4 /* AlixPaylib.a */; };
 		3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517B1976BE2400CA643E /* PinYinForObjc.m */; };
 		3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517D1976BE2400CA643E /* ChineseInclude.m */; };
 		3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517F1976BE2400CA643E /* ChineseToPinyinResource.m */; };
@@ -19,6 +20,19 @@
 		3AC351911976BE2400CA643E /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */; };
 		9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */; };
 		9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */; };
+		9D65B0F319821D540011D5B3 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D65B0D819821D540011D5B3 /* Alixpay.bundle */; };
+		9D65B0F619821D540011D5B3 /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0DC19821D540011D5B3 /* AlixPayOrder.m */; };
+		9D65B0F719821D540011D5B3 /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0DE19821D540011D5B3 /* AlixPayResult.m */; };
+		9D65B0F819821D540011D5B3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E219821D540011D5B3 /* NSObject+SBJSON.m */; };
+		9D65B0F919821D540011D5B3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E419821D540011D5B3 /* NSString+SBJSON.m */; };
+		9D65B0FA19821D540011D5B3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E619821D540011D5B3 /* SBJSON.m */; };
+		9D65B0FB19821D540011D5B3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E819821D540011D5B3 /* SBJsonBase.m */; };
+		9D65B0FC19821D540011D5B3 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0EA19821D540011D5B3 /* SBJsonParser.m */; };
+		9D65B0FD19821D540011D5B3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0EC19821D540011D5B3 /* SBJsonWriter.m */; };
+		9D65B10919821F400011D5B3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0ED19821D540011D5B3 /* libcrypto.a */; };
+		9D65B10A19821F4E0011D5B3 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0EE19821D540011D5B3 /* libssl.a */; };
+		9D65B10C19822B830011D5B3 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0D619821D540011D5B3 /* AlipayRsaLib.a */; };
+>>>>>>> FETCH_HEAD
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
 		9DE6B23E197E8A9F00393F93 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */; };
@@ -205,6 +219,7 @@
 		3A9A8FE5197828B800A00425 /* SC_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_Model.m; sourceTree = "<group>"; };
 		3A9A8FE71978292D00A00425 /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
 		3A9A8FE81978292D00A00425 /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
+		3AA9D5ED19837772003068D4 /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlixPaylib.a; path = alipay/AlixPaylib.a; sourceTree = "<group>"; };
 		3AC3517A1976BE2400CA643E /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
 		3AC3517B1976BE2400CA643E /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
 		3AC3517C1976BE2400CA643E /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
@@ -441,6 +456,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D65B10C19822B830011D5B3 /* AlipayRsaLib.a in Frameworks */,
+				9D65B10A19821F4E0011D5B3 /* libssl.a in Frameworks */,
+				9D65B10919821F400011D5B3 /* libcrypto.a in Frameworks */,
 				9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */,
 				9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */,
 				CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */,
@@ -551,6 +569,7 @@
 		CD0DB992196DA50300C3A2A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AA9D5ED19837772003068D4 /* AlixPaylib.a */,
 				9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */,
 				9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */,
 				9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */,
@@ -1236,7 +1255,7 @@
 					"$(PROJECT_DIR)/yoga/Library/Vitamio-online",
 					"$(PROJECT_DIR)/yoga",
 					/Users/a123/Desktop/yoga2/yoga,
-					"$(PROJECT_DIR)/yoga/Vitamio-online",
+					"$(PROJECT_DIR)/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1260,7 +1279,7 @@
 					"$(PROJECT_DIR)/yoga/Library/Vitamio-online",
 					"$(PROJECT_DIR)/yoga",
 					/Users/a123/Desktop/yoga2/yoga,
-					"$(PROJECT_DIR)/yoga/Vitamio-online",
+					"$(PROJECT_DIR)/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
