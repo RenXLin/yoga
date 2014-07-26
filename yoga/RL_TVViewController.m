@@ -149,11 +149,12 @@
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         _ad.text = _programMode.ad;
+        NSString *urlStr = [self removeSpace:_programMode.path];
         //加入FM播放器：
-        if (!_mMpayer) {
+        if (!_mMpayer && urlStr) {
             _mMpayer = [VMediaPlayer sharedInstance];
             [_mMpayer setupPlayerWithCarrierView:TVPlayView withDelegate:self];
-            [_mMpayer setDataSource:[NSURL URLWithString:@"rtmp://223.4.116.174/vod/mp4:201404/shenyongpei_Iyengar_B_pre_T4.f4v"] header:nil];
+            [_mMpayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
             [_mMpayer prepareAsync];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -162,6 +163,14 @@
     }];
     
 }
+
+-(NSString *)removeSpace:(NSString *)str
+{
+    NSArray *arr = [str componentsSeparatedByString:@" "];
+    NSString *resultStr = [arr componentsJoinedByString:@"%20"];
+    return resultStr;
+}
+
 #pragma mark VMediaPlayerDelegate methods Required
 
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
@@ -174,6 +183,7 @@
 {
     NSLog(@"player complete");
     [player reset];
+    [player unSetupPlayer];
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
@@ -191,6 +201,7 @@
 -(void)backBtnClick
 {
     [_mMpayer reset];
+    [_mMpayer unSetupPlayer];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }

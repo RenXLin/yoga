@@ -25,7 +25,7 @@
     //判断是否首次启动
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
     BOOL isFirst = [usrDef boolForKey:@"isFirst"];
-//    if (!isFirst) {
+    if (!isFirst) {
         NSLog(@"第一次启动应用");
         [usrDef setBool:YES forKey:@"isFirst"];
         [usrDef synchronize];
@@ -57,9 +57,9 @@
         pageControl.currentPage = 0;
         [pageControl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
         [self.window addSubview:pageControl];
-//    }else{
-//        [self StartBtnClick];
-//    }
+    }else{
+        [self StartBtnClick];
+    }
 
 
     self.window.backgroundColor = [UIColor whiteColor];

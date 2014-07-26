@@ -9,8 +9,20 @@
 /* Begin PBXBuildFile section */
 		3A9A8FE6197828B800A00425 /* SC_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE5197828B800A00425 /* SC_Model.m */; };
 		3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE81978292D00A00425 /* AudioCell.m */; };
-		3AA9D5F3198407A5003068D4 /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0D919821D540011D5B3 /* AlixPaylib_arc.a */; };
-		3AA9D5F4198407D2003068D4 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD43E4D1198016C700FB9D74 /* libopenssl.a */; };
+		3AA9D63419840B73003068D4 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D61819840B73003068D4 /* AlipayRsaLib.a */; };
+		3AA9D63519840B74003068D4 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AA9D61A19840B73003068D4 /* Alixpay.bundle */; };
+		3AA9D63719840B74003068D4 /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D61C19840B73003068D4 /* AlixPaylib_arc.a */; };
+		3AA9D63819840B74003068D4 /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D61E19840B73003068D4 /* AlixPayOrder.m */; };
+		3AA9D63919840B74003068D4 /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62019840B73003068D4 /* AlixPayResult.m */; };
+		3AA9D63A19840B74003068D4 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62419840B73003068D4 /* NSObject+SBJSON.m */; };
+		3AA9D63B19840B74003068D4 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62619840B73003068D4 /* NSString+SBJSON.m */; };
+		3AA9D63C19840B74003068D4 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62819840B73003068D4 /* SBJSON.m */; };
+		3AA9D63D19840B74003068D4 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62A19840B73003068D4 /* SBJsonBase.m */; };
+		3AA9D63E19840B74003068D4 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62C19840B73003068D4 /* SBJsonParser.m */; };
+		3AA9D63F19840B74003068D4 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62E19840B73003068D4 /* SBJsonWriter.m */; };
+		3AA9D64019840B74003068D4 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D62F19840B73003068D4 /* libcrypto.a */; };
+		3AA9D64419840C59003068D4 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D64319840C58003068D4 /* OrderViewController.m */; };
+		3AA9D64619840CD6003068D4 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D64519840CD6003068D4 /* libssl.a */; };
 		3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517B1976BE2400CA643E /* PinYinForObjc.m */; };
 		3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517D1976BE2400CA643E /* ChineseInclude.m */; };
 		3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517F1976BE2400CA643E /* ChineseToPinyinResource.m */; };
@@ -19,19 +31,8 @@
 		3AC3518F1976BE2400CA643E /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC351861976BE2400CA643E /* PinyinFormatter.m */; };
 		3AC351901976BE2400CA643E /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC351881976BE2400CA643E /* PinyinHelper.m */; };
 		3AC351911976BE2400CA643E /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */; };
-		9D65B0C8198219F50011D5B3 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0C7198219F50011D5B3 /* OrderViewController.m */; };
 		9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */; };
 		9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */; };
-		9D65B0F319821D540011D5B3 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D65B0D819821D540011D5B3 /* Alixpay.bundle */; };
-		9D65B0F619821D540011D5B3 /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0DC19821D540011D5B3 /* AlixPayOrder.m */; };
-		9D65B0F719821D540011D5B3 /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0DE19821D540011D5B3 /* AlixPayResult.m */; };
-		9D65B0F819821D540011D5B3 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E219821D540011D5B3 /* NSObject+SBJSON.m */; };
-		9D65B0F919821D540011D5B3 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E419821D540011D5B3 /* NSString+SBJSON.m */; };
-		9D65B0FA19821D540011D5B3 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E619821D540011D5B3 /* SBJSON.m */; };
-		9D65B0FB19821D540011D5B3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E819821D540011D5B3 /* SBJsonBase.m */; };
-		9D65B0FC19821D540011D5B3 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0EA19821D540011D5B3 /* SBJsonParser.m */; };
-		9D65B0FD19821D540011D5B3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0EC19821D540011D5B3 /* SBJsonWriter.m */; };
-		9D65B10C19822B830011D5B3 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0D619821D540011D5B3 /* AlipayRsaLib.a */; };
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
 		9DE6B23E197E8A9F00393F93 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */; };
@@ -164,16 +165,16 @@
 		CD0DBAA5196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */; };
 		CD38DD11197430A900D4C20D /* CurrentProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = CD38DD10197430A900D4C20D /* CurrentProgram.m */; };
 		CD3C48B51975676300AAEAB8 /* RL_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3C48B41975676300AAEAB8 /* RL_LoginViewController.m */; };
-		CD43E4D4198016C700FB9D74 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD43E4C5198016C700FB9D74 /* CHANGELOG.md */; };
-		CD43E4D5198016C700FB9D74 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD43E4D0198016C700FB9D74 /* libffmpeg.a */; };
-		CD43E4D7198016C700FB9D74 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD43E4D2198016C700FB9D74 /* libVitamio.a */; };
-		CD43E4D8198016C700FB9D74 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD43E4D3198016C700FB9D74 /* LICENSE */; };
 		CD4A479519702D4A00973A29 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479419702D4A00973A29 /* icon.png */; };
 		CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479619702E7400973A29 /* 开机画面01_320x480.png */; };
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
 		CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD51F4F61976D49200F9E81F /* VideoPlayerController.m */; };
 		CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6382781975834F00DFF19F /* libbz2.dylib */; };
 		CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63827A197583C900DFF19F /* CoreVideo.framework */; };
+		CD6515D31983B78F00A1855D /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6515C41983B78F00A1855D /* CHANGELOG.md */; };
+		CD6515D41983B78F00A1855D /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6515CF1983B78F00A1855D /* libffmpeg.a */; };
+		CD6515D61983B78F00A1855D /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6515D11983B78F00A1855D /* libVitamio.a */; };
+		CD6515D71983B78F00A1855D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD6515D21983B78F00A1855D /* LICENSE */; };
 		CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CD8E510C1970D34C00771960 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E510B1970D34C00771960 /* MainViewController.m */; };
 		CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5115197131DE00771960 /* RL_FMViewController.m */; };
@@ -217,7 +218,35 @@
 		3A9A8FE5197828B800A00425 /* SC_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_Model.m; sourceTree = "<group>"; };
 		3A9A8FE71978292D00A00425 /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
 		3A9A8FE81978292D00A00425 /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
-		3AA9D5ED19837772003068D4 /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlixPaylib.a; path = alipay/AlixPaylib.a; sourceTree = "<group>"; };
+		3AA9D61819840B73003068D4 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
+		3AA9D61919840B73003068D4 /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
+		3AA9D61A19840B73003068D4 /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
+		3AA9D61B19840B73003068D4 /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib.a; sourceTree = "<group>"; };
+		3AA9D61C19840B73003068D4 /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib_arc.a; sourceTree = "<group>"; };
+		3AA9D61D19840B73003068D4 /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
+		3AA9D61E19840B73003068D4 /* AlixPayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayOrder.m; sourceTree = "<group>"; };
+		3AA9D61F19840B73003068D4 /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
+		3AA9D62019840B73003068D4 /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayResult.m; sourceTree = "<group>"; };
+		3AA9D62219840B73003068D4 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		3AA9D62319840B73003068D4 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		3AA9D62419840B73003068D4 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		3AA9D62519840B73003068D4 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		3AA9D62619840B73003068D4 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		3AA9D62719840B73003068D4 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		3AA9D62819840B73003068D4 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		3AA9D62919840B73003068D4 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		3AA9D62A19840B73003068D4 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		3AA9D62B19840B73003068D4 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		3AA9D62C19840B73003068D4 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		3AA9D62D19840B73003068D4 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		3AA9D62E19840B73003068D4 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		3AA9D62F19840B73003068D4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		3AA9D63019840B73003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		3AA9D63219840B73003068D4 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		3AA9D63319840B73003068D4 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		3AA9D64219840C58003068D4 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		3AA9D64319840C58003068D4 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		3AA9D64519840CD6003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = yoga/libssl.a; sourceTree = "<group>"; };
 		3AC3517A1976BE2400CA643E /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
 		3AC3517B1976BE2400CA643E /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
 		3AC3517C1976BE2400CA643E /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
@@ -234,37 +263,9 @@
 		3AC351871976BE2400CA643E /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
 		3AC351881976BE2400CA643E /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
 		3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
-		9D65B0C6198219F50011D5B3 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
-		9D65B0C7198219F50011D5B3 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlipayRsaLib.a; path = ../yoga2/yoga/AlipayRsaLib.a; sourceTree = "<group>"; };
 		9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		9D65B0D619821D540011D5B3 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
-		9D65B0D719821D540011D5B3 /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
-		9D65B0D819821D540011D5B3 /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
-		9D65B0D919821D540011D5B3 /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib_arc.a; sourceTree = "<group>"; };
-		9D65B0DB19821D540011D5B3 /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
-		9D65B0DC19821D540011D5B3 /* AlixPayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayOrder.m; sourceTree = "<group>"; };
-		9D65B0DD19821D540011D5B3 /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
-		9D65B0DE19821D540011D5B3 /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayResult.m; sourceTree = "<group>"; };
-		9D65B0E019821D540011D5B3 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		9D65B0E119821D540011D5B3 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		9D65B0E219821D540011D5B3 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		9D65B0E319821D540011D5B3 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		9D65B0E419821D540011D5B3 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		9D65B0E519821D540011D5B3 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		9D65B0E619821D540011D5B3 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		9D65B0E719821D540011D5B3 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		9D65B0E819821D540011D5B3 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		9D65B0E919821D540011D5B3 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		9D65B0EA19821D540011D5B3 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		9D65B0EB19821D540011D5B3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		9D65B0EC19821D540011D5B3 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		9D65B0ED19821D540011D5B3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		9D65B0EE19821D540011D5B3 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
-		9D65B0F019821D540011D5B3 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
-		9D65B0F119821D540011D5B3 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
-		9D65B10019821D850011D5B3 /* PartnerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartnerConfig.h; sourceTree = "<group>"; };
 		9DD40710197251250061D1DE /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
 		9DD40711197251250061D1DE /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
 		9DD4071319725ED50061D1DE /* 放大镜0017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大镜0017.png"; sourceTree = "<group>"; };
@@ -411,19 +412,6 @@
 		CD38DD10197430A900D4C20D /* CurrentProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentProgram.m; sourceTree = "<group>"; };
 		CD3C48B31975676300AAEAB8 /* RL_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_LoginViewController.h; sourceTree = "<group>"; };
 		CD3C48B41975676300AAEAB8 /* RL_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_LoginViewController.m; sourceTree = "<group>"; };
-		CD43E4C5198016C700FB9D74 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
-		CD43E4C8198016C700FB9D74 /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
-		CD43E4C9198016C700FB9D74 /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
-		CD43E4CA198016C700FB9D74 /* VMediaExtracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracter.h; sourceTree = "<group>"; };
-		CD43E4CB198016C700FB9D74 /* VMediaExtracterDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracterDef.h; sourceTree = "<group>"; };
-		CD43E4CC198016C700FB9D74 /* VMediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayer.h; sourceTree = "<group>"; };
-		CD43E4CD198016C700FB9D74 /* VMediaPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayerDelegate.h; sourceTree = "<group>"; };
-		CD43E4CE198016C700FB9D74 /* VPlayerManageDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPlayerManageDef.h; sourceTree = "<group>"; };
-		CD43E4CF198016C700FB9D74 /* VSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSingleton.h; sourceTree = "<group>"; };
-		CD43E4D0198016C700FB9D74 /* libffmpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libffmpeg.a; sourceTree = "<group>"; };
-		CD43E4D1198016C700FB9D74 /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopenssl.a; sourceTree = "<group>"; };
-		CD43E4D2198016C700FB9D74 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
-		CD43E4D3198016C700FB9D74 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD4A479419702D4A00973A29 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD4A479619702E7400973A29 /* 开机画面01_320x480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开机画面01_320x480.png"; sourceTree = "<group>"; };
 		CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方_频道推广_300x450_02.png"; sourceTree = "<group>"; };
@@ -432,6 +420,19 @@
 		CD51F4F61976D49200F9E81F /* VideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerController.m; sourceTree = "<group>"; };
 		CD6382781975834F00DFF19F /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		CD63827A197583C900DFF19F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CD6515C41983B78F00A1855D /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		CD6515C71983B78F00A1855D /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
+		CD6515C81983B78F00A1855D /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
+		CD6515C91983B78F00A1855D /* VMediaExtracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracter.h; sourceTree = "<group>"; };
+		CD6515CA1983B78F00A1855D /* VMediaExtracterDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaExtracterDef.h; sourceTree = "<group>"; };
+		CD6515CB1983B78F00A1855D /* VMediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayer.h; sourceTree = "<group>"; };
+		CD6515CC1983B78F00A1855D /* VMediaPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMediaPlayerDelegate.h; sourceTree = "<group>"; };
+		CD6515CD1983B78F00A1855D /* VPlayerManageDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPlayerManageDef.h; sourceTree = "<group>"; };
+		CD6515CE1983B78F00A1855D /* VSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSingleton.h; sourceTree = "<group>"; };
+		CD6515CF1983B78F00A1855D /* libffmpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libffmpeg.a; sourceTree = "<group>"; };
+		CD6515D01983B78F00A1855D /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopenssl.a; sourceTree = "<group>"; };
+		CD6515D11983B78F00A1855D /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
+		CD6515D21983B78F00A1855D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
 		CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		CD8E510A1970D34C00771960 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -482,22 +483,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AA9D5F4198407D2003068D4 /* libopenssl.a in Frameworks */,
-				3AA9D5F3198407A5003068D4 /* AlixPaylib_arc.a in Frameworks */,
-				9D65B10C19822B830011D5B3 /* AlipayRsaLib.a in Frameworks */,
+				3AA9D64619840CD6003068D4 /* libssl.a in Frameworks */,
+				3AA9D63719840B74003068D4 /* AlixPaylib_arc.a in Frameworks */,
+				3AA9D63419840B73003068D4 /* AlipayRsaLib.a in Frameworks */,
 				9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */,
 				9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */,
 				CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */,
 				CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */,
 				CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */,
+				3AA9D64019840B74003068D4 /* libcrypto.a in Frameworks */,
 				CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */,
 				CD8E515219718AEE00771960 /* libz.dylib in Frameworks */,
-				CD43E4D5198016C700FB9D74 /* libffmpeg.a in Frameworks */,
 				CD8E514E19718AC000771960 /* QuartzCore.framework in Frameworks */,
+				CD6515D61983B78F00A1855D /* libVitamio.a in Frameworks */,
+				CD6515D41983B78F00A1855D /* libffmpeg.a in Frameworks */,
 				CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */,
 				CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */,
 				CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */,
-				CD43E4D7198016C700FB9D74 /* libVitamio.a in Frameworks */,
 				CD8E514819718A8600771960 /* CoreMedia.framework in Frameworks */,
 				CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */,
 				CD8E514619718A7400771960 /* AudioToolbox.framework in Frameworks */,
@@ -518,6 +520,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AA9D61719840B73003068D4 /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				3AA9D61819840B73003068D4 /* AlipayRsaLib.a */,
+				3AA9D61919840B73003068D4 /* AlixLibService.h */,
+				3AA9D61A19840B73003068D4 /* Alixpay.bundle */,
+				3AA9D61B19840B73003068D4 /* AlixPaylib.a */,
+				3AA9D61C19840B73003068D4 /* AlixPaylib_arc.a */,
+				3AA9D61D19840B73003068D4 /* AlixPayOrder.h */,
+				3AA9D61E19840B73003068D4 /* AlixPayOrder.m */,
+				3AA9D61F19840B73003068D4 /* AlixPayResult.h */,
+				3AA9D62019840B73003068D4 /* AlixPayResult.m */,
+				3AA9D62119840B73003068D4 /* json */,
+				3AA9D62F19840B73003068D4 /* libcrypto.a */,
+				3AA9D63019840B73003068D4 /* libssl.a */,
+				3AA9D63119840B73003068D4 /* RSA */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
+		3AA9D62119840B73003068D4 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				3AA9D62219840B73003068D4 /* JSON.h */,
+				3AA9D62319840B73003068D4 /* NSObject+SBJSON.h */,
+				3AA9D62419840B73003068D4 /* NSObject+SBJSON.m */,
+				3AA9D62519840B73003068D4 /* NSString+SBJSON.h */,
+				3AA9D62619840B73003068D4 /* NSString+SBJSON.m */,
+				3AA9D62719840B73003068D4 /* SBJSON.h */,
+				3AA9D62819840B73003068D4 /* SBJSON.m */,
+				3AA9D62919840B73003068D4 /* SBJsonBase.h */,
+				3AA9D62A19840B73003068D4 /* SBJsonBase.m */,
+				3AA9D62B19840B73003068D4 /* SBJsonParser.h */,
+				3AA9D62C19840B73003068D4 /* SBJsonParser.m */,
+				3AA9D62D19840B73003068D4 /* SBJsonWriter.h */,
+				3AA9D62E19840B73003068D4 /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		3AA9D63119840B73003068D4 /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				3AA9D63219840B73003068D4 /* DataSigner.h */,
+				3AA9D63319840B73003068D4 /* DataVerifier.h */,
+			);
+			path = RSA;
+			sourceTree = "<group>";
+		};
 		3AC351921976BE3000CA643E /* search */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,54 +596,6 @@
 				3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */,
 			);
 			name = search;
-			sourceTree = "<group>";
-		};
-		9D65B0A0198219C60011D5B3 /* pay */ = {
-			isa = PBXGroup;
-			children = (
-				9D65B0D619821D540011D5B3 /* AlipayRsaLib.a */,
-				9D65B0D719821D540011D5B3 /* AlixLibService.h */,
-				9D65B0D819821D540011D5B3 /* Alixpay.bundle */,
-				9D65B0D919821D540011D5B3 /* AlixPaylib_arc.a */,
-				9D65B0DB19821D540011D5B3 /* AlixPayOrder.h */,
-				9D65B0DC19821D540011D5B3 /* AlixPayOrder.m */,
-				9D65B0DD19821D540011D5B3 /* AlixPayResult.h */,
-				9D65B0DE19821D540011D5B3 /* AlixPayResult.m */,
-				9D65B0DF19821D540011D5B3 /* json */,
-				9D65B0ED19821D540011D5B3 /* libcrypto.a */,
-				9D65B0EE19821D540011D5B3 /* libssl.a */,
-				9D65B0EF19821D540011D5B3 /* RSA */,
-			);
-			name = pay;
-			sourceTree = "<group>";
-		};
-		9D65B0DF19821D540011D5B3 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				9D65B0E019821D540011D5B3 /* JSON.h */,
-				9D65B0E119821D540011D5B3 /* NSObject+SBJSON.h */,
-				9D65B0E219821D540011D5B3 /* NSObject+SBJSON.m */,
-				9D65B0E319821D540011D5B3 /* NSString+SBJSON.h */,
-				9D65B0E419821D540011D5B3 /* NSString+SBJSON.m */,
-				9D65B0E519821D540011D5B3 /* SBJSON.h */,
-				9D65B0E619821D540011D5B3 /* SBJSON.m */,
-				9D65B0E719821D540011D5B3 /* SBJsonBase.h */,
-				9D65B0E819821D540011D5B3 /* SBJsonBase.m */,
-				9D65B0E919821D540011D5B3 /* SBJsonParser.h */,
-				9D65B0EA19821D540011D5B3 /* SBJsonParser.m */,
-				9D65B0EB19821D540011D5B3 /* SBJsonWriter.h */,
-				9D65B0EC19821D540011D5B3 /* SBJsonWriter.m */,
-			);
-			path = json;
-			sourceTree = "<group>";
-		};
-		9D65B0EF19821D540011D5B3 /* RSA */ = {
-			isa = PBXGroup;
-			children = (
-				9D65B0F019821D540011D5B3 /* DataSigner.h */,
-				9D65B0F119821D540011D5B3 /* DataVerifier.h */,
-			);
-			path = RSA;
 			sourceTree = "<group>";
 		};
 		CD08AEF6197282EF00C50184 /* Modes */ = {
@@ -642,7 +645,7 @@
 		CD0DB992196DA50300C3A2A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3AA9D5ED19837772003068D4 /* AlixPaylib.a */,
+				3AA9D64519840CD6003068D4 /* libssl.a */,
 				9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */,
 				9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */,
 				9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */,
@@ -672,7 +675,6 @@
 				CD08AEF6197282EF00C50184 /* Modes */,
 				CD0DB9A2196DA50300C3A2A8 /* AppDelegate.h */,
 				CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */,
-				9D65B10019821D850011D5B3 /* PartnerConfig.h */,
 				9DE6B23C197E8A9F00393F93 /* SVProgressHUD.h */,
 				9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */,
 				CD8E510D1970D35900771960 /* Controllers */,
@@ -837,39 +839,38 @@
 			path = "图标";
 			sourceTree = "<group>";
 		};
-		CD43E4C4198016C700FB9D74 /* Vitamio-online */ = {
+		CD6515C31983B78F00A1855D /* Vitamio */ = {
 			isa = PBXGroup;
 			children = (
-				CD43E4C5198016C700FB9D74 /* CHANGELOG.md */,
-				CD43E4C6198016C700FB9D74 /* include */,
-				CD43E4D0198016C700FB9D74 /* libffmpeg.a */,
-				CD43E4D1198016C700FB9D74 /* libopenssl.a */,
-				CD43E4D2198016C700FB9D74 /* libVitamio.a */,
-				CD43E4D3198016C700FB9D74 /* LICENSE */,
+				CD6515C41983B78F00A1855D /* CHANGELOG.md */,
+				CD6515C51983B78F00A1855D /* include */,
+				CD6515CF1983B78F00A1855D /* libffmpeg.a */,
+				CD6515D01983B78F00A1855D /* libopenssl.a */,
+				CD6515D11983B78F00A1855D /* libVitamio.a */,
+				CD6515D21983B78F00A1855D /* LICENSE */,
 			);
-			name = "Vitamio-online";
-			path = "Library/Vitamio-online";
+			path = Vitamio;
 			sourceTree = "<group>";
 		};
-		CD43E4C6198016C700FB9D74 /* include */ = {
+		CD6515C51983B78F00A1855D /* include */ = {
 			isa = PBXGroup;
 			children = (
-				CD43E4C7198016C700FB9D74 /* Vitamio */,
+				CD6515C61983B78F00A1855D /* Vitamio */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		CD43E4C7198016C700FB9D74 /* Vitamio */ = {
+		CD6515C61983B78F00A1855D /* Vitamio */ = {
 			isa = PBXGroup;
 			children = (
-				CD43E4C8198016C700FB9D74 /* VDefines.h */,
-				CD43E4C9198016C700FB9D74 /* Vitamio.h */,
-				CD43E4CA198016C700FB9D74 /* VMediaExtracter.h */,
-				CD43E4CB198016C700FB9D74 /* VMediaExtracterDef.h */,
-				CD43E4CC198016C700FB9D74 /* VMediaPlayer.h */,
-				CD43E4CD198016C700FB9D74 /* VMediaPlayerDelegate.h */,
-				CD43E4CE198016C700FB9D74 /* VPlayerManageDef.h */,
-				CD43E4CF198016C700FB9D74 /* VSingleton.h */,
+				CD6515C71983B78F00A1855D /* VDefines.h */,
+				CD6515C81983B78F00A1855D /* Vitamio.h */,
+				CD6515C91983B78F00A1855D /* VMediaExtracter.h */,
+				CD6515CA1983B78F00A1855D /* VMediaExtracterDef.h */,
+				CD6515CB1983B78F00A1855D /* VMediaPlayer.h */,
+				CD6515CC1983B78F00A1855D /* VMediaPlayerDelegate.h */,
+				CD6515CD1983B78F00A1855D /* VPlayerManageDef.h */,
+				CD6515CE1983B78F00A1855D /* VSingleton.h */,
 			);
 			path = Vitamio;
 			sourceTree = "<group>";
@@ -888,7 +889,8 @@
 		CD8E510D1970D35900771960 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9D65B0A0198219C60011D5B3 /* pay */,
+				3AA9D64219840C58003068D4 /* OrderViewController.h */,
+				3AA9D64319840C58003068D4 /* OrderViewController.m */,
 				3AC351921976BE3000CA643E /* search */,
 				CD8E510A1970D34C00771960 /* MainViewController.h */,
 				CD8E510B1970D34C00771960 /* MainViewController.m */,
@@ -906,8 +908,6 @@
 				9DE6B246197E8AE400393F93 /* SC_AudioOnLineViewController.m */,
 				CD51F4F51976D49200F9E81F /* VideoPlayerController.h */,
 				CD51F4F61976D49200F9E81F /* VideoPlayerController.m */,
-				9D65B0C6198219F50011D5B3 /* OrderViewController.h */,
-				9D65B0C7198219F50011D5B3 /* OrderViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -915,7 +915,8 @@
 		CD8E51221971581C00771960 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				CD43E4C4198016C700FB9D74 /* Vitamio-online */,
+				3AA9D61719840B73003068D4 /* alipay */,
+				CD6515C31983B78F00A1855D /* Vitamio */,
 				CD8E51231971586E00771960 /* AFNetworking */,
 			);
 			name = Library;
@@ -1070,7 +1071,7 @@
 				CD0DBAA1196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png in Resources */,
 				CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */,
 				CD0DBA7B196DA52200C3A2A8 /* video_icon6.png in Resources */,
-				CD43E4D4198016C700FB9D74 /* CHANGELOG.md in Resources */,
+				CD6515D31983B78F00A1855D /* CHANGELOG.md in Resources */,
 				CD0DBA56196DA52200C3A2A8 /* icon7_1.png in Resources */,
 				CD0DBA78196DA52200C3A2A8 /* video_icon4_1.png in Resources */,
 				CD0DBA66196DA52200C3A2A8 /* title_icon1.png in Resources */,
@@ -1080,7 +1081,7 @@
 				CD0DBA9A196DA52200C3A2A8 /* 瑜伽魔方_频道推广_300x450_05.jpg in Resources */,
 				CD0DBA6A196DA52200C3A2A8 /* title_icon3_1.png in Resources */,
 				CD0DBA91196DA52200C3A2A8 /* 开机画面02_480x800.jpg in Resources */,
-				9D65B0F319821D540011D5B3 /* Alixpay.bundle in Resources */,
+				3AA9D63519840B74003068D4 /* Alixpay.bundle in Resources */,
 				CD0DBA9E196DA52200C3A2A8 /* 瑜伽魔方LOGO_120x120.png in Resources */,
 				CD0DBA8E196DA52200C3A2A8 /* 开机画面02_240x320.jpg in Resources */,
 				CD0DBA4F196DA52200C3A2A8 /* icon4.png in Resources */,
@@ -1138,7 +1139,7 @@
 				CD0DBA65196DA52200C3A2A8 /* title_icon.png in Resources */,
 				CD0DBA6F196DA52200C3A2A8 /* video_bottom.png in Resources */,
 				CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */,
-				CD43E4D8198016C700FB9D74 /* LICENSE in Resources */,
+				CD6515D71983B78F00A1855D /* LICENSE in Resources */,
 				CD0DBA3F196DA52200C3A2A8 /* btngreen.png in Resources */,
 				CD0DBA4E196DA52200C3A2A8 /* icon3_1.png in Resources */,
 				CD0DBA92196DA52200C3A2A8 /* 开机画面03_240x320.jpg in Resources */,
@@ -1162,20 +1163,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA9D63819840B74003068D4 /* AlixPayOrder.m in Sources */,
+				3AA9D64419840C59003068D4 /* OrderViewController.m in Sources */,
+				3AA9D63F19840B74003068D4 /* SBJsonWriter.m in Sources */,
 				3AC351901976BE2400CA643E /* PinyinHelper.m in Sources */,
-				9D65B0C8198219F50011D5B3 /* OrderViewController.m in Sources */,
-				9D65B0F719821D540011D5B3 /* AlixPayResult.m in Sources */,
 				3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */,
-				9D65B0F819821D540011D5B3 /* NSObject+SBJSON.m in Sources */,
 				CD8E513C1971586E00771960 /* AFURLConnectionOperation.m in Sources */,
 				3AC3518D1976BE2400CA643E /* HanyuPinyinOutputFormat.m in Sources */,
-				9D65B0FB19821D540011D5B3 /* SBJsonBase.m in Sources */,
-				9D65B0F619821D540011D5B3 /* AlixPayOrder.m in Sources */,
+				3AA9D63A19840B74003068D4 /* NSObject+SBJSON.m in Sources */,
 				CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */,
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
-				9D65B0FA19821D540011D5B3 /* SBJSON.m in Sources */,
 				3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */,
 				CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */,
+				3AA9D63919840B74003068D4 /* AlixPayResult.m in Sources */,
 				CD8E5119197147A700771960 /* RL_TVViewController.m in Sources */,
 				CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */,
 				CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */,
@@ -1186,6 +1186,7 @@
 				CD08AEF91972830F00C50184 /* UserInfo.m in Sources */,
 				3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */,
 				9DE6B247197E8AE400393F93 /* SC_AudioOnLineViewController.m in Sources */,
+				3AA9D63D19840B74003068D4 /* SBJsonBase.m in Sources */,
 				9DE6B23E197E8A9F00393F93 /* SVProgressHUD.m in Sources */,
 				CD8E513B1971586E00771960 /* AFSecurityPolicy.m in Sources */,
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
@@ -1196,10 +1197,9 @@
 				9DE6B244197E8AC200393F93 /* LeveyPopListViewCell.m in Sources */,
 				3AC3518F1976BE2400CA643E /* PinyinFormatter.m in Sources */,
 				CD3C48B51975676300AAEAB8 /* RL_LoginViewController.m in Sources */,
-				9D65B0F919821D540011D5B3 /* NSString+SBJSON.m in Sources */,
 				3AC3518E1976BE2400CA643E /* NSString+PinYin4Cocoa.m in Sources */,
+				3AA9D63E19840B74003068D4 /* SBJsonParser.m in Sources */,
 				CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */,
-				9D65B0FC19821D540011D5B3 /* SBJsonParser.m in Sources */,
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 				9DD40712197251250061D1DE /* UIFactory.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
@@ -1207,8 +1207,9 @@
 				3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */,
 				CD8E513A1971586E00771960 /* AFNetworkReachabilityManager.m in Sources */,
 				9DE6B24A197EA57C00393F93 /* SC_popView.m in Sources */,
+				3AA9D63B19840B74003068D4 /* NSString+SBJSON.m in Sources */,
+				3AA9D63C19840B74003068D4 /* SBJSON.m in Sources */,
 				CD8E51381971586E00771960 /* AFHTTPRequestOperationManager.m in Sources */,
-				9D65B0FD19821D540011D5B3 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1343,7 +1344,8 @@
 					"$(PROJECT_DIR)/yoga/Library/Vitamio-online",
 					"$(PROJECT_DIR)/yoga",
 					/Users/a123/Desktop/yoga2/yoga,
-					"$(PROJECT_DIR)/alipay",
+					"$(PROJECT_DIR)/yoga/Vitamio-online",
+					"$(PROJECT_DIR)/yoga/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1367,7 +1369,8 @@
 					"$(PROJECT_DIR)/yoga/Library/Vitamio-online",
 					"$(PROJECT_DIR)/yoga",
 					/Users/a123/Desktop/yoga2/yoga,
-					"$(PROJECT_DIR)/alipay",
+					"$(PROJECT_DIR)/yoga/Vitamio-online",
+					"$(PROJECT_DIR)/yoga/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
