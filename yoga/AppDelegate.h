@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class PayViewController;
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic,copy) NSString *token;
+
+@property (strong, nonatomic) PayViewController *payViewController;
 @end

@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		3A9A8FE6197828B800A00425 /* SC_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE5197828B800A00425 /* SC_Model.m */; };
 		3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE81978292D00A00425 /* AudioCell.m */; };
-		3AA9D5EE19837772003068D4 /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D5ED19837772003068D4 /* AlixPaylib.a */; };
+		3AA9D5F3198407A5003068D4 /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0D919821D540011D5B3 /* AlixPaylib_arc.a */; };
+		3AA9D5F4198407D2003068D4 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD43E4D1198016C700FB9D74 /* libopenssl.a */; };
 		3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517B1976BE2400CA643E /* PinYinForObjc.m */; };
 		3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517D1976BE2400CA643E /* ChineseInclude.m */; };
 		3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517F1976BE2400CA643E /* ChineseToPinyinResource.m */; };
@@ -30,8 +31,6 @@
 		9D65B0FB19821D540011D5B3 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0E819821D540011D5B3 /* SBJsonBase.m */; };
 		9D65B0FC19821D540011D5B3 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0EA19821D540011D5B3 /* SBJsonParser.m */; };
 		9D65B0FD19821D540011D5B3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B0EC19821D540011D5B3 /* SBJsonWriter.m */; };
-		9D65B10919821F400011D5B3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0ED19821D540011D5B3 /* libcrypto.a */; };
-		9D65B10A19821F4E0011D5B3 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0EE19821D540011D5B3 /* libssl.a */; };
 		9D65B10C19822B830011D5B3 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0D619821D540011D5B3 /* AlipayRsaLib.a */; };
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
@@ -483,10 +482,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AA9D5EE19837772003068D4 /* AlixPaylib.a in Frameworks */,
+				3AA9D5F4198407D2003068D4 /* libopenssl.a in Frameworks */,
+				3AA9D5F3198407A5003068D4 /* AlixPaylib_arc.a in Frameworks */,
 				9D65B10C19822B830011D5B3 /* AlipayRsaLib.a in Frameworks */,
-				9D65B10A19821F4E0011D5B3 /* libssl.a in Frameworks */,
-				9D65B10919821F400011D5B3 /* libcrypto.a in Frameworks */,
 				9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */,
 				9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */,
 				CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */,
