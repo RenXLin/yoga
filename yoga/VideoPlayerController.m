@@ -81,7 +81,7 @@
 	} else {
         
         [_TVPlayView removeFromSuperview];
-        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, 250);
+        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
         [_scrollView addSubview:_TVPlayView];
         [self.view addSubview:_scrollView];
         
@@ -138,7 +138,7 @@
     _carryView_portrait.autoresizesSubviews = YES;
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, 250)];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4)];
     _TVPlayView.backgroundColor = [UIColor clearColor];
     _TVPlayView.userInteractionEnabled = YES;
     _TVPlayView.autoresizesSubviews = YES;
@@ -348,7 +348,7 @@
                 isFullScreen = NO;
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
                 [_TVPlayView removeFromSuperview];
-                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, 250);
+                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
                 [_scrollView addSubview:_TVPlayView];
                 [self.view addSubview:_scrollView];
             }
@@ -369,7 +369,7 @@
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
 
                 [_TVPlayView removeFromSuperview];
-                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, 250);
+                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
                 [_scrollView addSubview:_TVPlayView];
                 [self.view addSubview:_scrollView];
 
