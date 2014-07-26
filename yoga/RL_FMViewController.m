@@ -191,7 +191,9 @@
             _mMpayer = [VMediaPlayer sharedInstance];
             [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
             [_mMpayer setDataSource:[NSURL URLWithString:_programMode.path] header:nil];
-            [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com/mp3/test/where_time_go.mp3"] header:nil];
+            NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
+            NSLog(@"%@",pathUrl);
+            [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
             [_mMpayer prepareAsync];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

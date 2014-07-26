@@ -236,6 +236,7 @@
         _mPlayer = [VMediaPlayer sharedInstance];
         [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
         [_mPlayer setDataSource:[NSURL URLWithString:self.itemMode.path] header:nil];
+        NSLog(@"%@",self.itemMode.path);
         [_mPlayer prepareAsync];
     }
 }
@@ -262,6 +263,7 @@
 {
     NSLog(@"player complete");
     [_mPlayer reset];
+    [player unSetupPlayer];
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
