@@ -73,7 +73,7 @@
     [scrolView addSubview:nav];
     
     //添加视频播放视图
-    UIView *TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, 250)];
+    UIView *TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
     TVPlayView.backgroundColor = [UIColor blackColor];
 //    TVPlayView.alpha = 0.2;
     [scrolView addSubview:TVPlayView];

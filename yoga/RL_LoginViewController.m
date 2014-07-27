@@ -39,6 +39,9 @@
     UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
     [self.view addSubview:nav];
     
+    
+    self.view.autoresizesSubviews = YES;
+    
     _account = [[UITextField alloc] init];
     _account.frame = CGRectMake(10, 70, self.view.frame.size.width-20, 50);
     _account.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
@@ -52,9 +55,16 @@
     _account.tag = 100;
     _account.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:_account];
+    _account.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     _passWord = [[UITextField alloc] init];
-    _passWord.frame = CGRectMake(10, 130, 300, 50);
+    _passWord.frame = CGRectMake(10, 130, self.view.frame.size.width-20, 50);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _passWord.layer.cornerRadius = 10;
     _passWord.text = @"12345678";
@@ -67,6 +77,13 @@
     _passWord.tag = 100;
     _passWord.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:_passWord];
+    _passWord.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //btn 注册
     UIButton *assign = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -78,17 +95,31 @@
     assign.tag = 1;
     [assign addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:assign];
+    assign.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //btn 登陆
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btn.frame = CGRectMake(self.view.frame.size.width - 150, 200, 150, 50);
-    btn.backgroundColor = [UIColor greenColor];
-    [btn setTitle:@"登陆" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    btn.layer.cornerRadius = 10;
-    btn.tag = 2;
-    [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    UIButton *login_btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    login_btn.frame = CGRectMake(self.view.frame.size.width - 150, 200, 150, 50);
+    login_btn.backgroundColor = [UIColor greenColor];
+    [login_btn setTitle:@"登陆" forState:UIControlStateNormal];
+    [login_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    login_btn.layer.cornerRadius = 10;
+    login_btn.tag = 2;
+    [login_btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:login_btn];
+    login_btn.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -160,6 +191,13 @@
     title.text = tit;
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
+    view.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     return view;
 }
 -(void)backBtnClick
@@ -167,6 +205,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(BOOL)shouldAutorotate
+{
+    return YES;
+}
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0);
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 /*
  #pragma mark - Navigation

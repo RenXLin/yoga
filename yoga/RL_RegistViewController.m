@@ -55,7 +55,7 @@
     [self.view addSubview:_phoneNum];
     
     UIButton *verify = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    verify.frame = CGRectMake(_phoneNum.frame.size.width+20, 70, 80, 50);
+    verify.frame = CGRectMake(_phoneNum.frame.size.width+20, 70, self.view.frame.size.width - 10, 50);
     verify.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [verify setTitle:@"获取验证码" forState:UIControlStateNormal];
     [verify setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -66,7 +66,7 @@
 
     
     _verifyNum = [[UITextField alloc] init];
-    _verifyNum.frame = CGRectMake(10, 130, 300, 50);
+    _verifyNum.frame = CGRectMake(10, 130, self.view.frame.size.width - 10, 50);
     _verifyNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _verifyNum.layer.cornerRadius = 10;
     _verifyNum.placeholder = @"验证码";
@@ -79,7 +79,7 @@
     [self.view addSubview:_verifyNum];
     
     _passWord = [[UITextField alloc] init];
-    _passWord.frame = CGRectMake(10, 190, 300, 50);
+    _passWord.frame = CGRectMake(10, 190, self.view.frame.size.width - 10, 50);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _passWord.layer.cornerRadius = 10;
     _passWord.placeholder = @"请输入密码";
@@ -151,8 +151,8 @@
         [registM POST:REGIST_URL parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"success:\n%@",responseObject);
             NSLog(@"%@",[responseObject objectForKey:@"msg"]);
-            if ([[[responseObject objectForKey:@"msg"] objectForKey:@"<#string#>"]isEqualToString:@"ok"]) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"注册成功" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            if ([[[responseObject objectForKey:@"data"] objectForKey:@"username"]isEqualToString:_phoneNum.text]) {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[responseObject objectForKey:@"msg"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }else{
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"手机格式错误" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -189,7 +189,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 /*
 #pragma mark - Navigation

@@ -48,6 +48,7 @@
 {
     return YES;
 }
+
 //刷新在线人数 method
 -(void)refreshPeople
 {
@@ -60,7 +61,7 @@
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [UIColor grayColor];
-    
+    self.view.autoresizesSubviews = YES;
     //5s刷新一次
     _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
@@ -70,12 +71,26 @@
     label.text = @"瑜伽魔方";
     label.font = [UIFont systemFontOfSize:20];
     [self.view addSubview:label];
+    label.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //添加白色底板
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, label.frame.origin.y + label.frame.size.height +10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:whiteView];
-
+    whiteView.autoresizingMask=
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
     NSMutableArray *colorArray =[[NSMutableArray alloc] init];
     UIColor *color1 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
     UIColor *color2 = [UIColor colorWithRed:0.04f green:0.91f blue:0.49f alpha:1.00f];
@@ -111,6 +126,13 @@
             
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
             [view addGestureRecognizer:tap];
+            view.autoresizingMask =
+            UIViewAutoresizingFlexibleBottomMargin |
+            UIViewAutoresizingFlexibleTopMargin |
+            UIViewAutoresizingFlexibleHeight |
+            UIViewAutoresizingFlexibleLeftMargin |
+            UIViewAutoresizingFlexibleRightMargin |
+            UIViewAutoresizingFlexibleWidth;
             
             //加入名称或图标：
             if ((i * 3 + j + 1) %2 == 1) {
@@ -127,6 +149,13 @@
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, whiteView.frame.origin.y +whiteView.frame.size.height + 20, 150, 40)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [self.view addSubview:logoView];
+    logoView.autoresizingMask=
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -134,6 +163,13 @@
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:loginView];
+    loginView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
@@ -142,6 +178,13 @@
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
     [self.view addSubview:_onlinePeople];
+    _onlinePeople.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -149,7 +192,14 @@
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:settingView];
-
+    settingView.autoresizingMask=
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
     //获取当前在线人数；
     AFHTTPRequestOperationManager *ma = [AFHTTPRequestOperationManager manager];
     ma.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -358,14 +408,18 @@
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:rect];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:strName ofType:@"png"]];
     imageV.contentMode = UIViewContentModeScaleToFill;
-    
+    imageV.contentMode = UIViewContentModeCenter;
     return imageV;
 }
 
 //本视图仅支持竖屏：
 -(BOOL)shouldAutorotate
 {
-    return NO;
+    return YES;
+}
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0);
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 -(void)refreshOnlinePeople
 {
