@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic,copy) NSString *token;
+@property (nonatomic,strong) NSMutableDictionary *userDict;
 
 @property (strong, nonatomic) PayViewController *payViewController;
 @end

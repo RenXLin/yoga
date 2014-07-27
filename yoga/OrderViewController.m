@@ -16,6 +16,8 @@
 #import "AlixPayOrder.h"
 #import "UserInfo.h"
 
+#import "RL_LoginViewController.h"
+
 @implementation Product
 @synthesize price = _price;
 @synthesize subject = _subject;
@@ -28,6 +30,10 @@
 @end
 
 @implementation OrderViewController
+{
+    UIImageView *bgImgView;
+    UIImageView *bgImgView1;
+}
 @synthesize result = _result;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,10 +48,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self createUI];
     [self request];
     
+     [self createUI1];
+    [self createUI];
+   
     _result = @selector(paymentResult:);
     [self generateData];
 
@@ -63,17 +70,13 @@
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
-            NSLog(@"%@",responseObject);
             
-            if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
-            {
-                
-                for(NSDictionary *dict in [responseObject objectForKey:@"data"])
-                {
+            
+            dataDict = [responseObject objectForKey:@"data"];
+            
+            
                     
-                }
-                
-            }
+            
             
             
             
@@ -85,9 +88,10 @@
     }];
 
 }
-- (void)createUI
+
+- (void)createUI1
 {
-    UIImageView *bgImgView = [UIFactory createImageViewWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight) imageName:@"bg.png"];
+    bgImgView = [UIFactory createImageViewWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight) imageName:@"bg.png"];
     bgImgView.userInteractionEnabled = YES;
     [self.view addSubview:bgImgView];
     
@@ -105,33 +109,66 @@
     [bgImgView addSubview:bgView];
     
     //bgimgview1
-    UIImageView *bgImgView1 = [[UIImageView alloc]init];
+    bgImgView1 = [[UIImageView alloc]init];
     bgImgView1.frame = CGRectMake(0,nav.frame.size.height + 20, KscreenWidth, KscreenHeight/3);
     bgImgView1.image = [UIImage imageNamed:@""];
-    bgImgView1.backgroundColor = [UIColor greenColor];
+    bgImgView1.backgroundColor = [UIColor grayColor];
     [bgImgView addSubview:bgImgView1];
     //lab
-    UILabel *lab = [[UILabel alloc]init];
-    lab.frame = CGRectMake(10, 0, 200, bgImgView1.frame.size.height);
-    lab.backgroundColor = [UIColor clearColor];
-    lab.textColor = [UIColor whiteColor];
+    
+        
+        NSString *str1 = [NSString stringWithFormat:@"魔方会员"];
+        NSString *str2 = [NSString stringWithFormat:@"价格"];
+        NSString *str3 = [NSString stringWithFormat:@"%@",[[dataDict objectForKey:@"price"] description]];
+        NSString *str4 = [NSString stringWithFormat:@"说明"];
+        NSString *str5 = [NSString stringWithFormat:@"瑜伽魔方"];
+        
+        NSArray *arr = [NSArray arrayWithObjects:str1,str2,str3,str4,str5, nil];
+        
+        for (int i=0; i<5; i++) {
+            UILabel *lab  = [UIFactory createLabelWithFrame:CGRectMake(10, 10+30*i, 200, 20) text:[arr objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
+            [bgImgView1 addSubview:lab];
+        
+        
+        
+        
+    }
+    
+    
+}
+- (void)createUI
+{
+ 
+    
+    
+    
+    
+    
+    
     
     //button
     UIButton *btn = [[UIButton alloc]init];
     
     if(KscreenHeight == 568 || KscreenHeight == 480)
     {
-        lab.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+       
         btn.frame = CGRectMake(0, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+30, KscreenWidth, 50);
     }else
     {
-         lab.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
         btn.frame = CGRectMake(0, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+30, KscreenWidth, 80);
     }
-    [bgImgView1 addSubview:lab];
     
     
-    [btn setTitle:@"支付宝" forState:UIControlStateNormal];
+    
+    UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length == 0)
+    {
+        [btn setTitle:@"尚未登录，请先登录" forState:UIControlStateNormal];
+    }else
+    {
+     [btn setTitle:@"支付宝" forState:UIControlStateNormal];
+    }
+    
     [btn addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
     [btn setBackgroundImage:[UIImage imageNamed:@"btnblue3.png"] forState:UIControlStateNormal];
     [bgImgView addSubview:btn];
@@ -147,21 +184,33 @@
 //支付
 - (void)pay
 {
-    /*
-	 *生成订单信息及签名
-	 *由于demo的局限性，采用了将私钥放在本地签名的方法，商户可以根据自身情况选择签名方法(为安全起见，在条件允许的前提下，我们推荐从商户服务器获取完整的订单信息)
-	 */
     
-    NSString *appScheme = @"yoga";
-    NSString* orderInfo = [self getOrderInfo:0];
-    NSString* signedStr = [self doRsa:orderInfo];
+    UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length == 0)
+    {
+        RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
+        [self presentViewController:login animated:YES completion:nil];
+    }else
+    {
+        
+        /*
+         *生成订单信息及签名
+         *由于demo的局限性，采用了将私钥放在本地签名的方法，商户可以根据自身情况选择签名方法(为安全起见，在条件允许的前提下，我们推荐从商户服务器获取完整的订单信息)
+         */
+        
+        NSString *appScheme = @"yoga";
+        NSString* orderInfo = [self getOrderInfo:0];
+        NSString* signedStr = [self doRsa:orderInfo];
+        
+        NSLog(@"%@",signedStr);
+        
+        NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                                 orderInfo, signedStr, @"RSA"];
+        
+        [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
+        
+    }
     
-    NSLog(@"%@",signedStr);
-    
-    NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                             orderInfo, signedStr, @"RSA"];
-	
-    [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
 
 }
 

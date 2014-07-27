@@ -28,6 +28,9 @@
 {
     NSMutableArray *_products;
     SEL _result;
+    
+    
+    NSMutableDictionary *dataDict;
 }
 @property (nonatomic,assign) SEL result;//这里声明为属性方便在于外部传入。
 -(void)paymentResult:(NSString *)result;

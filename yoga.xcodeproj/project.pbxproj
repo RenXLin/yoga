@@ -23,6 +23,7 @@
 		3AA9D64419840C59003068D4 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D64319840C58003068D4 /* OrderViewController.m */; };
 		3AA9D65619841534003068D4 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D65519841534003068D4 /* libssl.a */; };
 		3AA9D6581984178F003068D4 /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D6571984178F003068D4 /* AlixPaylib_arc.a */; };
+		3AA9D65E19853973003068D4 /* CountCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D65D19853973003068D4 /* CountCenterViewController.m */; };
 		3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517B1976BE2400CA643E /* PinYinForObjc.m */; };
 		3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517D1976BE2400CA643E /* ChineseInclude.m */; };
 		3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517F1976BE2400CA643E /* ChineseToPinyinResource.m */; };
@@ -252,6 +253,8 @@
 		3AA9D6571984178F003068D4 /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlixPaylib_arc.a; path = yoga/AlixPaylib_arc.a; sourceTree = "<group>"; };
 		3AA9D6591984BBCA003068D4 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSigner.h; path = yoga/DataSigner.h; sourceTree = SOURCE_ROOT; };
 		3AA9D65A1984BBCA003068D4 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataVerifier.h; path = yoga/DataVerifier.h; sourceTree = SOURCE_ROOT; };
+		3AA9D65C19853973003068D4 /* CountCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountCenterViewController.h; sourceTree = "<group>"; };
+		3AA9D65D19853973003068D4 /* CountCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountCenterViewController.m; sourceTree = "<group>"; };
 		3AC3517A1976BE2400CA643E /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
 		3AC3517B1976BE2400CA643E /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
 		3AC3517C1976BE2400CA643E /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
@@ -918,6 +921,8 @@
 				9DE6B246197E8AE400393F93 /* SC_AudioOnLineViewController.m */,
 				CD51F4F51976D49200F9E81F /* VideoPlayerController.h */,
 				CD51F4F61976D49200F9E81F /* VideoPlayerController.m */,
+				3AA9D65C19853973003068D4 /* CountCenterViewController.h */,
+				3AA9D65D19853973003068D4 /* CountCenterViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1204,6 +1209,7 @@
 				CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */,
 				CDF0535C197BAFB60097FAAA /* MedioPlayTool.m in Sources */,
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
+				3AA9D65E19853973003068D4 /* CountCenterViewController.m in Sources */,
 				9DE6B244197E8AC200393F93 /* LeveyPopListViewCell.m in Sources */,
 				3AC3518F1976BE2400CA643E /* PinyinFormatter.m in Sources */,
 				CD3C48B51975676300AAEAB8 /* RL_LoginViewController.m in Sources */,

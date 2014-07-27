@@ -39,9 +39,9 @@
             lab.numberOfLines = 0;
         }else
         {
-            self.bgView = [[UIView alloc]initWithFrame:CGRectMake(10, (KscreenHeight-400)/2, KscreenWidth-20, 400)];
-            img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth-20, 400)];
-            lab = [[UILabel alloc]initWithFrame:CGRectMake(2, 2, KscreenWidth-24, 80)];
+            self.bgView = [[UIView alloc]initWithFrame:CGRectMake(10, (KscreenHeight-280)/2, KscreenWidth-20, 280)];
+            img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth-20, 280)];
+            lab = [[UILabel alloc]initWithFrame:CGRectMake(2, 2, KscreenWidth-24, 140)];
             
         }
         [self addSubview:self.bgView];

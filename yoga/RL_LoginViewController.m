@@ -10,7 +10,8 @@
 #import "AFNetworking.h"
 #import "RL_RegistViewController.h"
 
-
+#import "CountCenterViewController.h"
+#import "AppDelegate.h"
 @interface RL_LoginViewController ()
 
 @end
@@ -118,8 +119,16 @@
                 UserInfo *userInfo = [UserInfo shareUserInfo];
                 userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
                 userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
-                //返回上级视图：
-                [self dismissViewControllerAnimated:YES completion:nil];
+                
+                AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
+                delegate.userDict = [responseObject objectForKey:@"data"];
+            
+                
+                
+                CountCenterViewController *countCenter = [[CountCenterViewController alloc]init];
+                [self presentViewController:countCenter animated:YES completion:nil];
+                
+                
             }else{
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];

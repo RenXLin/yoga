@@ -268,10 +268,10 @@
         btn1.titleLabel.font = Kfont(15);
     }else
     {
-        btn = [[UIButton alloc]initWithFrame:CGRectMake(20, 80+10, (KscreenWidth - 60-20)/2, 60)];
-        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(40+(KscreenWidth - 60-20)/2,80+10, btn.frame.size.width, 60)];
-        btn.titleLabel.font = Kfont(20);
-        btn1.titleLabel.font = Kfont(20);
+        btn = [[UIButton alloc]initWithFrame:CGRectMake(20, 140+30, (KscreenWidth - 80)/2, 80)];
+        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(40+(KscreenWidth - 80)/2,140+30, btn.frame.size.width, 80)];
+        btn.titleLabel.font = Kfont(30);
+        btn1.titleLabel.font = Kfont(30);
     }
     
     [btn setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];

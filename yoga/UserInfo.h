@@ -15,5 +15,6 @@
 @property(strong,nonatomic)NSString *token;
 @property(strong,nonatomic)NSString *onliePeople;
 
+
 +(id)shareUserInfo;
 @end

@@ -22,7 +22,7 @@
 
 
 //delegate
-#define Kdelegate AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate
+#define Kdelegate AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication]
 
 
 //字体
