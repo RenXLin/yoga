@@ -11,7 +11,6 @@
 		3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A8FE81978292D00A00425 /* AudioCell.m */; };
 		3AA9D63419840B73003068D4 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D61819840B73003068D4 /* AlipayRsaLib.a */; };
 		3AA9D63519840B74003068D4 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AA9D61A19840B73003068D4 /* Alixpay.bundle */; };
-		3AA9D63719840B74003068D4 /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D61C19840B73003068D4 /* AlixPaylib_arc.a */; };
 		3AA9D63819840B74003068D4 /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D61E19840B73003068D4 /* AlixPayOrder.m */; };
 		3AA9D63919840B74003068D4 /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62019840B73003068D4 /* AlixPayResult.m */; };
 		3AA9D63A19840B74003068D4 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62419840B73003068D4 /* NSObject+SBJSON.m */; };
@@ -22,7 +21,10 @@
 		3AA9D63F19840B74003068D4 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62E19840B73003068D4 /* SBJsonWriter.m */; };
 		3AA9D64019840B74003068D4 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D62F19840B73003068D4 /* libcrypto.a */; };
 		3AA9D64419840C59003068D4 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D64319840C58003068D4 /* OrderViewController.m */; };
-		3AA9D64619840CD6003068D4 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D64519840CD6003068D4 /* libssl.a */; };
+		3AA9D65019841428003068D4 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6515D11983B78F00A1855D /* libVitamio.a */; };
+		3AA9D65119841438003068D4 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6515CF1983B78F00A1855D /* libffmpeg.a */; };
+		3AA9D65619841534003068D4 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D65519841534003068D4 /* libssl.a */; };
+		3AA9D6581984178F003068D4 /* AlixPaylib_arc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D6571984178F003068D4 /* AlixPaylib_arc.a */; };
 		3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517B1976BE2400CA643E /* PinYinForObjc.m */; };
 		3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517D1976BE2400CA643E /* ChineseInclude.m */; };
 		3AC3518C1976BE2400CA643E /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517F1976BE2400CA643E /* ChineseToPinyinResource.m */; };
@@ -172,8 +174,6 @@
 		CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6382781975834F00DFF19F /* libbz2.dylib */; };
 		CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63827A197583C900DFF19F /* CoreVideo.framework */; };
 		CD6515D31983B78F00A1855D /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD6515C41983B78F00A1855D /* CHANGELOG.md */; };
-		CD6515D41983B78F00A1855D /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6515CF1983B78F00A1855D /* libffmpeg.a */; };
-		CD6515D61983B78F00A1855D /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6515D11983B78F00A1855D /* libVitamio.a */; };
 		CD6515D71983B78F00A1855D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD6515D21983B78F00A1855D /* LICENSE */; };
 		CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CD8E510C1970D34C00771960 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E510B1970D34C00771960 /* MainViewController.m */; };
@@ -242,11 +242,16 @@
 		3AA9D62E19840B73003068D4 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		3AA9D62F19840B73003068D4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		3AA9D63019840B73003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
-		3AA9D63219840B73003068D4 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
-		3AA9D63319840B73003068D4 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
 		3AA9D64219840C58003068D4 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		3AA9D64319840C58003068D4 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		3AA9D64519840CD6003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = yoga/libssl.a; sourceTree = "<group>"; };
+		3AA9D64819841197003068D4 /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlixPaylib.a; path = alipay/AlixPaylib.a; sourceTree = "<group>"; };
+		3AA9D64A198411F5003068D4 /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlixPaylib_arc.a; path = alipay/AlixPaylib_arc.a; sourceTree = "<group>"; };
+		3AA9D64C198412A7003068D4 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSigner.h; path = ../../DataSigner.h; sourceTree = "<group>"; };
+		3AA9D64D198412A7003068D4 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataVerifier.h; path = ../../DataVerifier.h; sourceTree = "<group>"; };
+		3AA9D64E198412F1003068D4 /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerConfig.h; sourceTree = "<group>"; };
+		3AA9D65519841534003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = alipay/libssl.a; sourceTree = "<group>"; };
+		3AA9D6571984178F003068D4 /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlixPaylib_arc.a; path = yoga/AlixPaylib_arc.a; sourceTree = "<group>"; };
 		3AC3517A1976BE2400CA643E /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
 		3AC3517B1976BE2400CA643E /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
 		3AC3517C1976BE2400CA643E /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
@@ -483,8 +488,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AA9D64619840CD6003068D4 /* libssl.a in Frameworks */,
-				3AA9D63719840B74003068D4 /* AlixPaylib_arc.a in Frameworks */,
+				3AA9D6581984178F003068D4 /* AlixPaylib_arc.a in Frameworks */,
+				3AA9D65619841534003068D4 /* libssl.a in Frameworks */,
+				3AA9D65119841438003068D4 /* libffmpeg.a in Frameworks */,
+				3AA9D65019841428003068D4 /* libVitamio.a in Frameworks */,
 				3AA9D63419840B73003068D4 /* AlipayRsaLib.a in Frameworks */,
 				9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */,
 				9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */,
@@ -495,8 +502,6 @@
 				CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */,
 				CD8E515219718AEE00771960 /* libz.dylib in Frameworks */,
 				CD8E514E19718AC000771960 /* QuartzCore.framework in Frameworks */,
-				CD6515D61983B78F00A1855D /* libVitamio.a in Frameworks */,
-				CD6515D41983B78F00A1855D /* libffmpeg.a in Frameworks */,
 				CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */,
 				CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */,
 				CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */,
@@ -563,8 +568,8 @@
 		3AA9D63119840B73003068D4 /* RSA */ = {
 			isa = PBXGroup;
 			children = (
-				3AA9D63219840B73003068D4 /* DataSigner.h */,
-				3AA9D63319840B73003068D4 /* DataVerifier.h */,
+				3AA9D64C198412A7003068D4 /* DataSigner.h */,
+				3AA9D64D198412A7003068D4 /* DataVerifier.h */,
 			);
 			path = RSA;
 			sourceTree = "<group>";
@@ -645,6 +650,10 @@
 		CD0DB992196DA50300C3A2A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AA9D6571984178F003068D4 /* AlixPaylib_arc.a */,
+				3AA9D65519841534003068D4 /* libssl.a */,
+				3AA9D64A198411F5003068D4 /* AlixPaylib_arc.a */,
+				3AA9D64819841197003068D4 /* AlixPaylib.a */,
 				3AA9D64519840CD6003068D4 /* libssl.a */,
 				9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */,
 				9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */,
@@ -670,6 +679,7 @@
 		CD0DB999196DA50300C3A2A8 /* yoga */ = {
 			isa = PBXGroup;
 			children = (
+				3AA9D64E198412F1003068D4 /* PartnerConfig.h */,
 				CD8E51221971581C00771960 /* Library */,
 				CD813ACB1972DA1E0040E1EB /* Views */,
 				CD08AEF6197282EF00C50184 /* Modes */,
@@ -1346,6 +1356,7 @@
 					/Users/a123/Desktop/yoga2/yoga,
 					"$(PROJECT_DIR)/yoga/Vitamio-online",
 					"$(PROJECT_DIR)/yoga/alipay",
+					"$(PROJECT_DIR)/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1371,6 +1382,7 @@
 					/Users/a123/Desktop/yoga2/yoga,
 					"$(PROJECT_DIR)/yoga/Vitamio-online",
 					"$(PROJECT_DIR)/yoga/alipay",
+					"$(PROJECT_DIR)/alipay",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
