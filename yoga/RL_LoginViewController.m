@@ -205,14 +205,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(BOOL)shouldAutorotate
-{
-    return YES;
-}
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0);
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
+//-(BOOL)shouldAutorotate
+//{
+//    return YES;
+//}
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0);
+//{
+//    return UIInterfaceOrientationPortrait;
+//}
 
 /*
  #pragma mark - Navigation

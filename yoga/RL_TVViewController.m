@@ -27,6 +27,10 @@
     UILabel *_onlinePeople;
     //存储当前节目数据类型实例
     CurrentProgram *_programMode;
+    
+    UIScrollView *_scrollView;
+    
+    UIView *_TVPlayView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,16 +49,45 @@
 {
     return NO;
 }
--(BOOL)shouldAutorotate
+- (NSUInteger)supportedInterfaceOrientations
 {
-    return NO;
+	return UIInterfaceOrientationMaskAll;
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return YES;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)to duration:(NSTimeInterval)duration
+{
+	if (UIInterfaceOrientationIsLandscape(to)) {
+        
+        [_TVPlayView removeFromSuperview];
+        [_scrollView removeFromSuperview];
+        _TVPlayView.frame = self.view.bounds;
+        [self.view addSubview:_TVPlayView];
+        
+        NSLog(@"%@",NSStringFromCGRect(_TVPlayView.frame));
+        
+	} else {
+        
+        [_TVPlayView removeFromSuperview];
+        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+        [_scrollView addSubview:_TVPlayView];
+        [self.view addSubview:_scrollView];
+        
+	}
+	NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
+}
+
 //刷新在线人数 method
 -(void)refreshPeople
 {
     UserInfo *info =[UserInfo shareUserInfo];
     _onlinePeople.text = info.onliePeople;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,38 +96,38 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
 
     self.view.backgroundColor = [UIColor blackColor];
-    UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
-    scrolView.backgroundColor =[UIColor grayColor];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
+    _scrollView.backgroundColor =[UIColor grayColor];
     
-    [self.view addSubview:scrolView];
+    [self.view addSubview:_scrollView];
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, scrolView.frame.size.width, 44) andTitle:@"瑜伽TV"];
-    [scrolView addSubview:nav];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
+    [_scrollView addSubview:nav];
     
     //添加视频播放视图
-    UIView *TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
-    TVPlayView.backgroundColor = [UIColor blackColor];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
+    _TVPlayView.backgroundColor = [UIColor blackColor];
 //    TVPlayView.alpha = 0.2;
-    [scrolView addSubview:TVPlayView];
+    [_scrollView addSubview:_TVPlayView];
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,TVPlayView.frame.origin.y + TVPlayView.frame.size.height +30, self.view.frame.size.width, 30)];
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height +30, self.view.frame.size.width, 30)];
     titleLabel.text = @"瑜伽 TV ";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    [scrolView addSubview:titleLabel];
+    [_scrollView addSubview:titleLabel];
     
     //加入imageView
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"]];
-    [scrolView addSubview:imageV];
+    [_scrollView addSubview:imageV];
     
     //显示节目菜单按钮
     UIButton *fileBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    fileBtn.frame = CGRectMake(scrolView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
+    fileBtn.frame = CGRectMake(_scrollView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
     [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
-    [scrolView addSubview:fileBtn];
+    [_scrollView addSubview:fileBtn];
     
     //加入当前节目label 走马灯显示
     _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
@@ -107,19 +140,19 @@
     _ad.backgroundColor = [UIColor clearColor];
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
     _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
-    [scrolView addSubview:_ad];
+    [_scrollView addSubview:_ad];
     
     // logoView
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
-    [scrolView addSubview:logoView];
+    [_scrollView addSubview:logoView];
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
     loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
-    [scrolView addSubview:loginView];
+    [_scrollView addSubview:loginView];
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
@@ -134,11 +167,11 @@
     settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
-    [scrolView addSubview:settingView];
+    [_scrollView addSubview:settingView];
     
     
-    scrolView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
-    scrolView.bounces = NO;
+    _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
+    _scrollView.bounces = NO;
 
     
     
@@ -153,7 +186,7 @@
         //加入FM播放器：
         if (!_mMpayer && urlStr) {
             _mMpayer = [VMediaPlayer sharedInstance];
-            [_mMpayer setupPlayerWithCarrierView:TVPlayView withDelegate:self];
+            [_mMpayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
             [_mMpayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
             [_mMpayer prepareAsync];
         }

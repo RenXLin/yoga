@@ -129,7 +129,7 @@
             view.autoresizingMask =
             UIViewAutoresizingFlexibleBottomMargin |
             UIViewAutoresizingFlexibleTopMargin |
-            UIViewAutoresizingFlexibleHeight |
+//            UIViewAutoresizingFlexibleHeight |
             UIViewAutoresizingFlexibleLeftMargin |
             UIViewAutoresizingFlexibleRightMargin |
             UIViewAutoresizingFlexibleWidth;
