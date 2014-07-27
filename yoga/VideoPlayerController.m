@@ -148,14 +148,21 @@
     _activityView.center = _TVPlayView.center;
 	[_TVPlayView addSubview:_activityView];
     [_activityView startAnimating];
-//    _TVPlayView.autoresizingMask =
-//    UIViewAutoresizingFlexibleBottomMargin |
-//    UIViewAutoresizingFlexibleTopMargin |
-//    UIViewAutoresizingFlexibleHeight |
-//    UIViewAutoresizingFlexibleLeftMargin |
-//    UIViewAutoresizingFlexibleRightMargin |
-//    UIViewAutoresizingFlexibleWidth;
+    _TVPlayView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
+    UITapGestureRecognizer *signleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(signleTap)];
+    signleTap.numberOfTapsRequired = 1;
+    [_TVPlayView addGestureRecognizer:signleTap];
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
+    doubleTap.numberOfTapsRequired = 2;
+    [_TVPlayView addGestureRecognizer:doubleTap];
     //添加工具条：
     _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width, 60)];
     [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
@@ -248,6 +255,67 @@
     return resultStr;
 }
 
+-(void)signleTap
+{
+    if (!_mTools.isHidden) {
+        _mTools.isHidden = YES;
+        _mTools.hidden = YES;
+    }else{
+        _mTools.isHidden = NO;
+        _mTools.hidden = NO;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _mTools.isHidden = YES;
+            _mTools.hidden = YES;
+        });
+    }
+}
+-(void)doubleTap
+{
+    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        
+        if (isFullScreen == NO) {
+            isFullScreen = YES;
+            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+            
+            [_TVPlayView removeFromSuperview];
+            [_scrollView removeFromSuperview];
+            _TVPlayView.frame = self.view.bounds;
+            [self.view addSubview:_TVPlayView];
+            
+        }else{
+            isFullScreen = NO;
+            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+            [_TVPlayView removeFromSuperview];
+            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+            [_scrollView addSubview:_TVPlayView];
+            [self.view addSubview:_scrollView];
+        }
+        
+    }else {
+        if (isFullScreen == NO) {
+            isFullScreen = YES;
+            
+            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+            [_TVPlayView removeFromSuperview];
+            [_scrollView removeFromSuperview];
+            _TVPlayView.frame = self.view.bounds;
+            [self.view addSubview:_TVPlayView];
+            
+        }else{
+            NSLog(@"非全屏播放");
+            isFullScreen = NO;
+            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+            
+            [_TVPlayView removeFromSuperview];
+            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+            [_scrollView addSubview:_TVPlayView];
+            [self.view addSubview:_scrollView];
+            
+        }
+    }
+}
 #pragma mark VMediaPlayerDelegate methods Required
 
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
@@ -260,11 +328,17 @@
     int min = second % 3600 /60;
     int sec = second % 3600 % 60;
     
-    _mTools.totalPlay.text = [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec];
+    _mTools.totalPlay.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec];
     [player start];
     [_activityView stopAnimating];
     _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/2 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
+
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _mTools.isHidden = YES;
+        _mTools.hidden = YES;
+    });
+
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
@@ -300,7 +374,9 @@
         int hour = second/(60 * 60 * 60);
         int min = second % 3600 /60;
         int sec = second % 3600 % 60;
-        _mTools.havePlay.text = [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _mTools.havePlay.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec];
+        });
         
     }
    
@@ -382,11 +458,6 @@
                 [self.view addSubview:_scrollView];
 
             }
-            
-            [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:YES];
-            
-            _carryView_portrait.transform = CGAffineTransformMakeRotation(- M_PI/2);
-            
         }
     }else if (btn.tag == 2){
         //last program
@@ -436,6 +507,7 @@
 {
     [_mPlayer reset];
     [_mPlayer unSetupPlayer];
+    [_seekTimser invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

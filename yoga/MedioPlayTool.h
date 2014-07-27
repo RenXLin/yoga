@@ -19,7 +19,7 @@
 @property(nonatomic,strong)UIButton *nextProgram;
 @property(nonatomic,strong)UIButton *fullScreenOrNot;
 
-
+@property(nonatomic,assign)BOOL isHidden;
 
 -(void)setBtnDelegate:(id)target andSEL:(SEL)sel andSliderSel:(SEL)sliderChange andTapGesture:(SEL)GestureSel;
 
