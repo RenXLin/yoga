@@ -15,7 +15,7 @@
 #import "AFNetworking.h"
 #import "UserInfo.h"
 #import "SC_popView.h"
-#import "OrderViewController.h"
+//#import "OrderViewController.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -307,8 +307,8 @@
             break;
         case 1:
         {
-            OrderViewController *orderView = [[OrderViewController alloc]init];
-            [self presentViewController:orderView animated:YES completion:nil];
+//            OrderViewController *orderView = [[OrderViewController alloc]init];
+//            [self presentViewController:orderView animated:YES completion:nil];
             
         }
             break;

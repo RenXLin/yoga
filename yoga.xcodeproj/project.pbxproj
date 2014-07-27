@@ -20,8 +20,6 @@
 		3AA9D63D19840B74003068D4 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62A19840B73003068D4 /* SBJsonBase.m */; };
 		3AA9D63E19840B74003068D4 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62C19840B73003068D4 /* SBJsonParser.m */; };
 		3AA9D63F19840B74003068D4 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D62E19840B73003068D4 /* SBJsonWriter.m */; };
-		3AA9D64019840B74003068D4 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D62F19840B73003068D4 /* libcrypto.a */; };
-		3AA9D64419840C59003068D4 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D64319840C58003068D4 /* OrderViewController.m */; };
 		3AA9D64619840CD6003068D4 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA9D64519840CD6003068D4 /* libssl.a */; };
 		3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517B1976BE2400CA643E /* PinYinForObjc.m */; };
 		3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3517D1976BE2400CA643E /* ChineseInclude.m */; };
@@ -169,6 +167,8 @@
 		CD4A479719702E7400973A29 /* 开机画面01_320x480.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479619702E7400973A29 /* 开机画面01_320x480.png */; };
 		CD4A479919702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4A479819702F1900973A29 /* 瑜伽魔方_频道推广_300x450_02.png */; };
 		CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD51F4F61976D49200F9E81F /* VideoPlayerController.m */; };
+		CD5C087E19849FB400A04179 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5C087C19849FB400A04179 /* libcrypto.a */; };
+		CD5C087F19849FB400A04179 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5C087D19849FB400A04179 /* libssl.a */; };
 		CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6382781975834F00DFF19F /* libbz2.dylib */; };
 		CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63827A197583C900DFF19F /* CoreVideo.framework */; };
 		CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -227,7 +227,7 @@
 		3AA9D61D19840B73003068D4 /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
 		3AA9D61E19840B73003068D4 /* AlixPayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayOrder.m; sourceTree = "<group>"; };
 		3AA9D61F19840B73003068D4 /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
-		3AA9D62019840B73003068D4 /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayResult.m; sourceTree = "<group>"; };
+		3AA9D62019840B73003068D4 /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlixPayResult.m; path = ../AlixPayResult.m; sourceTree = "<group>"; };
 		3AA9D62219840B73003068D4 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		3AA9D62319840B73003068D4 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		3AA9D62419840B73003068D4 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -241,12 +241,8 @@
 		3AA9D62C19840B73003068D4 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		3AA9D62D19840B73003068D4 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		3AA9D62E19840B73003068D4 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		3AA9D62F19840B73003068D4 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		3AA9D63019840B73003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		3AA9D63219840B73003068D4 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
 		3AA9D63319840B73003068D4 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
-		3AA9D64219840C58003068D4 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
-		3AA9D64319840C58003068D4 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		3AA9D64519840CD6003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = yoga/libssl.a; sourceTree = "<group>"; };
 		3AC3517A1976BE2400CA643E /* PinYinForObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYinForObjc.h; sourceTree = "<group>"; };
 		3AC3517B1976BE2400CA643E /* PinYinForObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinYinForObjc.m; sourceTree = "<group>"; };
@@ -419,6 +415,8 @@
 		CD4A479A1970348700973A29 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = include.h; path = yoga/include.h; sourceTree = "<group>"; };
 		CD51F4F51976D49200F9E81F /* VideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerController.h; sourceTree = "<group>"; };
 		CD51F4F61976D49200F9E81F /* VideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerController.m; sourceTree = "<group>"; };
+		CD5C087C19849FB400A04179 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = json/libcrypto.a; sourceTree = "<group>"; };
+		CD5C087D19849FB400A04179 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = json/libssl.a; sourceTree = "<group>"; };
 		CD6382781975834F00DFF19F /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		CD63827A197583C900DFF19F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CD813ACC1972DAB30040E1EB /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
@@ -492,8 +490,8 @@
 				CD81EC5119849C750047D3CF /* libffmpeg.a in Frameworks */,
 				CD63827B197583C900DFF19F /* CoreVideo.framework in Frameworks */,
 				CD6382791975834F00DFF19F /* libbz2.dylib in Frameworks */,
+				CD5C087F19849FB400A04179 /* libssl.a in Frameworks */,
 				CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */,
-				3AA9D64019840B74003068D4 /* libcrypto.a in Frameworks */,
 				CD81EC5219849C750047D3CF /* libopenssl.a in Frameworks */,
 				CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */,
 				CD8E515219718AEE00771960 /* libz.dylib in Frameworks */,
@@ -502,6 +500,7 @@
 				CD81EC5319849C750047D3CF /* libVitamio.a in Frameworks */,
 				CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */,
 				CD0DB994196DA50300C3A2A8 /* Foundation.framework in Frameworks */,
+				CD5C087E19849FB400A04179 /* libcrypto.a in Frameworks */,
 				CD8E514819718A8600771960 /* CoreMedia.framework in Frameworks */,
 				CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */,
 				CD8E514619718A7400771960 /* AudioToolbox.framework in Frameworks */,
@@ -533,10 +532,9 @@
 				3AA9D61D19840B73003068D4 /* AlixPayOrder.h */,
 				3AA9D61E19840B73003068D4 /* AlixPayOrder.m */,
 				3AA9D61F19840B73003068D4 /* AlixPayResult.h */,
-				3AA9D62019840B73003068D4 /* AlixPayResult.m */,
+				CD5C087C19849FB400A04179 /* libcrypto.a */,
+				CD5C087D19849FB400A04179 /* libssl.a */,
 				3AA9D62119840B73003068D4 /* json */,
-				3AA9D62F19840B73003068D4 /* libcrypto.a */,
-				3AA9D63019840B73003068D4 /* libssl.a */,
 				3AA9D63119840B73003068D4 /* RSA */,
 			);
 			path = alipay;
@@ -545,6 +543,7 @@
 		3AA9D62119840B73003068D4 /* json */ = {
 			isa = PBXGroup;
 			children = (
+				3AA9D62019840B73003068D4 /* AlixPayResult.m */,
 				3AA9D62219840B73003068D4 /* JSON.h */,
 				3AA9D62319840B73003068D4 /* NSObject+SBJSON.h */,
 				3AA9D62419840B73003068D4 /* NSObject+SBJSON.m */,
@@ -891,8 +890,6 @@
 		CD8E510D1970D35900771960 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3AA9D64219840C58003068D4 /* OrderViewController.h */,
-				3AA9D64319840C58003068D4 /* OrderViewController.m */,
 				3AC351921976BE3000CA643E /* search */,
 				CD8E510A1970D34C00771960 /* MainViewController.h */,
 				CD8E510B1970D34C00771960 /* MainViewController.m */,
@@ -1166,7 +1163,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA9D63819840B74003068D4 /* AlixPayOrder.m in Sources */,
-				3AA9D64419840C59003068D4 /* OrderViewController.m in Sources */,
 				3AA9D63F19840B74003068D4 /* SBJsonWriter.m in Sources */,
 				3AC351901976BE2400CA643E /* PinyinHelper.m in Sources */,
 				3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */,
@@ -1348,6 +1344,7 @@
 					/Users/a123/Desktop/yoga2/yoga,
 					"$(PROJECT_DIR)/yoga/Vitamio-online",
 					"$(PROJECT_DIR)/yoga/alipay",
+					"$(PROJECT_DIR)/yoga/alipay/json",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1373,6 +1370,7 @@
 					/Users/a123/Desktop/yoga2/yoga,
 					"$(PROJECT_DIR)/yoga/Vitamio-online",
 					"$(PROJECT_DIR)/yoga/alipay",
+					"$(PROJECT_DIR)/yoga/alipay/json",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
