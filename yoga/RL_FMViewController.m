@@ -49,8 +49,13 @@
 }
 -(BOOL)shouldAutorotate
 {
-    return NO;
+    return YES;
 }
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0);
+{
+    return UIInterfaceOrientationPortrait;
+}
+
 //刷新在线人数 method
 -(void)refreshPeople
 {
@@ -62,13 +67,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor blackColor];
+    self.view.autoresizesSubviews = YES;
+    
     //刷新当前人数通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
     UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     scrolView.backgroundColor =[UIColor grayColor];
-    
     [self.view addSubview:scrolView];
+    scrolView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //自定义导航条
     UIView *nav = [self myNavgationBar:CGRectMake(0, 0, scrolView.frame.size.width, 44) andTitle:self.FM_AV];
@@ -79,6 +92,14 @@
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height +10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [scrolView addSubview:whiteView];
+    whiteView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
     NSMutableArray *colorArray =[[NSMutableArray alloc] init];
     UIColor *color1 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
     UIColor *color2 = [UIColor colorWithRed:0.04f green:0.91f blue:0.49f alpha:1.00f];
@@ -106,6 +127,13 @@
             view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
             view.contentMode = UIViewContentModeScaleToFill;
             [whiteView addSubview:view];
+            view.autoresizingMask =
+            UIViewAutoresizingFlexibleBottomMargin |
+            UIViewAutoresizingFlexibleTopMargin |
+            UIViewAutoresizingFlexibleHeight |
+            UIViewAutoresizingFlexibleLeftMargin |
+            UIViewAutoresizingFlexibleRightMargin |
+            UIViewAutoresizingFlexibleWidth;
         }
     }
     
@@ -115,17 +143,38 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [scrolView addSubview:titleLabel];
+    titleLabel.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //加入imageView
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fm" ofType:@"png"]];
     [scrolView addSubview:imageV];
+    imageV.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //显示节目菜单按钮
     UIButton *fileBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     fileBtn.frame = CGRectMake(scrolView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
     [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
     [scrolView addSubview:fileBtn];
+    fileBtn.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //加入当前节目label 走马灯显示
     _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
@@ -139,12 +188,25 @@
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
     _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
     [scrolView addSubview:_ad];
-
+    _ad.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     // logoView
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [scrolView addSubview:logoView];
+    logoView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -152,6 +214,14 @@
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [scrolView addSubview:loginView];
+    loginView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
@@ -161,6 +231,13 @@
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
     [scrolView addSubview:_onlinePeople];
+    _onlinePeople.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -168,7 +245,13 @@
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [scrolView addSubview:settingView];
-
+    settingView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     scrolView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
     scrolView.bounces = NO;
@@ -269,7 +352,15 @@
 -(UIView *)myNavgationBar:(CGRect)rect andTitle:(NSString *)tit
 {
     UIView *view = [[UIView alloc] initWithFrame:rect];
+    view.autoresizesSubviews = YES;
     view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title.png"]];
+    view.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //back button
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -277,18 +368,39 @@
     [back addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [back setImage:[UIImage imageNamed:@"title_icon.png"] forState:UIControlStateNormal];
     [view addSubview:back];
+    back.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //title
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
     title.text = tit;
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
+    title.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //分享：
     UIButton *share = [UIButton buttonWithType:UIButtonTypeCustom];
     share.frame = CGRectMake(view.frame.size.width - 30, 2, 35, view.frame.size.height-4);
     [share setImage:[UIImage imageNamed:@"title_icon1.png"] forState:UIControlStateNormal];
     [view addSubview:share];
+    share.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //好评数
     UILabel *goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
@@ -296,14 +408,27 @@
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];
-
+    goodTimes.autoresizingMask=
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
     //点赞
     UIButton *good = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     good.frame = CGRectMake(view.frame.size.width - goodTimes.frame.size.width - share.frame.size.width - 35, 0, 35, view.frame.size.height);
     [good setImage:[UIImage imageNamed:@"title_icon2.png"] forState:UIControlStateNormal];
     [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateHighlighted];
     [view addSubview:good];
-    
+    good.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     return view;
 }
 

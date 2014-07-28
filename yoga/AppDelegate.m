@@ -13,6 +13,10 @@
 #import "DataVerifier.h"
 #import "AlixLibService.h"
 
+
+#import "UMSocial.h"
+
+
 @implementation AppDelegate
 {
     UIScrollView * launchScrollView;
@@ -22,6 +26,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    //友盟分享：
+    [UMSocialData setAppKey:@"53d4c20456240b2af4103c08"];
+    
     //判断是否首次启动
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
     BOOL isFirst = [usrDef boolForKey:@"isFirst"];
