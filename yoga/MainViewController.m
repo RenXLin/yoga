@@ -44,6 +44,7 @@
     }
     return self;
 }
+
 -(BOOL)prefersStatusBarHidden
 {
     return YES;
@@ -67,7 +68,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
     //标题
-    UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 5, 100, 30)];
+    UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 20, 100, 30)];
     label.text = @"瑜伽魔方";
     label.font = [UIFont systemFontOfSize:20];
     [self.view addSubview:label];
@@ -127,8 +128,8 @@
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
             [view addGestureRecognizer:tap];
             view.autoresizingMask =
-            UIViewAutoresizingFlexibleBottomMargin |
-            UIViewAutoresizingFlexibleTopMargin |
+//            UIViewAutoresizingFlexibleBottomMargin |
+//            UIViewAutoresizingFlexibleTopMargin |
 //            UIViewAutoresizingFlexibleHeight |
             UIViewAutoresizingFlexibleLeftMargin |
             UIViewAutoresizingFlexibleRightMargin |
@@ -415,11 +416,11 @@
 //本视图仅支持竖屏：
 -(BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0);
 {
-    return UIInterfaceOrientationMaskPortrait;
+    return UIInterfaceOrientationPortrait;
 }
 -(void)refreshOnlinePeople
 {

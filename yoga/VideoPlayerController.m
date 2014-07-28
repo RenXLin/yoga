@@ -75,17 +75,15 @@
         _TVPlayView.frame = self.view.bounds;
         [self.view addSubview:_TVPlayView];
         [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-
-        
+        isFullScreen = YES;
         NSLog(@"%@",NSStringFromCGRect(_TVPlayView.frame));
 
 	} else {
-        
+        isFullScreen = NO;
         [_TVPlayView removeFromSuperview];
         _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
         [_scrollView addSubview:_TVPlayView];
         [self.view addSubview:_scrollView];
-        
         [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
 
 	}
@@ -122,15 +120,30 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
+    self.view.autoresizesSubviews = YES;
     self.view.backgroundColor = [UIColor blackColor];
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     _scrollView.backgroundColor =[UIColor grayColor];
-    
     [self.view addSubview:_scrollView];
+    _scrollView.autoresizesSubviews = YES;
+    _scrollView.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+////    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //自定义导航条
     UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
     [_scrollView addSubview:nav];
+    nav.autoresizingMask=
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     //添加负载播放器和进度条视图；
     _carryView_portrait = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width, 250)];
@@ -149,11 +162,19 @@
     _activityView.center = _TVPlayView.center;
 	[_TVPlayView addSubview:_activityView];
     [_activityView startAnimating];
-    _TVPlayView.autoresizingMask =
+    _activityView.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
     UIViewAutoresizingFlexibleHeight |
     UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
+    _TVPlayView.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
     
@@ -182,18 +203,24 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [_scrollView addSubview:titleLabel];
-    
+//    titleLabel.autoresizingMask =  UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
     //加入imageView
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"]];
     [_scrollView addSubview:imageV];
+//    imageV.autoresizingMask =  UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
-    //显示节目菜单按钮
-    UIButton *fileBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    fileBtn.frame = CGRectMake(_scrollView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
-    [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
-    [_scrollView addSubview:fileBtn];
     
     //加入当前节目label 走马灯显示
     _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
@@ -207,11 +234,25 @@
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
     _ad.text = self.itemMode.ad;
     [_scrollView addSubview:_ad];
+//    _ad.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
     // logoView
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [_scrollView addSubview:logoView];
+//    logoView.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -219,6 +260,13 @@
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:loginView];
+//    loginView.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
@@ -227,6 +275,14 @@
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
+//    _onlinePeople.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
+    
     
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -234,7 +290,13 @@
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:settingView];
-    
+//    settingView.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
     _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
     _scrollView.bounces = NO;
@@ -434,6 +496,7 @@
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
                 [_TVPlayView removeFromSuperview];
                 _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+                
                 [_scrollView addSubview:_TVPlayView];
                 [self.view addSubview:_scrollView];
             }
@@ -452,7 +515,6 @@
                 NSLog(@"非全屏播放");
                 isFullScreen = NO;
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-
                 [_TVPlayView removeFromSuperview];
                 _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
                 [_scrollView addSubview:_TVPlayView];
@@ -465,6 +527,8 @@
     
     }else if (btn.tag == 3){
         //play or pause
+        btn.selected = !btn.selected;
+        
         if ([_mPlayer isPlaying]) {
             [_mPlayer pause];
             [btn setSelected:YES];
@@ -525,7 +589,8 @@
 {
     UIView *view = [[UIView alloc] initWithFrame:rect];
     view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title.png"]];
-    
+    view.autoresizesSubviews = YES;
+
     //back button
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
     back.frame = CGRectMake(2, 0, 40, view.frame.size.height);
@@ -546,6 +611,7 @@
     [share addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     share.tag = 1;
     [view addSubview:share];
+    share.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     
     //好评数
     UILabel *goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
@@ -553,7 +619,8 @@
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];
-    
+    goodTimes.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+
     //点赞
     UIButton *good = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     good.frame = CGRectMake(view.frame.size.width - goodTimes.frame.size.width - share.frame.size.width - 35, 0, 35, view.frame.size.height);
@@ -562,7 +629,8 @@
     [share addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     good.tag= 2;
     [view addSubview:good];
-    
+    good.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+
     return view;
 }
 -(void)TitleBtnClick:(UIButton *)btn
