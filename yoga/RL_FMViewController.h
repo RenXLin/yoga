@@ -10,7 +10,7 @@
 #import "Vitamio.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface RL_FMViewController : UIViewController<VMediaPlayerDelegate,MPMediaPickerControllerDelegate>
+@interface RL_FMViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,VMediaPlayerDelegate,MPMediaPickerControllerDelegate>
 
 //用于区分是fm还是音乐，公用一个视图控制器：
 @property (nonatomic,strong)NSString *FM_AV;

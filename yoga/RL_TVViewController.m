@@ -31,6 +31,8 @@
     UIScrollView *_scrollView;
     
     UIView *_TVPlayView;
+    
+    NSMutableArray *_fileList;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -128,6 +130,7 @@
     fileBtn.frame = CGRectMake(_scrollView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
     [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
     [_scrollView addSubview:fileBtn];
+    [fileBtn addTarget:self action:@selector(getCurrentFile) forControlEvents:UIControlEventTouchUpInside];
     
     //加入当前节目label 走马灯显示
     _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
@@ -288,6 +291,28 @@
     
     return view;
 }
+
+//获取当天节目列表:
+-(void)getFileList
+{
+    [self getCurrentFile];
+}
+-(void)getCurrentFile
+{
+    if (!_fileList) {
+        _fileList = [[NSMutableArray alloc] init];
+    }
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:GetOneDayFMfile_url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success:%@",responseObject);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed:%@",error);
+    }];
+}
+
+
 /*
 #pragma mark - Navigation
 

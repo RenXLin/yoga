@@ -19,6 +19,7 @@
 {
     VMediaPlayer *_mMpayer;
     MPMoviePlayerController *_mp3;
+    NSMutableArray *_fileList;
 }
 @end
 
@@ -90,6 +91,7 @@
     
     //添加白色底板
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height +10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
+    whiteView.tag = 5000;
     whiteView.backgroundColor = [UIColor whiteColor];
     [scrolView addSubview:whiteView];
     whiteView.autoresizingMask =
@@ -168,6 +170,7 @@
     fileBtn.frame = CGRectMake(scrolView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
     [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
     [scrolView addSubview:fileBtn];
+    [fileBtn addTarget:self action:@selector(getFileList) forControlEvents:UIControlEventTouchUpInside];
     fileBtn.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
@@ -430,6 +433,62 @@
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
     return view;
+}
+//获取当天节目列表:
+-(void)getFileList
+{
+    if (!_fileList) {
+        _fileList = [[NSMutableArray alloc] init];
+    }
+    [self getCurrentFile];
+
+    UIView *backView = [self.view viewWithTag:5000];
+    UITableView *fileTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height) style:UITableViewStylePlain];
+    fileTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    fileTable.backgroundColor = [UIColor clearColor];
+    fileTable.dataSource = self;
+    fileTable.delegate = self;
+    [backView addSubview:fileTable];
+    backView.autoresizesSubviews = YES;
+    fileTable.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"FileCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.text = [_fileList objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+   return [_fileList count];
+}
+-(void)getCurrentFile
+{
+
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSString *url = [_FM_AV isEqualToString:@"瑜伽FM"]?GetOneDayFMfile_url:GetOneDayFMfile_url;
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success:%@",responseObject);
+        _fileList = [responseObject objectForKey:@"data"];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed:%@",error);
+    }];
 }
 
 
