@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Vitamio.h"
 
-@interface RL_TVViewController : UIViewController<VMediaPlayerDelegate>
+@interface RL_TVViewController : UIViewController<VMediaPlayerDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @end

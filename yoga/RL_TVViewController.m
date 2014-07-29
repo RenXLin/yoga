@@ -11,10 +11,14 @@
 #import "AFNetworking.h"
 #import "CurrentProgram.h"
 #import "UMSocial.h"
+#import "OneDayProgram.h"
+#import "OneDayProgramCell.h"
+
 
 @interface RL_TVViewController ()
 {
     VMediaPlayer *_mMpayer;
+    UITableView *fileTable;
 }
 
 @end
@@ -109,7 +113,7 @@
     
     //添加视频播放视图
     _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
-    _TVPlayView.backgroundColor = [UIColor blackColor];
+    _TVPlayView.backgroundColor = [UIColor grayColor];
 //    TVPlayView.alpha = 0.2;
     [_scrollView addSubview:_TVPlayView];
     
@@ -293,6 +297,7 @@
     [good setImage:[UIImage imageNamed:@"title_icon2.png"] forState:UIControlStateNormal];
     [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateHighlighted];
     [view addSubview:good];
+    good.tag = 2;
     [good addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 
     return view;
@@ -327,22 +332,85 @@
 //获取当天节目列表:
 -(void)getFileList
 {
-    [self getCurrentFile];
+    if (!_fileList) {
+        _fileList = [[NSMutableArray alloc] init];
+        [self getCurrentFile];
+        
+        fileTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, _TVPlayView.frame.size.width, _TVPlayView.frame.size.height) style:UITableViewStylePlain];
+        fileTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+        fileTable.backgroundColor = [UIColor clearColor];
+        fileTable.dataSource = self;
+        fileTable.delegate = self;
+        [_TVPlayView addSubview:fileTable];
+        
+        _TVPlayView.autoresizesSubviews = YES;
+        
+        fileTable.autoresizingMask =
+        UIViewAutoresizingFlexibleBottomMargin |
+        UIViewAutoresizingFlexibleTopMargin |
+        UIViewAutoresizingFlexibleHeight |
+        UIViewAutoresizingFlexibleLeftMargin |
+        UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleWidth;
+        
+    }else{
+        fileTable.hidden = !fileTable.hidden;
+    }
 }
 -(void)getCurrentFile
 {
-    if (!_fileList) {
-        _fileList = [[NSMutableArray alloc] init];
-    }
+    
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager GET:GetOneDayFMfile_url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [manager GET:VIDEOLIST_ULR parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success:%@",responseObject);
-        
+        NSArray *dataArr = [responseObject objectForKey:@"data"];
+        for (NSDictionary *dic in dataArr) {
+            OneDayProgram *oneProgram = [[OneDayProgram alloc] init];
+            [oneProgram setValuesForKeysWithDictionary:dic];
+            [_fileList addObject:oneProgram];
+        }
+        [fileTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed:%@",error);
     }];
 }
+-(OneDayProgramCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"FileCell";
+    OneDayProgramCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[OneDayProgramCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    OneDayProgram *program = (OneDayProgram *)[_fileList objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.backgroundColor = [UIColor clearColor];
+    
+    int startHour = [[program.starttime substringToIndex:1] intValue];
+    int startMin = [[program.starttime substringWithRange:NSMakeRange(3, 2)] intValue];
+    int startSec = [[program.starttime substringWithRange:NSMakeRange(6, 2)] intValue];
+    
+    int addHour = [program.timelength intValue] / 3600;
+    int addMin = [program.timelength intValue] % 3600 / 60;
+    int addSec = [program.timelength intValue] % 60;
+    
+    int endHour = startHour + addHour;
+    int endMin = startMin + addMin;
+    int endSec = startSec + addSec;
+    
+    
+    cell.label_Time.text = [NSString stringWithFormat:@"%@-%d:%d:%d",program.starttime,endHour,endMin,endSec];
+    cell.label_Title.text = program.title;
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_fileList count];
+}
+
 
 
 /*

@@ -11,7 +11,8 @@
 #import "AFNetworking.h"
 #import "CurrentProgram.h"
 #import "UMSocial.h"
-
+#import "OneDayProgram.h"
+#import "OneDayProgramCell.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -20,6 +21,7 @@
     VMediaPlayer *_mMpayer;
     MPMoviePlayerController *_mp3;
     NSMutableArray *_fileList;
+    UITableView *fileTable;
 }
 @end
 
@@ -470,45 +472,68 @@
 
 }
 
-
 //获取当天节目列表:
 -(void)getFileList
 {
     if (!_fileList) {
         _fileList = [[NSMutableArray alloc] init];
+        [self getCurrentFile];
+        
+        UIView *backView = [self.view viewWithTag:5000];
+        
+        fileTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height) style:UITableViewStylePlain];
+        fileTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+        fileTable.backgroundColor = [UIColor clearColor];
+        fileTable.dataSource = self;
+        fileTable.delegate = self;
+        [backView addSubview:fileTable];
+        
+        backView.autoresizesSubviews = YES;
+        
+        fileTable.autoresizingMask =
+        UIViewAutoresizingFlexibleBottomMargin |
+        UIViewAutoresizingFlexibleTopMargin |
+        UIViewAutoresizingFlexibleHeight |
+        UIViewAutoresizingFlexibleLeftMargin |
+        UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleWidth;
+        
+    }else{
+        fileTable.hidden = !fileTable.hidden;
     }
-    [self getCurrentFile];
-
-    UIView *backView = [self.view viewWithTag:5000];
-    UITableView *fileTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height) style:UITableViewStylePlain];
-    fileTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    fileTable.backgroundColor = [UIColor clearColor];
-    fileTable.dataSource = self;
-    fileTable.delegate = self;
-    [backView addSubview:fileTable];
-    backView.autoresizesSubviews = YES;
-    fileTable.autoresizingMask =
-    UIViewAutoresizingFlexibleBottomMargin |
-    UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleHeight |
-    UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleRightMargin |
-    UIViewAutoresizingFlexibleWidth;
-    
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
+
+-(OneDayProgramCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FileCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    OneDayProgramCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[OneDayProgramCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    OneDayProgram *program = (OneDayProgram *)[_fileList objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = [_fileList objectAtIndex:indexPath.row];
+    
+    int startHour = [[program.starttime substringToIndex:1] intValue];
+    int startMin = [[program.starttime substringWithRange:NSMakeRange(3, 2)] intValue];
+    int startSec = [[program.starttime substringWithRange:NSMakeRange(6, 2)] intValue];
+
+    int addHour = [program.timelength intValue] / 3600;
+    int addMin = [program.timelength intValue] % 3600 / 60;
+    int addSec = [program.timelength intValue] % 60;
+    
+    int endHour = startHour + addHour;
+    int endMin = startMin + addMin;
+    int endSec = startSec + addSec;
+    
+    
+    cell.label_Time.text = [NSString stringWithFormat:@"%@-%d:%d:%d",program.starttime,endHour,endMin,endSec];
+    cell.label_Title.text = program.title;
     
     return cell;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
    return [_fileList count];
@@ -518,11 +543,21 @@
 
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSString *url = [_FM_AV isEqualToString:@"瑜伽FM"]?GetOneDayFMfile_url:GetOneDayFMfile_url;
+    NSString *url;
+    if ([_FM_AV isEqualToString:@"瑜伽FM"]) {
+        url = FMList_url;
+    }else
+        url = AUDIOLIST_URL;
+    
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success:%@",responseObject);
-        _fileList = [responseObject objectForKey:@"data"];
-        
+        NSArray *dataArr = [responseObject objectForKey:@"data"];
+        for (NSDictionary *dic in dataArr) {
+            OneDayProgram *oneProgram = [[OneDayProgram alloc] init];
+            [oneProgram setValuesForKeysWithDictionary:dic];
+            [_fileList addObject:oneProgram];
+        }
+        [fileTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed:%@",error);
     }];

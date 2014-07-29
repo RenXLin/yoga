@@ -220,6 +220,8 @@
 		CD9E696E1987DCA100052EE3 /* iPhone2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69641987DCA100052EE3 /* iPhone2.jpg */; };
 		CD9E696F1987DCA100052EE3 /* iPhone3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69651987DCA100052EE3 /* iPhone3.jpg */; };
 		CD9E69701987DCA100052EE3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69661987DCA100052EE3 /* Default.png */; };
+		CDA734141987F49B009713D5 /* OneDayProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA734131987F49B009713D5 /* OneDayProgram.m */; };
+		CDA734171987FCAE009713D5 /* OneDayProgramCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA734161987FCAE009713D5 /* OneDayProgramCell.m */; };
 		CDF0535C197BAFB60097FAAA /* MedioPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */; };
 /* End PBXBuildFile section */
 
@@ -528,6 +530,10 @@
 		CD9E69641987DCA100052EE3 /* iPhone2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone2.jpg; sourceTree = "<group>"; };
 		CD9E69651987DCA100052EE3 /* iPhone3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone3.jpg; sourceTree = "<group>"; };
 		CD9E69661987DCA100052EE3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CDA734121987F49B009713D5 /* OneDayProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayProgram.h; sourceTree = "<group>"; };
+		CDA734131987F49B009713D5 /* OneDayProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayProgram.m; sourceTree = "<group>"; };
+		CDA734151987FCAE009713D5 /* OneDayProgramCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayProgramCell.h; sourceTree = "<group>"; };
+		CDA734161987FCAE009713D5 /* OneDayProgramCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayProgramCell.m; sourceTree = "<group>"; };
 		CDF0535A197BAFB60097FAAA /* MedioPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedioPlayTool.h; sourceTree = "<group>"; };
 		CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedioPlayTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -665,6 +671,8 @@
 				3A9A8FE81978292D00A00425 /* AudioCell.m */,
 				CD38DD0F197430A900D4C20D /* CurrentProgram.h */,
 				CD38DD10197430A900D4C20D /* CurrentProgram.m */,
+				CDA734121987F49B009713D5 /* OneDayProgram.h */,
+				CDA734131987F49B009713D5 /* OneDayProgram.m */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -981,6 +989,8 @@
 				CD813ACD1972DAB30040E1EB /* MarqueeLabel.m */,
 				CDF0535A197BAFB60097FAAA /* MedioPlayTool.h */,
 				CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */,
+				CDA734151987FCAE009713D5 /* OneDayProgramCell.h */,
+				CDA734161987FCAE009713D5 /* OneDayProgramCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1306,6 +1316,8 @@
 				CD31ECD81984F6D500A208E0 /* RL_LoginViewController.m in Sources */,
 				3AA9D63819840B74003068D4 /* AlixPayOrder.m in Sources */,
 				3AA9D63F19840B74003068D4 /* SBJsonWriter.m in Sources */,
+				CDA734171987FCAE009713D5 /* OneDayProgramCell.m in Sources */,
+				CDA734141987F49B009713D5 /* OneDayProgram.m in Sources */,
 				3AC351901976BE2400CA643E /* PinyinHelper.m in Sources */,
 				3AC3518A1976BE2400CA643E /* PinYinForObjc.m in Sources */,
 				CD8E513C1971586E00771960 /* AFURLConnectionOperation.m in Sources */,

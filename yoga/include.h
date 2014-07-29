@@ -79,8 +79,9 @@
 #define  CURRENTPLAYFM_URL   @"http://www.chinayogaonline.com/api/getTestFm"
 //参数：无
 
+
 //取某一天的FM节目单
-#define GetOneDayFMfile_url   @"http://www.chinayogaonline.com/api/getFMPlayList"
+#define FMList_url   @"http://www.chinayogaonline.com/api/getFMPlayList"
 //参数：无
 
 //视频播放列表
