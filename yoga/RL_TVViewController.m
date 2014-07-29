@@ -135,7 +135,7 @@
     fileBtn.frame = CGRectMake(_scrollView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
     [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
     [_scrollView addSubview:fileBtn];
-    [fileBtn addTarget:self action:@selector(getCurrentFile) forControlEvents:UIControlEventTouchUpInside];
+    [fileBtn addTarget:self action:@selector(getFileList) forControlEvents:UIControlEventTouchUpInside];
     
     //加入当前节目label 走马灯显示
     _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
@@ -333,7 +333,9 @@
 -(void)getFileList
 {
     if (!_fileList) {
+        
         _fileList = [[NSMutableArray alloc] init];
+        
         [self getCurrentFile];
         
         fileTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, _TVPlayView.frame.size.width, _TVPlayView.frame.size.height) style:UITableViewStylePlain];
@@ -362,7 +364,8 @@
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
+    _fileList = [[NSMutableArray alloc] init];
+
     [manager GET:VIDEOLIST_ULR parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success:%@",responseObject);
         NSArray *dataArr = [responseObject objectForKey:@"data"];
