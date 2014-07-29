@@ -10,7 +10,7 @@
 #import "MarqueeLabel.h"
 #import "AFNetworking.h"
 #import "CurrentProgram.h"
-
+#import "UMSocial.h"
 
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -400,6 +400,8 @@
     share.frame = CGRectMake(view.frame.size.width - 30, 2, 35, view.frame.size.height-4);
     [share setImage:[UIImage imageNamed:@"title_icon1.png"] forState:UIControlStateNormal];
     [view addSubview:share];
+    share.tag = 1;
+    [share addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     share.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
@@ -429,6 +431,8 @@
     [good setImage:[UIImage imageNamed:@"title_icon2.png"] forState:UIControlStateNormal];
     [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateHighlighted];
     [view addSubview:good];
+    good.tag = 2;
+    [good addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     good.backgroundColor = [UIColor clearColor];
     good.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
@@ -439,6 +443,34 @@
     UIViewAutoresizingFlexibleWidth;
     return view;
 }
+-(void)TitleBtnClick:(UIButton *)btn
+{
+
+    if (btn.tag == 1) {
+        //分享
+        //    1. 支持分享编辑页和授权页面横屏，必须要在出现列表页面前设置:
+        //    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
+        
+        [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.baidu.com/img/bdlogo.gif"];
+        
+        //自定义各平台分享内容：
+        [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
+        [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon"]; //分享到腾讯微博图片
+        [UMSocialData defaultData].extConfig.tencentData.shareText = @"友盟社会化分享让您快速实现分享等社会化功能，www.umeng.com/social";
+        [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.baidu.com/img/bdlogo.gif"];  //设置微信好友分享url图片
+        [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:@"http://v.youku.com/v_show/id_XNjQ1NjczNzEy.html?f=21207816&ev=2"]; //设置微信朋友圈分享视频
+        
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"532af38e56240b2cdc01b9c6" shareText:@"renxlin" shareImage:[UIImage imageNamed:@"www.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToQzone,UMShareToQQ,UMShareToFacebook, nil] delegate:self];
+        
+    }else if(btn.tag == 2){
+        //点赞
+        
+        
+    }
+
+}
+
+
 //获取当天节目列表:
 -(void)getFileList
 {

@@ -630,13 +630,15 @@
     good.frame = CGRectMake(view.frame.size.width - goodTimes.frame.size.width - share.frame.size.width - 35, 0, 35, view.frame.size.height);
     [good setImage:[UIImage imageNamed:@"title_icon2.png"] forState:UIControlStateNormal];
     [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateHighlighted];
-    [share addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [good addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     good.tag= 2;
     [view addSubview:good];
     good.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
 
     return view;
 }
+
+
 -(void)TitleBtnClick:(UIButton *)btn
 {
     if (btn.tag == 1) {
