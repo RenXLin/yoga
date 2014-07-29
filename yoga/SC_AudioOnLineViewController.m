@@ -226,10 +226,9 @@
     //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
 
     searchDisplayController.active = NO;
-    searchDisplayController.searchResultsDataSource = self;
-    
     
     searchDisplayController.searchResultsDelegate = self;
+    searchDisplayController.searchResultsDataSource =  self;
     searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+64, 310, 350);
     
 //    
@@ -244,11 +243,11 @@
     
     if([KDEVICE isEqualToString:@"iPad Simulator"])
     {
-        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5-95-64-140 ) style:UITableViewStylePlain];
+        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth-10, KscreenHeight -5-95-64-140 ) style:UITableViewStylePlain];
     }else
     {
         
-      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth - 10, KscreenHeight -5-95-64 - 74 ) style:UITableViewStylePlain];
+      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth -10, KscreenHeight -5-95-64 - 50 ) style:UITableViewStylePlain];
     }
     
     TableView.delegate = self;

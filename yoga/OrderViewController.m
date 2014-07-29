@@ -50,8 +50,8 @@
     // Do any additional setup after loading the view.
     [self request];
     
-     [self createUI1];
-    [self createUI];
+    
+    
    
     _result = @selector(paymentResult:);
     [self generateData];
@@ -63,8 +63,7 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
     
-    UserInfo *info = [UserInfo shareUserInfo];
-    NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/createOrder?token=%@",info.token];
+    NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/getMoFangInfo"];
     //      待加入缓冲提示：
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
@@ -74,8 +73,8 @@
             
             dataDict = [responseObject objectForKey:@"data"];
             
-            
-                    
+            [self createUI1];
+            [self createUI];     
             
             
             
@@ -138,14 +137,7 @@
 }
 - (void)createUI
 {
- 
-    
-    
-    
-    
-    
-    
-    
+
     //button
     UIButton *btn = [[UIButton alloc]init];
     

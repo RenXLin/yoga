@@ -28,7 +28,7 @@
     CGRect rect = [[UIScreen mainScreen] applicationFrame];
     if (self = [super initWithFrame:rect])
     {
-        self.backgroundColor = [UIColor colorWithRed:240 green:240 blue:240 alpha:0.3];
+        self.backgroundColor = [UIColor colorWithRed:47/250 green:44/250 blue:55/250 alpha:0.3];
         
         
         if(KscreenHeight == 568 ||KscreenHeight == 480)

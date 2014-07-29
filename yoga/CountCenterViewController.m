@@ -79,7 +79,7 @@
     NSArray *Rrr = [delegate.userDict objectForKey:@"roleInfo"];
     NSString *normalUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[[Rrr objectAtIndex:0] objectForKey:@"description"],[[Rrr objectAtIndex:0] objectForKey:@"expiry_date"]];
     
-    NSString *VipUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[[Rrr objectAtIndex:1] objectForKey:@"description"],[[Rrr objectAtIndex:0] objectForKey:@"expiry_date"]];
+    NSString *VipUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[[Rrr objectAtIndex:1] objectForKey:@"description"],[[Rrr objectAtIndex:1] objectForKey:@"expiry_date"]];
     
     NSLog(@"%@",delegate.userDict);
     
