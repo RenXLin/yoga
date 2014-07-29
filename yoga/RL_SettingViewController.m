@@ -30,7 +30,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+
     UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"设置"];
     [self.view addSubview:nav];
 
@@ -44,6 +45,7 @@
     //当前在线人数
     UILabel * _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
     UserInfo *info = [UserInfo shareUserInfo];
+    _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
@@ -80,6 +82,7 @@
     //title
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
     title.text = tit;
+    title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
     return view;

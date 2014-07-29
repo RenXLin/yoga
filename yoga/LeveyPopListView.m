@@ -41,12 +41,13 @@
             bgView = [[UIView alloc]initWithFrame:CGRectMake(10, (KscreenHeight-250)/2, KscreenWidth-20, 250)];
             img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth-20, 250)];
             lab = [[UILabel alloc]initWithFrame:CGRectMake(2, 2, KscreenWidth-24, 50)];
+            lab.backgroundColor = [UIColor clearColor];
         }else
         {
             bgView = [[UIView alloc]initWithFrame:CGRectMake(10, (KscreenHeight-400)/2, KscreenWidth-20, 400)];
             img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth-20, 400)];
             lab = [[UILabel alloc]initWithFrame:CGRectMake(2, 2, KscreenWidth-24, 80)];
-            
+            lab.backgroundColor = [UIColor clearColor];;
         }
         [self addSubview:bgView];
         

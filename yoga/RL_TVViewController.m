@@ -94,12 +94,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
 
-    self.view.backgroundColor = [UIColor blackColor];
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
-    _scrollView.backgroundColor =[UIColor grayColor];
+    _scrollView.backgroundColor =[UIColor clearColor];
     
     [self.view addSubview:_scrollView];
     
@@ -116,6 +116,7 @@
     //当前节目
     UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height +30, self.view.frame.size.width, 30)];
     titleLabel.text = @"瑜伽 TV ";
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [_scrollView addSubview:titleLabel];
@@ -161,6 +162,7 @@
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
     UserInfo *info = [UserInfo shareUserInfo];
     _onlinePeople.text = info.onliePeople;//暂定
+    _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
@@ -266,6 +268,7 @@
     //title
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
     title.text = tit;
+    title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
     
@@ -278,6 +281,7 @@
     //好评数
     UILabel *goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
     goodTimes.text = @"123";//暂定
+    goodTimes.backgroundColor = [UIColor clearColor];
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];

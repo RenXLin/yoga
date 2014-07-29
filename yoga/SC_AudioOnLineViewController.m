@@ -190,6 +190,7 @@
     
     UILabel *audioLab = [UIFactory createLabelWithFrame:CGRectMake(bgView.frame.origin.x+5,bgView.frame.origin.y+(bgView.frame.size.height/2-20)/2,75,20) text:self.Title textColor:[UIColor blackColor] textFont:Kfont(17) textAlignment:0];
     [bgImgView addSubview:audioLab];
+    audioLab.backgroundColor = [UIColor clearColor];
     
     
     //分类筛选按钮

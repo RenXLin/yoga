@@ -63,7 +63,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
-    self.view.backgroundColor = [UIColor grayColor];
+
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    
     self.view.autoresizesSubviews = YES;
     //5s刷新一次
     _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(refreshOnlinePeople) userInfo:nil repeats:NO];
@@ -72,6 +74,7 @@
     //标题
     UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 20, 100, 30)];
     label.text = @"瑜伽魔方";
+    label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:20];
     [self.view addSubview:label];
     label.autoresizingMask =
@@ -178,6 +181,7 @@
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
 //    _onlinePeople.text = [NSString stringWithFormat:@"当前在线人数:%@",info.onliePeople];//暂定
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
+    _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
     [self.view addSubview:_onlinePeople];
@@ -232,14 +236,8 @@
         RL_TVViewController *TVV = [[RL_TVViewController alloc] init];
         [self presentViewController:TVV animated:YES completion:nil];
 
-    }else if(view.tag == 4){
+    }else if(view.tag == 7){
         //音频点播
-        
-        
-        
-        
-        
-        
         UserInfo *info = [UserInfo shareUserInfo];
         if(info.token.length == 0)
         {
@@ -249,10 +247,7 @@
             [lplv showInView:self.view animated:YES];
             
             [self creatBtn];
-            
-            
-            
-            
+   
         }else
         {
             SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
@@ -262,43 +257,18 @@
             audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             [self presentViewController:audioView animated:YES completion:nil];
         }
-        
-        
-        
+   
     }else if (view.tag == 5){
         //瑜伽音乐
         RL_FMViewController * AV= [[RL_FMViewController alloc] init];
         AV.FM_AV = @"瑜伽音乐";
         [self presentViewController:AV animated:YES completion:nil];
-    }else if(view.tag == 6){
-        //音频点播
-        
-        
-        UserInfo *info = [UserInfo shareUserInfo];
-        if(info.token.length == 0)
-        {
-            
-            lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
-            //lplv.delegate = self;
-            [lplv showInView:self.view animated:YES];
-            
-            [self creatBtn];
-            
-        }else
-        {
-
-        
+    }else if (view.tag == 9){
         SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
         audioView.Title = @"视屏点播";
         audioView.modalPresentationStyle = UIModalPresentationCustom;
         audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:audioView animated:YES completion:nil];
-        }
-        
-
-    }else if (view.tag == 7){
-        SC_AudioOnLineViewController *avc = [[SC_AudioOnLineViewController alloc]init];
-        [self presentViewController:avc animated:YES completion:nil];
 
     }
     
@@ -399,6 +369,7 @@
 {
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.text = title;
+    label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;

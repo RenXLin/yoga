@@ -64,7 +64,7 @@
     NSArray *arr = @[@"用户名：",@"邮箱：",@"会员类型："];
     for (int i=0; i<3; i++) {
         UILabel *lab = [UIFactory createLabelWithFrame:CGRectMake(10, 10+30*i, 80, 20) text:[arr objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
-        
+        lab.backgroundColor = [UIColor clearColor];
         [bgImgView1 addSubview:lab];
         
         
@@ -88,7 +88,7 @@
     for (int i=0; i<4; i++) {
         
         UILabel *lab1 = [UIFactory createLabelWithFrame:CGRectMake(100, 10+30*i, 180, 20) text:[countArray objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
-        
+        lab1.backgroundColor = [UIColor clearColor];
         [bgImgView1 addSubview:lab1];
     }
     

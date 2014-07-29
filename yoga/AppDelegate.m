@@ -32,7 +32,7 @@
     //判断是否首次启动
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
     BOOL isFirst = [usrDef boolForKey:@"isFirst"];
-    if (!isFirst) {
+//    if (!isFirst) {
         NSLog(@"第一次启动应用");
         [usrDef setBool:YES forKey:@"isFirst"];
         [usrDef synchronize];
@@ -47,11 +47,17 @@
 
         for (int i = 0; i < 3; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * [UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-            imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start0%d_480x800.jpg",i+1]];
+            NSLog(@"%@",[UIDevice currentDevice].model);
+            if ([[UIDevice currentDevice].model rangeOfString:@"iPhone"].location != NSNotFound) {
+                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
+            }else if([[UIDevice currentDevice].model rangeOfString:@"iPad"].location != NSNotFound){
+                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPad%d.jpg",i+1]];
+            }
+            
             [launchScrollView addSubview:imageView];
             if (i == 2) {
                 UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                btn.frame = CGRectMake(imageView.frame.size.width/2 - 50, imageView.frame.size.height / 4, 100, 30);
+                btn.frame = CGRectMake(imageView.frame.size.width/2 - 50, imageView.frame.size.height / 4 + 20, 100, 30);
                 [btn setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"c_bg1" ofType:@"png"]] forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(StartBtnClick) forControlEvents:UIControlEventTouchUpInside];
                 [btn setTitle:@"开始" forState:UIControlStateNormal];
@@ -64,9 +70,9 @@
         pageControl.currentPage = 0;
         [pageControl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
         [self.window addSubview:pageControl];
-    }else{
-        [self StartBtnClick];
-    }
+//    }else{
+//        [self StartBtnClick];
+//    }
 
 
     self.window.backgroundColor = [UIColor whiteColor];

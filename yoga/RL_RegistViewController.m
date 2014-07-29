@@ -36,7 +36,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+
     self.view.backgroundColor = [UIColor grayColor];
     UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
     [self.view addSubview:nav];
@@ -181,6 +182,7 @@
     //title
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
     title.text = tit;
+    title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
     return view;

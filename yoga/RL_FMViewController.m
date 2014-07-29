@@ -67,14 +67,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     self.view.autoresizesSubviews = YES;
     
     //刷新当前人数通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
     UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
-    scrolView.backgroundColor =[UIColor grayColor];
+    scrolView.backgroundColor =[UIColor clearColor];
     [self.view addSubview:scrolView];
     scrolView.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
@@ -142,6 +142,7 @@
     //当前节目
     UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,whiteView.frame.origin.y + whiteView.frame.size.height +30, self.view.frame.size.width, 30)];
     titleLabel.text = @"瑜伽 FM ";
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [scrolView addSubview:titleLabel];
@@ -229,6 +230,7 @@
     //当前在线人数
     _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
     UserInfo *info = [UserInfo shareUserInfo];
+    _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
@@ -382,6 +384,7 @@
     //title
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
     title.text = tit;
+    title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
     [view addSubview:title];
     title.autoresizingMask =
@@ -411,6 +414,7 @@
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];
+    goodTimes.backgroundColor  = [UIColor clearColor];
     goodTimes.autoresizingMask=
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
@@ -425,6 +429,7 @@
     [good setImage:[UIImage imageNamed:@"title_icon2.png"] forState:UIControlStateNormal];
     [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateHighlighted];
     [view addSubview:good];
+    good.backgroundColor = [UIColor clearColor];
     good.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |

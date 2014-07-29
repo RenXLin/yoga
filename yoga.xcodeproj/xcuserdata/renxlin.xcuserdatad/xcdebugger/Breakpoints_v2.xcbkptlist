@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "yoga/VideoPlayerController.m"
-            timestampString = "428162801.600888"
+            timestampString = "428333544.359861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "495"
-            endingLineNumber = "495"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "-playSettingChange:"
             landmarkType = "5">
          </BreakpointContent>
