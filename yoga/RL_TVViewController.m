@@ -332,19 +332,23 @@
     
     if (btn.tag == 1) {
         //分享
-        //    1. 支持分享编辑页和授权页面横屏，必须要在出现列表页面前设置:
-        //    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
-        
-        [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.baidu.com/img/bdlogo.gif"];
+        [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
         
         //自定义各平台分享内容：
-        [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
-        [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon"]; //分享到腾讯微博图片
-        [UMSocialData defaultData].extConfig.tencentData.shareText = @"友盟社会化分享让您快速实现分享等社会化功能，www.umeng.com/social";
-        [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.baidu.com/img/bdlogo.gif"];  //设置微信好友分享url图片
+        [UMSocialData defaultData].extConfig.sinaData.shareText = _programMode.ad;
+        [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
+        
+        
+        [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
+        [UMSocialData defaultData].extConfig.tencentData.shareText = _programMode.ad;
+        
+        [UMSocialData defaultData].extConfig.doubanData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到豆瓣
+        [UMSocialData defaultData].extConfig.doubanData.shareText = _programMode.ad;
+        
+        [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@""];  //设置微信好友分享url图片
         [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:@"http://v.youku.com/v_show/id_XNjQ1NjczNzEy.html?f=21207816&ev=2"]; //设置微信朋友圈分享视频
         
-        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"532af38e56240b2cdc01b9c6" shareText:@"renxlin" shareImage:[UIImage imageNamed:@"www.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToQzone,UMShareToQQ,UMShareToFacebook, nil] delegate:self];
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:_programMode.ad shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToDouban, nil] delegate:self];
         
     }else if(btn.tag == 2){
         //点赞
@@ -431,20 +435,18 @@
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     cell.backgroundColor = [UIColor clearColor];
     
-    int startHour = [[program.starttime substringToIndex:1] intValue];
+    int startHour = [[program.starttime substringToIndex:2] intValue];
     int startMin = [[program.starttime substringWithRange:NSMakeRange(3, 2)] intValue];
     int startSec = [[program.starttime substringWithRange:NSMakeRange(6, 2)] intValue];
     
-    int addHour = [program.timelength intValue] / 3600;
-    int addMin = [program.timelength intValue] % 3600 / 60;
-    int addSec = [program.timelength intValue] % 60;
+    int endleng = startHour * 3600 + startMin * 60 + startSec + [program.timelength intValue];
     
-    int endHour = startHour + addHour;
-    int endMin = startMin + addMin;
-    int endSec = startSec + addSec;
+    int endHour = endleng / 3600;
+    int endMin = endleng % 3600 / 60;
+    int endSec = endleng % 60;
     
     
-    cell.label_Time.text = [NSString stringWithFormat:@"%@-%d:%d:%d",program.starttime,endHour,endMin,endSec];
+    cell.label_Time.text = [NSString stringWithFormat:@"%@-%02d:%02d:%02d",program.starttime,endHour,endMin,endSec];
     cell.label_Title.text = program.title;
     
     return cell;
