@@ -693,11 +693,11 @@
 {
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
     UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-    BOOL isLike = socialData.isLike;
-    [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
-        //获取请求结果
-        NSLog(@"resposne is %@",response);
-    }];
+//    BOOL isLike = socialData.isLike;
+//    [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
+//        //获取请求结果
+//        NSLog(@"resposne is %@",response);
+//    }];
     
     
     //socialDataService为设置评论内容中初始化的对象

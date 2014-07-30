@@ -174,7 +174,7 @@
     
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, KscreenWidth, 44) andTitle:self.Title];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 64) andTitle:self.Title];
     [bgImgView addSubview:nav];
     
     //
@@ -448,13 +448,13 @@
     
     //back button
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
-    back.frame = CGRectMake(2, 0, 40, view.frame.size.height);
+    back.frame = CGRectMake(2, 20, 40, rect.size.height-20);
     [back addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [back setImage:[UIImage imageNamed:@"title_icon.png"] forState:UIControlStateNormal];
     [view addSubview:back];
     
     //title
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 20, 70, rect.size.height-20)];
     title.text = tit;
     title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
@@ -527,9 +527,12 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(tableView == TableView1)
+    if(tableView == searchDisplayController.searchResultsTableView)
     {
-        
+        //推出播放器视图：
+        VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
+        vpc.itemMode = [searchResults  objectAtIndex:indexPath.row];
+        [self presentViewController:vpc animated:YES completion:nil];
        
     }else if (tableView == TableView){
         //推出播放器视图：

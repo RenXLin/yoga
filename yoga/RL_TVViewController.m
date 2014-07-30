@@ -19,6 +19,7 @@
 {
     VMediaPlayer *_mMpayer;
     UITableView *fileTable;
+    UILabel *goodTimes;
 }
 
 @end
@@ -97,6 +98,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self greet];//获取点赞数
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
@@ -284,8 +287,8 @@
     [share addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     //好评数
-    UILabel *goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
-    goodTimes.text = @"123";//暂定
+    goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
+    
     goodTimes.backgroundColor = [UIColor clearColor];
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
@@ -302,6 +305,28 @@
 
     return view;
 }
+
+- (void)greet
+{
+    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
+    UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
+//    BOOL isLike = socialData.isLike;
+//    [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
+//        //获取请求结果
+//        NSLog(@"resposne is %@",response);
+//    }];
+    
+    
+    //socialDataService为设置评论内容中初始化的对象
+    [socialDataService requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
+        // 下面的方法可以获取保存在本地的评论数，如果app重新安装之后，数据会被清空，可能获取值为0
+        int likeNumber = [socialDataService.socialData getNumber:UMSNumberLike];
+        goodTimes.text = [NSString stringWithFormat:@"%d",likeNumber];
+        
+    }];
+    
+}
+
 -(void)TitleBtnClick:(UIButton *)btn
 {
     
@@ -325,6 +350,22 @@
         //点赞
         
         
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
+        UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
+        BOOL isLike = socialData.isLike;
+        [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
+            //获取请求结果
+            NSLog(@"resposne is %@",response);
+        }];
+        
+        
+        //socialDataService为设置评论内容中初始化的对象
+        [socialDataService requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
+            // 下面的方法可以获取保存在本地的评论数，如果app重新安装之后，数据会被清空，可能获取值为0
+            int likeNumber = [socialDataService.socialData getNumber:UMSNumberLike];
+            goodTimes.text = [NSString stringWithFormat:@"%d",likeNumber];
+            
+        }];
     }
     
 }
