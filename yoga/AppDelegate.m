@@ -15,7 +15,10 @@
 
 
 #import "UMSocial.h"
-
+#import "UMSocialQQHandler.h"
+#import "UMSocialSinaHandler.h"
+#import "UMSocialTencentWeiboHandler.h"
+#import "UMSocialWechatHandler.h"
 
 @implementation AppDelegate
 {
@@ -27,7 +30,35 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //友盟分享：
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+
     [UMSocialData setAppKey:@"53d4c20456240b2af4103c08"];
+    
+    //设置微信AppId，设置分享url，默认使用友盟的网址
+    [UMSocialWechatHandler setWXAppId:@"wx135514f2491ecfe0" url:@"http://www.umeng.com/social"];
+//
+//    //打开新浪微博的SSO开关
+    [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+//
+//    //打开腾讯微博SSO开关，设置回调地址
+    [UMSocialTencentWeiboHandler openSSOWithRedirectUrl:@"http://sns.whalecloud.com/tencent2/callback"];
+    
+    //设置分享到QQ空间的应用Id，和分享url 链接
+    [UMSocialQQHandler setQQWithAppId:@"801508461" appKey:@"298deebc09032d2e14288c81abd2b9fd" url:@"http://www.umeng.com/social"];
+ 
+
+    //设置支持没有客户端情况下使用SSO授权
+    [UMSocialQQHandler setSupportWebView:YES];
+    
+    //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
+    
+    [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage; //设置QQ分享纯图片，默认分享图文消息
+    [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信好友分享纯图片
+    [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信朋友圈分享纯图片
+    
+    
+    
     
     //判断是否首次启动
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];

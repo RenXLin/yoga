@@ -661,7 +661,11 @@
         [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.baidu.com/img/bdlogo.gif"];  //设置微信好友分享url图片
         [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:@"http://v.youku.com/v_show/id_XNjQ1NjczNzEy.html?f=21207816&ev=2"]; //设置微信朋友圈分享视频
         
+
         [UMSocialSnsService presentSnsIconSheetView:self appKey:@"532af38e56240b2cdc01b9c6" shareText:@"renxlin" shareImage:[UIImage imageNamed:@"www.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToQzone,UMShareToQQ,UMShareToFacebook,UMShareToDouban, nil] delegate:self];
+
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"532af38e56240b2cdc01b9c6" shareText:@"renxlin" shareImage:[UIImage imageNamed:@"www.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToDouban, nil] delegate:self];
+
         
     }else if(btn.tag == 2){
         //点赞
