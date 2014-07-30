@@ -24,6 +24,7 @@
     UIActivityIndicatorView *_activityView;
     long _duration;
     BOOL isFullScreen;
+    UILabel *goodTimes;
 }
 @end
 
@@ -117,6 +118,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    [self greet];
+    
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
@@ -617,8 +623,8 @@
     share.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     
     //好评数
-    UILabel *goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
-    goodTimes.text = @"123";//暂定
+   goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
+    
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];
@@ -655,13 +661,49 @@
         [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.baidu.com/img/bdlogo.gif"];  //设置微信好友分享url图片
         [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:@"http://v.youku.com/v_show/id_XNjQ1NjczNzEy.html?f=21207816&ev=2"]; //设置微信朋友圈分享视频
         
-        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"532af38e56240b2cdc01b9c6" shareText:@"renxlin" shareImage:[UIImage imageNamed:@"www.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToQzone,UMShareToQQ,UMShareToFacebook, nil] delegate:self];
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"532af38e56240b2cdc01b9c6" shareText:@"renxlin" shareImage:[UIImage imageNamed:@"www.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToQzone,UMShareToQQ,UMShareToFacebook,UMShareToDouban, nil] delegate:self];
         
     }else if(btn.tag == 2){
         //点赞
         
+        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
+        UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
+        BOOL isLike = socialData.isLike;
+        [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
+            //获取请求结果
+            NSLog(@"resposne is %@",response);
+        }];
         
+        
+        //socialDataService为设置评论内容中初始化的对象
+        [socialDataService requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
+            // 下面的方法可以获取保存在本地的评论数，如果app重新安装之后，数据会被清空，可能获取值为0
+            int likeNumber = [socialDataService.socialData getNumber:UMSNumberLike];
+            goodTimes.text = [NSString stringWithFormat:@"%d",likeNumber];
+            
+        }];
     }
+}
+
+- (void)greet
+{
+    UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
+    UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
+    BOOL isLike = socialData.isLike;
+    [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
+        //获取请求结果
+        NSLog(@"resposne is %@",response);
+    }];
+    
+    
+    //socialDataService为设置评论内容中初始化的对象
+    [socialDataService requestSocialDataWithCompletion:^(UMSocialResponseEntity *response){
+        // 下面的方法可以获取保存在本地的评论数，如果app重新安装之后，数据会被清空，可能获取值为0
+        int likeNumber = [socialDataService.socialData getNumber:UMSNumberLike];
+        goodTimes.text = [NSString stringWithFormat:@"%d",likeNumber];
+        
+    }];
+
 }
 //弹出列表方法presentSnsIconSheetView需要设置delegate为self
 -(BOOL)isDirectShareInIconActionSheet
