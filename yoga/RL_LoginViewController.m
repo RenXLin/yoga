@@ -30,7 +30,10 @@
     }
     return self;
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden =YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -157,7 +160,9 @@
                 
                 
                 CountCenterViewController *countCenter = [[CountCenterViewController alloc]init];
-                [self presentViewController:countCenter animated:YES completion:nil];
+                //[self presentViewController:countCenter animated:YES completion:nil];
+                
+                [self.navigationController pushViewController:countCenter animated:NO];
                 
                 
             }else{
@@ -212,7 +217,7 @@
 }
 -(void)backBtnClick
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 //-(BOOL)shouldAutorotate

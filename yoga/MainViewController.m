@@ -58,6 +58,11 @@
     UserInfo *info =[UserInfo shareUserInfo];
     _onlinePeople.text = info.onliePeople;
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -346,14 +351,18 @@
         {
             
             RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
-            [self presentViewController:login animated:YES completion:nil];
+            //[self presentViewController:login animated:YES completion:nil];
+            
+            [self.navigationController pushViewController:login animated:NO];
             
         }
             break;
         case 1:
         {
             OrderViewController *orderView = [[OrderViewController alloc]init];
-            [self presentViewController:orderView animated:YES completion:nil];
+           // [self presentViewController:orderView animated:YES completion:nil];
+            
+            [self.navigationController pushViewController:orderView animated:NO];
             
         }
             break;

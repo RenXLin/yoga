@@ -126,7 +126,9 @@
     [pageControl removeFromSuperview];
     MainViewController *mvc = [[MainViewController alloc] init];
     
-    self.window.rootViewController = mvc;
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:mvc];
+    
+    self.window.rootViewController = nav;
 
 }
 

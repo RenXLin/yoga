@@ -23,7 +23,10 @@
     }
     return self;
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden =YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -132,8 +135,8 @@
 {
     
     OrderViewController *order = [[OrderViewController alloc]init];
-    [self presentViewController:order animated:YES completion:nil];
-    
+    //[self presentViewController:order animated:YES completion:nil];
+    [self.navigationController pushViewController:order animated:NO];
 }
 
 #pragma mark 自定义导航条
@@ -163,7 +166,7 @@
 //返回
 -(void)backBtnClick:(UIButton *)btn
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 

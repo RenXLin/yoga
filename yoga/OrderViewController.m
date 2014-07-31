@@ -44,6 +44,11 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden =YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -313,7 +318,7 @@
 //返回
 -(void)backBtnClick:(UIButton *)btn
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
