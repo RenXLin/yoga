@@ -43,6 +43,7 @@
     //设置分享到QQ空间的应用Id，和分享url 链接
     [UMSocialQQHandler setQQWithAppId:@"801508461" appKey:@"298deebc09032d2e14288c81abd2b9fd" url:@"http://www.chinayogaonline.com/"];
     
+    [UMSocialWechatHandler setWXAppId:@"wx1324567867544" url:@"http://www.chinayogaonline.com/"];
     
     //设置支持没有客户端情况下使用SSO授权
     [UMSocialQQHandler setSupportWebView:YES];
@@ -161,8 +162,20 @@
     NSLog(@"1233131313131313");
 	
 	[self parse:url application:application];
-	return YES;
+//	return YES;
+    //????????
+    return  [UMSocialSnsService handleOpenURL:url];
+
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+
 
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
     

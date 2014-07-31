@@ -121,10 +121,12 @@
     [colorArray addObject:color8];
     [colorArray addObject:color9];
     
-    NSArray *titleArray = [NSArray arrayWithObjects:@"YOGA FM",@"YOGA TV",@"瑜伽好声音",@"音频点播",@"视频点播", nil];
+    NSArray *titleArray = [NSArray arrayWithObjects:@"YOGA FM",@"YOGA TV",@"瑜伽好声音",@"音频直播",@"视频直播", nil];
+    NSArray *clickArray = @[@"音频点播",@"视频点播"];
 //    NSArray *imageArray = [NSArray arrayWithObjects:@"fm.png",@"string",@"<#string#>",@"<#string#>", nil];
     CGFloat rect_width = (whiteView.frame.size.width - GAP_WITH * 4) / 3;
     int count = 0;
+    int count1 = 0;
     for (int i = 0; i < 3 ; i++) {
         
         for (int j = 0; j < 3; j++) {
@@ -147,7 +149,12 @@
             //加入名称或图标：
             if ((i * 3 + j + 1) %2 == 1) {
                 [view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30)]];
-            }else{
+            }else if((i * 3 + j + 1) == 4 || (i * 3 + j + 1) == 6){
+                [view addSubview:[self getLabelWithTitel:[clickArray objectAtIndex:count1++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30)]];
+            }else if (i*3 +j+1 == 2){
+                [view addSubview:[self getImageViewWithName:@"icon0" andFrame:view.bounds]];
+
+            } else{
                 [view addSubview:[self getImageViewWithName:@"fm" andFrame:view.bounds]];
             }
             
@@ -240,7 +247,7 @@
         RL_TVViewController *TVV = [[RL_TVViewController alloc] init];
         [self presentViewController:TVV animated:YES completion:nil];
 
-    }else if(view.tag == 7){
+    }else if(view.tag == 4){
         //音频点播
         UserInfo *info = [UserInfo shareUserInfo];
         if(info.token.length == 0)
@@ -267,13 +274,24 @@
         RL_FMViewController * AV= [[RL_FMViewController alloc] init];
         AV.FM_AV = @"瑜伽音乐";
         [self presentViewController:AV animated:YES completion:nil];
-    }else if (view.tag == 9){
-        SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
-        audioView.Title = @"视屏点播";
-        audioView.modalPresentationStyle = UIModalPresentationCustom;
-        audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:audioView animated:YES completion:nil];
-
+    }else if (view.tag == 6){
+        UserInfo *info = [UserInfo shareUserInfo];
+        if(info.token.length == 0)
+        {
+            lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
+            //lplv.delegate = self;
+            [lplv showInView:self.view animated:YES];
+            
+            [self creatBtn];
+            
+        }else
+        {
+            SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
+            audioView.Title = @"视屏点播";
+            audioView.modalPresentationStyle = UIModalPresentationCustom;
+            audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:audioView animated:YES completion:nil];
+        }
     }
     
     
