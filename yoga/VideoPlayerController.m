@@ -335,7 +335,7 @@
         _mTools.isHidden = NO;
         _mTools.hidden = NO;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             _mTools.isHidden = YES;
             _mTools.hidden = YES;
         });
@@ -395,7 +395,7 @@
     _duration  = [player getDuration];
     long second = _duration / 1000;
     
-    int hour = second / (60 * 60 * 60);
+    int hour = second / (60 * 60);
     int min = second % 3600 /60;
     int sec = second % 3600 % 60;
     
@@ -432,22 +432,19 @@
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
 {
-    static long lastDuration;
     long current = [_mPlayer getCurrentPosition];
+    NSLog(@">>>>>>>>>>%ld",current);
 //    if (current > lastDuration)
     {
-        lastDuration = current;
         float precrnt = (float)current / _duration;
         _mTools.playProgress.value = precrnt;
         NSLog(@">>>>>>>>>>%ld/%ld",current,_duration)
         long second = current / 1000;
         
-        int hour = second/(60 * 60 * 60);
+        int hour = second / (60 * 60);
         int min = second % 3600 /60;
         int sec = second % 3600 % 60;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _mTools.havePlay.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec];
-        });
+        _mTools.havePlay.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec];
         
     }
    
@@ -473,6 +470,7 @@
 	NSLog(@"seek = %ld", seek);
 	[_activityView startAnimating];
     [_mPlayer seekTo:seek];
+    [_mPlayer setPlaybackSpeed:0.5];
 }
 -(void)sliderChange:(UISlider*)slider
 {
