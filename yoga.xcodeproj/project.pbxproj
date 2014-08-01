@@ -288,6 +288,7 @@
 		3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		3AE049ED1985646C00687B52 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		3AE049EE1985646C00687B52 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		3AE04A4A198BD3D700687B52 /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PartnerConfig.h; path = yoga/PartnerConfig.h; sourceTree = "<group>"; };
 		9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlipayRsaLib.a; path = ../yoga2/yoga/AlipayRsaLib.a; sourceTree = "<group>"; };
 		9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -701,6 +702,7 @@
 		CD0DB987196DA50300C3A2A8 = {
 			isa = PBXGroup;
 			children = (
+				3AE04A4A198BD3D700687B52 /* PartnerConfig.h */,
 				9DD40710197251250061D1DE /* UIFactory.h */,
 				9DD40711197251250061D1DE /* UIFactory.m */,
 				CD4A479419702D4A00973A29 /* icon.png */,
@@ -764,7 +766,6 @@
 				9DE6B23C197E8A9F00393F93 /* SVProgressHUD.h */,
 				9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */,
 				CD8E510D1970D35900771960 /* Controllers */,
-				CD0DB9A5196DA50300C3A2A8 /* Images.xcassets */,
 				CD0DB99A196DA50300C3A2A8 /* Supporting Files */,
 			);
 			path = yoga;
@@ -1082,6 +1083,7 @@
 				CD51F4F61976D49200F9E81F /* VideoPlayerController.m */,
 				3AA9D65C19853973003068D4 /* CountCenterViewController.h */,
 				3AA9D65D19853973003068D4 /* CountCenterViewController.m */,
+				CD0DB9A5196DA50300C3A2A8 /* Images.xcassets */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

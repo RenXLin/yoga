@@ -164,19 +164,19 @@
     NSLog(@"1233131313131313");
 	
 	[self parse:url application:application];
-//	return YES;
+	return YES;
     //????????
-    return  [UMSocialSnsService handleOpenURL:url];
+    //return  [UMSocialSnsService handleOpenURL:url];
 
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-    return  [UMSocialSnsService handleOpenURL:url];
-}
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation
+//{
+//    return  [UMSocialSnsService handleOpenURL:url];
+//}
 
 
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
@@ -194,14 +194,15 @@
 			 */
             
             //交易成功
-            //            NSString* key = @"签约帐户后获取到的支付宝公钥";
-            //			id<DataVerifier> verifier;
-            //            verifier = CreateRSADataVerifier(key);
-            //
-            //			if ([verifier verifyString:result.resultString withSign:result.signString])
-            //            {
-            //                //验证签名成功，交易结果无篡改
-            //			}
+            NSString* key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
+            id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+    
+            if ([verifier verifyString:result.resultString withSign:result.signString])
+            {
+                            //验证签名成功，交易结果无篡改
+                NSLog(@"123");
+            }
             
         }
         else

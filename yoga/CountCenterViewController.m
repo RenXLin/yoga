@@ -9,6 +9,7 @@
 #import "CountCenterViewController.h"
 #import "OrderViewController.h"
 #import "AppDelegate.h"
+#import "UserInfo.h"
 @interface CountCenterViewController ()
 
 @end
@@ -34,6 +35,32 @@
     
     
     [self createUI];
+    
+    
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    UserInfo *info = [UserInfo shareUserInfo];
+    NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/createOrder?token=%@",info.token];
+    //      待加入缓冲提示：
+    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            
+            
+            
+            dataDict = [responseObject objectForKey:@"data"];
+            
+                        
+            
+        }else{
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
     
    
     
@@ -136,6 +163,8 @@
     
     OrderViewController *order = [[OrderViewController alloc]init];
     //[self presentViewController:order animated:YES completion:nil];
+    order.oid = [dataDict objectForKey:@"oid"];
+    order.price = [dataDict objectForKey:@"price"];
     [self.navigationController pushViewController:order animated:NO];
 }
 
