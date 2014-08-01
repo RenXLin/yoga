@@ -34,6 +34,15 @@
 {
     self.navigationController.navigationBarHidden =YES;
 }
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0)
+{
+    return UIInterfaceOrientationPortrait;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -217,7 +226,7 @@
 }
 -(void)backBtnClick
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //-(BOOL)shouldAutorotate

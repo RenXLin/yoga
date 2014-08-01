@@ -18,6 +18,9 @@
     UITextField *_phoneNum;
     UITextField *_verifyNum;
     UITextField *_passWord;
+    UITextField *_email;
+    UIButton *verify;
+    NSTimer *_timer;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,9 +44,16 @@
     self.view.backgroundColor = [UIColor grayColor];
     UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
     [self.view addSubview:nav];
+    nav.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     _phoneNum = [[UITextField alloc] init];
-    _phoneNum.frame = CGRectMake(10, 70, self.view.frame.size.width- 120, 50);
+    _phoneNum.frame = CGRectMake(10, 70, self.view.frame.size.width- 120, 45);
     _phoneNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _phoneNum.layer.cornerRadius = 10;
     _phoneNum.placeholder = @"请输入手机号码";
@@ -54,9 +64,16 @@
     _phoneNum.tag = 100;
     _phoneNum.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:_phoneNum];
+    _phoneNum.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
-    UIButton *verify = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    verify.frame = CGRectMake(_phoneNum.frame.size.width+20, 70, self.view.frame.size.width - 10, 50);
+    verify = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    verify.frame = CGRectMake(_phoneNum.frame.size.width+20, 70, 90, 45);
     verify.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [verify setTitle:@"获取验证码" forState:UIControlStateNormal];
     [verify setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -64,10 +81,16 @@
     verify.tag = 1;
     [verify addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:verify];
-
+    verify.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     _verifyNum = [[UITextField alloc] init];
-    _verifyNum.frame = CGRectMake(10, 130, self.view.frame.size.width - 10, 50);
+    _verifyNum.frame = CGRectMake(10, 120, self.view.frame.size.width - 10, 45);
     _verifyNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _verifyNum.layer.cornerRadius = 10;
     _verifyNum.placeholder = @"验证码";
@@ -78,9 +101,16 @@
     _verifyNum.tag = 100;
     _verifyNum.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:_verifyNum];
+    _verifyNum.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     _passWord = [[UITextField alloc] init];
-    _passWord.frame = CGRectMake(10, 190, self.view.frame.size.width - 10, 50);
+    _passWord.frame = CGRectMake(10, 170, self.view.frame.size.width - 10, 45);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _passWord.layer.cornerRadius = 10;
     _passWord.placeholder = @"请输入密码";
@@ -91,9 +121,36 @@
     _passWord.tag = 100;
     _passWord.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:_passWord];
-
+    _passWord.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
+    _email = [[UITextField alloc] init];
+    _email.frame = CGRectMake(10, 220, self.view.frame.size.width - 10, 45);
+    _email.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
+    _email.layer.cornerRadius = 10;
+    _email.placeholder = @"请输入Email";
+    _email.clearButtonMode = UITextFieldViewModeAlways;
+    _email.textColor = [UIColor redColor];
+    _email.backgroundColor = [UIColor whiteColor];
+    _email.delegate = self;
+    _email.tag = 100;
+    _email.returnKeyType = UIReturnKeyDone;
+    [self.view addSubview:_email];
+    _email.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+    
     UIButton *assign = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    assign.frame = CGRectMake(10, 250, self.view.frame.size.width - 20, 50);
+    assign.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
     assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
     [assign setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -101,7 +158,13 @@
     assign.tag = 2;
     [assign addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:assign];
-    
+    assign.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
 }
 
@@ -126,28 +189,39 @@
     NSLog(@"click %@",btn);
     if (btn.tag == 1) {
         //获取验证码：
-        AFHTTPRequestOperationManager *regsieMg = [AFHTTPRequestOperationManager manager];
-        regsieMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        [regsieMg GET:[NSString stringWithFormat:@"%@%@",GETVERTIFY_URL,_phoneNum.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"success:\n%@",[responseObject objectForKey:@"msg"]);
-            if ([[responseObject objectForKey:@"msg"] isEqualToString:@"ok"]) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码已发送" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            }else{
-                NSString *message = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]];
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Failed:%@",error);
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        }];
+        if (_timer == nil) {
+            _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
+            btn.alpha = 0.5;
+
+//            AFHTTPRequestOperationManager *regsieMg = [AFHTTPRequestOperationManager manager];
+//            regsieMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//            [regsieMg GET:[NSString stringWithFormat:@"%@%@",GETVERTIFY_URL,_phoneNum.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                NSLog(@"success:\n%@",[responseObject objectForKey:@"msg"]);
+//                if ([[responseObject objectForKey:@"msg"] isEqualToString:@"ok"]) {
+//                    
+//                    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
+//                    btn.alpha = 0.5;
+//                    
+//                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码已发送" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                    [alert show];
+//                }else{
+//                    NSString *message = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]];
+//                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                    [alert show];
+//                }
+//            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                NSLog(@"Failed:%@",error);
+//                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                [alert show];
+//            }];
+        }
     }else if(btn.tag == 2){
         //注册
         AFHTTPRequestOperationManager *registM = [AFHTTPRequestOperationManager manager];
         NSDictionary *paramterDic = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum.text,@"mobile",
-                                     _passWord.text,@"password",_verifyNum.text,@"code", nil];
+                                     _passWord.text,@"password",
+                                     _verifyNum.text,@"code",
+                                     _email.text,@"email",nil];
         registM.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         [registM POST:REGIST_URL parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"success:\n%@",responseObject);
@@ -167,6 +241,20 @@
     }
     
 }
+-(void)timerTick
+{
+    static int second = 60;
+    [verify setTitle:[NSString stringWithFormat:@"%d", --second ] forState:UIControlStateNormal];
+    if (second == 0) {
+        second = 60;
+        [verify setTitle:@"发送验证码" forState:UIControlStateNormal];
+        [_timer invalidate];
+        _timer = nil;
+        verify.alpha = 1;
+        verify.selected = NO;
+    }
+}
+
 -(UIView *)myNavgationBar:(CGRect)rect andTitle:(NSString *)tit
 {
     UIView *view = [[UIView alloc] initWithFrame:rect];
