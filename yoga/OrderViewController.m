@@ -186,7 +186,7 @@
     if(info.token.length == 0)
     {
         RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
-        [self presentViewController:login animated:YES completion:nil];
+        [self.navigationController pushViewController:login animated:YES];
     }else
     {
         
@@ -215,8 +215,8 @@
  *产生商品列表数据
  */
 - (void)generateData{
-	NSArray *subjects = [[NSArray alloc] initWithObjects:@"话费充值",nil];
-	NSArray *body = [[NSArray alloc] initWithObjects:@"[四钻信誉]北京移动30元 电脑全自动充值 1到10分钟内到账",
+	NSArray *subjects = [[NSArray alloc] initWithObjects:@"魔方会员",nil];
+	NSArray *body = [[NSArray alloc] initWithObjects:@"瑜伽魔方",
 					 nil];
 	
 	_products = [[NSMutableArray alloc] init];
@@ -226,7 +226,7 @@
 		product.subject = [subjects objectAtIndex:i];
 		product.body = [body objectAtIndex:i];
 		if (0==i) {
-			product.price = 0.01;
+			product.price = [self.price floatValue];
 		}
 				
 		[_products addObject:product];
@@ -255,16 +255,16 @@
 	order.productName = product.subject; //商品标题
 	order.productDescription = product.body; //商品描述
 	order.amount = [NSString stringWithFormat:@"%.2f",product.price]; //商品价格
-	order.notifyURL =  @"http%3A%2F%2Fwwww.xxx.com"; //回调URL
+	order.notifyURL =  @"http://www.chinayogaonline.com/api/notify_url"; //回调URL
 	
 	return [order description];
 }
 
 - (NSString *)generateTradeNO
 {
-	const int N = 15;
+	const int N = 10;
 	
-	NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	NSString *sourceString = @"0123456789";
 	NSMutableString *result = [[NSMutableString alloc] init] ;
 	srand(time(0));
 	for (int i = 0; i < N; i++)
@@ -273,7 +273,24 @@
 		NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
 		[result appendString:s];
 	}
-	return result;
+    
+    
+    const int M = 4;
+	
+	NSString *sourceString1 = @"0123456789";
+	NSMutableString *result1 = [[NSMutableString alloc] init] ;
+	srand(time(0));
+	for (int i = 0; i < M; i++)
+	{
+		unsigned index = rand() % [sourceString1 length];
+		NSString *s = [sourceString1 substringWithRange:NSMakeRange(index, 1)];
+		[result1 appendString:s];
+	}
+
+    
+    
+    
+    	return [NSString stringWithFormat:@"%@-%@-%@",self.oid,result,result1];
 }
 
 -(NSString*)doRsa:(NSString*)orderInfo

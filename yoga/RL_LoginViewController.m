@@ -171,7 +171,7 @@
                 CountCenterViewController *countCenter = [[CountCenterViewController alloc]init];
                 //[self presentViewController:countCenter animated:YES completion:nil];
                 
-                [self.navigationController pushViewController:countCenter animated:NO];
+                [self presentViewController:countCenter animated:YES completion:nil];
                 
                 
             }else{
