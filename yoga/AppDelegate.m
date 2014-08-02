@@ -169,20 +169,10 @@
     //return  [UMSocialSnsService handleOpenURL:url];
 
 }
-
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     return  [UMSocialSnsService handleOpenURL:url];
 }
-
-//- (BOOL)application:(UIApplication *)application
-//            openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//         annotation:(id)annotation
-//{
-//    return  [UMSocialSnsService handleOpenURL:url];
-//}
-
 
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
     
