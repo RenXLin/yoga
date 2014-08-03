@@ -389,7 +389,7 @@
 -(void)loginBtnClick
 {
     RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
-    [self presentViewController:login animated:YES completion:nil];
+    [self.navigationController pushViewController:login animated:YES];
 }
 //设置：
 -(void)SettingBtnClick

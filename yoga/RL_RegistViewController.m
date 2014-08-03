@@ -278,7 +278,7 @@
 }
 -(void)backBtnClick
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

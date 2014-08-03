@@ -183,7 +183,7 @@
         }];
     }else if(btn.tag == 1){
         RL_RegistViewController *rvc =[[RL_RegistViewController alloc] init];
-        [self presentViewController:rvc animated:YES completion:nil];
+        [self.navigationController pushViewController:rvc animated:YES];
     }
     
 }
@@ -225,7 +225,7 @@
 }
 -(void)backBtnClick
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //-(BOOL)shouldAutorotate

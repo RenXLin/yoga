@@ -335,7 +335,7 @@
 //返回
 -(void)backBtnClick:(UIButton *)btn
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
