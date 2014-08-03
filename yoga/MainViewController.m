@@ -83,6 +83,7 @@
     //标题
     UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 20, 100, 30)];
     label.text = @"瑜伽魔方";
+    label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:20];
     [self.view addSubview:label];
