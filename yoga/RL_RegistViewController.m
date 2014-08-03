@@ -58,7 +58,7 @@
     _phoneNum.layer.cornerRadius = 10;
     _phoneNum.placeholder = @"请输入手机号码";
     _phoneNum.clearButtonMode = UITextFieldViewModeAlways;
-    _phoneNum.textColor = [UIColor redColor];
+    _phoneNum.textColor = [UIColor blackColor];
     _phoneNum.backgroundColor = [UIColor whiteColor];
     _phoneNum.delegate = self;
     _phoneNum.tag = 100;
@@ -95,7 +95,7 @@
     _verifyNum.layer.cornerRadius = 10;
     _verifyNum.placeholder = @"验证码";
     _verifyNum.clearButtonMode = UITextFieldViewModeAlways;
-    _verifyNum.textColor = [UIColor redColor];
+    _verifyNum.textColor = [UIColor blackColor];
     _verifyNum.backgroundColor = [UIColor whiteColor];
     _verifyNum.delegate = self;
     _verifyNum.tag = 100;
@@ -115,7 +115,8 @@
     _passWord.layer.cornerRadius = 10;
     _passWord.placeholder = @"请输入密码";
     _passWord.clearButtonMode = UITextFieldViewModeAlways;
-    _passWord.textColor = [UIColor redColor];
+    _passWord.textColor = [UIColor blackColor];
+    _passWord.secureTextEntry = YES;
     _passWord.backgroundColor = [UIColor whiteColor];
     _passWord.delegate = self;
     _passWord.tag = 100;
@@ -135,7 +136,7 @@
     _email.layer.cornerRadius = 10;
     _email.placeholder = @"请输入Email";
     _email.clearButtonMode = UITextFieldViewModeAlways;
-    _email.textColor = [UIColor redColor];
+    _email.textColor = [UIColor blackColor];
     _email.backgroundColor = [UIColor whiteColor];
     _email.delegate = self;
     _email.tag = 100;

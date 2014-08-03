@@ -62,7 +62,7 @@
     _account.placeholder = @"please input your account";
     _account.text = @"15529403212";
     _account.clearButtonMode = UITextFieldViewModeAlways;
-    _account.textColor = [UIColor redColor];
+    _account.textColor = [UIColor blackColor];
     _account.backgroundColor = [UIColor whiteColor];
     _account.delegate = self;
     _account.tag = 100;
@@ -83,7 +83,7 @@
     _passWord.text = @"12345678";
     _passWord.placeholder = @"please input your text";
     _passWord.clearButtonMode = UITextFieldViewModeAlways;
-    _passWord.textColor = [UIColor redColor];
+    _passWord.textColor = [UIColor blackColor];
     _passWord.backgroundColor = [UIColor whiteColor];
     _passWord.delegate = self;
     _passWord.secureTextEntry = YES;

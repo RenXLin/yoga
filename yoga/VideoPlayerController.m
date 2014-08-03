@@ -489,6 +489,7 @@
             self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
 
             if (isFullScreen == NO) {
+                
                 isFullScreen = YES;
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
 
@@ -496,9 +497,6 @@
                 [_scrollView removeFromSuperview];
                 _TVPlayView.frame = self.view.bounds;
                 [self.view addSubview:_TVPlayView];
-                
-                
-                
 
             }else{
                 isFullScreen = NO;
@@ -517,12 +515,14 @@
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
                 [_TVPlayView removeFromSuperview];
                 [_scrollView removeFromSuperview];
-                _TVPlayView.frame = self.view.bounds;
+                _TVPlayView.frame = [UIScreen mainScreen].bounds;
+//                _TVPlayView.transform = CGAffineTransformMakeRotation(-M_PI_2);
                 [self.view addSubview:_TVPlayView];
                 
             }else{
                 NSLog(@"非全屏播放");
                 isFullScreen = NO;
+                
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
                 [_TVPlayView removeFromSuperview];
                 _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
