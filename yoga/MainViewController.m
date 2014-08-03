@@ -353,7 +353,7 @@
             RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
             //[self presentViewController:login animated:YES completion:nil];
             
-            [self presentViewController:login animated:YES completion:nil];
+            [self.navigationController pushViewController:login animated:YES];
             
         }
             break;
@@ -362,7 +362,7 @@
             OrderViewController *orderView = [[OrderViewController alloc]init];
            // [self presentViewController:orderView animated:YES completion:nil];
             
-            [self presentViewController:orderView animated:YES completion:nil];
+            [self.navigationController pushViewController:orderView animated:YES];
             
         }
             break;

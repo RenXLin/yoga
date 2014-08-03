@@ -190,7 +190,7 @@
 //返回
 -(void)backBtnClick:(UIButton *)btn
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
