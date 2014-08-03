@@ -190,30 +190,29 @@
     if (btn.tag == 1) {
         //获取验证码：
         if (_timer == nil) {
-            _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
-            btn.alpha = 0.5;
 
-//            AFHTTPRequestOperationManager *regsieMg = [AFHTTPRequestOperationManager manager];
-//            regsieMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-//            [regsieMg GET:[NSString stringWithFormat:@"%@%@",GETVERTIFY_URL,_phoneNum.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                NSLog(@"success:\n%@",[responseObject objectForKey:@"msg"]);
-//                if ([[responseObject objectForKey:@"msg"] isEqualToString:@"ok"]) {
-//                    
-//                    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
-//                    btn.alpha = 0.5;
-//                    
-//                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码已发送" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//                    [alert show];
-//                }else{
-//                    NSString *message = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]];
-//                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//                    [alert show];
-//                }
-//            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                NSLog(@"Failed:%@",error);
-//                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//                [alert show];
-//            }];
+            AFHTTPRequestOperationManager *regsieMg = [AFHTTPRequestOperationManager manager];
+            regsieMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+            [regsieMg GET:[NSString stringWithFormat:@"%@%@",GETVERTIFY_URL,_phoneNum.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"success:\n%@",[responseObject objectForKey:@"msg"]);
+                if ([[responseObject objectForKey:@"msg"] isEqualToString:@"ok"]) {
+                    
+                    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
+                    btn.alpha = 0.5;
+                    btn.userInteractionEnabled = NO;
+                    
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码已发送" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alert show];
+                }else{
+                    NSString *message = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Failed:%@",error);
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }];
         }
     }else if(btn.tag == 2){
         //注册
@@ -244,11 +243,12 @@
 -(void)timerTick
 {
     static int second = 60;
-    [verify setTitle:[NSString stringWithFormat:@"%d", --second ] forState:UIControlStateNormal];
+    [verify setTitle:[NSString stringWithFormat:@"重新获取(%d)", --second ] forState:UIControlStateNormal];
     if (second == 0) {
         second = 60;
         [verify setTitle:@"发送验证码" forState:UIControlStateNormal];
         [_timer invalidate];
+        verify.userInteractionEnabled = YES;
         _timer = nil;
         verify.alpha = 1;
         verify.selected = NO;

@@ -496,6 +496,9 @@
                 [_scrollView removeFromSuperview];
                 _TVPlayView.frame = self.view.bounds;
                 [self.view addSubview:_TVPlayView];
+                
+                
+                
 
             }else{
                 isFullScreen = NO;
