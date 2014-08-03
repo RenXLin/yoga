@@ -100,7 +100,7 @@
     
     //btn 注册
     UIButton *assign = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    assign.frame = CGRectMake(10, 200, 150, 50);
+    assign.frame = CGRectMake(10, 200, 140, 50);
     assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
     [assign setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -118,7 +118,7 @@
     
     //btn 登陆
     UIButton *login_btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    login_btn.frame = CGRectMake(self.view.frame.size.width - 150, 200, 150, 50);
+    login_btn.frame = CGRectMake(self.view.frame.size.width - 150, 200, 140, 50);
     login_btn.backgroundColor = [UIColor greenColor];
     [login_btn setTitle:@"登陆" forState:UIControlStateNormal];
     [login_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
