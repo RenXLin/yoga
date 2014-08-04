@@ -77,7 +77,10 @@
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * [UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
             NSLog(@"%@",[UIDevice currentDevice].model);
             if ([[UIDevice currentDevice].model rangeOfString:@"iPhone"].location != NSNotFound) {
-                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
+                if (MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height) < 500) {
+                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start%d_320x480.png",i+1]];
+                }else
+                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
             }else if([[UIDevice currentDevice].model rangeOfString:@"iPad"].location != NSNotFound){
                 imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPad%d.jpg",i+1]];
             }
@@ -86,6 +89,7 @@
             if (i == 2) {
                 UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                 btn.frame = CGRectMake(imageView.frame.size.width/2 - 50, imageView.frame.size.height / 4 + 20, 100, 30);
+                
                 [btn setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"c_bg1" ofType:@"png"]] forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(StartBtnClick) forControlEvents:UIControlEventTouchUpInside];
                 [btn setTitle:@"开始" forState:UIControlStateNormal];
