@@ -282,18 +282,26 @@
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         _ad.text = _programMode.ad;
-        
-        NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
-        NSLog(@"%@",pathUrl);
-        pathUrl = [self removeSpace:pathUrl];
-       
-        if (!_mMpayer && pathUrl) {
-            _mMpayer = [VMediaPlayer sharedInstance];
-            [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
-            [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
-            [_mMpayer prepareAsync];
+        if ([[responseObject objectForKey:@"data"] count] > 0) {
+            NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
+            NSLog(@"%@",pathUrl);
+            pathUrl = [self removeSpace:pathUrl];
+            
+            if (!_mMpayer && pathUrl) {
+                _mMpayer = [VMediaPlayer sharedInstance];
+                [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
+                [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
+                [_mMpayer prepareAsync];
+            }
+
+        }else{
+            [SVProgressHUD showWithStatus:@"当前无TV"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed:%@",error);
         
     }];

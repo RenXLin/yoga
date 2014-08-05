@@ -13,7 +13,7 @@
 #import "UMSocial.h"
 #import "OneDayProgram.h"
 #import "OneDayProgramCell.h"
-
+#import "SVProgressHUD.h"
 
 @interface RL_TVViewController ()
 {
@@ -224,15 +224,23 @@
         NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
-        _ad.text = _programMode.ad;
-        NSString *urlStr = [self removeSpace:_programMode.path];
-        //加入FM播放器：
-        if (!_mMpayer && urlStr) {
-            _mMpayer = [VMediaPlayer sharedInstance];
-            [_mMpayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
-            [_mMpayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
-            [_mMpayer prepareAsync];
+        if ([[responseObject objectForKey:@"data"] count] > 0) {
+            _ad.text = _programMode.ad;
+            NSString *urlStr = [self removeSpace:_programMode.path];
+            //加入FM播放器：
+            if (!_mMpayer && urlStr) {
+                _mMpayer = [VMediaPlayer sharedInstance];
+                [_mMpayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
+                [_mMpayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
+                [_mMpayer prepareAsync];
+            }
+        }else{
+            [SVProgressHUD showWithStatus:@"当前无TV"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
         }
+       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed:%@",error);
         
