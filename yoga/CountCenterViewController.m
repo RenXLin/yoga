@@ -80,7 +80,7 @@
     
     //bgimgview1
     UIImageView *bgImgView1 = [[UIImageView alloc]init];
-    bgImgView1.frame = CGRectMake(0,nav.frame.size.height + 20, KscreenWidth, 130);
+    bgImgView1.frame = CGRectMake(10,nav.frame.size.height + 20, KscreenWidth-20, 130);
     bgImgView1.image = [UIImage imageNamed:@""];
     bgImgView1.backgroundColor = [UIColor colorWithRed:240/250.0f green:240/250.0f blue:240/250.0f alpha:0.3];
     [bgImgView addSubview:bgImgView1];
@@ -118,14 +118,17 @@
     
     //button
     UIButton *btn = [[UIButton alloc]init];
-    
+    //退出登录
+    UIButton *btn1 = [[UIButton alloc]init];
     if(KscreenHeight == 568 || KscreenHeight == 480)
     {
         
-        btn.frame = CGRectMake(0, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+30, KscreenWidth, 50);
+        btn.frame = CGRectMake(10, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+20, KscreenWidth-20, 50);
+        btn1.frame = CGRectMake(10, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+20+btn.frame.size.height+20, KscreenWidth-20, 50);
     }else
     {
-        btn.frame = CGRectMake(0, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+30, KscreenWidth, 80);
+        btn.frame = CGRectMake(10, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+20, KscreenWidth-20, 80);
+        btn1.frame = CGRectMake(10, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+20+btn.frame.size.height+20, KscreenWidth-20, 80);
     }
     
     

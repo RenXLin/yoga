@@ -47,6 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden =YES;
+    
 }
 
 - (void)viewDidLoad
@@ -56,7 +57,10 @@
     [self request];
     
     
-    
+    if([[UIDevice currentDevice].systemVersion doubleValue]>7)
+    {
+        
+    }
    
     _result = @selector(paymentResult:);
     [self generateData];
