@@ -606,7 +606,7 @@
     int endSec = endleng % 60;
     
     
-    cell.label_Time.text = [NSString stringWithFormat:@"%@-%02d:%02d:%02d",program.starttime,endHour,endMin,endSec];
+    cell.label_Time.text = [NSString stringWithFormat:@"%@-%02d:%02d:%02d",program.starttime,endHour <= 24 ? endHour:endHour - 24,endMin,endSec];
     cell.label_Title.text = program.title;
     
     return cell;
