@@ -127,7 +127,7 @@
     [colorArray addObject:color8];
     [colorArray addObject:color9];
     
-    NSArray *titleArray = [NSArray arrayWithObjects:@"YOGA FM",@"YOGA TV",@"瑜伽好声音",@"音频直播",@"视频直播", nil];
+    NSArray *titleArray = [NSArray arrayWithObjects:@"瑜伽FM",@"瑜伽TV",@"瑜伽好声音",@"音频直播",@"视频直播", nil];
     NSArray *clickArray = @[@"音频点播",@"视频点播"];
 //    NSArray *imageArray = [NSArray arrayWithObjects:@"fm.png",@"string",@"<#string#>",@"<#string#>", nil];
     CGFloat rect_width = (whiteView.frame.size.width - GAP_WITH * 4) / 3;
@@ -161,7 +161,7 @@
                 [view addSubview:[self getImageViewWithName:@"222" andFrame:view.bounds]];
 
             } else{
-                [view addSubview:[self getImageViewWithName:@"fm" andFrame:view.bounds]];
+                [view addSubview:[self getImageViewWithName:@"fm1" andFrame:view.bounds]];
             }
             
         }
@@ -212,7 +212,7 @@
     
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, loginView.frame.origin.y, 40, 40);
+    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, loginView.frame.origin.y - 2, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:settingView];

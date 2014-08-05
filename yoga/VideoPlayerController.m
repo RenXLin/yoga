@@ -141,7 +141,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:self.titleName];
     [_scrollView addSubview:nav];
     nav.autoresizingMask=
     UIViewAutoresizingFlexibleBottomMargin |
@@ -204,9 +204,10 @@
     UIViewAutoresizingFlexibleWidth;
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height + 40, self.view.frame.size.width, 30)];
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height + 10, self.view.frame.size.width, 30)];
     
-    titleLabel.text = @"瑜伽视频";
+    titleLabel.text = self.titleName;
+    titleLabel.font = [UIFont systemFontOfSize:14];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -219,8 +220,8 @@
 //    UIViewAutoresizingFlexibleWidth;
     
     //加入imageView
-    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
-    imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"]];
+    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 100, 100)];
+    imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"333" ofType:@"png"]];
     [_scrollView addSubview:imageV];
 //    imageV.autoresizingMask =  UIViewAutoresizingFlexibleBottomMargin |
 //    UIViewAutoresizingFlexibleTopMargin |
@@ -231,7 +232,7 @@
     
     
     //加入当前节目label 走马灯显示
-    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
+    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height + 5, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
     _ad.numberOfLines = 1;
     _ad.opaque = NO;
     _ad.enabled = YES;
@@ -239,7 +240,7 @@
     _ad.textAlignment = NSTextAlignmentCenter;
     _ad.textColor = [UIColor whiteColor];
     _ad.backgroundColor = [UIColor clearColor];
-    _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
+    _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.500];
     _ad.text = self.itemMode.ad;
     [_scrollView addSubview:_ad];
 //    _ad.autoresizingMask =
@@ -251,7 +252,7 @@
 //    UIViewAutoresizingFlexibleWidth;
     
     // logoView
-    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height , 150, 45)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [_scrollView addSubview:logoView];
 //    logoView.autoresizingMask =
@@ -264,7 +265,7 @@
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 5, 40, 40);
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:loginView];
@@ -284,6 +285,7 @@
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
+    [_scrollView addSubview:_onlinePeople];
 //    _onlinePeople.autoresizingMask =
 //    UIViewAutoresizingFlexibleBottomMargin |
 //    UIViewAutoresizingFlexibleTopMargin |
@@ -295,7 +297,7 @@
     
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 3, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:settingView];
@@ -617,7 +619,7 @@
     
     //分享：
     UIButton *share = [UIButton buttonWithType:UIButtonTypeCustom];
-    share.frame = CGRectMake(view.frame.size.width - 30, 2, 35, view.frame.size.height-4);
+    share.frame = CGRectMake(view.frame.size.width - 40, 2, 35, view.frame.size.height-4);
     [share setImage:[UIImage imageNamed:@"title_icon1.png"] forState:UIControlStateNormal];
     [share addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     share.tag = 1;
@@ -626,7 +628,7 @@
     
     //好评数
    goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
-    
+    goodTimes.textAlignment = NSTextAlignmentCenter;
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];
