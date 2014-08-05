@@ -169,7 +169,7 @@
     }
     
     // logoView
-    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, whiteView.frame.origin.y +whiteView.frame.size.height + 20, 150, 40)];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, whiteView.frame.origin.y +whiteView.frame.size.height + 20, 150, 45)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [self.view addSubview:logoView];
     logoView.autoresizingMask=
