@@ -75,8 +75,8 @@
 //参数：mobile（手机号）
 
 //当前正要播放的FM
-//#define  CURRENTPLAYFM_URL   @"http://www.chinayogaonline.com/api/getCurrentFM"
-#define  CURRENTPLAYFM_URL   @"http://www.chinayogaonline.com/api/getTestFm"
+#define  CURRENTPLAYFM_URL   @"http://www.chinayogaonline.com/api/getCurrentFM"
+//#define  CURRENTPLAYFM_URL   @"http://www.chinayogaonline.com/api/getTestFm"
 //参数：无
 
 
