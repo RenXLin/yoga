@@ -438,7 +438,7 @@
     {
         float precrnt = (float)current / _duration;
         _mTools.playProgress.value = precrnt;
-        NSLog(@">>>>>>>>>>%ld/%ld",current,_duration)
+       
         long second = current / 1000;
         
         int hour = second / (60 * 60);
