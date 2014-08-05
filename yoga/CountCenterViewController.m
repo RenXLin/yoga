@@ -131,33 +131,56 @@
         btn1.frame = CGRectMake(10, bgImgView1.frame.origin.y+bgImgView1.frame.size.height+20+btn.frame.size.height+20, KscreenWidth-20, 80);
     }
     
+    [btn setTitle:@"升级魔方会员" forState:UIControlStateNormal];
+    
+    [btn1 setTitle:@"退出登录" forState:UIControlStateNormal];
     
     
-    UserInfo *info = [UserInfo shareUserInfo];
-    if(info.token.length == 0)
-    {
-        [btn setTitle:@"尚未登录，请先登录" forState:UIControlStateNormal];
-    }else
-    {
-        [btn setTitle:@"升级魔方会员" forState:UIControlStateNormal];
-    }
     
-    [btn addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [btn addTarget:self action:@selector(pay:) forControlEvents:UIControlEventTouchUpInside];
     [btn setBackgroundImage:[UIImage imageNamed:@"btnblue3.png"] forState:UIControlStateNormal];
+    
+    [btn1 addTarget:self action:@selector(pay:) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 setBackgroundImage:[UIImage imageNamed:@"btnblue3.png"] forState:UIControlStateNormal];
     [bgImgView addSubview:btn];
+    [bgImgView addSubview:btn1];
+    
+    btn.tag = 1231;
+    btn1.tag = 1232;
+
     
 
     
 }
 //支付
-- (void)pay
+- (void)pay:(UIButton *)btn
 {
     
-    OrderViewController *order = [[OrderViewController alloc]init];
-    //[self presentViewController:order animated:YES completion:nil];
-    order.oid = [dataDict objectForKey:@"oid"];
-    order.price = [dataDict objectForKey:@"price"];
-    [self.navigationController pushViewController:order animated:YES];
+    switch (btn.tag-1231) {
+        case 0:
+        {
+            OrderViewController *order = [[OrderViewController alloc]init];
+            //[self presentViewController:order animated:YES completion:nil];
+            order.oid = [dataDict objectForKey:@"oid"];
+            order.price = [dataDict objectForKey:@"price"];
+            [self.navigationController pushViewController:order animated:YES];
+            
+        }
+            break;
+        case 1:
+        {
+            UserInfo *info = [UserInfo shareUserInfo];
+            info.token = @"";
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 #pragma mark 自定义导航条

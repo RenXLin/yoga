@@ -17,6 +17,7 @@
 #import "SC_popView.h"
 
 #import "OrderViewController.h"
+#import "CountCenterViewController.h"
 //#import "OrderViewController.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -386,8 +387,18 @@
 //登陆：
 -(void)loginBtnClick
 {
-    RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
-    [self.navigationController pushViewController:login animated:YES];
+     UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length!=0)
+    {
+        CountCenterViewController *count = [[CountCenterViewController alloc]init];
+        [self.navigationController pushViewController:count animated:YES];
+    }else
+    {
+        RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
+        [self.navigationController pushViewController:login animated:YES];
+        
+    }
+    
 }
 //设置：
 -(void)SettingBtnClick
