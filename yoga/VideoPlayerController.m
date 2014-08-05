@@ -13,6 +13,11 @@
 #import "MedioPlayTool.h"
 #import "UMSocial.h"
 
+
+
+#define GAP_WITH    2.5
+
+
 @interface VideoPlayerController ()
 {
     UIScrollView *_scrollView;
@@ -82,7 +87,7 @@
 	} else {
         isFullScreen = NO;
         [_TVPlayView removeFromSuperview];
-        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
         [_scrollView addSubview:_TVPlayView];
         [self.view addSubview:_scrollView];
         [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
@@ -158,7 +163,7 @@
     _carryView_portrait.autoresizesSubviews = YES;
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4)];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width)];
     _TVPlayView.backgroundColor = [UIColor clearColor];
     _TVPlayView.userInteractionEnabled = YES;
     _TVPlayView.autoresizesSubviews = YES;
@@ -191,6 +196,49 @@
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
     doubleTap.numberOfTapsRequired = 2;
     [_TVPlayView addGestureRecognizer:doubleTap];
+    
+    if ([self.titleName isEqualToString:@"音频点播"]) {
+        
+        NSMutableArray *colorArray =[[NSMutableArray alloc] init];
+        UIColor *color1 = [UIColor colorWithRed:0.09f green:0.70f blue:0.91f alpha:1.00f];
+        UIColor *color2 = [UIColor colorWithRed:0.56f green:0.56f blue:0.56f alpha:1.00f];
+        UIColor *color3 = [UIColor colorWithRed:0.53f green:0.45f blue:0.69f alpha:1.00f];
+        UIColor *color4 = [UIColor colorWithRed:0.98f green:0.56f blue:0.17f alpha:1.00f];
+        UIColor *color5 = [UIColor colorWithRed:0.98f green:0.88f blue:0.56f alpha:1.00f];
+        UIColor *color6 = [UIColor colorWithRed:0.23f green:0.55f blue:0.38f alpha:1.00f];
+        UIColor *color7 = [UIColor colorWithRed:0.53f green:0.45f blue:0.69f alpha:1.00f];
+        UIColor *color8 = [UIColor colorWithRed:0.56f green:0.56f blue:0.56f alpha:1.00f];
+        UIColor *color9 = [UIColor colorWithRed:0.09f green:0.70f blue:0.91f alpha:1.00f];
+        [colorArray addObject:color1];
+        [colorArray addObject:color2];
+        [colorArray addObject:color3];
+        [colorArray addObject:color4];
+        [colorArray addObject:color5];
+        [colorArray addObject:color6];
+        [colorArray addObject:color7];
+        [colorArray addObject:color8];
+        [colorArray addObject:color9];
+        
+        CGFloat rect_width = (_TVPlayView.frame.size.width - GAP_WITH * 4 ) / 3;
+        for (int i = 0; i < 3 ; i++) {
+            
+            for (int j = 0; j < 3; j++) {
+                UIView *view = [[UIView alloc] initWithFrame:CGRectMake(GAP_WITH *(j + 1) + (j) * rect_width, GAP_WITH *(i + 1) + i * rect_width , rect_width, rect_width)];
+                view.tag = i * 3 + j+1; //(1 2...9)
+                view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
+                view.contentMode = UIViewContentModeScaleToFill;
+                [_TVPlayView addSubview:view];
+                
+                view.autoresizingMask =
+                UIViewAutoresizingFlexibleLeftMargin |
+                UIViewAutoresizingFlexibleRightMargin |
+                UIViewAutoresizingFlexibleWidth;
+                
+            }
+        }
+    }
+    
+    
     //添加工具条：
     _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width, 60)];
     [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
@@ -221,7 +269,13 @@
     
     //加入imageView
     UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 100, 100)];
-    imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"333" ofType:@"png"]];
+    if ([self.titleName isEqualToString:@"音频点播"]) {
+        imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fm" ofType:@"png"]];
+        imageV.frame = CGRectMake((self.view.frame.size.width - 80 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 80, 80);
+        
+    }else{
+        imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"333" ofType:@"png"]];
+    }
     [_scrollView addSubview:imageV];
 //    imageV.autoresizingMask =  UIViewAutoresizingFlexibleBottomMargin |
 //    UIViewAutoresizingFlexibleTopMargin |
@@ -363,7 +417,7 @@
             isFullScreen = NO;
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
             [_TVPlayView removeFromSuperview];
-            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
             [_scrollView addSubview:_TVPlayView];
             [self.view addSubview:_scrollView];
         }
@@ -384,7 +438,7 @@
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
             
             [_TVPlayView removeFromSuperview];
-            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
             [_scrollView addSubview:_TVPlayView];
             [self.view addSubview:_scrollView];
             
@@ -637,7 +691,7 @@
     goodTimes.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
 
     //点赞
-    UIButton *good = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *good = [UIButton buttonWithType:UIButtonTypeCustom];
     good.frame = CGRectMake(view.frame.size.width - goodTimes.frame.size.width - share.frame.size.width - 35, 0, 35, view.frame.size.height);
     [good setImage:[UIImage imageNamed:@"title_icon2.png"] forState:UIControlStateNormal];
     [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateHighlighted];

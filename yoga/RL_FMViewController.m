@@ -441,10 +441,10 @@
     UIViewAutoresizingFlexibleWidth;
     
     //点赞
-    UIButton *good = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *good = [UIButton buttonWithType:UIButtonTypeCustom];
     good.frame = CGRectMake(view.frame.size.width - goodTimes.frame.size.width - share.frame.size.width - 35, 0, 35, view.frame.size.height);
     [good setImage:[UIImage imageNamed:@"title_icon2.png"] forState:UIControlStateNormal];
-    [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateHighlighted];
+    [good setImage:[UIImage imageNamed:@"title_icon2_1.png"] forState:UIControlStateSelected];
     [view addSubview:good];
     good.tag = 2;
     [good addTarget:self action:@selector(TitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
