@@ -154,6 +154,8 @@
 		CD0DBAA3196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA32196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png */; };
 		CD0DBAA4196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA33196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg */; };
 		CD0DBAA5196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */; };
+		CD2D3F1419911F19002D6ADF /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F1319911F19002D6ADF /* 222.png */; };
+		CD2D3F161991203E002D6ADF /* 333.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F151991203E002D6ADF /* 333.png */; };
 		CD31ECD81984F6D500A208E0 /* RL_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3C48B41975676300AAEAB8 /* RL_LoginViewController.m */; };
 		CD31ECF21985091D00A208E0 /* RL_TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5118197147A700771960 /* RL_TVViewController.m */; };
 		CD31ED0319850BBB00A208E0 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD31ECF419850BBB00A208E0 /* CHANGELOG.md */; };
@@ -423,6 +425,8 @@
 		CD0DBA32196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_80x80.png"; sourceTree = "<group>"; };
 		CD0DBA33196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_90x90.jpg"; sourceTree = "<group>"; };
 		CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_90x90.png"; sourceTree = "<group>"; };
+		CD2D3F1319911F19002D6ADF /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
+		CD2D3F151991203E002D6ADF /* 333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333.png; sourceTree = "<group>"; };
 		CD31ECF419850BBB00A208E0 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		CD31ECF719850BBB00A208E0 /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
 		CD31ECF819850BBB00A208E0 /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
@@ -797,6 +801,8 @@
 		CD0DB9C2196DA52200C3A2A8 /* 切图 */ = {
 			isa = PBXGroup;
 			children = (
+				CD2D3F151991203E002D6ADF /* 333.png */,
+				CD2D3F1319911F19002D6ADF /* 222.png */,
 				CD0DB9C3196DA52200C3A2A8 /* a.png */,
 				CD0DB9C4196DA52200C3A2A8 /* a1.png */,
 				CD0DB9C5196DA52200C3A2A8 /* bg.png */,
@@ -1253,6 +1259,7 @@
 				CD0DBA84196DA52200C3A2A8 /* video_title.png in Resources */,
 				CD0DBA67196DA52200C3A2A8 /* title_icon1_1.png in Resources */,
 				CD0DB99E196DA50300C3A2A8 /* InfoPlist.strings in Resources */,
+				CD2D3F1419911F19002D6ADF /* 222.png in Resources */,
 				CD0DBAA3196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png in Resources */,
 				CD0DBA55196DA52200C3A2A8 /* icon7.png in Resources */,
 				CD0DBA7E196DA52200C3A2A8 /* video_icon7_1.png in Resources */,
@@ -1331,6 +1338,7 @@
 				CD3E57CC1984E23F000A360A /* UMSCommentInputController.xib in Resources */,
 				CD9E69701987DCA100052EE3 /* Default.png in Resources */,
 				CD0DBA38196DA52200C3A2A8 /* btnblue.9.png in Resources */,
+				CD2D3F161991203E002D6ADF /* 333.png in Resources */,
 				CD0DBAA0196DA52200C3A2A8 /* 瑜伽魔方LOGO_16x16.png in Resources */,
 				CD9E696B1987DCA100052EE3 /* Default~ipad.png in Resources */,
 				CD0DBA39196DA52200C3A2A8 /* btnblue.png in Resources */,

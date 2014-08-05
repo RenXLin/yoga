@@ -43,7 +43,7 @@
     //设置分享到QQ空间的应用Id，和分享url 链接
     [UMSocialQQHandler setQQWithAppId:@"1101943503" appKey:@"EMI0UWJ3iE6LHz7G" url:@"http://www.chinayogaonline.com/"];
     
-    [UMSocialWechatHandler setWXAppId:@"wx1324567867544" url:@"http://www.chinayogaonline.com/"];
+    [UMSocialWechatHandler setWXAppId:@"wx135514f2491ecfe0" url:@"http://www.chinayogaonline.com/"];
     
     //设置支持没有客户端情况下使用SSO授权
     [UMSocialQQHandler setSupportWebView:YES];
