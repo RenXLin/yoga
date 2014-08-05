@@ -272,7 +272,7 @@
     }else if (view.tag == 6){
        
             SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
-            audioView.Title = @"视屏点播";
+            audioView.Title = @"视频点播";
             [self.navigationController pushViewController:audioView animated:YES];
         
     }
