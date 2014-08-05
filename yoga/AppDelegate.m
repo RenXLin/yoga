@@ -102,10 +102,12 @@
         pageControl.currentPage = 0;
         [pageControl addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
         [self.window addSubview:pageControl];
+        
     }else{
         [self StartBtnClick];
     }
-
+    
+    
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -63,7 +63,7 @@
     // Do any additional setup after loading the view.
     
     NSLog(@"--------------%@",KDEVICE);
-    self.view.backgroundColor = KCOLOR(57, 61, 64, 1);
+    self.view.backgroundColor = KCOLOR(57, 61, 44, 1);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
@@ -174,12 +174,12 @@
     
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 64) andTitle:self.Title];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 44) andTitle:self.Title];
     [bgImgView addSubview:nav];
     
     //
     
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 64+5, KscreenWidth-10, 95)];
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 44+5, KscreenWidth-10, 95)];
     bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
     UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
     lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
@@ -200,7 +200,7 @@
     sortBtn.tag = 110;
     [bgView addSubview:sortBtn];
     
-    UIImageView *sortImg = [UIFactory createImageViewWithFrame:CGRectMake(295,(bgView.frame.size.height/2-10)/2+64+4, 10,10) imageName:@"a1.png"];
+    UIImageView *sortImg = [UIFactory createImageViewWithFrame:CGRectMake(295,(bgView.frame.size.height/2-10)/2+44+4, 10,10) imageName:@"a1.png"];
     [bgImgView addSubview:sortImg];
     
     
@@ -229,7 +229,7 @@
     
     searchDisplayController.searchResultsDelegate = self;
     searchDisplayController.searchResultsDataSource =  self;
-    searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+64, 310, 350);
+    searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+44, 310, 350);
     
 //    
 //    UIButton *searchBtn = [UIFactory createButtonWithFrame:CGRectMake(270, bgView.frame.size.height/2+(bgView.frame.size.height/2-30)/2, 30, 30) title:@"" bgImageName:@"btnblue.png" target:self action:@selector(sortBtnClick:)];
@@ -243,11 +243,11 @@
     
     if([KDEVICE isEqualToString:@"iPad Simulator"])
     {
-        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth-10, KscreenHeight -5-95-64-140 ) style:UITableViewStylePlain];
+        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+44, KscreenWidth-10, KscreenHeight -5-95-64-140 ) style:UITableViewStylePlain];
     }else
     {
         
-      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+64, KscreenWidth -10, KscreenHeight -5-95-64 - 50 ) style:UITableViewStylePlain];
+      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+44, KscreenWidth -10, KscreenHeight -5-95-64 - 50 ) style:UITableViewStylePlain];
     }
     
     TableView.delegate = self;
@@ -448,13 +448,13 @@
     
     //back button
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
-    back.frame = CGRectMake(2, 20, 40, rect.size.height-20);
+    back.frame = CGRectMake(2, 0, 40, rect.size.height);
     [back addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [back setImage:[UIImage imageNamed:@"title_icon.png"] forState:UIControlStateNormal];
     [view addSubview:back];
     
     //title
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 20, 70, rect.size.height-20)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
     title.text = tit;
     title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
@@ -596,7 +596,7 @@
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
 {
-    tableView.frame = CGRectMake(5, 5+95+64, 310, 350);
+    tableView.frame = CGRectMake(5, 5+95+44, 310, 350);
 }
 
 

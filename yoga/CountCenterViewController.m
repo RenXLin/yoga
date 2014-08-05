@@ -76,19 +76,13 @@
     UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 44) andTitle:@"账号中心"];
     [bgImgView addSubview:nav];
     //bgimgview
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 64+5, KscreenWidth-10, 95)];
-    bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
-    UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
-    lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
-    [bgView addSubview:lineImg];
     
-    [bgImgView addSubview:bgView];
     
     //bgimgview1
     UIImageView *bgImgView1 = [[UIImageView alloc]init];
-    bgImgView1.frame = CGRectMake(0,nav.frame.size.height + 20, KscreenWidth, KscreenHeight/3);
+    bgImgView1.frame = CGRectMake(0,nav.frame.size.height + 20, KscreenWidth, 130);
     bgImgView1.image = [UIImage imageNamed:@""];
-    bgImgView1.backgroundColor = [UIColor grayColor];
+    bgImgView1.backgroundColor = [UIColor colorWithRed:240/250.0f green:240/250.0f blue:240/250.0f alpha:0.3];
     [bgImgView addSubview:bgImgView1];
     //lab
     NSArray *arr = @[@"用户名：",@"邮箱：",@"会员类型："];
@@ -160,7 +154,7 @@
     //[self presentViewController:order animated:YES completion:nil];
     order.oid = [dataDict objectForKey:@"oid"];
     order.price = [dataDict objectForKey:@"price"];
-    [self.navigationController pushViewController:order animated:NO];
+    [self.navigationController pushViewController:order animated:YES];
 }
 
 #pragma mark 自定义导航条

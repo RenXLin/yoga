@@ -104,20 +104,21 @@
     UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 44) andTitle:@"升级魔方会员"];
     [bgImgView addSubview:nav];
     //bgimgview
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 64+5, KscreenWidth-10, 95)];
-    bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
-    UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
-    lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
-    [bgView addSubview:lineImg];
+//    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 64+5, KscreenWidth-10, 95)];
+//    bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
+//    UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
+//    lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
+//    [bgView addSubview:lineImg];
     
-    [bgImgView addSubview:bgView];
+    //[bgImgView addSubview:bgView];
     
     //bgimgview1
     bgImgView1 = [[UIImageView alloc]init];
-    bgImgView1.frame = CGRectMake(0,nav.frame.size.height + 20, KscreenWidth, KscreenHeight/3);
+    bgImgView1.frame = CGRectMake(0,nav.frame.size.height + 20, KscreenWidth, 160);
     bgImgView1.image = [UIImage imageNamed:@""];
     bgImgView1.backgroundColor = [UIColor grayColor];
     [bgImgView addSubview:bgImgView1];
+    bgImgView1.backgroundColor = [UIColor colorWithRed:240/250.0f green:240/250.0f blue:240/250.0f alpha:0.3];
     //lab
     
         
@@ -163,7 +164,7 @@
         [btn setTitle:@"尚未登录，请先登录" forState:UIControlStateNormal];
     }else
     {
-     [btn setTitle:@"支付宝" forState:UIControlStateNormal];
+     [btn setTitle:@"支付宝付款" forState:UIControlStateNormal];
     }
     
     [btn addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
