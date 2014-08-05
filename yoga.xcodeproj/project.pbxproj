@@ -156,6 +156,7 @@
 		CD0DBAA5196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */; };
 		CD2D3F1419911F19002D6ADF /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F1319911F19002D6ADF /* 222.png */; };
 		CD2D3F161991203E002D6ADF /* 333.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F151991203E002D6ADF /* 333.png */; };
+		CD2D3F181991282B002D6ADF /* fm1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F171991282B002D6ADF /* fm1.png */; };
 		CD31ECD81984F6D500A208E0 /* RL_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3C48B41975676300AAEAB8 /* RL_LoginViewController.m */; };
 		CD31ECF21985091D00A208E0 /* RL_TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5118197147A700771960 /* RL_TVViewController.m */; };
 		CD31ED0319850BBB00A208E0 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD31ECF419850BBB00A208E0 /* CHANGELOG.md */; };
@@ -427,6 +428,7 @@
 		CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_90x90.png"; sourceTree = "<group>"; };
 		CD2D3F1319911F19002D6ADF /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
 		CD2D3F151991203E002D6ADF /* 333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333.png; sourceTree = "<group>"; };
+		CD2D3F171991282B002D6ADF /* fm1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fm1.png; sourceTree = "<group>"; };
 		CD31ECF419850BBB00A208E0 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		CD31ECF719850BBB00A208E0 /* VDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDefines.h; sourceTree = "<group>"; };
 		CD31ECF819850BBB00A208E0 /* Vitamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vitamio.h; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 		CD0DB9C2196DA52200C3A2A8 /* 切图 */ = {
 			isa = PBXGroup;
 			children = (
+				CD2D3F171991282B002D6ADF /* fm1.png */,
 				CD2D3F151991203E002D6ADF /* 333.png */,
 				CD2D3F1319911F19002D6ADF /* 222.png */,
 				CD0DB9C3196DA52200C3A2A8 /* a.png */,
@@ -1225,6 +1228,7 @@
 				CD4654B01989264C00E871DB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CD0DBA82196DA52200C3A2A8 /* video_jd.png in Resources */,
 				CD0DBA4B196DA52200C3A2A8 /* icon2.png in Resources */,
+				CD2D3F181991282B002D6ADF /* fm1.png in Resources */,
 				CD9E696F1987DCA100052EE3 /* iPhone3.jpg in Resources */,
 				CD0DBA37196DA52200C3A2A8 /* bg.png in Resources */,
 				CD0DBA6B196DA52200C3A2A8 /* title_icon4.png in Resources */,

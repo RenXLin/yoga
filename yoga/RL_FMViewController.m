@@ -145,8 +145,9 @@
     }
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,whiteView.frame.origin.y + whiteView.frame.size.height +30, self.view.frame.size.width, 30)];
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,whiteView.frame.origin.y + whiteView.frame.size.height +10, self.view.frame.size.width, 30)];
     titleLabel.text = _FM_AV;
+    titleLabel.font = [UIFont systemFontOfSize:13];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -160,7 +161,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     //加入imageView
-    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 20, 100, 100)];
+    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 80 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 5, 80, 80)];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fm" ofType:@"png"]];
     [scrolView addSubview:imageV];
     imageV.autoresizingMask =
@@ -173,7 +174,7 @@
     
     //显示节目菜单按钮
     UIButton *fileBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    fileBtn.frame = CGRectMake(scrolView.frame.size.width - 55, imageV.frame.origin.y, 35, 35);
+    fileBtn.frame = CGRectMake(scrolView.frame.size.width - 55, titleLabel.frame.origin.y, 35, 35);
     [fileBtn setImage:[UIImage imageNamed:@"title_icon4.png"] forState:UIControlStateNormal];
     [scrolView addSubview:fileBtn];
     [fileBtn addTarget:self action:@selector(getFileList) forControlEvents:UIControlEventTouchUpInside];
@@ -186,7 +187,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     //加入当前节目label 走马灯显示
-    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +30, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
+    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +5, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
     _ad.numberOfLines = 1;
     _ad.opaque = NO;
     _ad.enabled = YES;
@@ -194,7 +195,7 @@
     _ad.textAlignment = NSTextAlignmentCenter;
     _ad.textColor = [UIColor whiteColor];
     _ad.backgroundColor = [UIColor clearColor];
-    _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
+    _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.500];
     _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
     [scrolView addSubview:_ad];
     _ad.autoresizingMask =
@@ -206,7 +207,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     // logoView
-    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 30, 150, 40)];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 10, 150, 45)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [scrolView addSubview:logoView];
     logoView.autoresizingMask =
@@ -238,6 +239,7 @@
     _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
+    _onlinePeople.font = [UIFont systemFontOfSize:15];
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
     [scrolView addSubview:_onlinePeople];
@@ -251,7 +253,7 @@
     
     //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 17, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [scrolView addSubview:settingView];
@@ -402,7 +404,7 @@
     
     //分享：
     UIButton *share = [UIButton buttonWithType:UIButtonTypeCustom];
-    share.frame = CGRectMake(view.frame.size.width - 30, 2, 35, view.frame.size.height-4);
+    share.frame = CGRectMake(view.frame.size.width - 40, 2, 35, view.frame.size.height-4);
     [share setImage:[UIImage imageNamed:@"title_icon1.png"] forState:UIControlStateNormal];
     [view addSubview:share];
     share.tag = 1;
@@ -417,7 +419,7 @@
     
     //好评数
     goodTimes = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width - share.frame.size.width - 45, 2, 45, rect.size.height)];
-    
+    goodTimes.textAlignment = NSTextAlignmentCenter;
     goodTimes.adjustsFontSizeToFitWidth = YES;
     goodTimes.textColor = [UIColor whiteColor];
     [view addSubview:goodTimes];

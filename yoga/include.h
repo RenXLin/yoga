@@ -94,7 +94,7 @@
 
 
 ////当前正要播放的视频
-#define CURRENTPLAYVIDEO_URL   @"http://www.chinayogaonline.com/api/getCurrentTV"
+//#define CURRENTPLAYVIDEO_URL   @"http://www.chinayogaonline.com/api/getCurrentTV"
 //#define CURRENTPLAYVIDEO_URL   @"http://www.chinayogaonline.com/api/getTestTv"
 ////参数：无
 //
