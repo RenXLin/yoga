@@ -35,9 +35,8 @@
     NSTimer *_timer;
     
     
-    UIButton *btn;
-    UIButton *btn1;
-    SC_popView *lplv;
+   
+    
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -257,25 +256,13 @@
 
     }else if(view.tag == 4){
         //音频点播
-        UserInfo *info = [UserInfo shareUserInfo];
-        if(info.token.length == 0)
-        {
-            
-            lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
-            //lplv.delegate = self;
-            [lplv showInView:self.view animated:YES];
-            
-            [self creatBtn];
-   
-        }else
-        {
+        
             SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
             audioView.Title = @"音频点播";
             audioView.audio = @"audio";
-            audioView.modalPresentationStyle = UIModalPresentationCustom;
-            audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            [self presentViewController:audioView animated:YES completion:nil];
-        }
+        
+            [self.navigationController pushViewController:audioView animated:YES];
+        
    
     }else if (view.tag == 5){
         //瑜伽音乐
@@ -283,23 +270,11 @@
         AV.FM_AV = @"瑜伽音乐";
         [self presentViewController:AV animated:YES completion:nil];
     }else if (view.tag == 6){
-        UserInfo *info = [UserInfo shareUserInfo];
-        if(info.token.length == 0)
-        {
-            lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
-            //lplv.delegate = self;
-            [lplv showInView:self.view animated:YES];
-            
-            [self creatBtn];
-            
-        }else
-        {
+       
             SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
             audioView.Title = @"视屏点播";
-            audioView.modalPresentationStyle = UIModalPresentationCustom;
-            audioView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            [self presentViewController:audioView animated:YES completion:nil];
-        }
+            [self.navigationController pushViewController:audioView animated:YES];
+        
     }
     
     
@@ -307,81 +282,6 @@
     
     
     
-}
-
-//登录  升级按钮
-
-- (void)creatBtn
-{
-    if(KscreenHeight == 568 || KscreenHeight == 480)
-    {
-        btn = [[UIButton alloc]initWithFrame:CGRectMake(10, 80+5, (KscreenWidth-50)/2, 40)];
-        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(20+btn.frame.size.width, 80+5, btn.frame.size.width, 40)];
-        btn.titleLabel.font = Kfont(15);
-        btn1.titleLabel.font = Kfont(15);
-    }else
-    {
-        btn = [[UIButton alloc]initWithFrame:CGRectMake(20, 140+30, (KscreenWidth - 80)/2, 80)];
-        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(40+(KscreenWidth - 80)/2,140+30, btn.frame.size.width, 80)];
-        btn.titleLabel.font = Kfont(30);
-        btn1.titleLabel.font = Kfont(30);
-    }
-    
-    [btn setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setTitle:@"登录" forState:UIControlStateNormal];
-    btn.tag = 110;
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    
-    
-    [btn1 setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
-    [btn1 addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    [btn1 setTitle:@"马上升级" forState:UIControlStateNormal];
-    btn1.tag = 111;
-    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    
-    [lplv.bgView addSubview:btn];
-    [lplv.bgView addSubview:btn1];
-}
-
-
-- (void)back:(UIButton *)button
-{
-    switch (button.tag-110) {
-        case 0:
-        {
-            
-            RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
-            //[self presentViewController:login animated:YES completion:nil];
-            
-            [self.navigationController pushViewController:login animated:YES];
-            
-        }
-            break;
-        case 1:
-        {
-            OrderViewController *orderView = [[OrderViewController alloc]init];
-           // [self presentViewController:orderView animated:YES completion:nil];
-            
-            [self.navigationController pushViewController:orderView animated:YES];
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
-    [UIView animateWithDuration:.35 animations:^{
-        lplv.transform = CGAffineTransformMakeScale(1.3, 1.3);
-        lplv.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        if (finished) {
-            [lplv removeFromSuperview];
-        }
-    }];
-
 }
 
 //登陆：

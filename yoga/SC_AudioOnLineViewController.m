@@ -14,6 +14,10 @@
 #import "VideoPlayerController.h"
 #import "LeveyPopListView.h"
 
+#import "SC_popView.h"
+
+#import "RL_LoginViewController.h"
+#import "OrderViewController.h"
 @interface SC_AudioOnLineViewController ()<LeveyPopListViewDelegate>
 {
     //当前在线人数
@@ -22,6 +26,10 @@
     UITextField *inputTf;
     UITableView *TableView1;
     UIButton *sortBtn;
+    
+    UIButton *btn;
+    UIButton *btn1;
+    SC_popView *lplv;
     
 }
 
@@ -527,29 +535,123 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(tableView == searchDisplayController.searchResultsTableView)
-    {
-        //推出播放器视图：
-        VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
-        vpc.itemMode = [searchResults  objectAtIndex:indexPath.row];
-        vpc.titleName = self.Title;
-        [self presentViewController:vpc animated:YES completion:nil];
-       
-    }else if (tableView == TableView){
-        //推出播放器视图：
-        VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
-        vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
-        vpc.titleName = self.Title;
-        [self presentViewController:vpc animated:YES completion:nil];
-
-    }
     
+    
+    UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length == 0)
+    {
+        
+        lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
+        //lplv.delegate = self;
+        [lplv showInView:self.view animated:YES];
+        
+        [self creatBtn];
+        
+    }else
+    {
+        if(tableView == searchDisplayController.searchResultsTableView)
+        {
+            //推出播放器视图：
+            VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
+            vpc.itemMode = [searchResults  objectAtIndex:indexPath.row];
+            vpc.titleName = self.Title;
+            [self presentViewController:vpc animated:YES completion:nil];
+            
+        }else if (tableView == TableView){
+            //推出播放器视图：
+            VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
+            vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
+            vpc.titleName = self.Title;
+            [self presentViewController:vpc animated:YES completion:nil];
+            
+        }
+        
+   
+    }
     
 }
 
+
+//登录  升级按钮
+
+- (void)creatBtn
+{
+    if(KscreenHeight == 568 || KscreenHeight == 480)
+    {
+        btn = [[UIButton alloc]initWithFrame:CGRectMake(10, 80+5, (KscreenWidth-50)/2, 40)];
+        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(20+btn.frame.size.width, 80+5, btn.frame.size.width, 40)];
+        btn.titleLabel.font = Kfont(15);
+        btn1.titleLabel.font = Kfont(15);
+    }else
+    {
+        btn = [[UIButton alloc]initWithFrame:CGRectMake(20, 140+30, (KscreenWidth - 80)/2, 80)];
+        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(40+(KscreenWidth - 80)/2,140+30, btn.frame.size.width, 80)];
+        btn.titleLabel.font = Kfont(30);
+        btn1.titleLabel.font = Kfont(30);
+    }
+    
+    [btn setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"登录" forState:UIControlStateNormal];
+    btn.tag = 110;
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    
+    
+    [btn1 setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
+    [btn1 addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 setTitle:@"马上升级" forState:UIControlStateNormal];
+    btn1.tag = 111;
+    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    
+    [lplv.bgView addSubview:btn];
+    [lplv.bgView addSubview:btn1];
+}
+
+
+- (void)back:(UIButton *)button
+{
+    switch (button.tag-110) {
+        case 0:
+        {
+            
+            RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
+            //[self presentViewController:login animated:YES completion:nil];
+            
+            [self.navigationController pushViewController:login animated:YES];
+            
+        }
+            break;
+        case 1:
+        {
+            OrderViewController *orderView = [[OrderViewController alloc]init];
+            // [self presentViewController:orderView animated:YES completion:nil];
+            
+            [self.navigationController pushViewController:orderView animated:YES];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [UIView animateWithDuration:.35 animations:^{
+        lplv.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        lplv.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [lplv removeFromSuperview];
+        }
+    }];
+    
+}
+
+
+
 -(void)backBtnClick:(UIButton *)btn
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
