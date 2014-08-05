@@ -201,6 +201,7 @@
     _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
+    _onlinePeople.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:_onlinePeople];
     _onlinePeople.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |

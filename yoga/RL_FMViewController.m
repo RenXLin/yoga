@@ -239,6 +239,7 @@
     _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.text = info.onliePeople;//暂定
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
+    _onlinePeople.font = [UIFont systemFontOfSize:15];
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.textColor = [UIColor whiteColor];
     [scrolView addSubview:_onlinePeople];
