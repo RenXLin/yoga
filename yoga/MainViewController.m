@@ -81,22 +81,22 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
     //标题
-    UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 20, 100, 30)];
-    label.text = @"瑜伽魔方";
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont systemFontOfSize:20];
-    [self.view addSubview:label];
-    label.autoresizingMask =
-    UIViewAutoresizingFlexibleBottomMargin |
-    UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleHeight |
-    UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleRightMargin |
-    UIViewAutoresizingFlexibleWidth;
+//    UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 100)/2, 20, 100, 30)];
+//    label.text = @"瑜伽魔方";
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.backgroundColor = [UIColor clearColor];
+//    label.font = [UIFont systemFontOfSize:20];
+//    [self.view addSubview:label];
+//    label.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
     //添加白色底板
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, label.frame.origin.y + label.frame.size.height +10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, 25, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:whiteView];
     whiteView.autoresizingMask=
@@ -108,15 +108,15 @@
     UIViewAutoresizingFlexibleWidth;
     
     NSMutableArray *colorArray =[[NSMutableArray alloc] init];
-    UIColor *color1 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
-    UIColor *color2 = [UIColor colorWithRed:0.04f green:0.91f blue:0.49f alpha:1.00f];
-    UIColor *color3 = [UIColor colorWithRed:0.98f green:0.38f blue:0.31f alpha:1.00f];
-    UIColor *color4 = [UIColor colorWithRed:1.00f green:0.50f blue:0.13f alpha:1.00f];
-    UIColor *color5 = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
-    UIColor *color6 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
-    UIColor *color7 = [UIColor colorWithRed:0.05f green:0.93f blue:0.38f alpha:1.00f];
-    UIColor *color8 = [UIColor colorWithRed:0.09f green:0.82f blue:1.00f alpha:1.00f];
-    UIColor *color9 = [UIColor colorWithRed:1.00f green:0.82f blue:0.11f alpha:1.00f];
+    UIColor *color1 = [UIColor colorWithRed:0.09f green:0.70f blue:0.91f alpha:1.00f];
+    UIColor *color2 = [UIColor colorWithRed:0.56f green:0.56f blue:0.56f alpha:1.00f];
+    UIColor *color3 = [UIColor colorWithRed:0.53f green:0.45f blue:0.69f alpha:1.00f];
+    UIColor *color4 = [UIColor colorWithRed:0.98f green:0.56f blue:0.17f alpha:1.00f];
+    UIColor *color5 = [UIColor colorWithRed:0.98f green:0.88f blue:0.56f alpha:1.00f];
+    UIColor *color6 = [UIColor colorWithRed:0.23f green:0.55f blue:0.38f alpha:1.00f];
+    UIColor *color7 = [UIColor colorWithRed:0.53f green:0.45f blue:0.69f alpha:1.00f];
+    UIColor *color8 = [UIColor colorWithRed:0.56f green:0.56f blue:0.56f alpha:1.00f];
+    UIColor *color9 = [UIColor colorWithRed:0.09f green:0.70f blue:0.91f alpha:1.00f];
     [colorArray addObject:color1];
     [colorArray addObject:color2];
     [colorArray addObject:color3];
@@ -158,7 +158,7 @@
             }else if((i * 3 + j + 1) == 4 || (i * 3 + j + 1) == 6){
                 [view addSubview:[self getLabelWithTitel:[clickArray objectAtIndex:count1++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30)]];
             }else if (i*3 +j+1 == 2){
-                [view addSubview:[self getImageViewWithName:@"icon0" andFrame:view.bounds]];
+                [view addSubview:[self getImageViewWithName:@"222" andFrame:view.bounds]];
 
             } else{
                 [view addSubview:[self getImageViewWithName:@"fm" andFrame:view.bounds]];
@@ -182,11 +182,7 @@
     
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
-    if (self.view.frame.size.height < 568) {
-        loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height, 40, 40);
-    }else{
-        loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
-    }
+    loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [self.view addSubview:loginView];
@@ -402,7 +398,7 @@
 
 //生成label方法
 -(UILabel *)getLabelWithTitel:(NSString *)title andRect:(CGRect)rect
-{
+{ 
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.text = title;
     label.backgroundColor = [UIColor clearColor];
@@ -417,8 +413,7 @@
 {
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:rect];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:strName ofType:@"png"]];
-    imageV.contentMode = UIViewContentModeScaleToFill;
-    imageV.contentMode = UIViewContentModeCenter;
+    imageV.contentMode = UIViewContentModeScaleAspectFill;
     return imageV;
 }
 

@@ -14,6 +14,6 @@
 @interface VideoPlayerController : UIViewController<VMediaPlayerDelegate>
 
 @property(nonatomic,strong)SC_Model *itemMode;
-
+@property(nonatomic,assign)BOOL isAudio;
 
 @end
