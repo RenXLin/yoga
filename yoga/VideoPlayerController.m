@@ -368,6 +368,8 @@
     _scrollView.bounces = NO;
     
     NSString *urlStr = [self removeSpace:self.itemMode.path];
+//    NSString * urlStr = [self.itemMode.path stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    urlStr = UrlEncodedString(self.itemMode.path);
     if (!_mPlayer) {
         _mPlayer = [VMediaPlayer sharedInstance];
         [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
@@ -382,6 +384,12 @@
     NSArray *arr = [str componentsSeparatedByString:@" "];
     NSString *resultStr = [arr componentsJoinedByString:@"%20"];
     return resultStr;
+}
+
+NSString* UrlEncodedString(NSString* sourceText)
+{
+    NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)sourceText,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
+    return result;
 }
 
 -(void)signleTap
@@ -480,6 +488,8 @@
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
 	NSLog(@"player error");
+    UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"播放失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [aleart show];
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg

@@ -270,9 +270,9 @@
     
     NSString *url;
     if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
-        url = CURRENTPLAYVIDEO_URL; //CURRENTPLAYFM_URL;
+        url = CURRENTPLAYFM_URL;
     }else{
-        url = CURRENTPLAYVIDEO_URL;//CURRENTPLAYAUDIO_URL;
+        url = CURRENTPLAYAUDIO_URL;
     }
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
@@ -285,13 +285,15 @@
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
             NSLog(@"%@",pathUrl);
-            pathUrl = [self removeSpace:pathUrl];
+
+//            pathUrl = [self removeSpace:pathUrl];
+            pathUrl = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
             
             if (!_mMpayer && pathUrl) {
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
                 [_mMpayer setDataSource:[NSURL URLWithString:pathUrl]];
-//                [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com//mp3//yogamusic//Himalayan%20Nights//Himalayan%20Nights_mixdown_T60.mp3"] header:nil];
+//                [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com//mp3//yogamusic//The%20yoga_music%20experience%20for%20body%20&%20soul//cd%201//The%20Yoga_CD1_mixdown_T68.mp3"] header:nil];
                 
                 [_mMpayer prepareAsync];
             }
@@ -316,6 +318,9 @@
     NSString *resultStr = [arr componentsJoinedByString:@"%20"];
     return resultStr;
 }
+
+
+
 -(void)playMovieAtURL:(NSString*)theURLStr
 {
     _mp3 = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:theURLStr]];

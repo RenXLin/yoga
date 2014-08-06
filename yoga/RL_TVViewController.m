@@ -226,7 +226,9 @@
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             _ad.text = _programMode.ad;
-            NSString *urlStr = [self removeSpace:_programMode.path];
+            
+            NSString *urlStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)_programMode.path,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
+            
             //加入FM播放器：
             if (!_mMpayer && urlStr) {
                 _mMpayer = [VMediaPlayer sharedInstance];
