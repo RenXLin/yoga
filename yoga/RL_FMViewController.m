@@ -293,7 +293,7 @@
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
                 [_mMpayer setDataSource:[NSURL URLWithString:pathUrl]];
-//                [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com//mp3//yogamusic//The%20yoga_music%20experience%20for%20body%20&%20soul//cd%201//The%20Yoga_CD1_mixdown_T68.mp3"] header:nil];
+//                [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com/mp3/yogamusic/Becoming%20Your%20Soul/03%20Cellular%20Evolution_T28.mp3"] header:nil];
                 
                 [_mMpayer prepareAsync];
             }
@@ -347,7 +347,7 @@
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
-	NSLog(@"player error");
+	NSLog(@"player erro:r%@",arg);
     UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"播放失败" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [aleart show];
 }
@@ -569,6 +569,12 @@
         
         UIView *backView = [self.view viewWithTag:5000];
         
+        UIView *white = [[UIView alloc] initWithFrame:backView.bounds];
+        white.backgroundColor = [UIColor whiteColor];
+        white.alpha = 0.5;
+        white.tag = 100;
+        [backView addSubview:white];
+        
         fileTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height) style:UITableViewStylePlain];
         fileTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         fileTable.backgroundColor = [UIColor clearColor];
@@ -588,6 +594,7 @@
         
     }else{
         fileTable.hidden = !fileTable.hidden;
+        [fileTable.superview viewWithTag:100].hidden = ![fileTable.superview viewWithTag:100].hidden;
     }
 }
 

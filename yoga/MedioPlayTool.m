@@ -25,14 +25,14 @@
         
         self.backgroundColor = [UIColor clearColor];
         //已播放的时间显示label；
-        
+
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self_Height);
-        
+        self.backgroundColor = [UIColor blackColor];
         _havePlay = [[UILabel alloc] init];
         _havePlay.backgroundColor = [UIColor clearColor];
         _havePlay.font = [UIFont systemFontOfSize:15];
         _havePlay.text = @"00:00:00";
-        _havePlay.frame = CGRectMake(0, 0, TimeLabel_whide,TimeLabel_height);
+        _havePlay.frame = CGRectMake(0, 4, TimeLabel_whide,TimeLabel_height);
         _havePlay.textColor = [UIColor whiteColor];
         _havePlay.textAlignment = NSTextAlignmentLeft;
         _havePlay.numberOfLines = 1;
@@ -48,7 +48,7 @@
         _totalPlay.backgroundColor = [UIColor clearColor];
         _totalPlay.font = [UIFont systemFontOfSize:15];
         _totalPlay.text = @"00:00:00";
-        _totalPlay.frame = CGRectMake(self.frame.size.width - TimeLabel_whide, 0, TimeLabel_whide,TimeLabel_height);
+        _totalPlay.frame = CGRectMake(self.frame.size.width - TimeLabel_whide, 4, TimeLabel_whide,TimeLabel_height);
         _totalPlay.textColor = [UIColor whiteColor];
         _totalPlay.textAlignment = NSTextAlignmentRight;
         _totalPlay.numberOfLines = 1;
@@ -59,7 +59,7 @@
          UIViewAutoresizingFlexibleWidth];
         
         //添加进度条：
-        _playProgress = [[UISlider alloc] initWithFrame:CGRectMake(TimeLabel_whide, 0, self.frame.size.width - 2 * TimeLabel_whide, TimeLabel_height)];
+        _playProgress = [[UISlider alloc] initWithFrame:CGRectMake(TimeLabel_whide, 4, self.frame.size.width - 2 * TimeLabel_whide, TimeLabel_height)];
         _playProgress.backgroundColor = [UIColor clearColor];
         _playProgress.minimumTrackTintColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_jg" ofType:@"png"]]];
         _playProgress.maximumTrackTintColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_jg1" ofType:@"png"]]];

@@ -443,6 +443,12 @@
         
         [self getCurrentFile];
         
+        UIView *white = [[UIView alloc] initWithFrame:_TVPlayView.bounds];
+        white.backgroundColor = [UIColor whiteColor];
+        white.alpha = 0.5;
+        white.tag = 100;
+        [_TVPlayView addSubview:white];
+        
         fileTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, _TVPlayView.frame.size.width, _TVPlayView.frame.size.height) style:UITableViewStylePlain];
         fileTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         fileTable.backgroundColor = [UIColor clearColor];
@@ -450,6 +456,7 @@
         fileTable.delegate = self;
         [_TVPlayView addSubview:fileTable];
         
+
         _TVPlayView.autoresizesSubviews = YES;
         
         fileTable.autoresizingMask =
@@ -462,6 +469,7 @@
         
     }else{
         fileTable.hidden = !fileTable.hidden;
+        [fileTable.superview viewWithTag:100].hidden = ![fileTable.superview viewWithTag:100].hidden;
     }
 }
 -(void)getCurrentFile

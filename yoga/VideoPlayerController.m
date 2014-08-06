@@ -240,7 +240,7 @@
     }
     
     //添加工具条：
-    _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(10, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width-20, 60)];
+    _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width, 60)];
     [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
     [_TVPlayView addSubview:_mTools];
     _mTools.autoresizingMask =
@@ -367,9 +367,10 @@
     _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, settingView.frame.origin.y + settingView.frame.size.height + 10);
     _scrollView.bounces = NO;
     
-    NSString *urlStr = [self removeSpace:self.itemMode.path];
+//    NSString *urlStr = [self removeSpace:self.itemMode.path];
 //    NSString * urlStr = [self.itemMode.path stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    urlStr = UrlEncodedString(self.itemMode.path);
+    NSString * urlStr = UrlEncodedString(self.itemMode.path);
+    NSLog(@"encode url :  %@",urlStr);
     if (!_mPlayer) {
         _mPlayer = [VMediaPlayer sharedInstance];
         [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
@@ -401,7 +402,7 @@ NSString* UrlEncodedString(NSString* sourceText)
         _mTools.isHidden = NO;
         _mTools.hidden = NO;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             _mTools.isHidden = YES;
             _mTools.hidden = YES;
         });
@@ -487,7 +488,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
-	NSLog(@"player error");
+	NSLog(@"player error %@",arg);
     UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"播放失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [aleart show];
 }
@@ -570,7 +571,7 @@ NSString* UrlEncodedString(NSString* sourceText)
                 isFullScreen = NO;
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
                 [_TVPlayView removeFromSuperview];
-                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
                 
                 [_scrollView addSubview:_TVPlayView];
                 [self.view addSubview:_scrollView];
@@ -593,7 +594,7 @@ NSString* UrlEncodedString(NSString* sourceText)
                 
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
                 [_TVPlayView removeFromSuperview];
-                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
                 [_scrollView addSubview:_TVPlayView];
                 [self.view addSubview:_scrollView];
 
@@ -677,7 +678,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     [view addSubview:back];
     
     //title
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 70, rect.size.height)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(back.frame.size.width, 0, 100, rect.size.height)];
     title.text = tit;
     title.backgroundColor = [UIColor clearColor];
     title.textColor = [UIColor colorWithRed:0.92f green:0.92f blue:0.92f alpha:1.00f];
