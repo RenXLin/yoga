@@ -15,7 +15,7 @@
 
 
 
-#define GAP_WITH    2.5
+#define GAP_WITH    0
 
 
 @interface VideoPlayerController ()
@@ -229,18 +229,18 @@
                 view.contentMode = UIViewContentModeScaleToFill;
                 [_TVPlayView addSubview:view];
                 
+                view.layer.borderColor = [UIColor whiteColor].CGColor;
+                view.layer.borderWidth = 3;
                 view.autoresizingMask =
                 UIViewAutoresizingFlexibleLeftMargin |
                 UIViewAutoresizingFlexibleRightMargin |
                 UIViewAutoresizingFlexibleWidth;
-                
             }
         }
     }
     
-    
     //添加工具条：
-    _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width, 60)];
+    _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(10, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width-20, 60)];
     [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
     [_TVPlayView addSubview:_mTools];
     _mTools.autoresizingMask =
@@ -639,6 +639,7 @@
 {
     [_mPlayer reset];
     [_mPlayer unSetupPlayer];
+    _mPlayer = nil;
     [_seekTimser invalidate];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

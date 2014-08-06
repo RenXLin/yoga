@@ -270,9 +270,9 @@
     
     NSString *url;
     if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
-        url = CURRENTPLAYFM_URL;
+        url = CURRENTPLAYVIDEO_URL; //CURRENTPLAYFM_URL;
     }else{
-        url = CURRENTPLAYVIDEO_URL;
+        url = CURRENTPLAYVIDEO_URL;//CURRENTPLAYAUDIO_URL;
     }
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
@@ -290,7 +290,9 @@
             if (!_mMpayer && pathUrl) {
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
-                [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
+                [_mMpayer setDataSource:[NSURL URLWithString:pathUrl]];
+//                [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com//mp3//yogamusic//Himalayan%20Nights//Himalayan%20Nights_mixdown_T60.mp3"] header:nil];
+                
                 [_mMpayer prepareAsync];
             }
 
@@ -303,7 +305,8 @@
         
         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed:%@",error);
-        
+            UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求播放路径失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [aleart show];
     }];
 }
 
