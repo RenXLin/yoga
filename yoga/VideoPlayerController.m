@@ -369,7 +369,8 @@
     
 //    NSString *urlStr = [self removeSpace:self.itemMode.path];
 //    NSString * urlStr = [self.itemMode.path stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSString * urlStr = UrlEncodedString(self.itemMode.path);
+    NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    NSString * urlStr = UrlEncodedString(pathUrl);
     NSLog(@"encode url :  %@",urlStr);
     if (!_mPlayer) {
         _mPlayer = [VMediaPlayer sharedInstance];

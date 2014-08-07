@@ -287,6 +287,7 @@
             NSLog(@"%@",pathUrl);
 
 //            pathUrl = [self removeSpace:pathUrl];
+            pathUrl = [pathUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
             pathUrl = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
             
             if (!_mMpayer && pathUrl) {
