@@ -121,7 +121,7 @@
     [_scrollView addSubview:_TVPlayView];
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height +30, self.view.frame.size.width, 30)];
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height +10, self.view.frame.size.width, 30)];
     titleLabel.text = @"瑜伽 TV ";
     titleLabel.font = [UIFont systemFontOfSize:14];
     titleLabel.backgroundColor = [UIColor clearColor];
@@ -130,7 +130,7 @@
     [_scrollView addSubview:titleLabel];
     
     //加入imageView
-    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 5, 100, 100)];
+    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 80 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 3, 80, 80)];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"333" ofType:@"png"]];
     [_scrollView addSubview:imageV];
     

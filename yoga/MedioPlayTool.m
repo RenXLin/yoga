@@ -72,8 +72,8 @@
         _fullScreenOrNot = [UIButton buttonWithType:UIButtonTypeCustom];
         _fullScreenOrNot.frame = CGRectMake(0, TimeLabel_height, self_Height - TimeLabel_height, self_Height - TimeLabel_height);
         _fullScreenOrNot.backgroundColor = [UIColor clearColor];
-        [_fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-        [_fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3_1" ofType:@"png"]] forState:UIControlStateHighlighted];
+//        [_fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+//        [_fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3_1" ofType:@"png"]] forState:UIControlStateHighlighted];
         [self addSubview:_fullScreenOrNot];
         _fullScreenOrNot.tag = 1;
         [_fullScreenOrNot setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |

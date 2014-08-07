@@ -70,7 +70,6 @@
     //白色状态条：
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
-    
     self.navigationController.navigationBarHidden = YES;
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];

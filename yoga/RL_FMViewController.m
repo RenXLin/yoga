@@ -95,7 +95,7 @@
     
     
     //添加白色底板
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height +10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height + 10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
     whiteView.tag = 5000;
     whiteView.backgroundColor = [UIColor whiteColor];
     [scrolView addSubview:whiteView];
@@ -145,7 +145,7 @@
     }
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,whiteView.frame.origin.y + whiteView.frame.size.height +10, self.view.frame.size.width, 30)];
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,whiteView.frame.origin.y + whiteView.frame.size.height + 5, self.view.frame.size.width, 30)];
     titleLabel.text = _FM_AV;
     titleLabel.font = [UIFont systemFontOfSize:13];
     titleLabel.backgroundColor = [UIColor clearColor];
@@ -161,7 +161,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     //加入imageView
-    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 80 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 5, 80, 80)];
+    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 60 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height + 2, 60, 60)];
     imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fm" ofType:@"png"]];
     [scrolView addSubview:imageV];
     imageV.autoresizingMask =
@@ -187,7 +187,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     //加入当前节目label 走马灯显示
-    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height +5, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
+    _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height + 2, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
     _ad.numberOfLines = 1;
     _ad.opaque = NO;
     _ad.enabled = YES;
@@ -207,7 +207,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     // logoView
-    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 10, 150, 45)];
+    UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 5, 150, 45)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
     [scrolView addSubview:logoView];
     logoView.autoresizingMask =

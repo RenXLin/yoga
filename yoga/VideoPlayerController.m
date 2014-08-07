@@ -45,6 +45,11 @@
     UIView *_TVPlayView;
 }
 
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,10 +59,6 @@
     return self;
 }
 - (BOOL)shouldAutorotate
-{
-    return YES;
-}
--(BOOL)prefersStatusBarHidden
 {
     return YES;
 }
@@ -124,7 +125,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     [self greet];
     
     
@@ -139,7 +139,7 @@
     _scrollView.autoresizesSubviews = YES;
     _scrollView.autoresizingMask =
 //    UIViewAutoresizingFlexibleBottomMargin |
-////    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleTopMargin |
 //    UIViewAutoresizingFlexibleHeight |
     UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleRightMargin |
@@ -157,13 +157,13 @@
     UIViewAutoresizingFlexibleWidth;
     
     //添加负载播放器和进度条视图；
-    _carryView_portrait = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width, 250)];
+    _carryView_portrait = [[UIView alloc] initWithFrame:CGRectMake(2, 50, self.view.frame.size.width, 250)];
     _carryView_portrait.backgroundColor = [UIColor blackColor];
 //    [_scrollView addSubview:_carryView_portrait];
     _carryView_portrait.autoresizesSubviews = YES;
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width)];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height)];
     _TVPlayView.backgroundColor = [UIColor clearColor];
     _TVPlayView.userInteractionEnabled = YES;
     _TVPlayView.autoresizesSubviews = YES;
@@ -182,10 +182,10 @@
     UIViewAutoresizingFlexibleWidth;
     
     _TVPlayView.autoresizingMask =
-//    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
-//    UIViewAutoresizingFlexibleHeight |
-//    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
     
@@ -198,6 +198,8 @@
     [_TVPlayView addGestureRecognizer:doubleTap];
     
     if ([self.titleName isEqualToString:@"音频点播"]) {
+        
+        _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width);
         
         NSMutableArray *colorArray =[[NSMutableArray alloc] init];
         UIColor *color1 = [UIColor colorWithRed:0.09f green:0.70f blue:0.91f alpha:1.00f];
@@ -252,7 +254,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height + 10, self.view.frame.size.width, 30)];
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height + 5, self.view.frame.size.width, 30)];
     
     titleLabel.text = self.titleName;
     titleLabel.font = [UIFont systemFontOfSize:14];
@@ -268,14 +270,19 @@
 //    UIViewAutoresizingFlexibleWidth;
     
     //加入imageView
-    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 100 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 100, 100)];
+    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 80 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 80, 80)];
+    
     if ([self.titleName isEqualToString:@"音频点播"]) {
         imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"fm" ofType:@"png"]];
-        imageV.frame = CGRectMake((self.view.frame.size.width - 80 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 80, 80);
-        
+        imageV.frame = CGRectMake((self.view.frame.size.width - 60 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 60, 60);
+        [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon" ofType:@"png"]] forState:UIControlStateNormal];
+
     }else{
         imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"333" ofType:@"png"]];
+        [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+
     }
+    
     [_scrollView addSubview:imageV];
 //    imageV.autoresizingMask =  UIViewAutoresizingFlexibleBottomMargin |
 //    UIViewAutoresizingFlexibleTopMargin |
@@ -411,47 +418,80 @@ NSString* UrlEncodedString(NSString* sourceText)
 }
 -(void)doubleTap
 {
-    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-        self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        
+//    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+//        self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+//        
+//        if (isFullScreen == NO) {
+//            isFullScreen = YES;
+//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+//            
+//            [_TVPlayView removeFromSuperview];
+//            [_scrollView removeFromSuperview];
+//            _TVPlayView.frame = self.view.bounds;
+//            [self.view addSubview:_TVPlayView];
+//            
+//        }else{
+//            isFullScreen = NO;
+//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+//            [_TVPlayView removeFromSuperview];
+//            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
+//            [_scrollView addSubview:_TVPlayView];
+//            [self.view addSubview:_scrollView];
+//        }
+//        
+//    }else {
+//        if (isFullScreen == NO) {
+//            isFullScreen = YES;
+//            
+//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+//            [_TVPlayView removeFromSuperview];
+//            [_scrollView removeFromSuperview];
+//            _TVPlayView.frame = self.view.bounds;
+//            [self.view addSubview:_TVPlayView];
+//            
+//        }else{
+//            NSLog(@"非全屏播放");
+//            isFullScreen = NO;
+//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+//            
+//            [_TVPlayView removeFromSuperview];
+//            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
+//            [_scrollView addSubview:_TVPlayView];
+//            [self.view addSubview:_scrollView];
+//            
+//        }
+//    }
+
+    if ([self.titleName isEqualToString:@"视频点播"]) {
         if (isFullScreen == NO) {
             isFullScreen = YES;
-            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-            
-            [_TVPlayView removeFromSuperview];
-            [_scrollView removeFromSuperview];
-            _TVPlayView.frame = self.view.bounds;
-            [self.view addSubview:_TVPlayView];
-            
-        }else{
-            isFullScreen = NO;
-            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-            [_TVPlayView removeFromSuperview];
-            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
-            [_scrollView addSubview:_TVPlayView];
-            [self.view addSubview:_scrollView];
-        }
-        
-    }else {
-        if (isFullScreen == NO) {
-            isFullScreen = YES;
             
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
             [_TVPlayView removeFromSuperview];
             [_scrollView removeFromSuperview];
-            _TVPlayView.frame = self.view.bounds;
-            [self.view addSubview:_TVPlayView];
             
+            _TVPlayView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
+            
+            [self.view addSubview:_TVPlayView];
+            _TVPlayView.center = self.view.center;
+            
+            _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, M_PI_2);
+            
+            [[UIApplication sharedApplication] setStatusBarHidden:YES];
+
         }else{
             NSLog(@"非全屏播放");
             isFullScreen = NO;
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
             
+            _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
             [_TVPlayView removeFromSuperview];
-            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
+            _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
             [_scrollView addSubview:_TVPlayView];
             [self.view addSubview:_scrollView];
             
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
         }
     }
 }
@@ -555,52 +595,94 @@ NSString* UrlEncodedString(NSString* sourceText)
     NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 1) {
         //full screen or not
-        if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-            self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-
+//        if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+//            self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+//
+//            if (isFullScreen == NO) {
+//                
+//                isFullScreen = YES;
+//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+//
+//                [_TVPlayView removeFromSuperview];
+//                [_scrollView removeFromSuperview];
+//                _TVPlayView.frame = self.view.bounds;
+//                [self.view addSubview:_TVPlayView];
+//
+//            }else{
+//                isFullScreen = NO;
+//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+//                [_TVPlayView removeFromSuperview];
+//                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
+//                
+//                [_scrollView addSubview:_TVPlayView];
+//                [self.view addSubview:_scrollView];
+//            }
+//            
+//        }else {
+//            if (isFullScreen == NO) {
+//                isFullScreen = YES;
+//
+//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+//                [_TVPlayView removeFromSuperview];
+//                [_scrollView removeFromSuperview];
+//                _TVPlayView.frame = [UIScreen mainScreen].bounds;
+////                _TVPlayView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+//                [self.view addSubview:_TVPlayView];
+//                
+//            }else{
+//                NSLog(@"非全屏播放");
+//                isFullScreen = NO;
+//                
+//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+//                [_TVPlayView removeFromSuperview];
+//                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
+//                [_scrollView addSubview:_TVPlayView];
+//                [self.view addSubview:_scrollView];
+//
+//            }
+//        }
+        //当为视频界面时切换全屏
+        if ([self.titleName isEqualToString:@"视频点播"]) {
             if (isFullScreen == NO) {
-                
                 isFullScreen = YES;
+                
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-
                 [_TVPlayView removeFromSuperview];
                 [_scrollView removeFromSuperview];
-                _TVPlayView.frame = self.view.bounds;
-                [self.view addSubview:_TVPlayView];
-
-            }else{
-                isFullScreen = NO;
-                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-                [_TVPlayView removeFromSuperview];
-                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
                 
-                [_scrollView addSubview:_TVPlayView];
-                [self.view addSubview:_scrollView];
-            }
-            
-        }else {
-            if (isFullScreen == NO) {
-                isFullScreen = YES;
-
-                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-                [_TVPlayView removeFromSuperview];
-                [_scrollView removeFromSuperview];
-                _TVPlayView.frame = [UIScreen mainScreen].bounds;
-//                _TVPlayView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                _TVPlayView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
+                
                 [self.view addSubview:_TVPlayView];
+                _TVPlayView.center = self.view.center;
+                
+                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, M_PI_2);
+             
+                [[UIApplication sharedApplication] setStatusBarHidden:YES];
                 
             }else{
                 NSLog(@"非全屏播放");
                 isFullScreen = NO;
-                
                 [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+                
+                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
                 [_TVPlayView removeFromSuperview];
-                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
+                _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
                 [_scrollView addSubview:_TVPlayView];
                 [self.view addSubview:_scrollView];
+                
+                [[UIApplication sharedApplication] setStatusBarHidden:NO];
 
             }
+        }else{
+            //音频界面；
+            _mTools.fullScreenOrNot.selected = !_mTools.fullScreenOrNot.selected;
+            
+            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon" ofType:@"png"]] forState:UIControlStateNormal];
+            
+            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon1" ofType:@"png"]] forState:UIControlStateSelected];
         }
+
+        
     }else if (btn.tag == 2){
         //last program
     
