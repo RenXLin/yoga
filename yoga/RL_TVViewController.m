@@ -227,7 +227,8 @@
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             _ad.text = _programMode.ad;
             
-            NSString *urlStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)_programMode.path,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
+            NSString * pathUrl = [_programMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+            NSString *urlStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
             
             //加入FM播放器：
             if (!_mMpayer && urlStr) {
