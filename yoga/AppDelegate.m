@@ -78,7 +78,9 @@
             NSLog(@"%@",[UIDevice currentDevice].model);
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
                 if (MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height) < 500) {
-                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start%d_320x480.png",i+1]];
+                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
+                    
+                    NSLog(@"%@",imageView.image);
                 }else
                     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
             }else if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
