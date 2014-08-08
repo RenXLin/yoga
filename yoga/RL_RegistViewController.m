@@ -55,7 +55,6 @@
     _phoneNum = [[UITextField alloc] init];
     _phoneNum.frame = CGRectMake(10, 70, self.view.frame.size.width- 120, 45);
     _phoneNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _phoneNum.layer.cornerRadius = 10;
     _phoneNum.placeholder = @"请输入手机号码";
     _phoneNum.clearButtonMode = UITextFieldViewModeAlways;
     _phoneNum.textColor = [UIColor blackColor];
@@ -77,7 +76,6 @@
     verify.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [verify setTitle:@"获取验证码" forState:UIControlStateNormal];
     [verify setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    verify.layer.cornerRadius = 10;
     verify.tag = 1;
     [verify addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:verify];
@@ -92,7 +90,6 @@
     _verifyNum = [[UITextField alloc] init];
     _verifyNum.frame = CGRectMake(10, 120, self.view.frame.size.width - 20, 45);
     _verifyNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _verifyNum.layer.cornerRadius = 10;
     _verifyNum.placeholder = @"验证码";
     _verifyNum.clearButtonMode = UITextFieldViewModeAlways;
     _verifyNum.textColor = [UIColor blackColor];
@@ -112,7 +109,6 @@
     _passWord = [[UITextField alloc] init];
     _passWord.frame = CGRectMake(10, 170, self.view.frame.size.width - 20, 45);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _passWord.layer.cornerRadius = 10;
     _passWord.placeholder = @"请输入密码";
     _passWord.clearButtonMode = UITextFieldViewModeAlways;
     _passWord.textColor = [UIColor blackColor];
@@ -133,7 +129,6 @@
     _email = [[UITextField alloc] init];
     _email.frame = CGRectMake(10, 220, self.view.frame.size.width - 20, 45);
     _email.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _email.layer.cornerRadius = 10;
     _email.placeholder = @"请输入Email";
     _email.clearButtonMode = UITextFieldViewModeAlways;
     _email.textColor = [UIColor blackColor];
@@ -155,7 +150,6 @@
     assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
     [assign setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    assign.layer.cornerRadius = 10;
     assign.tag = 2;
     [assign addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:assign];

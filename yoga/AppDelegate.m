@@ -90,11 +90,11 @@
             [launchScrollView addSubview:imageView];
             if (i == 2) {
                 UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                btn.frame = CGRectMake(imageView.frame.size.width/2 - 50, imageView.frame.size.height / 4 + 20, 100, 30);
-                
-                [btn setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"c_bg1" ofType:@"png"]] forState:UIControlStateNormal];
+                btn.frame = CGRectMake(imageView.frame.size.width/2 - 50, imageView.frame.size.height * 3 / 4, 80, 30);
+                btn.layer.cornerRadius = 4;
+                btn.backgroundColor = [UIColor colorWithRed:0.96f green:0.73f blue:0.23f alpha:1.00f];
                 [btn addTarget:self action:@selector(StartBtnClick) forControlEvents:UIControlEventTouchUpInside];
-                [btn setTitle:@"开始" forState:UIControlStateNormal];
+                [btn setTitle:@"开始体验" forState:UIControlStateNormal];
                 [imageView addSubview:btn];
                 imageView.userInteractionEnabled = YES;
             }

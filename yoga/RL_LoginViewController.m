@@ -58,7 +58,6 @@
     _account = [[UITextField alloc] init];
     _account.frame = CGRectMake(10, 70, self.view.frame.size.width-20, 50);
     _account.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _account.layer.cornerRadius = 10;
     _account.placeholder = @"please input your account";
     _account.text = @"15529403212";
     _account.clearButtonMode = UITextFieldViewModeAlways;
@@ -79,7 +78,6 @@
     _passWord = [[UITextField alloc] init];
     _passWord.frame = CGRectMake(10, 130, self.view.frame.size.width-20, 50);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _passWord.layer.cornerRadius = 10;
     _passWord.text = @"12345678";
     _passWord.placeholder = @"please input your text";
     _passWord.clearButtonMode = UITextFieldViewModeAlways;
@@ -104,7 +102,6 @@
     assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
     [assign setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    assign.layer.cornerRadius = 10;
     assign.tag = 1;
     [assign addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:assign];
@@ -122,7 +119,6 @@
     login_btn.backgroundColor = [UIColor greenColor];
     [login_btn setTitle:@"登陆" forState:UIControlStateNormal];
     [login_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    login_btn.layer.cornerRadius = 10;
     login_btn.tag = 2;
     [login_btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:login_btn];
