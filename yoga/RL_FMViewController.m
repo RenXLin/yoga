@@ -327,7 +327,7 @@
         whichUrl = GETAudioPng_url;
     }
     [pngMg GET:whichUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success: %@",responseObject);
+
         NSArray *urlDic = [responseObject objectForKey:@"data"];
         for (int i = 0; i < [urlDic count]; i++) {
             NSDictionary *pngUrlDic = [urlDic objectAtIndex:i];

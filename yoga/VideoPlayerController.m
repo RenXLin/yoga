@@ -396,7 +396,7 @@
     AFHTTPRequestOperationManager *pngMg = [[AFHTTPRequestOperationManager alloc] init];
     pngMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [pngMg GET:GETPickAudioPng_url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success: %@",responseObject);
+
         NSArray *urlDic = [responseObject objectForKey:@"data"];
         for (int i = 0; i < [urlDic count]; i++) {
             NSDictionary *pngUrlDic = [urlDic objectAtIndex:i];

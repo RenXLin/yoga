@@ -317,11 +317,16 @@
 { 
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.text = title;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        label.font= [UIFont systemFontOfSize:15];
+    }else if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+        label.font = [UIFont systemFontOfSize:28];
+    }
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;
-    label.font = [UIFont systemFontOfSize:15];
+
     return label;
 }
 //生成背景视图方法
