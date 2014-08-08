@@ -78,7 +78,7 @@
             NSLog(@"%@",[UIDevice currentDevice].model);
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
                 if (MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height) < 500) {
-                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
+                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start%d_320x480.png",i+1]];
                     
                     NSLog(@"%@",imageView.image);
                 }else
@@ -90,7 +90,7 @@
             [launchScrollView addSubview:imageView];
             if (i == 2) {
                 UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                btn.frame = CGRectMake(imageView.frame.size.width/2 - 50, imageView.frame.size.height * 3 / 4, 80, 30);
+                btn.frame = CGRectMake((imageView.frame.size.width-80)/2, imageView.frame.size.height * 3 / 4, 80, 30);
                 btn.layer.cornerRadius = 4;
                 btn.backgroundColor = [UIColor colorWithRed:0.96f green:0.73f blue:0.23f alpha:1.00f];
                 [btn addTarget:self action:@selector(StartBtnClick) forControlEvents:UIControlEventTouchUpInside];
