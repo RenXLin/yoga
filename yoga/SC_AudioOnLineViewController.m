@@ -229,7 +229,14 @@
     //mySearchBar.backgroundImage = [UIImage imageNamed:@"white_btn.png"];
     [mySearchBar setPlaceholder:@"请输入关键词搜索"];
     [bgView addSubview:mySearchBar];
+    searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
+    //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
     
+    searchDisplayController.active = NO;
+    
+    searchDisplayController.searchResultsDelegate = self;
+    searchDisplayController.searchResultsDataSource =  self;
+   // searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+64, 310, 350);
         
 //    
 //    UIButton *searchBtn = [UIFactory createButtonWithFrame:CGRectMake(270, bgView.frame.size.height/2+(bgView.frame.size.height/2-30)/2, 30, 30) title:@"" bgImageName:@"btnblue.png" target:self action:@selector(sortBtnClick:)];
@@ -299,6 +306,58 @@
     
 
 
+}
+
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOPICKLIST_URL:SORT_VIDEOLIST_ULR];
+    //      待加入缓冲提示：
+    SVProgressHUDShow;
+    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            
+            [SVProgressHUD dismiss];
+            NSLog(@"%@",responseObject);
+            
+            if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
+            {
+                
+                for(NSDictionary *dict in [responseObject objectForKey:@"data"])
+                {
+                    
+                    
+                    SC_Model *model = [[SC_Model alloc]init];
+                    [model setValuesForKeysWithDictionary:dict];
+                    [dataArray1 addObject:model];
+                    
+                    _options = dataArray1;
+                    if(dataArray1.count!=0)
+                    {
+                        
+                    }
+                }
+                
+            }
+            
+            [TableView1 reloadData];
+            
+            
+        }else{
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+    
 }
 
 
@@ -658,42 +717,6 @@
 }
 
 #pragma UISearchDisplayDelegate
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    searchResults = [[NSMutableArray alloc]init];
-    if (mySearchBar.text.length>0&&![ChineseInclude isIncludeChineseInString:mySearchBar.text]) {
-        for (int i=0; i<dataArray.count; i++) {
-            
-            SC_Model *model = (SC_Model *)[dataArray objectAtIndex:i];
-            if ([ChineseInclude isIncludeChineseInString:model.title]) {
-                
-                NSString *tempPinYinHeadStr = [PinYinForObjc chineseConvertToPinYinHead:model.title];
-                NSRange titleHeadResult=[tempPinYinHeadStr rangeOfString:mySearchBar.text options:NSCaseInsensitiveSearch];
-                if (titleHeadResult.length>0) {
-                    [searchResults addObject:dataArray[i]];
-                }
-            }
-            else {
-                NSRange titleResult=[model.title rangeOfString:mySearchBar.text options:NSCaseInsensitiveSearch];
-                if (titleResult.length>0) {
-                    [searchResults addObject:dataArray[i]];
-                }
-            }
-        }
-    } else if (mySearchBar.text.length>0&&[ChineseInclude isIncludeChineseInString:mySearchBar.text]) {
-        for (SC_Model *model in dataArray) {
-            NSRange titleResult=[model.title rangeOfString:mySearchBar.text options:NSCaseInsensitiveSearch];
-            if (titleResult.length>0) {
-                [searchResults addObject:model];
-            }
-        }
-    }
-}
-
-- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
-{
-    tableView.frame = CGRectMake(5, 5+95+44, 310, 350);
-}
 
 
 #pragma mark - LeveyPopListView delegates
