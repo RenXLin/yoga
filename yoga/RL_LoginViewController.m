@@ -99,9 +99,9 @@
     //btn 注册
     UIButton *assign = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     assign.frame = CGRectMake(10, 200, 140, 50);
-    assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
+    assign.backgroundColor = [UIColor colorWithRed:0.07f green:0.63f blue:0.89f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
-    [assign setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [assign setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     assign.tag = 1;
     [assign addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:assign];
@@ -116,9 +116,9 @@
     //btn 登陆
     UIButton *login_btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     login_btn.frame = CGRectMake(self.view.frame.size.width - 150, 200, 140, 50);
-    login_btn.backgroundColor = [UIColor greenColor];
+    login_btn.backgroundColor = [UIColor colorWithRed:0.49f green:0.81f blue:0.23f alpha:1.00f];
     [login_btn setTitle:@"登陆" forState:UIControlStateNormal];
-    [login_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [login_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     login_btn.tag = 2;
     [login_btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:login_btn];
