@@ -13,6 +13,7 @@
 #import "UMSocial.h"
 #import "OneDayProgram.h"
 #import "OneDayProgramCell.h"
+#import "UIImageView+AFNetworking.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -93,7 +94,6 @@
     UIView *nav = [self myNavgationBar:CGRectMake(0, 0, scrolView.frame.size.width, 44) andTitle:self.FM_AV];
     [scrolView addSubview:nav];
     
-    
     //添加白色底板
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height + 10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
     whiteView.tag = 5000;
@@ -129,8 +129,8 @@
     CGFloat rect_width = (whiteView.frame.size.width - GAP_WITH * 4) / 3;
     for (int i = 0; i < 3 ; i++) {
         for (int j = 0; j < 3; j++) {
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(GAP_WITH *(j + 1) + j * rect_width, GAP_WITH *(i + 1) + i * rect_width , rect_width, rect_width)];
-            view.tag = i * 3 + j+1; //(1 2...9)
+            UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(GAP_WITH *(j + 1) + j * rect_width, GAP_WITH *(i + 1) + i * rect_width , rect_width, rect_width)];
+            view.tag = i * 3 + j + 200; //(0 1 2...8)
             view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
             view.contentMode = UIViewContentModeScaleToFill;
             [whiteView addSubview:view];
@@ -141,9 +141,12 @@
             UIViewAutoresizingFlexibleLeftMargin |
             UIViewAutoresizingFlexibleRightMargin |
             UIViewAutoresizingFlexibleWidth;
+            
         }
     }
     
+    [self getPNGurl];
+
     //当前节目
     UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,whiteView.frame.origin.y + whiteView.frame.size.height + 5, self.view.frame.size.width, 30)];
     titleLabel.text = _FM_AV;
@@ -312,6 +315,43 @@
             [aleart show];
     }];
 }
+#pragma mark 请求获取九宫格图片url
+-(void)getPNGurl
+{
+    AFHTTPRequestOperationManager *pngMg = [[AFHTTPRequestOperationManager alloc] init];
+    pngMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSString *whichUrl;
+    if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
+        whichUrl = GETFMpng_url;
+    }else{
+        whichUrl = GETAudioPng_url;
+    }
+    [pngMg GET:whichUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success: %@",responseObject);
+        NSArray *urlDic = [responseObject objectForKey:@"data"];
+        for (int i = 0; i < [urlDic count]; i++) {
+            NSDictionary *pngUrlDic = [urlDic objectAtIndex:i];
+            UIView *whiteView = [self.view viewWithTag:5000];
+            UIImageView *imgV = [whiteView viewWithTag:(i+200)];
+            
+            NSURL *url;
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+                url = [NSURL URLWithString:[pngUrlDic objectForKey:@"small"]];
+            }else{
+                url = [NSURL URLWithString:[pngUrlDic objectForKey:@"big"]];
+            }
+            if ([imgV isKindOfClass:[UIImageView class]]) {
+                [imgV setImageWithURL:url placeholderImage:nil];
+            }
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed: %@",error);
+        
+    }];
+    
+}
+
 
 -(NSString *)removeSpace:(NSString *)str
 {
@@ -319,8 +359,6 @@
     NSString *resultStr = [arr componentsJoinedByString:@"%20"];
     return resultStr;
 }
-
-
 
 -(void)playMovieAtURL:(NSString*)theURLStr
 {

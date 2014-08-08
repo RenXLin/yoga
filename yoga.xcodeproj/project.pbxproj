@@ -225,6 +225,7 @@
 		CD9E69701987DCA100052EE3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69661987DCA100052EE3 /* Default.png */; };
 		CDA734141987F49B009713D5 /* OneDayProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA734131987F49B009713D5 /* OneDayProgram.m */; };
 		CDA734171987FCAE009713D5 /* OneDayProgramCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA734161987FCAE009713D5 /* OneDayProgramCell.m */; };
+		CDB3DCD319951149008A9947 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB3DCD219951149008A9947 /* UIImageView+AFNetworking.m */; };
 		CDF0535C197BAFB60097FAAA /* MedioPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */; };
 /* End PBXBuildFile section */
 
@@ -548,6 +549,8 @@
 		CDA734131987F49B009713D5 /* OneDayProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayProgram.m; sourceTree = "<group>"; };
 		CDA734151987FCAE009713D5 /* OneDayProgramCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayProgramCell.h; sourceTree = "<group>"; };
 		CDA734161987FCAE009713D5 /* OneDayProgramCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayProgramCell.m; sourceTree = "<group>"; };
+		CDB3DCD119951149008A9947 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		CDB3DCD219951149008A9947 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		CDF0535A197BAFB60097FAAA /* MedioPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedioPlayTool.h; sourceTree = "<group>"; };
 		CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedioPlayTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1102,6 +1105,8 @@
 		CD8E51231971586E00771960 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				CDB3DCD119951149008A9947 /* UIImageView+AFNetworking.h */,
+				CDB3DCD219951149008A9947 /* UIImageView+AFNetworking.m */,
 				CD8E51241971586E00771960 /* AFHTTPRequestOperation.h */,
 				CD8E51251971586E00771960 /* AFHTTPRequestOperation.m */,
 				CD8E51261971586E00771960 /* AFHTTPRequestOperationManager.h */,
@@ -1373,6 +1378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD31ECF21985091D00A208E0 /* RL_TVViewController.m in Sources */,
+				CDB3DCD319951149008A9947 /* UIImageView+AFNetworking.m in Sources */,
 				CD31ECD81984F6D500A208E0 /* RL_LoginViewController.m in Sources */,
 				3AA9D63819840B74003068D4 /* AlixPayOrder.m in Sources */,
 				3AA9D63F19840B74003068D4 /* SBJsonWriter.m in Sources */,

@@ -126,6 +126,7 @@
     [colorArray addObject:color8];
     [colorArray addObject:color9];
     
+    
     NSArray *titleArray = [NSArray arrayWithObjects:@"瑜伽 FM",@"瑜伽 TV",@"瑜伽好声音",@"音频直播",@"视频直播", nil];
     NSArray *clickArray = @[@"音频点播",@"视频点播"];
 //    NSArray *imageArray = [NSArray arrayWithObjects:@"fm.png",@"string",@"<#string#>",@"<#string#>", nil];

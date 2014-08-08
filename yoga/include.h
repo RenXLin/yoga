@@ -110,9 +110,13 @@
 //
 
 ////参数：
+//获取九宫格图片的url
+#define  GETFMpng_url   @"http://www.chinayogaonline.com/api/getYogafmAd"
 //
+#define  GETAudioPng_url   @"http://www.chinayogaonline.com/api/getAodAd"
+#define  GETPickAudioPng_url   @"http://www.chinayogaonline.com/api/getMusicAd"
 
-//
+
 ////参数：
 //
 ////音频点播列表

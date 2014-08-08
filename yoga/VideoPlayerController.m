@@ -12,7 +12,7 @@
 #import "CurrentProgram.h"
 #import "MedioPlayTool.h"
 #import "UMSocial.h"
-
+#import "UIImageView+AFNetworking.h"
 
 
 #define GAP_WITH    0
@@ -200,6 +200,7 @@
     if ([self.titleName isEqualToString:@"音频点播"]) {
         
         _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width);
+        _TVPlayView.tag = 5000;
         
         NSMutableArray *colorArray =[[NSMutableArray alloc] init];
         UIColor *color1 = [UIColor colorWithRed:0.09f green:0.70f blue:0.91f alpha:1.00f];
@@ -225,8 +226,8 @@
         for (int i = 0; i < 3 ; i++) {
             
             for (int j = 0; j < 3; j++) {
-                UIView *view = [[UIView alloc] initWithFrame:CGRectMake(GAP_WITH *(j + 1) + (j) * rect_width, GAP_WITH *(i + 1) + i * rect_width , rect_width, rect_width)];
-                view.tag = i * 3 + j+1; //(1 2...9)
+                UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(GAP_WITH *(j + 1) + (j) * rect_width, GAP_WITH *(i + 1) + i * rect_width , rect_width, rect_width)];
+                view.tag = i * 3 + j + 200; //(0 1 2...8)
                 view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
                 view.contentMode = UIViewContentModeScaleToFill;
                 [_TVPlayView addSubview:view];
@@ -239,12 +240,13 @@
                 UIViewAutoresizingFlexibleWidth;
             }
         }
+        [self getPNGurl];
     }
-    
     //添加工具条：
     _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width, 60)];
     [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
     [_TVPlayView addSubview:_mTools];
+    _mTools.tag = 10;
     _mTools.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
@@ -388,12 +390,37 @@
     }
 }
 
--(NSString *)removeSpace:(NSString *)str
+#pragma mark 请求获取九宫格图片url
+-(void)getPNGurl
 {
-    NSArray *arr = [str componentsSeparatedByString:@" "];
-    NSString *resultStr = [arr componentsJoinedByString:@"%20"];
-    return resultStr;
+    AFHTTPRequestOperationManager *pngMg = [[AFHTTPRequestOperationManager alloc] init];
+    pngMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [pngMg GET:GETPickAudioPng_url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success: %@",responseObject);
+        NSArray *urlDic = [responseObject objectForKey:@"data"];
+        for (int i = 0; i < [urlDic count]; i++) {
+            NSDictionary *pngUrlDic = [urlDic objectAtIndex:i];
+            UIImageView *imgV = [_TVPlayView viewWithTag:(i+200)];
+            
+            NSURL *url;
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+                url = [NSURL URLWithString:[pngUrlDic objectForKey:@"small"]];
+            }else{
+                url = [NSURL URLWithString:[pngUrlDic objectForKey:@"big"]];
+            }
+
+            if ([imgV isKindOfClass:[UIImageView class]]) {
+                [imgV setImageWithURL:url placeholderImage:nil];
+            }
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed: %@",error);
+        
+    }];
+
 }
+
 
 NSString* UrlEncodedString(NSString* sourceText)
 {
