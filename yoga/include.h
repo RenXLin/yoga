@@ -63,7 +63,7 @@
 //参数 username password
 
 //注册：
-#define REGIST_URL  @"http://www.chinayogaonline.com/api/reg"
+#define REGIST_URL  @"http://www.chinayogaonline.com/api/reg?"
 //参数 mobile $email $password $code(短信验证码)
 
 //查用户信息：

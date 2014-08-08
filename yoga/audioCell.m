@@ -21,7 +21,7 @@
     if (self) {
         // Initialization code
         
-        if([KDEVICE isEqualToString:@"iPad Simulator"])
+        if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         {
         self.frame = CGRectMake(0, 0, KscreenWidth, 80);
             
@@ -45,20 +45,20 @@
 
         }else
         {
-          self.frame = CGRectMake(0, 0, KscreenWidth, 37);
+          self.frame = CGRectMake(0, 0, KscreenWidth, 50);
             
-            UILabel *cgLab = [UIFactory createLabelWithFrame:CGRectMake(0, 0, 280, 37) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:1];
+            UILabel *cgLab = [UIFactory createLabelWithFrame:CGRectMake(0, 0, 280, 50) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:1];
             [self.contentView addSubview:cgLab];
             self.cgLab = cgLab;
             
             
-            UILabel *titleLab = [UIFactory createLabelWithFrame:CGRectMake(10, 0, 150, 37) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:0];
+            UILabel *titleLab = [UIFactory createLabelWithFrame:CGRectMake(10, 0, 150, 50) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:0];
             titleLab.numberOfLines = 0;
             titleLab.backgroundColor = [UIColor clearColor];
             [self.contentView addSubview:titleLab];
             self.titleLab = titleLab;
             
-            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(165, 0, 100, 37) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:0];
+            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(165, 0, 100, 50) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(14) textAlignment:0];
             [self.contentView addSubview:timeLab];
             timeLab.backgroundColor = [UIColor clearColor];
             self.timeLab = timeLab;

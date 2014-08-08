@@ -217,8 +217,10 @@
                                      _verifyNum.text,@"code",
                                      _email.text,@"email",nil];
         registM.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        [registM POST:REGIST_URL parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [registM GET:[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text] parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"success:\n%@",responseObject);
+             NSLog(@"%@",[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text]);
             NSLog(@"%@",[responseObject objectForKey:@"msg"]);
             if ([[[responseObject objectForKey:@"data"] objectForKey:@"username"]isEqualToString:_phoneNum.text]) {
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[responseObject objectForKey:@"msg"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -233,7 +235,6 @@
             [alert show];
         }];
     }
-    
 }
 -(void)timerTick
 {

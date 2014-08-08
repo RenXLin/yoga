@@ -230,15 +230,7 @@
     [mySearchBar setPlaceholder:@"请输入关键词搜索"];
     [bgView addSubview:mySearchBar];
     
-    searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
-    //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
-
-    searchDisplayController.active = NO;
-    
-    searchDisplayController.searchResultsDelegate = self;
-    searchDisplayController.searchResultsDataSource =  self;
-    searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+44, 310, 350);
-    
+        
 //    
 //    UIButton *searchBtn = [UIFactory createButtonWithFrame:CGRectMake(270, bgView.frame.size.height/2+(bgView.frame.size.height/2-30)/2, 30, 30) title:@"" bgImageName:@"btnblue.png" target:self action:@selector(sortBtnClick:)];
 //    [searchBtn setBackgroundImage:[UIImage imageNamed:@"btnblue_press.png"] forState:UIControlStateHighlighted];
@@ -249,7 +241,7 @@
 //    [searchBtn addSubview:searchImg];
    
     
-    if([KDEVICE isEqualToString:@"iPad Simulator"])
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+44, KscreenWidth-10, KscreenHeight -5-95-64-140 ) style:UITableViewStylePlain];
     }else
@@ -531,7 +523,7 @@
     {
         return 80;
     }
-    return 37;
+    return 50;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
