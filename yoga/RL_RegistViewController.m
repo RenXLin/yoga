@@ -228,7 +228,7 @@
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[responseObject objectForKey:@"msg"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }else{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"手机格式错误" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
