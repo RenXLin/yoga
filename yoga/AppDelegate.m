@@ -76,15 +76,15 @@
         for (int i = 0; i < 3; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * [UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
             NSLog(@"%@",[UIDevice currentDevice].model);
-//            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//                if (MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height) < 500) {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                if (MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height) < 500) {
                     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start%d_320x480.jpg",i+1]];
                     
-//                }else
-//                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
-//            }else if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
-//                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPad%d.jpg",i+1]];
-//            }
+                }else
+                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
+            }else if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPad%d.jpg",i+1]];
+            }
             
             [launchScrollView addSubview:imageView];
             

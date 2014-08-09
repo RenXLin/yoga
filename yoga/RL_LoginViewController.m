@@ -97,8 +97,9 @@
     UIViewAutoresizingFlexibleWidth;
     
     //btn 注册
-    UIButton *assign = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *assign = [UIButton buttonWithType:UIButtonTypeCustom];
     assign.frame = CGRectMake(10, 200, 140, 50);
+    assign.showsTouchWhenHighlighted = YES;
     assign.layer.backgroundColor = [UIColor colorWithRed:0.07f green:0.63f blue:0.89f alpha:1.00f].CGColor;
     [assign setTitle:@"注册" forState:UIControlStateNormal];
     [assign setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -114,7 +115,8 @@
     UIViewAutoresizingFlexibleWidth;
     
     //btn 登陆
-    UIButton *login_btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *login_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    login_btn.showsTouchWhenHighlighted = YES;
     login_btn.frame = CGRectMake(self.view.frame.size.width - 150, 200, 140, 50);
     login_btn.layer.backgroundColor = [UIColor colorWithRed:0.49f green:0.81f blue:0.23f alpha:1.00f].CGColor;
     [login_btn setTitle:@"登陆" forState:UIControlStateNormal];

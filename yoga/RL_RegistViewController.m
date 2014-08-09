@@ -53,7 +53,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     _phoneNum = [[UITextField alloc] init];
-    _phoneNum.frame = CGRectMake(10, 70, self.view.frame.size.width- 120, 45);
+    _phoneNum.frame = CGRectMake(10, 70, self.view.frame.size.width- 140, 45);
     _phoneNum.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _phoneNum.placeholder = @"请输入手机号码";
     _phoneNum.clearButtonMode = UITextFieldViewModeAlways;
@@ -71,8 +71,9 @@
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
     
-    verify = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    verify.frame = CGRectMake(_phoneNum.frame.size.width+20, 70, 90, 45);
+    verify = [UIButton buttonWithType:UIButtonTypeCustom];
+    verify.showsTouchWhenHighlighted = YES;
+    verify.frame = CGRectMake(_phoneNum.frame.size.width+20, 70, 110, 45);
     verify.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [verify setTitle:@"获取验证码" forState:UIControlStateNormal];
     [verify setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -145,10 +146,11 @@
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
     
-    UIButton *assign = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *assign = [UIButton buttonWithType:UIButtonTypeCustom];
     assign.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
     assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
+    assign.showsTouchWhenHighlighted = YES;
     [assign setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     assign.tag = 2;
     [assign addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
