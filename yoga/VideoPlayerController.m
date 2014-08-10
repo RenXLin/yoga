@@ -175,8 +175,8 @@
     [_scrollView addSubview:_TVPlayView];
     _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
 						  UIActivityIndicatorViewStyleWhiteLarge];
-    _activityView.center = _TVPlayView.center;
 	[_TVPlayView addSubview:_activityView];
+    _activityView.center = _TVPlayView.center;
     [_activityView startAnimating];
     _activityView.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |

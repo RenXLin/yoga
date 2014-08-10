@@ -115,11 +115,11 @@
     [self.view addSubview:_scrollView];
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, iOS7?20:0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
     [_scrollView addSubview:nav];
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, 70, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, nav.frame.size.height + nav.frame.origin.y + 10, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
     _TVPlayView.backgroundColor = [UIColor grayColor];
 //    TVPlayView.alpha = 0.2;
     [_scrollView addSubview:_TVPlayView];
