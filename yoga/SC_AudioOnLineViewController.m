@@ -873,7 +873,9 @@
 - (void)headerRereshing
 {
     // 1.添加假数据
+    limit =10;
     [self request];
+    
     
     // 2.2秒后刷新表格UI
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
