@@ -187,6 +187,8 @@
 		CD3E57D11984E23F000A360A /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3E57C51984E23E000A360A /* UMSnsAccountViewController.xib */; };
 		CD3E57D21984E23F000A360A /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3E57C61984E23E000A360A /* UMSShareListController.xib */; };
 		CD3E57D31984E23F000A360A /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD3E57C71984E23E000A360A /* UMSocialSDKResourcesNew.bundle */; };
+		CD4482001997A6090061B535 /* video_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4481FE1997A6090061B535 /* video_pause.png */; };
+		CD4482011997A6090061B535 /* video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4481FF1997A6090061B535 /* video_play.png */; };
 		CD4654AE1989264C00E871DB /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4654AA1989264C00E871DB /* libSocialQQ.a */; };
 		CD4654AF1989264C00E871DB /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4654AB1989264C00E871DB /* TencentOpenAPI.framework */; };
 		CD4654B01989264C00E871DB /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD4654AC1989264C00E871DB /* TencentOpenApi_IOS_Bundle.bundle */; };
@@ -512,6 +514,8 @@
 		CD3E57C61984E23E000A360A /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		CD3E57C71984E23E000A360A /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		CD3E57C81984E23E000A360A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
+		CD4481FE1997A6090061B535 /* video_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_pause.png; sourceTree = "<group>"; };
+		CD4481FF1997A6090061B535 /* video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_play.png; sourceTree = "<group>"; };
 		CD4654AA1989264C00E871DB /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		CD4654AB1989264C00E871DB /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		CD4654AC1989264C00E871DB /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
@@ -869,6 +873,8 @@
 		CD0DB9C2196DA52200C3A2A8 /* 切图 */ = {
 			isa = PBXGroup;
 			children = (
+				CD4481FE1997A6090061B535 /* video_pause.png */,
+				CD4481FF1997A6090061B535 /* video_play.png */,
 				CD2D3F171991282B002D6ADF /* fm1.png */,
 				CD2D3F151991203E002D6ADF /* 333.png */,
 				CD2D3F1319911F19002D6ADF /* 222.png */,
@@ -1364,6 +1370,7 @@
 				CD0DBA51196DA52200C3A2A8 /* icon5.png in Resources */,
 				CD0DBA4A196DA52200C3A2A8 /* icon1_1.png in Resources */,
 				CD0DBA83196DA52200C3A2A8 /* video_jd1.png in Resources */,
+				CD4482001997A6090061B535 /* video_pause.png in Resources */,
 				CD9E69691987DCA100052EE3 /* iPad2.jpg in Resources */,
 				CD0DBAA1196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png in Resources */,
 				CD0DBA7B196DA52200C3A2A8 /* video_icon6.png in Resources */,
@@ -1425,6 +1432,7 @@
 				CD0DBA50196DA52200C3A2A8 /* icon4_1.png in Resources */,
 				CD0DBA77196DA52200C3A2A8 /* video_icon4.png in Resources */,
 				CD0DBA5B196DA52200C3A2A8 /* icon_1.png in Resources */,
+				CD4482011997A6090061B535 /* video_play.png in Resources */,
 				CD0DBA69196DA52200C3A2A8 /* title_icon2_1.png in Resources */,
 				CD3E57CC1984E23F000A360A /* UMSCommentInputController.xib in Resources */,
 				CD9E69701987DCA100052EE3 /* Default.png in Resources */,

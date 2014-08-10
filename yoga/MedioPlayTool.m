@@ -96,9 +96,10 @@
         _isPlayOrPause = [UIButton buttonWithType:UIButtonTypeCustom];
         _isPlayOrPause.frame = CGRectMake(self.frame.size.width - 100, TimeLabel_height, self_Height - TimeLabel_height, self_Height - TimeLabel_height);
         _isPlayOrPause.backgroundColor = [UIColor clearColor];
-        [_isPlayOrPause setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon6" ofType:@"png"]] forState:UIControlStateNormal];
-        [_isPlayOrPause setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon5" ofType:@"png"]] forState:UIControlStateSelected];
+        [_isPlayOrPause setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_pause" ofType:@"png"]] forState:UIControlStateNormal];
+        [_isPlayOrPause setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"]] forState:UIControlStateSelected];
         [self addSubview:_isPlayOrPause];
+        _isPlayOrPause.showsTouchWhenHighlighted = YES;
         _isPlayOrPause.tag = 3;
         [_isPlayOrPause setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |
          UIViewAutoresizingFlexibleBottomMargin |
