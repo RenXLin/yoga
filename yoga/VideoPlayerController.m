@@ -313,7 +313,7 @@
     _ad.textColor = [UIColor whiteColor];
     _ad.backgroundColor = [UIColor clearColor];
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.500];
-    _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
+    _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_itemMode.ad,_itemMode.ad,_itemMode.ad];
     [_scrollView addSubview:_ad];
 //    _ad.autoresizingMask =
 //    UIViewAutoresizingFlexibleBottomMargin |
