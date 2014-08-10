@@ -18,6 +18,7 @@
 
 #import "RL_LoginViewController.h"
 #import "OrderViewController.h"
+#import "MJRefresh.h"
 @interface SC_AudioOnLineViewController ()<LeveyPopListViewDelegate>
 {
     //当前在线人数
@@ -27,10 +28,14 @@
     UITableView *TableView1;
     UIButton *sortBtn;
     
-    UIButton *btn;
-    UIButton *btn1;
+    UIButton *Lbtn;
+    UIButton *Rbtn1;
     SC_popView *lplv;
     
+    NSString *cid;
+    NSInteger  limit;
+    
+    BOOL isloading;
 }
 
 @end
@@ -77,9 +82,14 @@
     
     //数据源初始化
     dataArray = [[NSMutableArray alloc]init];
+    pageDataArray = [[NSMutableArray alloc]init];
     dataArray1 = [[NSMutableArray alloc]init];
     [self creatUI];
     [self request];
+    
+    [self  setupRefresh];
+    
+    limit = 10;
     
     [NSThread detachNewThreadSelector:@selector(request1) toTarget:self withObject:nil];
     
@@ -149,7 +159,8 @@
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
             NSLog(@"%@",responseObject);
-            
+            [pageDataArray removeAllObjects];
+            [dataArray removeAllObjects];
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
             {
                 
@@ -157,18 +168,24 @@
                 {
                     SC_Model *model = [[SC_Model alloc]init];
                     [model setValuesForKeysWithDictionary:dict];
-                    [dataArray addObject:model];
+                    [pageDataArray addObject:model];
+                    
+                    if(dataArray.count<10)
+                    {
+                        [dataArray addObject:model];
+                    }
+                    
                 }
                 
             }
             
-            
+            [TableView headerEndRefreshing];
             [TableView reloadData];
         }else{
-            
+            [TableView headerEndRefreshing];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [TableView headerEndRefreshing];
     }];
     
 
@@ -182,12 +199,12 @@
     
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 44) andTitle:self.Title];
+    UIView *nav = [self myNavgationBar:CGRectMake(0,iOS7?20:0, KscreenWidth, 44) andTitle:self.Title];
     [bgImgView addSubview:nav];
     
     //
     
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 44+5, KscreenWidth-10, 95)];
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 44+5+(iOS7?20:0), KscreenWidth-10, 95)];
     bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
     UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
     lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
@@ -208,8 +225,8 @@
     sortBtn.tag = 110;
     [bgView addSubview:sortBtn];
     
-    UIImageView *sortImg = [UIFactory createImageViewWithFrame:CGRectMake(295,(bgView.frame.size.height/2-10)/2+44+4, 10,10) imageName:@"a1.png"];
-    [bgImgView addSubview:sortImg];
+//    UIImageView *sortImg = [UIFactory createImageViewWithFrame:CGRectMake(295,(bgView.frame.size.height/2-10)/2+44+4, 10,10) imageName:@"a1.png"];
+//    [bgImgView addSubview:sortImg];
     
     
     UIImageView *iputImg = [UIFactory createImageViewWithFrame:CGRectMake(5,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 260,35) imageName:@"white_btn.png"];
@@ -226,16 +243,17 @@
     mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,44)];
     //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
     mySearchBar.delegate = self;
-    //mySearchBar.backgroundImage = [UIImage imageNamed:@"white_btn.png"];
+    //mySearchBar.showsCancelButton = YES;
+    mySearchBar.backgroundImage = [UIImage imageNamed:@"white_btn.png"];
     [mySearchBar setPlaceholder:@"请输入关键词搜索"];
     [bgView addSubview:mySearchBar];
-    searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
+    //searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
     //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
     
-    searchDisplayController.active = NO;
+    //searchDisplayController.active = NO;
     
-    searchDisplayController.searchResultsDelegate = self;
-    searchDisplayController.searchResultsDataSource =  self;
+//    searchDisplayController.searchResultsDelegate = self;
+//    searchDisplayController.searchResultsDataSource =  self;
    // searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+64, 310, 350);
         
 //    
@@ -254,7 +272,7 @@
     }else
     {
         
-      TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+44, KscreenWidth -10, KscreenHeight -5-95-64 - 50 ) style:UITableViewStylePlain];
+        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+44+(iOS7?20:0), KscreenWidth -10, KscreenHeight -5-95-64 - 50 ) style:UITableViewStylePlain];
     }
     
     TableView.delegate = self;
@@ -317,7 +335,17 @@
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOPICKLIST_URL:SORT_VIDEOLIST_ULR];
+    if(cid == nil)
+    {
+        cid = @"";
+    }
+    
+    NSString *URLStr = [NSString stringWithFormat:@"%@?cid=%@&keywords=%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL,cid,searchBar.text];
+    NSLog(@"%@",URLStr);
+    URLStr = [URLStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    NSLog(@"%@",URLStr);
     //      待加入缓冲提示：
     SVProgressHUDShow;
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -326,6 +354,9 @@
             
             [SVProgressHUD dismiss];
             NSLog(@"%@",responseObject);
+            
+            [pageDataArray removeAllObjects];
+            [dataArray removeAllObjects];
             
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
             {
@@ -336,43 +367,49 @@
                     
                     SC_Model *model = [[SC_Model alloc]init];
                     [model setValuesForKeysWithDictionary:dict];
-                    [dataArray1 addObject:model];
+                    [pageDataArray addObject:model];
                     
-                    _options = dataArray1;
-                    if(dataArray1.count!=0)
+                    if(dataArray.count<10)
                     {
-                        
+                        [dataArray addObject:model];
                     }
+                    
+                    
+                    
                 }
                 
             }
             
-            [TableView1 reloadData];
+            [TableView reloadData];
             
             
         }else{
-            
+            [SVProgressHUD dismiss];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [SVProgressHUD dismiss];
     }];
 
     
 }
-
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    [mySearchBar resignFirstResponder];
+}
 
 #pragma mark 分类筛选按钮点击事件
-- (void)sortBtnClick:(UIButton *)btn
+- (void)sortBtnClick:(UIButton *)button
 {
-    switch (btn.tag - 110) {
+    switch (button.tag - 110) {
             //分类筛选
         case 0:
         {
             if(dataArray1.count!=0)
             {
-                LeveyPopListView *lplv = [[LeveyPopListView alloc] initWithTitle:@"分类选择" options:_options];
-                lplv.delegate = self;
-                [lplv showInView:self.view animated:YES];
+                LeveyPopListView *lplv1 = [[LeveyPopListView alloc] initWithTitle:@"分类选择" options:_options];
+                lplv1.delegate = self;
+                [lplv1 showInView:self.view animated:YES];
             }
             
   
@@ -524,6 +561,7 @@
     return view;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == searchDisplayController.searchResultsTableView) {
@@ -542,6 +580,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *cellName = @"cellName";
     AudioCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName];
     if(cell == nil)
@@ -569,7 +608,11 @@
         cell.model = [dataArray1 objectAtIndex:indexPath.row];
     }
     else {
-        cell.model = [dataArray objectAtIndex:indexPath.row];
+        if(dataArray.count>0)
+        {
+            cell.model = [dataArray objectAtIndex:indexPath.row];
+        }
+       
     }
     return cell;
     
@@ -592,8 +635,8 @@
     if(info.token.length == 0)
     {
         
-        lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:btn With:btn1];
-        //lplv.delegate = self;
+        lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:Lbtn With:Rbtn1];
+        //lplv.delegLbtnnn = self;
         [lplv showInView:self.view animated:YES];
         
         [self creatBtn];
@@ -629,35 +672,35 @@
 {
     if(KscreenHeight == 568 || KscreenHeight == 480)
     {
-        btn = [[UIButton alloc]initWithFrame:CGRectMake(10, 80+5, (KscreenWidth-50)/2, 40)];
-        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(20+btn.frame.size.width, 80+5, btn.frame.size.width, 40)];
-        btn.titleLabel.font = Kfont(15);
-        btn1.titleLabel.font = Kfont(15);
+        Lbtn = [[UIButton alloc]initWithFrame:CGRectMake(10, 80+5, (KscreenWidth-50)/2, 40)];
+        Rbtn1 = [[UIButton alloc]initWithFrame:CGRectMake(20+Lbtn.frame.size.width, 80+5, Lbtn.frame.size.width, 40)];
+        Lbtn.titleLabel.font = Kfont(15);
+        Rbtn1.titleLabel.font = Kfont(15);
     }else
     {
-        btn = [[UIButton alloc]initWithFrame:CGRectMake(20, 140+30, (KscreenWidth - 80)/2, 80)];
-        btn1 = [[UIButton alloc]initWithFrame:CGRectMake(40+(KscreenWidth - 80)/2,140+30, btn.frame.size.width, 80)];
-        btn.titleLabel.font = Kfont(30);
-        btn1.titleLabel.font = Kfont(30);
+        Lbtn = [[UIButton alloc]initWithFrame:CGRectMake(20, 140+30, (KscreenWidth - 80)/2, 80)];
+        Rbtn1 = [[UIButton alloc]initWithFrame:CGRectMake(40+(KscreenWidth - 80)/2,140+30, Lbtn.frame.size.width, 80)];
+        Lbtn.titleLabel.font = Kfont(30);
+        Rbtn1.titleLabel.font = Kfont(30);
     }
     
-    [btn setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setTitle:@"登录" forState:UIControlStateNormal];
-    btn.tag = 110;
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [Lbtn setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
+    [Lbtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [Lbtn setTitle:@"登录" forState:UIControlStateNormal];
+    Lbtn.tag = 110;
+    [Lbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     
     
-    [btn1 setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
-    [btn1 addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    [btn1 setTitle:@"马上升级" forState:UIControlStateNormal];
-    btn1.tag = 111;
-    [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [Rbtn1 setBackgroundImage:[UIImage imageNamed:@"white_btn1.png"] forState:UIControlStateNormal];
+    [Rbtn1 addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [Rbtn1 setTitle:@"马上升级" forState:UIControlStateNormal];
+    Rbtn1.tag = 111;
+    [Rbtn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     
-    [lplv.bgView addSubview:btn];
-    [lplv.bgView addSubview:btn1];
+    [lplv.bgView addSubview:Lbtn];
+    [lplv.bgView addSubview:Rbtn1];
 }
 
 
@@ -705,10 +748,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [inputTf resignFirstResponder];
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -739,14 +778,23 @@
             
             NSLog(@"%@",responseObject);
             
+            [pageDataArray removeAllObjects];
+            
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
             {
                 
                 for(NSDictionary *dict in [responseObject objectForKey:@"data"])
                 {
                     SC_Model *model = [[SC_Model alloc]init];
+                
                     [model setValuesForKeysWithDictionary:dict];
-                    [dataArray addObject:model];
+                    cid = model.cid;
+                    [pageDataArray addObject:model];
+                    if(dataArray.count<10)
+                    {
+                        [dataArray addObject:model];
+                    }
+                
                 }
                 
             }
@@ -789,5 +837,79 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
+
+/**
+ *  集成刷新控件
+ */
+- (void)setupRefresh
+{
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    [TableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+#warning 自动刷新(一进入程序就下拉刷新)
+    //[TableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    if(limit<=pageDataArray.count)
+    {
+      [TableView addFooterWithTarget:self action:@selector(footerRereshing)];  
+    }
+    
+    
+    // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+//    TableView.headerPullToRefreshText = @"下拉可以刷新了";
+//    TableView.headerReleaseToRefreshText = @"松开马上刷新了";
+//    TableView.headerRefreshingText = @"MJ哥正在帮你刷新中,不客气";
+//    
+//    TableView.footerPullToRefreshText = @"上拉可以加载更多数据了";
+//    TableView.footerReleaseToRefreshText = @"松开马上加载更多数据了";
+//    TableView.footerRefreshingText = @"MJ哥正在帮你加载中,不客气";
+}
+
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing
+{
+    // 1.添加假数据
+    [self request];
+    
+    // 2.2秒后刷新表格UI
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        // 刷新表格
+//        [TableView reloadData];
+//        
+//        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+//        [TableView headerEndRefreshing];
+//    });
+}
+
+- (void)footerRereshing
+{
+    
+    [dataArray removeAllObjects];
+    limit+=10;
+    if(limit>pageDataArray.count)
+    {
+        limit = pageDataArray.count;
+        
+    }
+    for (int i=0; i<limit; i++) {
+        
+        [dataArray addObject:[pageDataArray objectAtIndex:i]];
+    }
+    
+    
+    // 2.2秒后刷新表格UI
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 刷新表格
+        [TableView reloadData];
+        
+        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        [TableView footerEndRefreshing];
+    });
+}
+
 
 @end

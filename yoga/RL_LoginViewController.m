@@ -49,10 +49,11 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, iOS7?20:0, self.view.frame.size.width, 44) andTitle:@"登陆"];
     [self.view addSubview:nav];
     
-    
+   
+
     self.view.autoresizesSubviews = YES;
     
     _account = [[UITextField alloc] init];

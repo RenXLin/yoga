@@ -177,10 +177,10 @@
     //return  [UMSocialSnsService handleOpenURL:url];
 
 }
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return  [UMSocialSnsService handleOpenURL:url];
-}
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//    return  [UMSocialSnsService handleOpenURL:url];
+//}
 
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
     
@@ -195,7 +195,7 @@
 			/*
 			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
 			 */
-            
+            NSLog(@"123");
             //交易成功
             NSString* key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
             id<DataVerifier> verifier;
@@ -203,8 +203,50 @@
     
             if ([verifier verifyString:result.resultString withSign:result.signString])
             {
-                            //验证签名成功，交易结果无篡改
+                
                 NSLog(@"123");
+                
+                AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+                manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+                
+                UserInfo *info = [UserInfo shareUserInfo];
+
+                NSString *URLStr = [NSString stringWithFormat:@"%@?token=%@",GETUSERINFO_Url,info.token];
+                //      待加入缓冲提示：
+                [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSLog(@"%@",responseObject);
+                    if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+                        
+                        NSLog(@"%@",responseObject);
+                      
+                        if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
+                        {
+                            
+                            for(NSDictionary *dict in [responseObject objectForKey:@"data"])
+                            {
+//                                SC_Model *model = [[SC_Model alloc]init];
+//                                [model setValuesForKeysWithDictionary:dict];
+//                                [pageDataArray addObject:model];
+//                                
+//                                if(dataArray.count<10)
+//                                {
+//                                    [dataArray addObject:model];
+//                                }
+                                
+                            }
+                            
+                        }
+                        
+                      
+                    }else{
+                                           }
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    
+                }];
+                
+
+                
+                
             }
             
         }

@@ -56,7 +56,6 @@
     // Do any additional setup after loading the view.
     [self request];
     
-    
     if([[UIDevice currentDevice].systemVersion doubleValue]>7)
     {
         
@@ -105,7 +104,7 @@
     
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 44) andTitle:@"升级魔方会员"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, iOS7?20:0, KscreenWidth, 44) andTitle:@"升级魔方会员"];
     [bgImgView addSubview:nav];
     //bgimgview
 //    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 64+5, KscreenWidth-10, 95)];
@@ -363,6 +362,8 @@
 			if ([verifier verifyString:result.resultString withSign:result.signString])
             {
                 //验证签名成功，交易结果无篡改
+                
+                NSLog(@"123");
 			}
         }
         else

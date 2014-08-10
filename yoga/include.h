@@ -14,6 +14,8 @@
 #endif
 
 
+#define iOS7 ([[[UIDevice currentDevice]systemVersion]floatValue]>=7.0)
+
 //当前屏幕尺寸
 #define KscreenHeight   [[UIScreen mainScreen] bounds].size.height
 #define KscreenWidth    [[UIScreen mainScreen] bounds].size.width

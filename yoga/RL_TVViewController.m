@@ -115,7 +115,7 @@
     [self.view addSubview:_scrollView];
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, iOS7?20:0, _scrollView.frame.size.width, 44) andTitle:@"瑜伽TV"];
     [_scrollView addSubview:nav];
     
     //添加视频播放视图

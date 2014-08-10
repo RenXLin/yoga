@@ -13,6 +13,8 @@
 {
    
         NSMutableArray *dataArray;
+        NSMutableArray *pageDataArray;
+    
         NSMutableArray *dataArray1;
         NSMutableArray *searchResults;
         UISearchBar *mySearchBar;

@@ -33,7 +33,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     [self createUI];
     
     
@@ -73,7 +72,7 @@
     
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, KscreenWidth, 44) andTitle:@"账号中心"];
+    UIView *nav = [self myNavgationBar:CGRectMake(0,iOS7?20:0, KscreenWidth, 44) andTitle:@"账号中心"];
     [bgImgView addSubview:nav];
     //bgimgview
     
