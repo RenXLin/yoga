@@ -229,7 +229,7 @@
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         if ([[responseObject objectForKey:@"data"] count] > 0) {
-            _ad.text = _programMode.ad;
+            _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
             
             NSString * pathUrl = [_programMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
             NSString *urlStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));

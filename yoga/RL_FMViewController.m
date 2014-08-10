@@ -295,7 +295,18 @@
         NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
-        _ad.text = _programMode.ad;
+        
+//        CGSize size;
+//        if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
+//            NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:_ad.font,NSFontAttributeName   , nil];
+//             size =[_ad.text boundingRectWithSize:CGSizeMake(MAXFLOAT, 30) options:NSStringDrawingUsesLineFragmentOrigin attributes:fontDic context:nil].size;
+//        }else{
+//            size = [_ad.text sizeWithFont:_ad.font];
+//        }
+//        if (size.width < self.view.frame.size.width) {
+//            _ad.labelize = YES;
+//        }
+        _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
             NSLog(@"%@",pathUrl);
