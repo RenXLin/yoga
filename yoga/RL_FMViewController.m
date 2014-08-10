@@ -35,6 +35,8 @@
     UILabel *_onlinePeople;
     //存储当前节目数据类型实例
     CurrentProgram *_programMode;
+    //存储图片url；
+    NSArray *_urlDic;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -141,6 +143,10 @@
             UIViewAutoresizingFlexibleLeftMargin |
             UIViewAutoresizingFlexibleRightMargin |
             UIViewAutoresizingFlexibleWidth;
+            
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picTap:)];
+            view.userInteractionEnabled = YES;
+            [view addGestureRecognizer:tap];
             
         }
     }
@@ -297,8 +303,6 @@
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
                 [_mMpayer setDataSource:[NSURL URLWithString:pathUrl]];
-//                [_mMpayer setDataSource:[NSURL URLWithString:@"http://www.chinayogaonline.com/mp3/yogamusic/Becoming%20Your%20Soul/03%20Cellular%20Evolution_T28.mp3"] header:nil];
-                
                 [_mMpayer prepareAsync];
             }
 
@@ -328,9 +332,9 @@
     }
     [pngMg GET:whichUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-        NSArray *urlDic = [responseObject objectForKey:@"data"];
-        for (int i = 0; i < [urlDic count]; i++) {
-            NSDictionary *pngUrlDic = [urlDic objectAtIndex:i];
+        _urlDic = [responseObject objectForKey:@"data"];
+        for (int i = 0; i < [_urlDic count]; i++) {
+            NSDictionary *pngUrlDic = [_urlDic objectAtIndex:i];
             UIView *whiteView = [self.view viewWithTag:5000];
             UIImageView *imgV = [whiteView viewWithTag:(i+200)];
             
@@ -352,7 +356,20 @@
     
 }
 
-
+-(void)picTap:(UITapGestureRecognizer *)tap
+{
+    UIView *view = tap.view;
+    UIImageView *bigImag = [[UIImageView alloc] initWithFrame:view.superview.bounds];
+    [bigImag setImageWithURL:[NSURL URLWithString:[[_urlDic objectAtIndex:(view.tag - 200)] objectForKey:@"big"]] placeholderImage:nil];
+    UITapGestureRecognizer *Bigtap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bigPicTap:)];
+    bigImag.userInteractionEnabled = YES;
+    [bigImag addGestureRecognizer:Bigtap];
+    [view.superview addSubview:bigImag];
+}
+-(void)bigPicTap:(UITapGestureRecognizer *)tap
+{
+    [tap.view removeFromSuperview];
+}
 -(NSString *)removeSpace:(NSString *)str
 {
     NSArray *arr = [str componentsSeparatedByString:@" "];
@@ -387,6 +404,10 @@
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
 	NSLog(@"player erro:r%@",arg);
+    [_mMpayer reset];
+    
+    [_mMpayer unSetupPlayer];
+    
     UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"播放失败" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [aleart show];
 }
@@ -531,20 +552,22 @@
 {
 
     if (btn.tag == 1) {
-       
+    
+        NSString *shareStr = [NSString stringWithFormat:@"我爱瑜伽音乐！—— %@",_programMode.ad];
+        
         //分享
         [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
         
         //自定义各平台分享内容：
-        [UMSocialData defaultData].extConfig.sinaData.shareText = _programMode.ad;
+        [UMSocialData defaultData].extConfig.sinaData.shareText = shareStr;
         [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
         
         
         [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
-        [UMSocialData defaultData].extConfig.tencentData.shareText = _programMode.ad;
+        [UMSocialData defaultData].extConfig.tencentData.shareText = shareStr;
         
         [UMSocialData defaultData].extConfig.doubanData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到豆瓣
-        [UMSocialData defaultData].extConfig.doubanData.shareText = _programMode.ad;
+        [UMSocialData defaultData].extConfig.doubanData.shareText = shareStr;
         NSString *url;
         if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
             url = CURRENTPLAYFM_URL;
@@ -555,7 +578,7 @@
         
         [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeMusic url:url]; //设置微信朋友圈分享视频
         
-        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:_programMode.ad shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToDouban, nil] delegate:self];
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:shareStr shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToDouban, nil] delegate:self];
         
     }else if(btn.tag == 2){
         //点赞

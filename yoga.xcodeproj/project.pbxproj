@@ -1618,6 +1618,7 @@
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/Sina",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentWeibo",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/Wechat",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1657,6 +1658,7 @@
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/Sina",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentWeibo",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/Wechat",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";

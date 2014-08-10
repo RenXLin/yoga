@@ -43,6 +43,7 @@
     CurrentProgram *_programMode;
     
     UIView *_TVPlayView;
+    NSArray *_urlDic;
 }
 
 -(BOOL)prefersStatusBarHidden
@@ -238,6 +239,10 @@
                 UIViewAutoresizingFlexibleLeftMargin |
                 UIViewAutoresizingFlexibleRightMargin |
                 UIViewAutoresizingFlexibleWidth;
+                
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(picTap:)];
+                view.userInteractionEnabled = YES;
+                [view addGestureRecognizer:tap];
             }
         }
         [self getPNGurl];
@@ -397,9 +402,9 @@
     pngMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [pngMg GET:GETPickAudioPng_url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-        NSArray *urlDic = [responseObject objectForKey:@"data"];
-        for (int i = 0; i < [urlDic count]; i++) {
-            NSDictionary *pngUrlDic = [urlDic objectAtIndex:i];
+        _urlDic = [responseObject objectForKey:@"data"];
+        for (int i = 0; i < [_urlDic count]; i++) {
+            NSDictionary *pngUrlDic = [_urlDic objectAtIndex:i];
             UIImageView *imgV = [_TVPlayView viewWithTag:(i+200)];
             
             NSURL *url;
@@ -418,9 +423,22 @@
         NSLog(@"failed: %@",error);
         
     }];
-
 }
-
+-(void)picTap:(UITapGestureRecognizer *)tap
+{
+    UIView *view = tap.view;
+    UIImageView *bigImag = [[UIImageView alloc] initWithFrame:_TVPlayView.bounds];
+    [bigImag setImageWithURL:[NSURL URLWithString:[[_urlDic objectAtIndex:(view.tag - 200)] objectForKey:@"big"]] placeholderImage:nil];
+    UITapGestureRecognizer *Bigtap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bigPicTap:)];
+    bigImag.userInteractionEnabled = YES;
+    [bigImag addGestureRecognizer:Bigtap];
+    [_TVPlayView addSubview:bigImag];
+    
+}
+-(void)bigPicTap:(UITapGestureRecognizer *)tap
+{
+    [tap.view removeFromSuperview];
+}
 
 NSString* UrlEncodedString(NSString* sourceText)
 {
@@ -829,24 +847,26 @@ NSString* UrlEncodedString(NSString* sourceText)
 -(void)TitleBtnClick:(UIButton *)btn
 {
     if (btn.tag == 1) {
+        NSString *shareStr = [NSString stringWithFormat:@"我爱%@！—— %@:%@",_itemMode.title,_itemMode.ad,_itemMode.path];
+
         //分享
         [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
         
         //自定义各平台分享内容：
-        [UMSocialData defaultData].extConfig.sinaData.shareText = _programMode.ad;
+        [UMSocialData defaultData].extConfig.sinaData.shareText = shareStr;
         [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
         
         
         [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
-        [UMSocialData defaultData].extConfig.tencentData.shareText = _programMode.ad;
+        [UMSocialData defaultData].extConfig.tencentData.shareText = shareStr;
         
         [UMSocialData defaultData].extConfig.doubanData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到豆瓣
-        [UMSocialData defaultData].extConfig.doubanData.shareText = _programMode.ad;
+        [UMSocialData defaultData].extConfig.doubanData.shareText = shareStr;
         
         [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
         [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
         
-        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:_programMode.ad shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToDouban, nil] delegate:self];
+        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:shareStr shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToDouban, nil] delegate:self];
 
         
     }else if(btn.tag == 2){

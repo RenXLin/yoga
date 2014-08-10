@@ -175,13 +175,6 @@
     [btn setBackgroundImage:[UIImage imageNamed:@"btnblue3.png"] forState:UIControlStateNormal];
     [bgImgView addSubview:btn];
     
-    
-    
-    
-    
-    
-    
-
 }
 //支付
 - (void)pay
