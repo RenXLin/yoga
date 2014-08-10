@@ -81,7 +81,12 @@
     //刷新当前人数通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     
-    UIScrollView *scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
+    UIScrollView *scrolView;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
+        scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
+    }else{
+        scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20)];
+    }
     scrolView.backgroundColor =[UIColor clearColor];
     [self.view addSubview:scrolView];
     scrolView.autoresizingMask =

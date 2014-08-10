@@ -32,7 +32,11 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"设置"];
+    UIView *nav;
+    if ([[UIDevice currentDevice].systemVersion intValue] > 7) {
+        nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"设置"];
+    }else{
+        nav = [self myNavgationBar:CGRectMake(0, 0, self.view.frame.size.width, 44) andTitle:@"设置"];    }
     [self.view addSubview:nav];
 
     //loginview

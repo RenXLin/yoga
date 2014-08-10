@@ -42,7 +42,11 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
     self.view.backgroundColor = [UIColor grayColor];
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
+    UIView *nav;
+    if ([[UIDevice currentDevice].systemVersion intValue] > 7) {
+        nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
+    }else{
+        nav = [self myNavgationBar:CGRectMake(0, 0, self.view.frame.size.width, 44) andTitle:@"登陆"];    }
     [self.view addSubview:nav];
     nav.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
