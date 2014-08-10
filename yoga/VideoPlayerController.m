@@ -438,10 +438,26 @@
     [bigImag addGestureRecognizer:Bigtap];
     [_TVPlayView addSubview:bigImag];
     
+    _mTools.isHidden = NO;
+    _mTools.hidden = NO;
+    [_TVPlayView bringSubviewToFront:_mTools];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _mTools.isHidden = YES;
+        _mTools.hidden = YES;
+    });
+
 }
 -(void)bigPicTap:(UITapGestureRecognizer *)tap
 {
     [tap.view removeFromSuperview];
+    
+    _mTools.isHidden = NO;
+    _mTools.hidden = NO;
+    [_TVPlayView bringSubviewToFront:_mTools];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _mTools.isHidden = YES;
+        _mTools.hidden = YES;
+    });
 }
 
 NSString* UrlEncodedString(NSString* sourceText)
@@ -452,14 +468,16 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 -(void)signleTap
 {
-    if (!_mTools.isHidden) {
-        _mTools.isHidden = YES;
-        _mTools.hidden = YES;
-    }else{
+    if (_mTools.isHidden) {
         _mTools.isHidden = NO;
         _mTools.hidden = NO;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _mTools.isHidden = YES;
+            _mTools.hidden = YES;
+        });
+    }else{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             _mTools.isHidden = YES;
             _mTools.hidden = YES;
         });
@@ -467,49 +485,6 @@ NSString* UrlEncodedString(NSString* sourceText)
 }
 -(void)doubleTap
 {
-//    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-//        self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-//        
-//        if (isFullScreen == NO) {
-//            isFullScreen = YES;
-//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-//            
-//            [_TVPlayView removeFromSuperview];
-//            [_scrollView removeFromSuperview];
-//            _TVPlayView.frame = self.view.bounds;
-//            [self.view addSubview:_TVPlayView];
-//            
-//        }else{
-//            isFullScreen = NO;
-//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-//            [_TVPlayView removeFromSuperview];
-//            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
-//            [_scrollView addSubview:_TVPlayView];
-//            [self.view addSubview:_scrollView];
-//        }
-//        
-//    }else {
-//        if (isFullScreen == NO) {
-//            isFullScreen = YES;
-//            
-//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-//            [_TVPlayView removeFromSuperview];
-//            [_scrollView removeFromSuperview];
-//            _TVPlayView.frame = self.view.bounds;
-//            [self.view addSubview:_TVPlayView];
-//            
-//        }else{
-//            NSLog(@"非全屏播放");
-//            isFullScreen = NO;
-//            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-//            
-//            [_TVPlayView removeFromSuperview];
-//            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
-//            [_scrollView addSubview:_TVPlayView];
-//            [self.view addSubview:_scrollView];
-//            
-//        }
-//    }
 
     if ([self.titleName isEqualToString:@"视频点播"]) {
         if (isFullScreen == NO) {
