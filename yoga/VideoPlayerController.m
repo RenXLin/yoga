@@ -252,21 +252,43 @@
         [self getPNGurl];
     }
     //添加工具条：
-    _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height -60, _TVPlayView.frame.size.width, 60)];
+//    if ([self.titleName isEqualToString:@"音频点播"])
+    {
+        _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.origin.y+_TVPlayView.frame.size.height , _TVPlayView.frame.size.width, 60)];
+    }
+//    else
+//    {
+//        _mTools = [[MedioPlayTool alloc] initWithFrame:CGRectMake(0, _TVPlayView.frame.size.height - 60, _TVPlayView.frame.size.width, 60)];
+//    }
+
     [_mTools setBtnDelegate:self andSEL:@selector(playSettingChange:) andSliderSel:@selector(sliderChange:) andTapGesture:@selector(tapGesture:)];
-    [_TVPlayView addSubview:_mTools];
     _mTools.tag = 10;
     _mTools.autoresizingMask =
-    UIViewAutoresizingFlexibleBottomMargin |
+//    UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleHeight |
     UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
     
-    //当前节目
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height + 5, self.view.frame.size.width, 30)];
+//    if ([self.titleName isEqualToString:@"音频点播"])
+    {
+        [_scrollView addSubview:_mTools];
+    }
+//    else
+//    {
+//        [_TVPlayView addSubview:_mTools];
+//    }
     
+    //当前节目
+    UILabel * titleLabel;
+//    if ([self.titleName isEqualToString:@"音频点播"])
+    {
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_mTools.frame.origin.y + _mTools.frame.size.height + 5, self.view.frame.size.width, 30)];
+    }
+//    else{
+//        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height + 5, self.view.frame.size.width, 30)];
+//    }
     titleLabel.text = self.titleName;
     titleLabel.font = [UIFont systemFontOfSize:14];
     titleLabel.backgroundColor = [UIColor clearColor];
@@ -441,10 +463,6 @@
     _mTools.isHidden = NO;
     _mTools.hidden = NO;
     [_TVPlayView bringSubviewToFront:_mTools];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _mTools.isHidden = YES;
-        _mTools.hidden = YES;
-    });
 
 }
 -(void)bigPicTap:(UITapGestureRecognizer *)tap
@@ -454,10 +472,7 @@
     _mTools.isHidden = NO;
     _mTools.hidden = NO;
     [_TVPlayView bringSubviewToFront:_mTools];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _mTools.isHidden = YES;
-        _mTools.hidden = YES;
-    });
+
 }
 
 NSString* UrlEncodedString(NSString* sourceText)
@@ -468,19 +483,13 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 -(void)signleTap
 {
-    if (_mTools.isHidden) {
+    if (_mTools.isHidden && isFullScreen) {
         _mTools.isHidden = NO;
         _mTools.hidden = NO;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            _mTools.isHidden = YES;
-            _mTools.hidden = YES;
-        });
-    }else{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            _mTools.isHidden = YES;
-            _mTools.hidden = YES;
-        });
+    }else if( !_mTools.isHidden && isFullScreen){
+        _mTools.isHidden = YES;
+        _mTools.hidden = YES;
     }
 }
 -(void)doubleTap
@@ -496,6 +505,10 @@ NSString* UrlEncodedString(NSString* sourceText)
             
             _TVPlayView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
             
+            [_mTools removeFromSuperview];
+            _mTools.frame = CGRectMake(0, _TVPlayView.frame.size.height - 60, _TVPlayView.frame.size.width, 60);
+            [_TVPlayView addSubview:_mTools];
+            
             [self.view addSubview:_TVPlayView];
             _TVPlayView.center = self.view.center;
             
@@ -506,6 +519,9 @@ NSString* UrlEncodedString(NSString* sourceText)
         }else{
             NSLog(@"非全屏播放");
             isFullScreen = NO;
+            _mTools.isHidden = NO;
+            _mTools.hidden = NO;
+            
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
             
             _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
@@ -514,6 +530,9 @@ NSString* UrlEncodedString(NSString* sourceText)
             [_scrollView addSubview:_TVPlayView];
             [self.view addSubview:_scrollView];
             
+            [_mTools removeFromSuperview];
+            _mTools.frame = CGRectMake(0, _TVPlayView.frame.origin.y+_TVPlayView.frame.size.height , _TVPlayView.frame.size.width, 60);
+            [_scrollView addSubview:_mTools];
             [[UIApplication sharedApplication] setStatusBarHidden:NO];
 
         }
@@ -536,12 +555,9 @@ NSString* UrlEncodedString(NSString* sourceText)
     [_activityView stopAnimating];
     _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/2 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
 
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _mTools.isHidden = YES;
-        _mTools.hidden = YES;
-    });
-
+    if ([self.titleName isEqualToString:@"音频点播"]) {
+        return;
+    }
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
@@ -667,36 +683,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 //        }
         //当为视频界面时切换全屏
         if ([self.titleName isEqualToString:@"视频点播"]) {
-            if (isFullScreen == NO) {
-                isFullScreen = YES;
-                
-                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-                [_TVPlayView removeFromSuperview];
-                [_scrollView removeFromSuperview];
-                
-                _TVPlayView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
-                
-                [self.view addSubview:_TVPlayView];
-                _TVPlayView.center = self.view.center;
-                
-                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, M_PI_2);
-             
-                [[UIApplication sharedApplication] setStatusBarHidden:YES];
-                
-            }else{
-                NSLog(@"非全屏播放");
-                isFullScreen = NO;
-                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-                
-                _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
-                [_TVPlayView removeFromSuperview];
-                _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
-                [_scrollView addSubview:_TVPlayView];
-                [self.view addSubview:_scrollView];
-                
-                [[UIApplication sharedApplication] setStatusBarHidden:NO];
-
-            }
+            [self doubleTap];
         }else{
             //音频界面；
             _mTools.fullScreenOrNot.selected = !_mTools.fullScreenOrNot.selected;

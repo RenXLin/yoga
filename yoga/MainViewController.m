@@ -127,7 +127,7 @@
     [colorArray addObject:color9];
     
     
-    NSArray *titleArray = [NSArray arrayWithObjects:@"瑜伽 FM",@"瑜伽 TV",@"瑜伽好声音",@"音频直播",@"视频直播", nil];
+    NSArray *titleArray = [NSArray arrayWithObjects:@"瑜伽 FM",@"瑜伽 TV",@"魔方音乐台",@"音频直播",@"视频直播", nil];
     NSArray *clickArray = @[@"音频点播",@"视频点播"];
 //    NSArray *imageArray = [NSArray arrayWithObjects:@"fm.png",@"string",@"<#string#>",@"<#string#>", nil];
     CGFloat rect_width = (whiteView.frame.size.width - GAP_WITH * 4) / 3;
@@ -267,7 +267,7 @@
     }else if (view.tag == 5){
         //瑜伽音乐
         RL_FMViewController * AV= [[RL_FMViewController alloc] init];
-        AV.FM_AV = @"瑜伽音乐";
+        AV.FM_AV = @"魔方音乐台";
         [self presentViewController:AV animated:YES completion:nil];
     }else if (view.tag == 6){
        
