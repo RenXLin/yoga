@@ -61,12 +61,17 @@
         //添加进度条：
         _playProgress = [[UISlider alloc] initWithFrame:CGRectMake(TimeLabel_whide, 4, self.frame.size.width - 2 * TimeLabel_whide, TimeLabel_height)];
         _playProgress.backgroundColor = [UIColor clearColor];
-        _playProgress.minimumTrackTintColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_jg" ofType:@"png"]]];
-        [_playProgress setThumbImage:[UIImage imageNamed:@"video_icon8.png"] forState:UIControlStateNormal];
-        _playProgress.maximumTrackTintColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_jg1" ofType:@"png"]]];
+//        _playProgress.minimumTrackTintColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_jg" ofType:@"png"]]];
+        [_playProgress setMaximumValue:1];
+        [_playProgress setMinimumValue:0];
+//        [_playProgress setThumbImage:[UIImage imageNamed:@"video_icon8.png"] forState:UIControlStateNormal];
+//        _playProgress.maximumTrackTintColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_jg1" ofType:@"png"]]];
         [self addSubview:_playProgress];
+        _playProgress.value = 0;
         [_playProgress setAutoresizingMask: 
          UIViewAutoresizingFlexibleTopMargin |
+         UIViewAutoresizingFlexibleLeftMargin |
+         UIViewAutoresizingFlexibleRightMargin |
          UIViewAutoresizingFlexibleWidth];
         
         //添加播放控制按钮
