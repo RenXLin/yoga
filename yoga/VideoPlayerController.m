@@ -61,8 +61,12 @@
 }
 - (BOOL)shouldAutorotate
 {
+    if ([self.titleName isEqualToString:@"音频点播"]) {
+        return NO;
+    }
     return YES;
 }
+
 
 - (NSUInteger)supportedInterfaceOrientations
 {
@@ -77,25 +81,57 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)to duration:(NSTimeInterval)duration
 {
 	if (UIInterfaceOrientationIsLandscape(to)) {
-
-        [_TVPlayView removeFromSuperview];
         [_scrollView removeFromSuperview];
-        _TVPlayView.frame = self.view.bounds;
-        [self.view addSubview:_TVPlayView];
-        [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-        isFullScreen = YES;
-        NSLog(@"%@",NSStringFromCGRect(_TVPlayView.frame));
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
-	} else {
-        isFullScreen = NO;
-        [_TVPlayView removeFromSuperview];
-        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
-        [_scrollView addSubview:_TVPlayView];
-        [self.view addSubview:_scrollView];
-        [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+        if (isFullScreen == NO) {
+//            从纵屏的状态转向横屏：
+            
+            //非全屏的时候选择切换全屏：
 
+            [_TVPlayView removeFromSuperview];
+            _TVPlayView.frame = self.view.bounds;
+            [self.view addSubview:_TVPlayView];
+            [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
+            [_TVPlayView addSubview:_mTools];
+            _mTools.frame = CGRectMake(0, _TVPlayView.frame.size.height - 60, _TVPlayView.frame.size.width, 60);
+            
+        }else{
+            //已经旋转了视图，全屏显示视图，但未横过来，用户旋转成横向视频：
+            
+            _mTools.isHidden = NO;
+//            _mTools.hidden = NO;
+            
+            _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
+            [_TVPlayView removeFromSuperview];
+            _TVPlayView.frame = self.view.bounds;
+            
+            [self.view addSubview:_TVPlayView];
+            _mTools.frame = CGRectMake(0, _TVPlayView.frame.size.height - 60, _TVPlayView.frame.size.width, 60);
+
+        }
+        
 	}
-	NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
+    else if(UIInterfaceOrientationIsPortrait(to)){
+//            从横屏的状态转向纵屏：（不管原来的状态均变为非全屏）
+        [self.view addSubview:_scrollView];
+        
+        _mTools.hidden = NO;
+        isFullScreen = NO;
+        [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+        
+        [_TVPlayView removeFromSuperview];
+        [_mTools removeFromSuperview];
+        
+        _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
+        [_scrollView addSubview:_TVPlayView];
+        
+        
+        _mTools.frame = CGRectMake(0, _TVPlayView.frame.size.height + _TVPlayView.frame.origin.y, _TVPlayView.frame.size.width, 60);
+        [_scrollView addSubview:_mTools];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+	}
+
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -483,11 +519,17 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 -(void)signleTap
 {
-    if (_mTools.isHidden && isFullScreen) {
+    if (_mTools.isHidden &&
+        (isFullScreen ||
+         [UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeLeft ||
+         [UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeRight)) {
         _mTools.isHidden = NO;
         _mTools.hidden = NO;
         
-    }else if( !_mTools.isHidden && isFullScreen){
+    }else if( !_mTools.isHidden &&
+             (isFullScreen ||
+              [UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeLeft ||
+              [UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeRight)){
         _mTools.isHidden = YES;
         _mTools.hidden = YES;
     }
@@ -496,7 +538,9 @@ NSString* UrlEncodedString(NSString* sourceText)
 {
 
     if ([self.titleName isEqualToString:@"视频点播"]) {
-        if (isFullScreen == NO) {
+        if (isFullScreen == NO && (
+            [UIDevice currentDevice].orientation == UIInterfaceOrientationPortrait ||
+            [UIDevice currentDevice].orientation == UIInterfaceOrientationPortraitUpsideDown)) {
             isFullScreen = YES;
             
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
@@ -517,6 +561,10 @@ NSString* UrlEncodedString(NSString* sourceText)
             [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
         }else{
+            if ([UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeLeft ||
+                 [UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeRight) {
+                return;
+            }
             NSLog(@"非全屏播放");
             isFullScreen = NO;
             _mTools.isHidden = NO;

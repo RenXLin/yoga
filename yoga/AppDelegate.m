@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "PortraitNavigationController.h"
 
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
@@ -134,7 +135,7 @@
     [pageControl removeFromSuperview];
     MainViewController *mvc = [[MainViewController alloc] init];
     
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:mvc];
+    PortraitNavigationController *nav = [[PortraitNavigationController alloc]initWithRootViewController:mvc];
     
     self.window.rootViewController = nav;
 

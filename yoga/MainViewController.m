@@ -257,11 +257,11 @@
     }else if(view.tag == 4){
         //音频点播
         
-            SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
-            audioView.Title = @"音频点播";
-            audioView.audio = @"audio";
+        SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
+        audioView.Title = @"音频点播";
+        audioView.audio = @"audio";
         
-            [self.navigationController pushViewController:audioView animated:YES];
+        [self.navigationController pushViewController:audioView animated:YES];
         
    
     }else if (view.tag == 5){
@@ -276,16 +276,7 @@
             [self.navigationController pushViewController:audioView animated:YES];
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
 
 //登陆：

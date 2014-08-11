@@ -50,18 +50,13 @@
 {
     return UIStatusBarStyleLightContent;
 }
-- (BOOL)prefersStatusBarHidden
+
+
+- (BOOL)shouldAutorotate
 {
     return NO;
 }
--(BOOL)shouldAutorotate
-{
-    return YES;
-}
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation NS_AVAILABLE_IOS(6_0);
-{
-    return UIInterfaceOrientationPortrait;
-}
+
 
 //刷新在线人数 method
 -(void)refreshPeople

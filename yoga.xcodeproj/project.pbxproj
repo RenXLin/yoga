@@ -169,6 +169,7 @@
 		CD0EF3C31991CF7100739067 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0EF3BE1991CF7100739067 /* libopenssl.a */; };
 		CD0EF3C41991CF7100739067 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0EF3BF1991CF7100739067 /* libVitamio.a */; };
 		CD0EF3C51991CF7100739067 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD0EF3C01991CF7100739067 /* LICENSE */; };
+		CD0F954A1998F80300EB7985 /* PortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0F95491998F80300EB7985 /* PortraitNavigationController.m */; };
 		CD179F561995B98200B38933 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD179F551995B98200B38933 /* icon.png */; };
 		CD2D3F1419911F19002D6ADF /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F1319911F19002D6ADF /* 222.png */; };
 		CD2D3F161991203E002D6ADF /* 333.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F151991203E002D6ADF /* 333.png */; };
@@ -483,6 +484,8 @@
 		CD0EF3BE1991CF7100739067 /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopenssl.a; sourceTree = "<group>"; };
 		CD0EF3BF1991CF7100739067 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
 		CD0EF3C01991CF7100739067 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		CD0F95481998F80300EB7985 /* PortraitNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitNavigationController.h; sourceTree = "<group>"; };
+		CD0F95491998F80300EB7985 /* PortraitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitNavigationController.m; sourceTree = "<group>"; };
 		CD179F551995B98200B38933 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD2D3F1319911F19002D6ADF /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
 		CD2D3F151991203E002D6ADF /* 333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333.png; sourceTree = "<group>"; };
@@ -833,6 +836,8 @@
 				CD08AEF6197282EF00C50184 /* Modes */,
 				CD0DB9A2196DA50300C3A2A8 /* AppDelegate.h */,
 				CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */,
+				CD0F95481998F80300EB7985 /* PortraitNavigationController.h */,
+				CD0F95491998F80300EB7985 /* PortraitNavigationController.m */,
 				9DE6B23C197E8A9F00393F93 /* SVProgressHUD.h */,
 				9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */,
 				CD8E510D1970D35900771960 /* Controllers */,
@@ -1515,6 +1520,7 @@
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 				9DD40712197251250061D1DE /* UIFactory.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
+				CD0F954A1998F80300EB7985 /* PortraitNavigationController.m in Sources */,
 				9DB445CD199793F800839C55 /* MJRefreshHeaderView.m in Sources */,
 				CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */,
 				3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */,

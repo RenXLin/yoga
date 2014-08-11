@@ -56,6 +56,12 @@
 {
     return NO;
 }
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
 	return UIInterfaceOrientationMaskAll;
