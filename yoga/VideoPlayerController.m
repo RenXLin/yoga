@@ -121,7 +121,7 @@
             _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
         }else
         {
-            _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
+            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
         }
         
         _mTools.hidden = NO;
@@ -597,7 +597,7 @@ NSString* UrlEncodedString(NSString* sourceText)
             if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
                 _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
             }else{
-                _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
+                _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
             }
             
             [_mTools removeFromSuperview];
