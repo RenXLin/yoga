@@ -25,19 +25,19 @@
         {
         self.frame = CGRectMake(0, 0, KscreenWidth, 80);
             
-            UILabel *cgLab = [UIFactory createLabelWithFrame:CGRectMake(0, 0, 280, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(20) textAlignment:1];
+            UILabel *cgLab = [UIFactory createLabelWithFrame:CGRectMake(0, 0, 280, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(16) textAlignment:1];
             [self.contentView addSubview:cgLab];
             cgLab.backgroundColor = [UIColor clearColor];
             self.cgLab = cgLab;
             
             
-            UILabel *titleLab = [UIFactory createLabelWithFrame:CGRectMake(10, 0, 300, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(20) textAlignment:0];
+            UILabel *titleLab = [UIFactory createLabelWithFrame:CGRectMake(10, 0, 300, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(16) textAlignment:0];
             titleLab.numberOfLines = 0;
             titleLab.backgroundColor = [UIColor clearColor];
             [self.contentView addSubview:titleLab];
             self.titleLab = titleLab;
             
-            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(285, 0, 350, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(20) textAlignment:0];
+            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(285, 0, 400, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(16) textAlignment:0];
             [self.contentView addSubview:timeLab];
             titleLab.backgroundColor = [UIColor clearColor];
             self.timeLab = timeLab;
