@@ -538,9 +538,13 @@ NSString* UrlEncodedString(NSString* sourceText)
 {
 
     if ([self.titleName isEqualToString:@"视频点播"]) {
+
+        NSLog(@"%d",self.interfaceOrientation);
+    
         if (isFullScreen == NO && (
-            [UIDevice currentDevice].orientation == UIInterfaceOrientationPortrait ||
-            [UIDevice currentDevice].orientation == UIInterfaceOrientationPortraitUpsideDown)) {
+            self.interfaceOrientation == UIInterfaceOrientationPortrait ||
+            self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
+            )) {
             isFullScreen = YES;
             
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
@@ -561,8 +565,8 @@ NSString* UrlEncodedString(NSString* sourceText)
             [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
         }else{
-            if ([UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeLeft ||
-                 [UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeRight) {
+            if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+                 self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
                 return;
             }
             NSLog(@"非全屏播放");
