@@ -31,13 +31,13 @@
             self.cgLab = cgLab;
             
             
-            UILabel *titleLab = [UIFactory createLabelWithFrame:CGRectMake(10, 0, 250, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(20) textAlignment:0];
+            UILabel *titleLab = [UIFactory createLabelWithFrame:CGRectMake(10, 0, 300, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(20) textAlignment:0];
             titleLab.numberOfLines = 0;
             titleLab.backgroundColor = [UIColor clearColor];
             [self.contentView addSubview:titleLab];
             self.titleLab = titleLab;
             
-            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(285, 0, 200, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(20) textAlignment:0];
+            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(285, 0, 350, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(20) textAlignment:0];
             [self.contentView addSubview:timeLab];
             titleLab.backgroundColor = [UIColor clearColor];
             self.timeLab = timeLab;
