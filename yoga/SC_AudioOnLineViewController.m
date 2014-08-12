@@ -36,6 +36,7 @@
     NSInteger  limit;
     
     BOOL isloading;
+    UIView *bgView;
 }
 
 @end
@@ -204,31 +205,54 @@
     
     //
     
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 44+5+(iOS7?20:0), KscreenWidth-10, 95)];
-    bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
-    UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
-    lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
-    [bgView addSubview:lineImg];
-    
-    [bgImgView addSubview:bgView];
+   
     
     
     
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-         UILabel *audioLab = [UIFactory createLabelWithFrame:CGRectMake(bgView.frame.origin.x+5,bgView.frame.origin.y,200,bgView.frame.size.height/2) text:self.Title textColor:[UIColor blackColor] textFont:Kfont(25) textAlignment:0];
+        bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 44+5+(iOS7?20:0), KscreenWidth-10, 130)];
+        bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
+        UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
+        lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
+        [bgView addSubview:lineImg];
+        
+        [bgImgView addSubview:bgView];
+        
+        
+        
+         UILabel *audioLab = [UIFactory createLabelWithFrame:CGRectMake(bgView.frame.origin.x+5,bgView.frame.origin.y,200,bgView.frame.size.height/2) text:self.Title textColor:[UIColor blackColor] textFont:Kfont(20) textAlignment:0];
         [bgImgView addSubview:audioLab];
         audioLab.backgroundColor = [UIColor clearColor];
         
         
         //分类筛选按钮
-        sortBtn = [UIFactory createButtonWithFrame:CGRectMake(600,bgView.frame.origin.y+5,160,bgView.frame.size.height/2-10) title:@"选择分类筛选" bgImageName:@"xlk.png" target:self action:@selector(sortBtnClick:)];
+        sortBtn = [UIFactory createButtonWithFrame:CGRectMake(600,bgView.frame.origin.y+10,130,bgView.frame.size.height/2-20) title:@"选择分类筛选" bgImageName:@"xlk.png" target:self action:@selector(sortBtnClick:)];
         [sortBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        sortBtn.titleLabel.font = Kfont(20);
+        sortBtn.titleLabel.font = Kfont(15);
         sortBtn.tag = 110;
         [bgImgView addSubview:sortBtn];
+        
+        
+        UIImageView *iputImg = [UIFactory createImageViewWithFrame:CGRectMake(5,bgView.frame.size.height/2, 260,bgView.frame.size.height/2) imageName:@"white_btn.png"];
+        [bgView addSubview:iputImg];
+        
+        
+        mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,bgView.frame.size.height/2)];
+        
+        
     }else
     {
+        bgView = [[UIView alloc]initWithFrame:CGRectMake(5, 44+5+(iOS7?20:0), KscreenWidth-10, 95)];
+        bgView.backgroundColor = KCOLOR(240, 240, 240, 1);
+        UIImageView *lineImg = [UIFactory createImageViewWithFrame:CGRectMake(0,bgView.frame.size.height/2, 310, 1) imageName:@""];
+        lineImg.backgroundColor = KCOLOR(214, 214, 214, 1);
+        [bgView addSubview:lineImg];
+        
+        [bgImgView addSubview:bgView];
+        
+        
+        
         UILabel *audioLab = [UIFactory createLabelWithFrame:CGRectMake(bgView.frame.origin.x+5,bgView.frame.origin.y+(bgView.frame.size.height/2-20)/2,75,20) text:self.Title textColor:[UIColor blackColor] textFont:Kfont(17) textAlignment:0];
         [bgImgView addSubview:audioLab];
         audioLab.backgroundColor = [UIColor clearColor];
@@ -240,6 +264,13 @@
         sortBtn.titleLabel.font = Kfont(11);
         sortBtn.tag = 110;
         [bgView addSubview:sortBtn];
+        
+        
+        UIImageView *iputImg = [UIFactory createImageViewWithFrame:CGRectMake(5,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 260,35) imageName:@"white_btn.png"];
+        [bgView addSubview:iputImg];
+        
+        
+        mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,44)];
     }
    
     
@@ -251,8 +282,7 @@
 //    [bgImgView addSubview:sortImg];
     
     
-    UIImageView *iputImg = [UIFactory createImageViewWithFrame:CGRectMake(5,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 260,35) imageName:@"white_btn.png"];
-    [bgView addSubview:iputImg];
+    
     
 //    inputTf = [UIFactory createTextFieldWithFrame:CGRectMake(10,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 250,35) borderStyle:UITextBorderStyleNone placeHolder:@"输入关键词搜索" secureEntry:NO delegate:self];
 //    
@@ -262,12 +292,15 @@
     
     
     
-    mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,44)];
+    
     //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
     mySearchBar.delegate = self;
     //mySearchBar.showsCancelButton = YES;
+    mySearchBar.contentMode = UIViewContentModeScaleToFill;
     mySearchBar.backgroundImage = [UIImage imageNamed:@"white_btn.png"];
     [mySearchBar setPlaceholder:@"请输入关键词搜索"];
+    mySearchBar.backgroundColor = [UIColor greenColor];
+    [mySearchBar setContentMode:UIViewContentModeTop];
     [bgView addSubview:mySearchBar];
     //searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
     //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
@@ -290,7 +323,7 @@
     
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+95+44, KscreenWidth-10, KscreenHeight -5-95-64-140 ) style:UITableViewStylePlain];
+        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+130+44, KscreenWidth-10, KscreenHeight -5-130-64-60 ) style:UITableViewStylePlain];
     }else
     {
         
@@ -321,10 +354,10 @@
     [bgImgView addSubview:settingView];
     
     
-    if([KDEVICE isEqualToString:@"iPad Simulator"])
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 120, 120);
-        settingView.frame = CGRectMake(KscreenWidth-160, TableView.frame.origin.y+TableView.frame.size.height+5, 120, 120);
+        loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 60, 60);
+        settingView.frame = CGRectMake(KscreenWidth-160, TableView.frame.origin.y+TableView.frame.size.height+5, 60, 60);
         
     }else{
         loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);

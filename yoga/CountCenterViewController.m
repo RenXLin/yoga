@@ -10,6 +10,7 @@
 #import "OrderViewController.h"
 #import "AppDelegate.h"
 #import "UserInfo.h"
+#import "SC_AudioOnLineViewController.h"
 @interface CountCenterViewController ()
 
 @end
@@ -209,7 +210,24 @@
 //返回
 -(void)backBtnClick:(UIButton *)btn
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    NSArray *temArray = self.navigationController.viewControllers;
+    
+    for(UIViewController *temVC in temArray)
+        
+    {
+        
+        if ([temVC isKindOfClass:[SC_AudioOnLineViewController class]])
+            
+        {
+            SC_AudioOnLineViewController*owr = (SC_AudioOnLineViewController *)temVC;
+            [self.navigationController popToViewController:owr animated:YES];
+            
+        }else
+        {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        
+    }
 }
 
 
