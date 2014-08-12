@@ -621,9 +621,9 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if([KDEVICE isEqualToString:@"iPad Simulator"])
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        return 80;
+        return 100;
     }
     return 50;
 }
