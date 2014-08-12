@@ -213,17 +213,39 @@
     [bgImgView addSubview:bgView];
     
     
-    UILabel *audioLab = [UIFactory createLabelWithFrame:CGRectMake(bgView.frame.origin.x+5,bgView.frame.origin.y+(bgView.frame.size.height/2-20)/2,75,20) text:self.Title textColor:[UIColor blackColor] textFont:Kfont(17) textAlignment:0];
-    [bgImgView addSubview:audioLab];
-    audioLab.backgroundColor = [UIColor clearColor];
+    
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+         UILabel *audioLab = [UIFactory createLabelWithFrame:CGRectMake(bgView.frame.origin.x+5,bgView.frame.origin.y,200,bgView.frame.size.height/2) text:self.Title textColor:[UIColor blackColor] textFont:Kfont(25) textAlignment:0];
+        [bgImgView addSubview:audioLab];
+        audioLab.backgroundColor = [UIColor clearColor];
+        
+        
+        //分类筛选按钮
+        sortBtn = [UIFactory createButtonWithFrame:CGRectMake(600,bgView.frame.origin.y+5,160,bgView.frame.size.height/2-10) title:@"选择分类筛选" bgImageName:@"xlk.png" target:self action:@selector(sortBtnClick:)];
+        [sortBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        sortBtn.titleLabel.font = Kfont(20);
+        sortBtn.tag = 110;
+        [bgImgView addSubview:sortBtn];
+    }else
+    {
+        UILabel *audioLab = [UIFactory createLabelWithFrame:CGRectMake(bgView.frame.origin.x+5,bgView.frame.origin.y+(bgView.frame.size.height/2-20)/2,75,20) text:self.Title textColor:[UIColor blackColor] textFont:Kfont(17) textAlignment:0];
+        [bgImgView addSubview:audioLab];
+        audioLab.backgroundColor = [UIColor clearColor];
+        
+        
+         //分类筛选按钮
+        sortBtn = [UIFactory createButtonWithFrame:CGRectMake(205, (bgView.frame.size.height/2-35)/2, 100, 35) title:@"选择分类筛选" bgImageName:@"xlk.png" target:self action:@selector(sortBtnClick:)];
+        [sortBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        sortBtn.titleLabel.font = Kfont(11);
+        sortBtn.tag = 110;
+        [bgView addSubview:sortBtn];
+    }
+   
     
     
-    //分类筛选按钮
-    sortBtn = [UIFactory createButtonWithFrame:CGRectMake(205, (bgView.frame.size.height/2-35)/2, 100, 35) title:@"选择分类筛选" bgImageName:@"xlk.png" target:self action:@selector(sortBtnClick:)];
-    [sortBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    sortBtn.titleLabel.font = Kfont(11);
-    sortBtn.tag = 110;
-    [bgView addSubview:sortBtn];
+   
+  
     
 //    UIImageView *sortImg = [UIFactory createImageViewWithFrame:CGRectMake(295,(bgView.frame.size.height/2-10)/2+44+4, 10,10) imageName:@"a1.png"];
 //    [bgImgView addSubview:sortImg];
@@ -623,7 +645,7 @@
 {
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        return 100;
+        return 80;
     }
     return 50;
 }
