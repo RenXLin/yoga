@@ -114,11 +114,15 @@
 	}
     else if(UIInterfaceOrientationIsPortrait(to)){
 //            从横屏的状态转向纵屏：（不管原来的状态均变为非全屏）
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
             _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
-        }else{
+        }else
+        {
             _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
         }
+
         [self.view addSubview:_scrollView];
         
         _mTools.hidden = NO;
@@ -134,7 +138,6 @@
         
         _mTools.frame = CGRectMake(0, _TVPlayView.frame.size.height + _TVPlayView.frame.origin.y, _TVPlayView.frame.size.width, 60);
         [_scrollView addSubview:_mTools];
-        [[UIApplication sharedApplication] setStatusBarHidden:NO];
 	}
 
 }
@@ -550,6 +553,8 @@ NSString* UrlEncodedString(NSString* sourceText)
             self.interfaceOrientation == UIInterfaceOrientationPortrait ||
             self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
             )) {
+            [[UIApplication sharedApplication] setStatusBarHidden:YES];
+
             isFullScreen = YES;
             
             [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
@@ -567,13 +572,15 @@ NSString* UrlEncodedString(NSString* sourceText)
             
             _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, M_PI_2);
             
-            [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
         }else{
             if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
                  self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
                 return;
             }
+            
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
             NSLog(@"非全屏播放");
             isFullScreen = NO;
             _mTools.isHidden = NO;
@@ -597,7 +604,6 @@ NSString* UrlEncodedString(NSString* sourceText)
             [_mTools removeFromSuperview];
             _mTools.frame = CGRectMake(0, _TVPlayView.frame.origin.y+_TVPlayView.frame.size.height , _TVPlayView.frame.size.width, 60);
             [_scrollView addSubview:_mTools];
-            [[UIApplication sharedApplication] setStatusBarHidden:NO];
 
         }
     }
