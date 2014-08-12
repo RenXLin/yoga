@@ -37,7 +37,7 @@
             [self.contentView addSubview:titleLab];
             self.titleLab = titleLab;
             
-            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(285, 0, 400, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(16) textAlignment:0];
+            UILabel *timeLab = [UIFactory createLabelWithFrame:CGRectMake(350, 0, 350, 80) text:@"" textColor:[UIColor darkGrayColor] textFont:Kfont(16) textAlignment:0];
             [self.contentView addSubview:timeLab];
             titleLab.backgroundColor = [UIColor clearColor];
             self.timeLab = timeLab;
