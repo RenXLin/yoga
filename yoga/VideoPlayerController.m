@@ -118,10 +118,10 @@
         [self.view addSubview:_scrollView];
 
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
-            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+            _scrollView.frame = CGRectMake(0, 00, self.view.frame.size.width, self.view.frame.size.height);
         }else
         {
-            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height);
         }
         
         _mTools.hidden = NO;
@@ -131,7 +131,7 @@
         [_TVPlayView removeFromSuperview];
         [_mTools removeFromSuperview];
         
-        _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
+        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
         [_scrollView addSubview:_TVPlayView];
         
         
@@ -178,7 +178,7 @@
     
     self.view.autoresizesSubviews = YES;
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height )];
     }else{
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20)];
     }
@@ -194,7 +194,7 @@
     UIViewAutoresizingFlexibleWidth;
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:self.titleName];
+    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, _scrollView.frame.size.width, 44) andTitle:self.titleName];
     [_scrollView addSubview:nav];
     nav.autoresizingMask=
     UIViewAutoresizingFlexibleBottomMargin |
@@ -211,7 +211,7 @@
     _carryView_portrait.autoresizesSubviews = YES;
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height)];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height)];
     _TVPlayView.backgroundColor = [UIColor clearColor];
     _TVPlayView.userInteractionEnabled = YES;
     _TVPlayView.autoresizesSubviews = YES;
@@ -589,13 +589,13 @@ NSString* UrlEncodedString(NSString* sourceText)
             
             _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
             [_TVPlayView removeFromSuperview];
-            _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
+            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
             [_scrollView addSubview:_TVPlayView];
            
             
             [self.view addSubview:_scrollView];
             if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
-                _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+                _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
             }else{
                 _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
             }
