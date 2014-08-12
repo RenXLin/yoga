@@ -194,7 +194,12 @@
     UIViewAutoresizingFlexibleWidth;
     
     //自定义导航条
-    UIView *nav = [self myNavgationBar:CGRectMake(0, 20, _scrollView.frame.size.width, 44) andTitle:self.titleName];
+    UIView *nav;
+    if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
+        nav = [self myNavgationBar:CGRectMake(0, 20, _scrollView.frame.size.width, 44) andTitle:self.titleName];
+    }else{
+        nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:self.titleName];
+    }
     [_scrollView addSubview:nav];
     nav.autoresizingMask=
     UIViewAutoresizingFlexibleBottomMargin |
