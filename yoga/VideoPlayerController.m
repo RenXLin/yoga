@@ -115,6 +115,7 @@
     else if(UIInterfaceOrientationIsPortrait(to)){
 //            从横屏的状态转向纵屏：（不管原来的状态均变为非全屏）
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
         [self.view addSubview:_scrollView];
 
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
@@ -584,6 +585,7 @@ NSString* UrlEncodedString(NSString* sourceText)
             }
             
             [[UIApplication sharedApplication] setStatusBarHidden:NO];
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 
             NSLog(@"非全屏播放");
             isFullScreen = NO;
