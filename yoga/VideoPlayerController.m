@@ -114,6 +114,11 @@
 	}
     else if(UIInterfaceOrientationIsPortrait(to)){
 //            从横屏的状态转向纵屏：（不管原来的状态均变为非全屏）
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
+            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+        }else{
+            _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
+        }
         [self.view addSubview:_scrollView];
         
         _mTools.hidden = NO;
@@ -580,6 +585,13 @@ NSString* UrlEncodedString(NSString* sourceText)
             [_TVPlayView removeFromSuperview];
             _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
             [_scrollView addSubview:_TVPlayView];
+           
+            
+            if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
+                _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+            }else{
+                _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
+            }
             [self.view addSubview:_scrollView];
             
             [_mTools removeFromSuperview];
