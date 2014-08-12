@@ -253,7 +253,7 @@
     
     if ([self.titleName isEqualToString:@"音频点播"]) {
         
-        _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width);
+        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
         _TVPlayView.tag = 5000;
         
         NSMutableArray *colorArray =[[NSMutableArray alloc] init];
@@ -585,7 +585,7 @@ NSString* UrlEncodedString(NSString* sourceText)
             }
             
             [[UIApplication sharedApplication] setStatusBarHidden:NO];
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
             NSLog(@"非全屏播放");
             isFullScreen = NO;
