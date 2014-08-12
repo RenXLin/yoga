@@ -39,7 +39,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    return toInterfaceOrientation != UIDeviceOrientationPortraitUpsideDown;
+    return UIDeviceOrientationPortrait;
 }
 
 - (BOOL)shouldAutorotate
