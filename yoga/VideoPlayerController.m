@@ -121,7 +121,7 @@
             _scrollView.frame = CGRectMake(0, 00, self.view.frame.size.width, self.view.frame.size.height);
         }else
         {
-            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height);
+            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height- 20);
         }
         
         _mTools.hidden = NO;
