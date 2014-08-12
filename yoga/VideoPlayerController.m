@@ -115,6 +115,7 @@
     else if(UIInterfaceOrientationIsPortrait(to)){
 //            从横屏的状态转向纵屏：（不管原来的状态均变为非全屏）
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [self.view addSubview:_scrollView];
 
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
             _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
@@ -122,8 +123,6 @@
         {
             _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
         }
-
-        [self.view addSubview:_scrollView];
         
         _mTools.hidden = NO;
         isFullScreen = NO;
@@ -594,12 +593,12 @@ NSString* UrlEncodedString(NSString* sourceText)
             [_scrollView addSubview:_TVPlayView];
            
             
+            [self.view addSubview:_scrollView];
             if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
                 _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
             }else{
                 _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
             }
-            [self.view addSubview:_scrollView];
             
             [_mTools removeFromSuperview];
             _mTools.frame = CGRectMake(0, _TVPlayView.frame.origin.y+_TVPlayView.frame.size.height , _TVPlayView.frame.size.width, 60);
