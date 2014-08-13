@@ -10,4 +10,5 @@
 
 @interface RL_LoginViewController : UIViewController<UITextFieldDelegate>
 
+@property (nonatomic,copy) NSString *fromStr;
 @end

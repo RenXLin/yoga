@@ -168,6 +168,9 @@
                 
                 
                 CountCenterViewController *countCenter = [[CountCenterViewController alloc]init];
+                
+                countCenter.fromStr = self.fromStr;
+              
                 //[self presentViewController:countCenter animated:YES completion:nil];
                 [self.navigationController pushViewController:countCenter animated:YES];
                 

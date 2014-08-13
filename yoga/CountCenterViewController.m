@@ -210,24 +210,16 @@
 //返回
 -(void)backBtnClick:(UIButton *)btn
 {
-    NSArray *temArray = self.navigationController.viewControllers;
-    
-    for(UIViewController *temVC in temArray)
-        
+    if(self.fromStr.length == 0)
     {
-        
-        if ([temVC isKindOfClass:[SC_AudioOnLineViewController class]])
-            
-        {
-            SC_AudioOnLineViewController*owr = (SC_AudioOnLineViewController *)temVC;
-            [self.navigationController popToViewController:owr animated:YES];
-            
-        }else
-        {
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        }
-        
+         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    }else
+    {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     }
+    
+    
+
 }
 
 

@@ -12,4 +12,6 @@
 {
     NSMutableDictionary *dataDict;
 }
+
+@property (nonatomic,copy) NSString *fromStr;
 @end

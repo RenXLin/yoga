@@ -290,6 +290,7 @@
     }else
     {
         RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
+        login.fromStr  =@"fromStr";
         [self.navigationController pushViewController:login animated:YES];
         
     }
