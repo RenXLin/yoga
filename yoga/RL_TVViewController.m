@@ -260,7 +260,7 @@
             if (!_mMpayer && urlStr) {
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
-                [_mMpayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
+                [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
                 [_mMpayer prepareAsync];
             }
         }else{

@@ -218,7 +218,7 @@
     
     //添加视频播放视图
     _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height)];
-    _TVPlayView.backgroundColor = [UIColor clearColor];
+    _TVPlayView.backgroundColor = [UIColor blackColor];
     _TVPlayView.userInteractionEnabled = YES;
     _TVPlayView.autoresizesSubviews = YES;
     [_scrollView addSubview:_TVPlayView];
