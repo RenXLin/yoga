@@ -37,6 +37,8 @@
     
     UIView *_TVPlayView;
     
+    UIActivityIndicatorView *_activityView;
+    
     NSMutableArray *_fileList;
 }
 
@@ -126,9 +128,23 @@
     
     //添加视频播放视图
     _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, nav.frame.size.height + nav.frame.origin.y + 10, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
-    _TVPlayView.backgroundColor = [UIColor grayColor];
+    _TVPlayView.backgroundColor = [UIColor blackColor];
 //    TVPlayView.alpha = 0.2;
     [_scrollView addSubview:_TVPlayView];
+    
+    _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
+                     UIActivityIndicatorViewStyleWhiteLarge];
+	[_TVPlayView addSubview:_activityView];
+    _activityView.center = _TVPlayView.center;
+    [_activityView startAnimating];
+    _activityView.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+
     
     //当前节目
     UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,_TVPlayView.frame.origin.y + _TVPlayView.frame.size.height +10, self.view.frame.size.width, 30)];
@@ -273,6 +289,7 @@
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
     [player start];
+    [_activityView stopAnimating];
     NSLog(@"start>>>>>>>>>>>>");
 }
 
