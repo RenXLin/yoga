@@ -33,6 +33,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden =YES;
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+
 }
 -(BOOL)shouldAutorotate
 {
@@ -52,7 +54,6 @@
     UIView *nav = [self myNavgationBar:CGRectMake(0, iOS7?20:0, self.view.frame.size.width, 44) andTitle:@"登陆"];
     [self.view addSubview:nav];
     
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 
 
     self.view.autoresizesSubviews = YES;

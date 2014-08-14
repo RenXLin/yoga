@@ -44,6 +44,8 @@
     
     UIView *_TVPlayView;
     NSArray *_urlDic;
+    
+    long lastDuration;
 }
 
 -(BOOL)prefersStatusBarHidden
@@ -639,6 +641,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
     NSLog(@"start>>>>>>>>>>>>");
+    lastDuration = 0;
     _duration  = [player getDuration];
     long second = _duration / 1000;
     
@@ -649,7 +652,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     _mTools.totalPlay.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec];
     [player start];
     [_activityView stopAnimating];
-    _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/2 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
+    _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/3 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
 
     if ([self.titleName isEqualToString:@"音频点播"]) {
         return;
@@ -701,11 +704,13 @@ NSString* UrlEncodedString(NSString* sourceText)
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
 {
-    static long lastDuration = 0;
     long current = [_mPlayer getCurrentPosition];
     NSLog(@">>>>>>>>>>%ld",current);
     if (current > lastDuration)
     {
+        if (current - lastDuration > 5000) {
+            return;
+        }
         lastDuration = current;
         float precrnt = (float)current / _duration;
         _mTools.playProgress.value = precrnt;
