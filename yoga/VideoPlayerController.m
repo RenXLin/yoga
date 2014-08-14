@@ -934,7 +934,9 @@ NSString* UrlEncodedString(NSString* sourceText)
         [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeText;
         [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeText;
         
-        [UMSocialData defaultData].extConfig.wechatTimelineData.shareText=_itemMode.title;
+         [UMSocialData defaultData].extConfig.wechatSessionData.shareText = shareStr;
+        
+        [UMSocialData defaultData].extConfig.wechatTimelineData.shareText=shareStr;
         [UMSocialData defaultData].extConfig.wechatTimelineData.shareImage = [UIImage imageNamed:@"icon.png"];
         
         [UMSocialData defaultData].extConfig.wechatTimelineData.url=nil;

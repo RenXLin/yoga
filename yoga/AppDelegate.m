@@ -258,22 +258,14 @@
                     if ([[responseObject objectForKey:@"code"] intValue] == 200) {
                         
                         NSLog(@"%@",responseObject);
+                        
+                        self.userDict = nil;
+            
                       
                         if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
                         {
                             
-                            for(NSDictionary *dict in [responseObject objectForKey:@"data"])
-                            {
-//                                SC_Model *model = [[SC_Model alloc]init];
-//                                [model setValuesForKeysWithDictionary:dict];
-//                                [pageDataArray addObject:model];
-//                                
-//                                if(dataArray.count<10)
-//                                {
-//                                    [dataArray addObject:model];
-//                                }
-                                
-                            }
+                            self.userDict = [responseObject objectForKey:@"data"];
                             
                         }
                         

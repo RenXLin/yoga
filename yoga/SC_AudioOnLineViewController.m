@@ -19,6 +19,7 @@
 #import "RL_LoginViewController.h"
 #import "OrderViewController.h"
 #import "MJRefresh.h"
+#import "CountCenterViewController.h"
 @interface SC_AudioOnLineViewController ()<LeveyPopListViewDelegate>
 {
     //当前在线人数
@@ -695,33 +696,40 @@
     UserInfo *info = [UserInfo shareUserInfo];
     if(info.token.length == 0)
     {
+        Kdelegate;
         
+        NSMutableArray *roleArr = [delegate.userDict objectForKey:@"roleInfo"];
+        
+        
+        for (NSDictionary *dic in roleArr)
+        {
+            if([[dic objectForKey:@"code"] isEqualToString:@"mofang"])
+            {
+                
+                //推出播放器视图：
+                VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
+                vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
+                vpc.titleName = self.Title;
+                //            [self.na presentViewController:vpc animated:YES completion:nil];
+                [self.navigationController pushViewController:vpc animated:YES];
+                
+
+                
+            }
+        }
+        
+        
+        
+    }else
+    {
+       
         lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:Lbtn With:Rbtn1];
         //lplv.delegLbtnnn = self;
         [lplv showInView:self.view animated:YES];
         
         [self creatBtn];
         
-    }else
-    {
-        if(tableView == searchDisplayController.searchResultsTableView)
-        {
-            //推出播放器视图：
-            VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
-            vpc.itemMode = [searchResults  objectAtIndex:indexPath.row];
-            vpc.titleName = self.Title;
-//            [self presentViewController:vpc animated:YES completion:nil];
-            [self.navigationController pushViewController:vpc animated:YES];
 
-        }else if (tableView == TableView){
-            //推出播放器视图：
-            VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
-            vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
-            vpc.titleName = self.Title;
-//            [self.na presentViewController:vpc animated:YES completion:nil];
-            [self.navigationController pushViewController:vpc animated:YES];
-        }
-        
    
     }
     
@@ -771,20 +779,36 @@
     switch (button.tag-110) {
         case 0:
         {
+            UserInfo *info = [UserInfo shareUserInfo];
+            if(info.token.length == 0)
+            {
+                RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
+                //[self presentViewController:login animated:YES completion:nil];
+                [self.navigationController pushViewController:login animated:YES];
+                
+            }else
+            {
+                CountCenterViewController *countCenter = [[CountCenterViewController alloc]init];
+                 [self.navigationController pushViewController:countCenter animated:YES];
             
-            RL_LoginViewController *login = [[RL_LoginViewController alloc]init];
-            //[self presentViewController:login animated:YES completion:nil];
+            }
             
-            [self.navigationController pushViewController:login animated:YES];
+            
             
         }
             break;
         case 1:
         {
-            OrderViewController *orderView = [[OrderViewController alloc]init];
-            // [self presentViewController:orderView animated:YES completion:nil];
             
-            [self.navigationController pushViewController:orderView animated:YES];
+           
+                OrderViewController *orderView = [[OrderViewController alloc]init];
+                // [self presentViewController:orderView animated:YES completion:nil];
+                
+                [self.navigationController pushViewController:orderView animated:YES];
+                
+           
+            
+            
             
         }
             break;

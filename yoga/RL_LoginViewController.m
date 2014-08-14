@@ -183,7 +183,7 @@
                     userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
                     userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
                     
-                    AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
+                    Kdelegate;
                     delegate.userDict = [responseObject objectForKey:@"data"];
                     
                     
