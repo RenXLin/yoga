@@ -1303,9 +1303,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "任小林";
 				TargetAttributes = {
-					CD0DB98F196DA50300C3A2A8 = {
-						DevelopmentTeam = 4AN3M8Z8YE;
-					};
 					CD0DB9AA196DA50300C3A2A8 = {
 						TestTargetID = CD0DB98F196DA50300C3A2A8;
 					};
@@ -1719,7 +1716,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3FA9B154-EF24-46D5-A93C-1B0E97B28DEC";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1759,7 +1756,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3FA9B154-EF24-46D5-A93C-1B0E97B28DEC";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

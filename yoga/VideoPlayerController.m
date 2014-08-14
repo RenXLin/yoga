@@ -898,6 +898,7 @@ NSString* UrlEncodedString(NSString* sourceText)
         
         //自定义各平台分享内容：
         [UMSocialData defaultData].extConfig.sinaData.shareText = shareStr;
+        
         [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
         
         
@@ -910,10 +911,10 @@ NSString* UrlEncodedString(NSString* sourceText)
         //[[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
         //[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
         //设置分享类型
-        [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeWeb;
+        [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeText;
         
-        [UMSocialData defaultData].extConfig.wechatTimelineData.title=_itemMode.title;
-        
+        [UMSocialData defaultData].extConfig.wechatTimelineData.shareText=_itemMode.title;
+        [UMSocialData defaultData].extConfig.wechatTimelineData.shareImage = [UIImage imageNamed:@"icon.png"];
         
         [UMSocialData defaultData].extConfig.wechatTimelineData.url=nil;
         //[UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;
