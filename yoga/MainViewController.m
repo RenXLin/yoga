@@ -70,6 +70,7 @@
     //白色状态条：
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
     
+    
     self.navigationController.navigationBarHidden = YES;
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
@@ -162,6 +163,9 @@
 
             } else{
                 [view addSubview:[self getImageViewWithName:@"fm1" andFrame:view.bounds]];
+            }
+            if (i * 3 + j + 1 == 7 || i * 3 + j + 1 == 9) {
+                view.alpha = 0.5;
             }
             
         }

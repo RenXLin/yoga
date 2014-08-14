@@ -14,6 +14,7 @@
 #import "OneDayProgram.h"
 #import "OneDayProgramCell.h"
 #import "UIImageView+AFNetworking.h"
+#import <AVFoundation/AVFoundation.h>
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -63,6 +64,28 @@
 {
     UserInfo *info =[UserInfo shareUserInfo];
     _onlinePeople.text = info.onliePeople;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
+
+}
+-(BOOL)canBecomeFirstResponder
+{
+    
+    return YES;
+    
 }
 - (void)viewDidLoad
 {
@@ -310,11 +333,16 @@
             pathUrl = [pathUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
             pathUrl = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
             
+            AVAudioSession *session = [AVAudioSession sharedInstance];
+            [session setActive:YES error:nil];
+            [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+
             if (!_mMpayer && pathUrl) {
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
                 [_mMpayer setDataSource:[NSURL URLWithString:pathUrl]];
                 [_mMpayer prepareAsync];
+            
             }
 
         }else{
