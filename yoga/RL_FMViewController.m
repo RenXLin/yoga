@@ -38,6 +38,8 @@
     CurrentProgram *_programMode;
     //存储图片url；
     NSArray *_urlDic;
+    
+    UIView *whiteView;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -105,7 +107,7 @@
     [scrolView addSubview:nav];
     
     //添加白色底板
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height + 10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
+    whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height + 10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
     whiteView.tag = 5000;
     whiteView.backgroundColor = [UIColor whiteColor];
     [scrolView addSubview:whiteView];
@@ -423,6 +425,55 @@
 {
     NSLog(@"player complete");
     [player reset];
+    [player unSetupPlayer];
+    
+    NSString *url;
+    if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
+        url = CURRENTPLAYFM_URL;
+    }else{
+        url = CURRENTPLAYAUDIO_URL;
+    }
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success:%@",responseObject);
+        _programMode = [[CurrentProgram alloc] init];
+        [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
+        
+        _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
+        if ([[responseObject objectForKey:@"data"] count] > 0) {
+            NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
+            NSLog(@"%@",pathUrl);
+            
+            pathUrl = [pathUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+            pathUrl = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
+            
+            AVAudioSession *session = [AVAudioSession sharedInstance];
+            [session setActive:YES error:nil];
+            [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+            
+            if (!_mMpayer && pathUrl) {
+                _mMpayer = [VMediaPlayer sharedInstance];
+                [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
+                [_mMpayer setDataSource:[NSURL URLWithString:pathUrl]];
+                [_mMpayer prepareAsync];
+                
+            }
+            
+        }else{
+            [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"当前无%@",_FM_AV]];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        }
+        
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed:%@",error);
+        UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求播放路径失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [aleart show];
+    }];
+
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg

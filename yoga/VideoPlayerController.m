@@ -661,6 +661,29 @@ NSString* UrlEncodedString(NSString* sourceText)
     NSLog(@"player complete");
     [_mPlayer reset];
     [player unSetupPlayer];
+    _mPlayer = nil;
+    
+    
+    NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    NSString * urlStr = UrlEncodedString(pathUrl);
+    NSLog(@"encode url :  %@",urlStr);
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    if (!_mPlayer) {
+        _mPlayer = [VMediaPlayer sharedInstance];
+        [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
+        if ([self.titleName isEqualToString:@"音频点播"]) {
+            [_mPlayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
+        }else{
+            [_mPlayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
+        }
+        NSLog(@"%@",self.itemMode.path);
+        [_mPlayer prepareAsync];
+    }
+
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
