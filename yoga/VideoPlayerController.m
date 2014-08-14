@@ -13,7 +13,7 @@
 #import "MedioPlayTool.h"
 #import "UMSocial.h"
 #import "UIImageView+AFNetworking.h"
-
+#import <AVFoundation/AVFoundation.h>
 
 #define GAP_WITH    0
 
@@ -459,9 +459,15 @@
     
 //    NSString *urlStr = [self removeSpace:self.itemMode.path];
 //    NSString * urlStr = [self.itemMode.path stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+
     NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSString * urlStr = UrlEncodedString(pathUrl);
     NSLog(@"encode url :  %@",urlStr);
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+
     if (!_mPlayer) {
         _mPlayer = [VMediaPlayer sharedInstance];
         [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];

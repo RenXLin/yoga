@@ -164,6 +164,9 @@
             } else{
                 [view addSubview:[self getImageViewWithName:@"fm1" andFrame:view.bounds]];
             }
+            if (i * 3 + j + 1 == 7 || i * 3 + j + 1 == 9) {
+                view.alpha = 0.5;
+            }
             
         }
         
