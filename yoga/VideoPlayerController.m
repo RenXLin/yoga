@@ -925,6 +925,7 @@ NSString* UrlEncodedString(NSString* sourceText)
         //[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
         //设置分享类型
         [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeText;
+        [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeText;
         
         [UMSocialData defaultData].extConfig.wechatTimelineData.shareText=_itemMode.title;
         [UMSocialData defaultData].extConfig.wechatTimelineData.shareImage = [UIImage imageNamed:@"icon.png"];
