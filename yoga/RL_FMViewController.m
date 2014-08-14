@@ -68,16 +68,15 @@
     _onlinePeople.text = info.onliePeople;
 }
 
--(BOOL)canBecomeFirstResponder
+-(void)viewWillAppear:(BOOL)animated
 {
-    
-    return YES;
-    
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 
     [self greet];//获取点赞数
     // Do any additional setup after loading the view.

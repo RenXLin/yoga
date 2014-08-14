@@ -165,11 +165,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ([self.titleName isEqualToString:@"音频播放"]) {
+    if ([self.titleName isEqualToString:@"音频点播"]) {
         [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     }else {
-        self.navigationController.navigationBarHidden = YES;
+        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     }
+    self.navigationController.navigationBarHidden = YES;
+
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
