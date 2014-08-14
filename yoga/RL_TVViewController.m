@@ -102,7 +102,18 @@
     UserInfo *info =[UserInfo shareUserInfo];
     _onlinePeople.text = info.onliePeople;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

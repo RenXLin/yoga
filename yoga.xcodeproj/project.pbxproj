@@ -498,6 +498,7 @@
 		CD0F95841999358000EB7985 /* libopenssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopenssl.a; sourceTree = "<group>"; };
 		CD0F95851999358000EB7985 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
 		CD0F95861999358000EB7985 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		CD14D971199CE3EE00EC446E /* yoga.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = yoga.entitlements; sourceTree = "<group>"; };
 		CD179F551995B98200B38933 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD2D3F1319911F19002D6ADF /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
 		CD2D3F151991203E002D6ADF /* 333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333.png; sourceTree = "<group>"; };
@@ -843,6 +844,7 @@
 		CD0DB999196DA50300C3A2A8 /* yoga */ = {
 			isa = PBXGroup;
 			children = (
+				CD14D971199CE3EE00EC446E /* yoga.entitlements */,
 				CD8E51221971581C00771960 /* Library */,
 				CD813ACB1972DA1E0040E1EB /* Views */,
 				CD08AEF6197282EF00C50184 /* Modes */,
@@ -1304,7 +1306,7 @@
 				ORGANIZATIONNAME = "任小林";
 				TargetAttributes = {
 					CD0DB98F196DA50300C3A2A8 = {
-						DevelopmentTeam = 4AN3M8Z8YE;
+						DevelopmentTeam = FA78T6VRG8;
 					};
 					CD0DB9AA196DA50300C3A2A8 = {
 						TestTargetID = CD0DB98F196DA50300C3A2A8;
@@ -1689,6 +1691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = yoga/yoga.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1729,6 +1732,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = yoga/yoga.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

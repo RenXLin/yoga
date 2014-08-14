@@ -157,13 +157,14 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOT_refreshOnlinePeople object:nil];
-
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 - (void)viewDidLoad
 {
