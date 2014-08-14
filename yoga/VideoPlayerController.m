@@ -701,10 +701,12 @@ NSString* UrlEncodedString(NSString* sourceText)
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
 {
+    static long lastDuration = 0;
     long current = [_mPlayer getCurrentPosition];
     NSLog(@">>>>>>>>>>%ld",current);
-//    if (current > lastDuration)
+    if (current > lastDuration)
     {
+        lastDuration = current;
         float precrnt = (float)current / _duration;
         _mTools.playProgress.value = precrnt;
        

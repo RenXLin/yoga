@@ -77,7 +77,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+
     [self greet];//获取点赞数
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];

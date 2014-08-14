@@ -62,6 +62,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = YES;
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+
 }
 - (void)viewDidLoad
 {
@@ -69,7 +71,7 @@
     // Do any additional setup after loading the view.
     //白色状态条：
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
-    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     
     self.navigationController.navigationBarHidden = YES;
 
