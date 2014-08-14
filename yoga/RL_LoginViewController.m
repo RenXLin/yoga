@@ -183,8 +183,8 @@
                     userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
                     userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
                     
-                    Kdelegate;
-                    delegate.userDict = [responseObject objectForKey:@"data"];
+                    
+                    userInfo.userDict = [responseObject objectForKey:@"data"];
                     
                     
                     Kdefaults;

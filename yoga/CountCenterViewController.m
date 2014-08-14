@@ -16,6 +16,10 @@
 @end
 
 @implementation CountCenterViewController
+{
+    NSString *normalUSer;
+    NSString *VipUSer;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,27 +100,46 @@
     }
 
     
-    AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSString *userName = [delegate.userDict objectForKey:@"username"];
-    NSString *email = [[delegate.userDict objectForKey:@"new_email"] description];
+    UserInfo *userInfo = [UserInfo shareUserInfo];
+    NSString *userName = [userInfo.userDict objectForKey:@"username"];
+    NSString *email = [[userInfo.userDict objectForKey:@"new_email"] description];
     
-    NSArray *Rrr = [delegate.userDict objectForKey:@"roleInfo"];
-    NSString *normalUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[[Rrr objectAtIndex:0] objectForKey:@"description"],[[Rrr objectAtIndex:0] objectForKey:@"expiry_date"]];
-    
-    NSString *VipUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[[Rrr objectAtIndex:1] objectForKey:@"description"],[[Rrr objectAtIndex:1] objectForKey:@"expiry_date"]];
-    
-    NSLog(@"%@",delegate.userDict);
-    
-    NSArray *countArray = [NSArray arrayWithObjects:userName,email,normalUSer,VipUSer, nil];
-    
-    for (int i=0; i<4; i++) {
+    NSArray *Rrr = [userInfo.userDict objectForKey:@"roleInfo"];
+    for (NSDictionary *dict in Rrr)
+    {
+        if([[dict objectForKey:@"code"] isEqualToString:@"user"])
+        {
+            
+          normalUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[dict objectForKey:@"description"],[dict objectForKey:@"expiry_date"]];
+        }
         
-        UILabel *lab1 = [UIFactory createLabelWithFrame:CGRectMake(100, 10+30*i, 180, 20) text:[countArray objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
-        lab1.backgroundColor = [UIColor clearColor];
-        [bgImgView1 addSubview:lab1];
+        if([[dict objectForKey:@"code"] isEqualToString:@"mofang"])
+        {
+            VipUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[dict objectForKey:@"description"],[dict objectForKey:@"expiry_date"]];
+        }
+        
     }
     
-    //button
+       
+        
+       
+        
+        
+        
+        NSArray *countArray = [NSArray arrayWithObjects:userName,email,normalUSer,VipUSer, nil];
+        
+        for (int i=0; i<countArray.count; i++) {
+            
+            UILabel *lab1 = [UIFactory createLabelWithFrame:CGRectMake(100, 10+30*i, 180, 20) text:[countArray objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
+            lab1.backgroundColor = [UIColor clearColor];
+            [bgImgView1 addSubview:lab1];
+        }
+        
+
+    
+    
+    
+       //button
     UIButton *btn = [[UIButton alloc]init];
     //退出登录
     UIButton *btn1 = [[UIButton alloc]init];

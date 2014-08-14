@@ -694,11 +694,11 @@
     
     
     UserInfo *info = [UserInfo shareUserInfo];
-    if(info.token.length == 0)
+    if(info.token.length!= 0)
     {
-        Kdelegate;
         
-        NSMutableArray *roleArr = [delegate.userDict objectForKey:@"roleInfo"];
+        UserInfo *userinfo = [UserInfo shareUserInfo];
+        NSMutableArray *roleArr = [userinfo.userDict objectForKey:@"roleInfo"];
         
         
         for (NSDictionary *dic in roleArr)
@@ -715,7 +715,19 @@
                 
 
                 
+            }else
+            {
+                
+                lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:Lbtn With:Rbtn1];
+                //lplv.delegLbtnnn = self;
+                [lplv showInView:self.view animated:YES];
+                
+                [self creatBtn];
+                
+                
+                
             }
+
         }
         
         
@@ -799,12 +811,21 @@
             break;
         case 1:
         {
-            
-           
+            UserInfo *info = [UserInfo shareUserInfo];
+            if(info.token.length!= 0)
+            {
+                CountCenterViewController *conut = [[CountCenterViewController alloc]init];
+                [self.navigationController pushViewController:conut animated:YES];
+                
+            }else
+            {
                 OrderViewController *orderView = [[OrderViewController alloc]init];
                 // [self presentViewController:orderView animated:YES completion:nil];
                 
                 [self.navigationController pushViewController:orderView animated:YES];
+            }
+           
+            
                 
            
             

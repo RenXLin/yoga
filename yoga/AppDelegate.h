@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic,retain) NSMutableDictionary *userDict;
+@property (nonatomic,strong) NSMutableDictionary *userDict;
 
 @property (strong, nonatomic) PayViewController *payViewController;
 @end

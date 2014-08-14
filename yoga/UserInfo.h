@@ -10,7 +10,7 @@
 
 @interface UserInfo : NSObject
 
-
+@property (nonatomic,strong) NSMutableDictionary *userDict;
 @property(strong,nonatomic)NSString *userName;
 @property(strong,nonatomic)NSString *token;
 @property(strong,nonatomic)NSString *onliePeople;

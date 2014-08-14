@@ -930,7 +930,7 @@ NSString* UrlEncodedString(NSString* sourceText)
         
         //[[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
         //[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
-        //设置分享类型
+        //设置wx分享类型
         [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeText;
         [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeText;
         
@@ -944,7 +944,7 @@ NSString* UrlEncodedString(NSString* sourceText)
         
         [UMSocialData defaultData].extConfig.sinaData.urlResource.url=nil;
         
-        
+        //qq
         
         [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage;
         [UMSocialData defaultData].extConfig.qqData.shareText = shareStr;

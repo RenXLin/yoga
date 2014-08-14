@@ -61,6 +61,7 @@
         
     }
    
+
     _result = @selector(paymentResult:);
     [self generateData];
 
@@ -192,6 +193,12 @@
          *由于demo的局限性，采用了将私钥放在本地签名的方法，商户可以根据自身情况选择签名方法(为安全起见，在条件允许的前提下，我们推荐从商户服务器获取完整的订单信息)
          */
         
+        
+        
+
+        
+        
+        
         NSString *appScheme = @"yoga";
         NSString* orderInfo = [self getOrderInfo:0];
         NSString* signedStr = [self doRsa:orderInfo];
@@ -207,6 +214,9 @@
     
 
 }
+
+
+
 
 /*
  *产生商品列表数据
@@ -284,9 +294,6 @@
 		[result1 appendString:s];
 	}
 
-    
-    
-    
     	return [NSString stringWithFormat:@"%@-%@-%@",self.oid,result,result1];
 }
 
