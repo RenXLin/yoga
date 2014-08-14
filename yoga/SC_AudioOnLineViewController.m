@@ -238,7 +238,20 @@
         [bgView addSubview:iputImg];
         
         
-        mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,bgView.frame.size.height/2)];
+        mySearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0,bgView.frame.size.height/2, KscreenWidth-10,44)];
+        
+//        inputTf = [UIFactory createTextFieldWithFrame:CGRectMake(5,bgView.frame.size.height/2, KscreenWidth-10,bgView.frame.size.height/2) borderStyle:UITextBorderStyleNone placeHolder:@"输入关键词搜索" secureEntry:NO delegate:self];
+        
+//        inputTf.font = Kfont(20);
+//        
+//        [bgView addSubview:inputTf];
+//        UIButton *searchBtn = [UIFactory createButtonWithFrame:CGRectMake(600, bgView.frame.size.height/2, 45, 45) title:@"" bgImageName:@"btnblue.png" target:self action:@selector(sortBtnClick:)];
+//        [searchBtn setBackgroundImage:[UIImage imageNamed:@"btnblue_press.png"] forState:UIControlStateHighlighted];
+//        searchBtn.tag = 111;
+//        [bgView addSubview:searchBtn];
+//        
+//        UIImageView *searchImg = [UIFactory createImageViewWithFrame:CGRectMake(5,5, 25,25)imageName:@"放大镜0017.png"];
+//        [searchBtn addSubview:searchImg];
         
         
     }else
@@ -284,23 +297,18 @@
     
     
     
-//    inputTf = [UIFactory createTextFieldWithFrame:CGRectMake(10,(bgView.frame.size.height/2+(bgView.frame.size.height/2-35)/2), 250,35) borderStyle:UITextBorderStyleNone placeHolder:@"输入关键词搜索" secureEntry:NO delegate:self];
-//    
-//    inputTf.font = Kfont(13);
-//    
-//    [bgView addSubview:inputTf];
+   
     
     
     
     
-    //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
+
     mySearchBar.delegate = self;
-    //mySearchBar.showsCancelButton = YES;
-    mySearchBar.contentMode = UIViewContentModeScaleToFill;
     mySearchBar.backgroundImage = [UIImage imageNamed:@"white_btn.png"];
     [mySearchBar setPlaceholder:@"请输入关键词搜索"];
-    mySearchBar.backgroundColor = [UIColor greenColor];
-    [mySearchBar setContentMode:UIViewContentModeTop];
+    
+    [mySearchBar setContentMode:UIViewContentModeLeft];
+    
     [bgView addSubview:mySearchBar];
     //searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:mySearchBar contentsController:self];
     //mySearchBar.barTintColor = KCOLOR(240, 240, 240, 1);
@@ -311,19 +319,14 @@
 //    searchDisplayController.searchResultsDataSource =  self;
    // searchDisplayController.searchResultsTableView.frame = CGRectMake(5, 5+95+64, 310, 350);
         
-//    
-//    UIButton *searchBtn = [UIFactory createButtonWithFrame:CGRectMake(270, bgView.frame.size.height/2+(bgView.frame.size.height/2-30)/2, 30, 30) title:@"" bgImageName:@"btnblue.png" target:self action:@selector(sortBtnClick:)];
-//    [searchBtn setBackgroundImage:[UIImage imageNamed:@"btnblue_press.png"] forState:UIControlStateHighlighted];
-//    searchBtn.tag = 111;
-//    [bgView addSubview:searchBtn];
-//    
-//    UIImageView *searchImg = [UIFactory createImageViewWithFrame:CGRectMake(5,5, 25,25)imageName:@"放大镜0017.png"];
-//    [searchBtn addSubview:searchImg];
+//
+    
+   
    
     
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+130+44, KscreenWidth-10, KscreenHeight -5-130-64-60 ) style:UITableViewStylePlain];
+        TableView = [[UITableView alloc]initWithFrame:CGRectMake(5, 5+130+44, KscreenWidth-10, KscreenHeight -5-130-64-40 ) style:UITableViewStylePlain];
     }else
     {
         
@@ -356,12 +359,15 @@
     
     if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 60, 60);
-        settingView.frame = CGRectMake(KscreenWidth-160, TableView.frame.origin.y+TableView.frame.size.height+5, 60, 60);
+        loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
+        settingView.frame = CGRectMake(KscreenWidth-74, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
+        _onlinePeople.font = Kfont(20);
         
     }else{
         loginView.frame = CGRectMake(40, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
         settingView.frame = CGRectMake(KscreenWidth-74, TableView.frame.origin.y+TableView.frame.size.height+5, 40, 40);
+        
+        _onlinePeople.font = Kfont(15);
         
     }
     
@@ -370,7 +376,7 @@
     UserInfo *info = [UserInfo shareUserInfo];
     _onlinePeople.backgroundColor = [UIColor clearColor];
     _onlinePeople.text = info.onliePeople;//暂定
-    _onlinePeople.font = Kfont(12);
+    
     _onlinePeople.textAlignment = NSTextAlignmentCenter;
     _onlinePeople.adjustsFontSizeToFitWidth = YES;
     _onlinePeople.textAlignment = NSTextAlignmentCenter;

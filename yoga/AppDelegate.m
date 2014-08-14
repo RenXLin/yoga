@@ -82,9 +82,9 @@
                     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start%d_320x480.jpg",i+1]];
                     
                 }else
-                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPhone%d.jpg",i+1]];
+                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"开机画面%d_640x1136.jpg",i+1]];
             }else if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
-                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"iPad%d.jpg",i+1]];
+                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"开机画面%d_1536x2048.jpg",i+1]];
             }
             
             [launchScrollView addSubview:imageView];

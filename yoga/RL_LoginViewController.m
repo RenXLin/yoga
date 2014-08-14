@@ -59,8 +59,7 @@
     _account = [[UITextField alloc] init];
     _account.frame = CGRectMake(10, 70, self.view.frame.size.width-20, 50);
     _account.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _account.placeholder = @"please input your account";
-    _account.text = @"15529403212";
+    _account.placeholder = @"请输入账号";
     _account.clearButtonMode = UITextFieldViewModeAlways;
     _account.textColor = [UIColor blackColor];
     _account.backgroundColor = [UIColor whiteColor];
@@ -79,8 +78,14 @@
     _passWord = [[UITextField alloc] init];
     _passWord.frame = CGRectMake(10, 130, self.view.frame.size.width-20, 50);
     _passWord.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _passWord.text = @"12345678";
-    _passWord.placeholder = @"please input your text";
+    Kdefaults;
+    if([defaults valueForKey:@"accountAndPassword"])
+    {
+        _account.text = [[defaults valueForKey:@"accountAndPassword"]objectAtIndex:0];
+        _passWord.text = [[defaults valueForKey:@"accountAndPassword"]objectAtIndex:1];
+    }
+    
+    _passWord.placeholder = @"请输入密码";
     _passWord.clearButtonMode = UITextFieldViewModeAlways;
     _passWord.textColor = [UIColor blackColor];
     _passWord.backgroundColor = [UIColor whiteColor];
@@ -148,41 +153,68 @@
 {
     NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 2) {
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSString *URLStr = [NSString stringWithFormat:LOGIN_url,_account.text,_passWord.text];
-    //待加入缓冲提示：
-    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if(_account.text.length == 0)
+        {
+            [self animateIncorrectMessage:_account];
             
-            NSLog(@"%@",responseObject);
-            if ([[responseObject objectForKey:@"code"] intValue] == 200) {
-                NSLog(@"登陆成功");
+        }
+        
+        if(_passWord.text.length == 0)
+        {
+            [self animateIncorrectMessage:_passWord];
+        }
+        
+        if(_account.text.length!=0 && _passWord.text.length!=0)
+        {
+            AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+            manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+            NSString *URLStr = [NSString stringWithFormat:LOGIN_url,_account.text,_passWord.text];
+            //待加入缓冲提示：
+            [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 
-                UserInfo *userInfo = [UserInfo shareUserInfo];
-                userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
-                userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
-                
-                AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
-                delegate.userDict = [responseObject objectForKey:@"data"];
-            
-                
-                
-                CountCenterViewController *countCenter = [[CountCenterViewController alloc]init];
-                
-                countCenter.fromStr = self.fromStr;
-              
-                //[self presentViewController:countCenter animated:YES completion:nil];
-                [self.navigationController pushViewController:countCenter animated:YES];
-                
-                
-            }else{
+                NSLog(@"%@",responseObject);
+                if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+                    NSLog(@"登陆成功");
+                    
+                    UserInfo *userInfo = [UserInfo shareUserInfo];
+                    userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
+                    userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
+                    
+                    AppDelegate*delegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
+                    delegate.userDict = [responseObject objectForKey:@"data"];
+                    
+                    
+                    Kdefaults;
+                    NSArray*arr=@[_account.text,_passWord.text];
+                    [defaults setObject:arr forKey:@"accountAndPassword"];
+                    [defaults synchronize];
+                    
+                    
+                    if(self.fromStr.length == 0)
+                    {
+                        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+                    }else
+                    {
+                        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+                    }
+                    
+                    
+                    
+                    
+                }else{
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        }];
+            }];
+        }
+
+        
+        
+  
     }else if(btn.tag == 1){
         RL_RegistViewController *rvc =[[RL_RegistViewController alloc] init];
         [self.navigationController pushViewController:rvc animated:YES];
@@ -229,6 +261,37 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+//账户未输入动画
+- (void)animateIncorrectMessage:(UIView *)view
+{
+    
+    CGAffineTransform moveRight = CGAffineTransformTranslate(CGAffineTransformIdentity, 8, 0);
+    CGAffineTransform moveLeft = CGAffineTransformTranslate(CGAffineTransformIdentity, -8, 0);
+    CGAffineTransform resetTransform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, 0);
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        view.transform = moveLeft;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            view.transform = moveRight;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.1 animations:^{
+                view.transform = moveLeft;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    view.transform = moveRight;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        view.transform = resetTransform;
+                    }];
+                }];
+            }];
+        }];
+    }];
+}
+
 
 //-(BOOL)shouldAutorotate
 //{

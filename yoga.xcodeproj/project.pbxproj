@@ -48,6 +48,12 @@
 		3AC351901976BE2400CA643E /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC351881976BE2400CA643E /* PinyinHelper.m */; };
 		3AC351911976BE2400CA643E /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AC351891976BE2400CA643E /* unicode_to_hanyu_pinyin.txt */; };
 		3AE049EF1985646C00687B52 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE049EE1985646C00687B52 /* OrderViewController.m */; };
+		9D34ECC9199C8B6800A4E9EF /* 开机画面01_640x1136.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC3199C8B6800A4E9EF /* 开机画面01_640x1136.jpg */; };
+		9D34ECCA199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC4199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg */; };
+		9D34ECCB199C8B6800A4E9EF /* 开机画面02_640x1136.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC5199C8B6800A4E9EF /* 开机画面02_640x1136.jpg */; };
+		9D34ECCC199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC6199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg */; };
+		9D34ECCD199C8B6800A4E9EF /* 开机画面03_640x1136.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC7199C8B6800A4E9EF /* 开机画面03_640x1136.jpg */; };
+		9D34ECCE199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */; };
 		9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */; };
 		9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */; };
 		9DB445C9199793F800839C55 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DB445B9199793F800839C55 /* MJRefresh.bundle */; };
@@ -320,6 +326,12 @@
 		3AE049ED1985646C00687B52 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		3AE049EE1985646C00687B52 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		3AE04A4A198BD3D700687B52 /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PartnerConfig.h; path = yoga/PartnerConfig.h; sourceTree = "<group>"; };
+		9D34ECC3199C8B6800A4E9EF /* 开机画面01_640x1136.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面01_640x1136.jpg"; sourceTree = "<group>"; };
+		9D34ECC4199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面01_1536x2048.jpg"; sourceTree = "<group>"; };
+		9D34ECC5199C8B6800A4E9EF /* 开机画面02_640x1136.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_640x1136.jpg"; sourceTree = "<group>"; };
+		9D34ECC6199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_1536x2048.jpg"; sourceTree = "<group>"; };
+		9D34ECC7199C8B6800A4E9EF /* 开机画面03_640x1136.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_640x1136.jpg"; sourceTree = "<group>"; };
+		9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_1536x2048.jpg"; sourceTree = "<group>"; };
 		9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlipayRsaLib.a; path = ../yoga2/yoga/AlipayRsaLib.a; sourceTree = "<group>"; };
 		9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1224,12 +1236,18 @@
 		CD9E695C1987DCA100052EE3 /* IPAD */ = {
 			isa = PBXGroup;
 			children = (
+				9D34ECC3199C8B6800A4E9EF /* 开机画面01_640x1136.jpg */,
+				9D34ECC4199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg */,
+				9D34ECC5199C8B6800A4E9EF /* 开机画面02_640x1136.jpg */,
+				9D34ECC6199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg */,
+				9D34ECC7199C8B6800A4E9EF /* 开机画面03_640x1136.jpg */,
+				9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */,
 				CD9E695D1987DCA100052EE3 /* 1536-2048 .jpg */,
+				CD9E69611987DCA100052EE3 /* Default~ipad.png */,
+				CD9E69621987DCA100052EE3 /* 640-1136 .jpg */,
 				CD9E695E1987DCA100052EE3 /* iPad1.jpg */,
 				CD9E695F1987DCA100052EE3 /* iPad2.jpg */,
 				CD9E69601987DCA100052EE3 /* iPad3.jpg */,
-				CD9E69611987DCA100052EE3 /* Default~ipad.png */,
-				CD9E69621987DCA100052EE3 /* 640-1136 .jpg */,
 				CD9E69631987DCA100052EE3 /* iPhone1.jpg */,
 				CD9E69641987DCA100052EE3 /* iPhone2.jpg */,
 				CD9E69651987DCA100052EE3 /* iPhone3.jpg */,
@@ -1319,6 +1337,7 @@
 			files = (
 				CD0DBA6C196DA52200C3A2A8 /* title_icon4_1.png in Resources */,
 				3A101F3F199536C500AABE60 /* start1_320x480.jpg in Resources */,
+				9D34ECCA199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg in Resources */,
 				CD0DBA5C196DA52200C3A2A8 /* icon_blue.png in Resources */,
 				CD0DBA40196DA52200C3A2A8 /* btngreen1.png in Resources */,
 				CD4654B01989264C00E871DB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -1335,6 +1354,7 @@
 				CD3E57CD1984E23F000A360A /* UMSCommentInputControlleriPad.xib in Resources */,
 				CD0DBA4C196DA52200C3A2A8 /* icon2_1.png in Resources */,
 				CD0DBA44196DA52200C3A2A8 /* c_bg.png in Resources */,
+				9D34ECCE199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg in Resources */,
 				3A101F34199536C500AABE60 /* 瑜伽魔方LOGO_16x16.jpg in Resources */,
 				CD0DBA7C196DA52200C3A2A8 /* video_icon6_1.png in Resources */,
 				CD3E57CE1984E23F000A360A /* UMShareEditViewController.xib in Resources */,
@@ -1367,6 +1387,7 @@
 				CD0DB99E196DA50300C3A2A8 /* InfoPlist.strings in Resources */,
 				CD2D3F1419911F19002D6ADF /* 222.png in Resources */,
 				3A101F3C199536C500AABE60 /* 瑜伽魔方LOGO_108x108.png in Resources */,
+				9D34ECCB199C8B6800A4E9EF /* 开机画面02_640x1136.jpg in Resources */,
 				CD0DBA55196DA52200C3A2A8 /* icon7.png in Resources */,
 				CD0DBA7E196DA52200C3A2A8 /* video_icon7_1.png in Resources */,
 				CD0DBA7A196DA52200C3A2A8 /* video_icon5_1.png in Resources */,
@@ -1415,6 +1436,7 @@
 				CD0DBA46196DA52200C3A2A8 /* color_bg.png in Resources */,
 				CD0DBA89196DA52200C3A2A8 /* xlk1.png in Resources */,
 				CD0DBA70196DA52200C3A2A8 /* video_icon.png in Resources */,
+				9D34ECCC199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg in Resources */,
 				CD0DBA58196DA52200C3A2A8 /* icon8_1.png in Resources */,
 				3AC351911976BE2400CA643E /* unicode_to_hanyu_pinyin.txt in Resources */,
 				CD0DBA74196DA52200C3A2A8 /* video_icon2_1.png in Resources */,
@@ -1447,8 +1469,10 @@
 				CD0DBA39196DA52200C3A2A8 /* btnblue.png in Resources */,
 				CD0DBA87196DA52200C3A2A8 /* white_btn1.png in Resources */,
 				CD0DBA3C196DA52200C3A2A8 /* btnblue_press.9.png in Resources */,
+				9D34ECC9199C8B6800A4E9EF /* 开机画面01_640x1136.jpg in Resources */,
 				CD0DBA65196DA52200C3A2A8 /* title_icon.png in Resources */,
 				CD0DBA6F196DA52200C3A2A8 /* video_bottom.png in Resources */,
+				9D34ECCD199C8B6800A4E9EF /* 开机画面03_640x1136.jpg in Resources */,
 				CD0DBA3F196DA52200C3A2A8 /* btngreen.png in Resources */,
 				CD3E57D21984E23F000A360A /* UMSShareListController.xib in Resources */,
 				CD0DBA4E196DA52200C3A2A8 /* icon3_1.png in Resources */,
@@ -1695,7 +1719,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3FA9B154-EF24-46D5-A93C-1B0E97B28DEC";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1735,7 +1759,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3FA9B154-EF24-46D5-A93C-1B0E97B28DEC";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

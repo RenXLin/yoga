@@ -18,7 +18,7 @@
 #define GAP_WITH    0
 
 
-@interface VideoPlayerController ()
+@interface VideoPlayerController ()<UIGestureRecognizerDelegate,UMSocialUIDelegate>
 {
     UIScrollView *_scrollView;
     UIView *_carryView_portrait;
@@ -890,6 +890,8 @@ NSString* UrlEncodedString(NSString* sourceText)
 {
     if (btn.tag == 1) {
         NSString *shareStr = [NSString stringWithFormat:@"我爱%@！—— %@:%@",_itemMode.title,_itemMode.ad,_itemMode.path];
+        
+        NSLog(@"%@",shareStr);
 
         //分享
         [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
@@ -905,8 +907,20 @@ NSString* UrlEncodedString(NSString* sourceText)
         [UMSocialData defaultData].extConfig.doubanData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到豆瓣
         [UMSocialData defaultData].extConfig.doubanData.shareText = shareStr;
         
-        [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
-        [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
+        //[[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
+        //[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
+        //设置分享类型
+        [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeWeb;
+        
+        [UMSocialData defaultData].extConfig.wechatTimelineData.title=_itemMode.title;
+        
+        
+        [UMSocialData defaultData].extConfig.wechatTimelineData.url=nil;
+        //[UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;
+        
+        [UMSocialData defaultData].extConfig.sinaData.urlResource.url=nil;
+
+        
         
         [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:shareStr shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToDouban, nil] delegate:self];
 
