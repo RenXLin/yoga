@@ -210,14 +210,7 @@
 //返回
 -(void)backBtnClick:(UIButton *)btn
 {
-    if(self.fromStr.length == 0)
-    {
-         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
-    }else
-    {
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
-    }
-    
+    [self.navigationController popViewControllerAnimated:YES];
     
 
 }

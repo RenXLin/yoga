@@ -900,7 +900,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 -(void)TitleBtnClick:(UIButton *)btn
 {
     if (btn.tag == 1) {
-        NSString *shareStr = [NSString stringWithFormat:@"我爱%@！—— %@:%@",_itemMode.title,_itemMode.ad,_itemMode.path];
+        NSString *shareStr = [NSString stringWithFormat:@"我爱%@",_itemMode.title];
         
         NSLog(@"%@",shareStr);
 
@@ -931,6 +931,14 @@ NSString* UrlEncodedString(NSString* sourceText)
         //[UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;
         
         [UMSocialData defaultData].extConfig.sinaData.urlResource.url=nil;
+        
+        
+        
+        [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage;
+        [UMSocialData defaultData].extConfig.qqData.shareText = shareStr;
+        [UMSocialData defaultData].extConfig.qqData.shareImage = [UIImage imageNamed:@"icon.png"];
+        [UMSocialData defaultData].extConfig.qqData.urlResource.url=nil;
+        
 
         
         
