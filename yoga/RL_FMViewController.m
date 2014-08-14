@@ -66,21 +66,6 @@
     _onlinePeople.text = info.onliePeople;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    [self becomeFirstResponder];
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
-    [self resignFirstResponder];
-
-}
 -(BOOL)canBecomeFirstResponder
 {
     

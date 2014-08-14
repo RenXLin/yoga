@@ -45,14 +45,16 @@
 - (BOOL)shouldAutorotate
 {
     if ([self.topViewController isKindOfClass:[VideoPlayerController class]]) {
-        return YES;
+        if ([((VideoPlayerController *)self.topViewController).titleName isEqualToString:@"视频点播"]){
+            return YES;
+        }
     }
     return NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+    return UIInterfaceOrientationMaskAll;
 }
 
 /*

@@ -710,15 +710,16 @@
             VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
             vpc.itemMode = [searchResults  objectAtIndex:indexPath.row];
             vpc.titleName = self.Title;
-            [self presentViewController:vpc animated:YES completion:nil];
-            
+//            [self presentViewController:vpc animated:YES completion:nil];
+            [self.navigationController pushViewController:vpc animated:YES];
+
         }else if (tableView == TableView){
             //推出播放器视图：
             VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
             vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
             vpc.titleName = self.Title;
-            [self presentViewController:vpc animated:YES completion:nil];
-            
+//            [self.na presentViewController:vpc animated:YES completion:nil];
+            [self.navigationController pushViewController:vpc animated:YES];
         }
         
    

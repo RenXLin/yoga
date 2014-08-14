@@ -16,4 +16,7 @@
 @property(nonatomic,strong)SC_Model *itemMode;
 @property(nonatomic,strong)NSString *titleName;
 
+-(void)videoPause;
+-(void)videoStart;
+
 @end

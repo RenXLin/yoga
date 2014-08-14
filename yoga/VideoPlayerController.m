@@ -132,7 +132,7 @@
         [_TVPlayView removeFromSuperview];
         [_mTools removeFromSuperview];
         
-        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
+        _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
         [_scrollView addSubview:_TVPlayView];
         
         
@@ -160,6 +160,15 @@
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([self.titleName isEqualToString:@"音频播放"]) {
+        [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    }else {
+        self.navigationController.navigationBarHidden = YES;
+    }
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
@@ -172,7 +181,6 @@
     // Do any additional setup after loading the view.
     
     [self greet];
-    
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
@@ -197,9 +205,10 @@
     
     //自定义导航条
     UIView *nav;
-    if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
-        nav = [self myNavgationBar:CGRectMake(0, 20, _scrollView.frame.size.width, 44) andTitle:self.titleName];
-    }else{
+//    if ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0) {
+//        nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:self.titleName];
+//    }else
+    {
         nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:self.titleName];
     }
     [_scrollView addSubview:nav];
@@ -218,7 +227,7 @@
     _carryView_portrait.autoresizesSubviews = YES;
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height)];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height)];
     _TVPlayView.backgroundColor = [UIColor blackColor];
     _TVPlayView.userInteractionEnabled = YES;
     _TVPlayView.autoresizesSubviews = YES;
@@ -464,14 +473,18 @@
     NSString * urlStr = UrlEncodedString(pathUrl);
     NSLog(@"encode url :  %@",urlStr);
     
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setActive:YES error:nil];
-    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
 
     if (!_mPlayer) {
         _mPlayer = [VMediaPlayer sharedInstance];
         [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
-        [_mPlayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
+        if ([self.titleName isEqualToString:@"音频点播"]) {
+            [_mPlayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
+        }else{
+            [_mPlayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
+        }
         NSLog(@"%@",self.itemMode.path);
         [_mPlayer prepareAsync];
     }
@@ -603,13 +616,13 @@ NSString* UrlEncodedString(NSString* sourceText)
             
             _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
             [_TVPlayView removeFromSuperview];
-            _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
+            _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
             [_scrollView addSubview:_TVPlayView];
            
             
             [self.view addSubview:_scrollView];
             if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
-                _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height -20);
             }else{
                 _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
             }
@@ -717,53 +730,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 {
     NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 1) {
-        //full screen or not
-//        if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-//            self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-//
-//            if (isFullScreen == NO) {
-//                
-//                isFullScreen = YES;
-//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-//
-//                [_TVPlayView removeFromSuperview];
-//                [_scrollView removeFromSuperview];
-//                _TVPlayView.frame = self.view.bounds;
-//                [self.view addSubview:_TVPlayView];
-//
-//            }else{
-//                isFullScreen = NO;
-//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-//                [_TVPlayView removeFromSuperview];
-//                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
-//                
-//                [_scrollView addSubview:_TVPlayView];
-//                [self.view addSubview:_scrollView];
-//            }
-//            
-//        }else {
-//            if (isFullScreen == NO) {
-//                isFullScreen = YES;
-//
-//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon4" ofType:@"png"]] forState:UIControlStateNormal];
-//                [_TVPlayView removeFromSuperview];
-//                [_scrollView removeFromSuperview];
-//                _TVPlayView.frame = [UIScreen mainScreen].bounds;
-////                _TVPlayView.transform = CGAffineTransformMakeRotation(-M_PI_2);
-//                [self.view addSubview:_TVPlayView];
-//                
-//            }else{
-//                NSLog(@"非全屏播放");
-//                isFullScreen = NO;
-//                
-//                [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
-//                [_TVPlayView removeFromSuperview];
-//                _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width);
-//                [_scrollView addSubview:_TVPlayView];
-//                [self.view addSubview:_scrollView];
-//
-//            }
-//        }
+
         //当为视频界面时切换全屏
         if ([self.titleName isEqualToString:@"视频点播"]) {
             [self doubleTap];
@@ -794,6 +761,19 @@ NSString* UrlEncodedString(NSString* sourceText)
     }else if (btn.tag == 4){
         //next program
         
+    }
+}
+
+-(void)videoPause
+{
+    if ([_mPlayer isPlaying]) {
+        [_mPlayer pause];
+    }
+}
+-(void)videoStart
+{
+    if (_mPlayer) {
+        [_mPlayer start];
     }
 }
 -(void)remoteControlReceivedWithEvent:(UIEvent *)event
@@ -829,7 +809,8 @@ NSString* UrlEncodedString(NSString* sourceText)
     [_mPlayer unSetupPlayer];
     _mPlayer = nil;
     [_seekTimser invalidate];
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)loginBtnClick

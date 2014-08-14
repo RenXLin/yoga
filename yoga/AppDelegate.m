@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "PortraitNavigationController.h"
+#import "VideoPlayerController.h"
 
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
@@ -154,11 +155,46 @@
     
     
     NSLog(@"into background");
+    UINavigationController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if ([rootVc isKindOfClass:[PortraitNavigationController class]]) {
+        NSLog(@"yes");
+        UIViewController *vc = rootVc.topViewController;
+        NSString *aa = NSStringFromClass([vc class]);
+        if ([vc isKindOfClass:[VideoPlayerController class]]) {
+            
+            if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
+                NSLog(@"音频点播");
+            }else{
+                NSLog(@"视频点播");
+                [((VideoPlayerController *)vc) videoPause];
+            }
+        }
+    }
+    
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    NSLog(@"into foreground");
+    
+    UINavigationController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if ([rootVc isKindOfClass:[PortraitNavigationController class]]) {
+        NSLog(@"yes");
+        UIViewController *vc = rootVc.topViewController;
+        NSString *aa = NSStringFromClass([vc class]);
+        if ([vc isKindOfClass:[VideoPlayerController class]]) {
+            
+            if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
+                NSLog(@"音频点播");
+            }else{
+                NSLog(@"视频点播");
+                [((VideoPlayerController *)vc) videoStart];
+            }
+        }
+    }
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
