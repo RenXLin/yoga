@@ -94,10 +94,6 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
-		<string>fetch</string>
-		<string>location</string>
-		<string>remote-notification</string>
-		<string>voip</string>
 	</array>
 	<key>UILaunchImageFile</key>
 	<string>Default</string>
