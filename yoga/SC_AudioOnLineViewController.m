@@ -712,6 +712,11 @@
                 vpc.titleName = self.Title;
                 //            [self.na presentViewController:vpc animated:YES completion:nil];
                 [self.navigationController pushViewController:vpc animated:YES];
+                if(lplv)
+                {
+                    [lplv removeFromSuperview];
+                }
+                
                 
 
                 
