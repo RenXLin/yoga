@@ -156,18 +156,17 @@
             UIViewAutoresizingFlexibleWidth;
             
             //加入名称或图标：
-            if ((i * 3 + j + 1) %2 == 1) {
-                [view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30)]];
+            if (i * 3 + j + 1 == 7 || i * 3 + j + 1 == 9) {
+                [view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:YES]];
+            }else if ((i * 3 + j + 1) %2 == 1) {
+                [view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:NO]];
             }else if((i * 3 + j + 1) == 4 || (i * 3 + j + 1) == 6){
-                [view addSubview:[self getLabelWithTitel:[clickArray objectAtIndex:count1++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30)]];
+                [view addSubview:[self getLabelWithTitel:[clickArray objectAtIndex:count1++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:NO]];
             }else if (i*3 +j+1 == 2){
                 [view addSubview:[self getImageViewWithName:@"222" andFrame:view.bounds]];
 
             } else{
                 [view addSubview:[self getImageViewWithName:@"fm1" andFrame:view.bounds]];
-            }
-            if (i * 3 + j + 1 == 7 || i * 3 + j + 1 == 9) {
-                view.alpha = 0.5;
             }
             
         }
@@ -311,7 +310,7 @@
 }
 
 //生成label方法
--(UILabel *)getLabelWithTitel:(NSString *)title andRect:(CGRect)rect
+-(UILabel *)getLabelWithTitel:(NSString *)title andRect:(CGRect)rect andIsDisable:(BOOL)isDisable
 { 
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.text = title;
@@ -322,6 +321,9 @@
     }
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
+    if (isDisable) {
+        label.textColor = [UIColor grayColor];
+    }
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;
 
