@@ -324,7 +324,11 @@
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
     if (isDisable) {
+
         label.textColor = [UIColor colorWithHexString:@"CCCCCC"];
+
+        label.textColor = [UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.00f];
+
     }
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;
