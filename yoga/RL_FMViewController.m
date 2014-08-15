@@ -18,7 +18,7 @@
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
-@interface RL_FMViewController ()
+@interface RL_FMViewController ()<UIGestureRecognizerDelegate,UMSocialUIDelegate>
 {
     VMediaPlayer *_mMpayer;
     MPMoviePlayerController *_mp3;
@@ -628,7 +628,7 @@
 
     if (btn.tag == 1) {
     
-        NSString *shareStr = [NSString stringWithFormat:@"我爱瑜伽音乐！—— %@",_programMode.ad];
+        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@",self.FM_AV,_programMode.title];
 //        
 //        //分享
 //        [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
@@ -662,7 +662,7 @@
         NSLog(@"%@",shareStr);
         
         //分享
-        [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
+        //[[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
         
         //自定义各平台分享内容：
         [UMSocialData defaultData].extConfig.sinaData.shareText = shareStr;
@@ -730,10 +730,14 @@
 
 }
 
-//弹出列表方法presentSnsIconSheetView需要设置delegate为self
--(BOOL)isDirectShareInIconActionSheet
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
-    return YES;
+    
+    NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@",self.FM_AV,_programMode.title];
+    
+    socialData.shareText = [NSString stringWithFormat:@"%@:http://www.chinayogaonline.com/app",shareStr];
+    
+    
 }
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response

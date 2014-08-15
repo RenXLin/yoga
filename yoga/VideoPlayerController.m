@@ -928,7 +928,7 @@ NSString* UrlEncodedString(NSString* sourceText)
        // [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
         
         //自定义各平台分享内容：
-        [UMSocialData defaultData].extConfig.sinaData.shareText = [NSString stringWithFormat:@"%@http://www.chinayogaonline.com/app",shareStr];
+        //[UMSocialData defaultData].extConfig.sinaData.shareText = [NSString stringWithFormat:@"%@http://www.chinayogaonline.com/app",shareStr];
         
         
         //[UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
@@ -993,6 +993,10 @@ NSString* UrlEncodedString(NSString* sourceText)
     }
 }
 
+
+
+
+
 - (void)greet
 {
     UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
@@ -1013,11 +1017,18 @@ NSString* UrlEncodedString(NSString* sourceText)
     }];
 
 }
-//弹出列表方法presentSnsIconSheetView需要设置delegate为self
--(BOOL)isDirectShareInIconActionSheet
+
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
-    return YES;
+    
+        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
+    
+        socialData.shareText = [NSString stringWithFormat:@"%@http://www.chinayogaonline.com/app",shareStr];
+
+   
 }
+
+
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 {

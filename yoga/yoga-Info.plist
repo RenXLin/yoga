@@ -86,6 +86,14 @@
 				<string>yoga</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sina.53d4c20456240b2af4103c08</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>

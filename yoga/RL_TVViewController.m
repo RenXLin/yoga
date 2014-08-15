@@ -15,7 +15,7 @@
 #import "OneDayProgramCell.h"
 #import "SVProgressHUD.h"
 
-@interface RL_TVViewController ()
+@interface RL_TVViewController ()<UIGestureRecognizerDelegate,UMSocialUIDelegate>
 {
     VMediaPlayer *_mMpayer;
     UITableView *fileTable;
@@ -450,7 +450,7 @@
     if (btn.tag == 1) {
         
       
-        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.ad];
+        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.title];
         
         NSLog(@"%@",shareStr);
         
@@ -520,10 +520,14 @@
     
 }
 
-//弹出列表方法presentSnsIconSheetView需要设置delegate为self
--(BOOL)isDirectShareInIconActionSheet
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
-    return YES;
+    
+    NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.title];
+    
+    socialData.shareText = [NSString stringWithFormat:@"%@:http://www.chinayogaonline.com/app",shareStr];
+    
+    
 }
 
 -(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
