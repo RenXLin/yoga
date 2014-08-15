@@ -54,6 +54,7 @@
 		9D34ECCC199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC6199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg */; };
 		9D34ECCD199C8B6800A4E9EF /* 开机画面03_640x1136.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC7199C8B6800A4E9EF /* 开机画面03_640x1136.jpg */; };
 		9D34ECCE199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */; };
+		9D459BCA199DC8DC00436020 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D459BC9199DC8DC00436020 /* UIColor+expanded.m */; };
 		9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */; };
 		9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */; };
 		9DB445C9199793F800839C55 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DB445B9199793F800839C55 /* MJRefresh.bundle */; };
@@ -326,6 +327,8 @@
 		9D34ECC6199C8B6800A4E9EF /* 开机画面02_1536x2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_1536x2048.jpg"; sourceTree = "<group>"; };
 		9D34ECC7199C8B6800A4E9EF /* 开机画面03_640x1136.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_640x1136.jpg"; sourceTree = "<group>"; };
 		9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_1536x2048.jpg"; sourceTree = "<group>"; };
+		9D459BC8199DC8DC00436020 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
+		9D459BC9199DC8DC00436020 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
 		9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlipayRsaLib.a; path = ../yoga2/yoga/AlipayRsaLib.a; sourceTree = "<group>"; };
 		9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1158,6 +1161,8 @@
 			children = (
 				3AE049ED1985646C00687B52 /* OrderViewController.h */,
 				3AE049EE1985646C00687B52 /* OrderViewController.m */,
+				9D459BC8199DC8DC00436020 /* UIColor+expanded.h */,
+				9D459BC9199DC8DC00436020 /* UIColor+expanded.m */,
 				3AC351921976BE3000CA643E /* search */,
 				CD8E510A1970D34C00771960 /* MainViewController.h */,
 				CD8E510B1970D34C00771960 /* MainViewController.m */,
@@ -1523,6 +1528,7 @@
 				9DD40712197251250061D1DE /* UIFactory.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
 				CD0F954A1998F80300EB7985 /* PortraitNavigationController.m in Sources */,
+				9D459BCA199DC8DC00436020 /* UIColor+expanded.m in Sources */,
 				9DB445CD199793F800839C55 /* MJRefreshHeaderView.m in Sources */,
 				CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */,
 				3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */,

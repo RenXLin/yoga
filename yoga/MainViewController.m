@@ -18,6 +18,8 @@
 
 #import "OrderViewController.h"
 #import "CountCenterViewController.h"
+
+#import "UIColor+expanded.h"
 //#import "OrderViewController.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
@@ -322,7 +324,7 @@
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
     if (isDisable) {
-        label.textColor = [UIColor grayColor];
+        label.textColor = [UIColor colorWithHexString:@"CCCCCC"];
     }
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;

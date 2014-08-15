@@ -961,6 +961,10 @@ NSString* UrlEncodedString(NSString* sourceText)
         [UMSocialData defaultData].extConfig.qqData.shareImage = [UIImage imageNamed:@"icon.png"];
         [UMSocialData defaultData].extConfig.qqData.urlResource.url=nil;
         
+        [UMSocialData defaultData].extConfig.qzoneData.title=shareStr;
+        [UMSocialData defaultData].extConfig.qzoneData.shareImage = [UIImage imageNamed:@"icon.png"];
+       
+        
 
         
         
