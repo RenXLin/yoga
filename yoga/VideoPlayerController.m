@@ -707,13 +707,18 @@ NSString* UrlEncodedString(NSString* sourceText)
 -(void)syncUIStatus
 {
     long current = [_mPlayer getCurrentPosition];
-    NSLog(@">>>>>>>>>>%ld",current);
+    NSLog(@">>>>>>>>>>%ld  , %ld",current,lastDuration);
+   
     if (current > lastDuration)
     {
+
         if (current - lastDuration > 5000) {
+            if (current>lastDuration) {
+                lastDuration = current;
+            }
             return;
         }
-        lastDuration = current;
+
         float precrnt = (float)current / _duration;
         _mTools.playProgress.value = precrnt;
        
@@ -722,8 +727,13 @@ NSString* UrlEncodedString(NSString* sourceText)
         int hour = second / (60 * 60);
         int min = second % 3600 /60;
         int sec = second % 3600 % 60;
+        
         _mTools.havePlay.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec];
         
+    }else{
+    
+        lastDuration = current;
+    
     }
    
 }
