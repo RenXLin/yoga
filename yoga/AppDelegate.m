@@ -34,29 +34,32 @@
     //友盟分享：
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     
+    //设置支持没有客户端情况下使用SSO授权
+    [UMSocialQQHandler setSupportWebView:YES];
+
+    
     [UMSocialData setAppKey:@"53d4c20456240b2af4103c08"];
     
     //    //打开新浪微博的SSO开关
-    //    [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+        [UMSocialSinaHandler openSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     //
     //    //打开腾讯微博SSO开关，设置回调地址
     [UMSocialTencentWeiboHandler openSSOWithRedirectUrl:@"http://sns.whalecloud.com/tencent2/callback"];
     
     //设置分享到QQ空间的应用Id，和分享url 链接
-    [UMSocialQQHandler setQQWithAppId:@"1101943503" appKey:@"EMI0UWJ3iE6LHz7G" url:@"http://www.chinayogaonline.com/"];
+    [UMSocialQQHandler setQQWithAppId:@"1101943503" appKey:@"EMI0UWJ3iE6LHz7G" url:@"http://www.chinayogaonline.com/app"];
     
-    [UMSocialWechatHandler setWXAppId:@"wx135514f2491ecfe0" url:@"http://www.chinayogaonline.com/"];
+    [UMSocialWechatHandler setWXAppId:@"wx135514f2491ecfe0" url:@"http://www.chinayogaonline.com/app"];
     
-    //设置支持没有客户端情况下使用SSO授权
-    [UMSocialQQHandler setSupportWebView:YES];
+    
     
     //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
-//    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
-//    
-//    [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage; //设置QQ分享纯图片，默认分享图文消息
-//    [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信好友分享纯图片
-//    [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeImage;  //设置微信朋友圈分享纯图片
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     
+   // [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeDefault; //设置QQ分享纯图片，默认分享图文消息
+//    [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeWeb;  //设置微信好友分享纯图片
+//    [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;  //设置微信朋友圈分享纯图片
+//    
 
     
     //判断是否首次启动
@@ -83,9 +86,9 @@
                     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start%d_320x480.jpg",i+1]];
                     
                 }else
-                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"开机画面%d_640x1136.jpg",i+1]];
+                    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"开机画面0%d_640x1136.jpg",i+1]];
             }else if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
-                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"开机画面%d_1536x2048.jpg",i+1]];
+                imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"开机画面0%d_1536x2048.jpg",i+1]];
             }
             
             [launchScrollView addSubview:imageView];
@@ -212,15 +215,15 @@
     NSLog(@"1233131313131313");
 	
 	[self parse:url application:application];
-	return YES;
-    //????????
-    //return  [UMSocialSnsService handleOpenURL:url];
+	return YES || [UMSocialSnsService handleOpenURL:url];
+    
 
 }
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-//{
-//    return  [UMSocialSnsService handleOpenURL:url];
-//}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    [self parse:url application:application];
+    return YES || [UMSocialSnsService handleOpenURL:url];
+}
 
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
     

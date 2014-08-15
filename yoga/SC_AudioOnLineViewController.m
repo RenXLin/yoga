@@ -710,6 +710,7 @@
                 VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
                 vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
                 vpc.titleName = self.Title;
+                vpc.audoOrNot = self.audio!=nil?@"音频":@"视频";
                 //            [self.na presentViewController:vpc animated:YES completion:nil];
                 [self.navigationController pushViewController:vpc animated:YES];
                 if(lplv)
