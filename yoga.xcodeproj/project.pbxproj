@@ -178,6 +178,12 @@
 		CD0F958A1999358000EB7985 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95851999358000EB7985 /* libVitamio.a */; };
 		CD0F958B1999358000EB7985 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD0F95861999358000EB7985 /* LICENSE */; };
 		CD179F561995B98200B38933 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD179F551995B98200B38933 /* icon.png */; };
+		CD26AE00199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */; };
+		CD26AE01199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */; };
+		CD26AE02199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */; };
+		CD26AE03199E404A002613A8 /* 瑜伽魔方LOGO_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFD199E404A002613A8 /* 瑜伽魔方LOGO_57x57.png */; };
+		CD26AE04199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFE199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png */; };
+		CD26AE05199E404A002613A8 /* 瑜伽魔方LOGO_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFF199E404A002613A8 /* 瑜伽魔方LOGO_80x80.png */; };
 		CD2D3F1419911F19002D6ADF /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F1319911F19002D6ADF /* 222.png */; };
 		CD2D3F161991203E002D6ADF /* 333.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F151991203E002D6ADF /* 333.png */; };
 		CD2D3F181991282B002D6ADF /* fm1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F171991282B002D6ADF /* fm1.png */; };
@@ -497,6 +503,12 @@
 		CD0F95861999358000EB7985 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD14D971199CE3EE00EC446E /* yoga.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = yoga.entitlements; sourceTree = "<group>"; };
 		CD179F551995B98200B38933 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_114x114.png"; sourceTree = "<group>"; };
+		CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_120x120.png"; sourceTree = "<group>"; };
+		CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_29x29.png"; sourceTree = "<group>"; };
+		CD26ADFD199E404A002613A8 /* 瑜伽魔方LOGO_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_57x57.png"; sourceTree = "<group>"; };
+		CD26ADFE199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_58x58.png"; sourceTree = "<group>"; };
+		CD26ADFF199E404A002613A8 /* 瑜伽魔方LOGO_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_80x80.png"; sourceTree = "<group>"; };
 		CD2D3F1319911F19002D6ADF /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
 		CD2D3F151991203E002D6ADF /* 333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333.png; sourceTree = "<group>"; };
 		CD2D3F171991282B002D6ADF /* fm1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fm1.png; sourceTree = "<group>"; };
@@ -785,6 +797,7 @@
 				CD179F551995B98200B38933 /* icon.png */,
 				9DD4071319725ED50061D1DE /* 放大镜0017.png */,
 				CD4A479A1970348700973A29 /* include.h */,
+				CD26ADF9199E404A002613A8 /* LOGO */,
 				CD9E695C1987DCA100052EE3 /* IPAD */,
 				CD0DB9C2196DA52200C3A2A8 /* 切图 */,
 				CD0DBA18196DA52200C3A2A8 /* 图标 */,
@@ -1051,6 +1064,19 @@
 				CD0F95821999358000EB7985 /* VSingleton.h */,
 			);
 			path = Vitamio;
+			sourceTree = "<group>";
+		};
+		CD26ADF9199E404A002613A8 /* LOGO */ = {
+			isa = PBXGroup;
+			children = (
+				CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */,
+				CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */,
+				CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */,
+				CD26ADFD199E404A002613A8 /* 瑜伽魔方LOGO_57x57.png */,
+				CD26ADFE199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png */,
+				CD26ADFF199E404A002613A8 /* 瑜伽魔方LOGO_80x80.png */,
+			);
+			path = LOGO;
 			sourceTree = "<group>";
 		};
 		CD3E57AE1984E23E000A360A /* UMSocial_Sdk_4.0 */ = {
@@ -1324,6 +1350,7 @@
 				CD0DBA6C196DA52200C3A2A8 /* title_icon4_1.png in Resources */,
 				3A101F3F199536C500AABE60 /* start1_320x480.jpg in Resources */,
 				9D34ECCA199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg in Resources */,
+				CD26AE01199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png in Resources */,
 				CD0DBA5C196DA52200C3A2A8 /* icon_blue.png in Resources */,
 				CD0DBA40196DA52200C3A2A8 /* btngreen1.png in Resources */,
 				CD4654B01989264C00E871DB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -1343,6 +1370,7 @@
 				CD0DBA7C196DA52200C3A2A8 /* video_icon6_1.png in Resources */,
 				CD3E57CE1984E23F000A360A /* UMShareEditViewController.xib in Resources */,
 				CD0DBA54196DA52200C3A2A8 /* icon6_1.png in Resources */,
+				CD26AE05199E404A002613A8 /* 瑜伽魔方LOGO_80x80.png in Resources */,
 				3A101F36199536C500AABE60 /* 瑜伽魔方LOGO_28x28.png in Resources */,
 				CD0DBA5E196DA52200C3A2A8 /* inut.png in Resources */,
 				CD0DBA5F196DA52200C3A2A8 /* inut1.png in Resources */,
@@ -1353,6 +1381,7 @@
 				CD3E57D11984E23F000A360A /* UMSnsAccountViewController.xib in Resources */,
 				CD0DBA35196DA52200C3A2A8 /* a.png in Resources */,
 				CD0DBA5A196DA52200C3A2A8 /* icon9_1.png in Resources */,
+				CD26AE03199E404A002613A8 /* 瑜伽魔方LOGO_57x57.png in Resources */,
 				CD0DBA7D196DA52200C3A2A8 /* video_icon7.png in Resources */,
 				CD0DBA71196DA52200C3A2A8 /* video_icon1.png in Resources */,
 				CD0DBA3B196DA52200C3A2A8 /* btnblue3.png in Resources */,
@@ -1362,6 +1391,7 @@
 				3A101F31199536C500AABE60 /* 开机画面02_240x320.jpg in Resources */,
 				CD0DBA63196DA52200C3A2A8 /* ssk.png in Resources */,
 				3A101F39199536C500AABE60 /* 瑜伽魔方LOGO_90x90.jpg in Resources */,
+				CD26AE00199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png in Resources */,
 				3A101F3E199536C500AABE60 /* 瑜伽魔方LOGO_120x120.png in Resources */,
 				CD0DBA48196DA52200C3A2A8 /* icon0.png in Resources */,
 				CD3E57D31984E23F000A360A /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -1444,6 +1474,7 @@
 				CD0DBA69196DA52200C3A2A8 /* title_icon2_1.png in Resources */,
 				CD3E57CC1984E23F000A360A /* UMSCommentInputController.xib in Resources */,
 				CD9E69701987DCA100052EE3 /* Default.png in Resources */,
+				CD26AE02199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png in Resources */,
 				CD0DBA38196DA52200C3A2A8 /* btnblue.9.png in Resources */,
 				CD2D3F161991203E002D6ADF /* 333.png in Resources */,
 				CD9E696B1987DCA100052EE3 /* Default~ipad.png in Resources */,
@@ -1458,6 +1489,7 @@
 				CD3E57D21984E23F000A360A /* UMSShareListController.xib in Resources */,
 				CD0DBA4E196DA52200C3A2A8 /* icon3_1.png in Resources */,
 				CD0DBA62196DA52200C3A2A8 /* paly_icon.png in Resources */,
+				CD26AE04199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png in Resources */,
 				CD0DBA42196DA52200C3A2A8 /* btngreen_press.9.png in Resources */,
 				3A101F33199536C500AABE60 /* 开机画面03_240x320.jpg in Resources */,
 			);

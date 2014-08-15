@@ -14,6 +14,11 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>瑜伽魔方LOGO_80x80</string>
+				<string>瑜伽魔方LOGO_58x58</string>
+				<string>瑜伽魔方LOGO_29x29</string>
+				<string>瑜伽魔方LOGO_114x114</string>
+				<string>瑜伽魔方LOGO_57x57</string>
 				<string>瑜伽魔方LOGO_120x120</string>
 			</array>
 		</dict>
@@ -24,6 +29,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>瑜伽魔方LOGO_58x58</string>
+				<string>瑜伽魔方LOGO_29x29</string>
+				<string>瑜伽魔方LOGO_114x114</string>
 				<string>瑜伽魔方LOGO_108x108</string>
 				<string>瑜伽魔方LOGO_80x80</string>
 				<string>瑜伽魔方LOGO_120x120</string>
