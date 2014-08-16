@@ -30,6 +30,7 @@
     long _duration;
     BOOL isFullScreen;
     UILabel *goodTimes;
+    BOOL _fullTOfull;
 }
 @end
 
@@ -103,6 +104,7 @@
             
             _mTools.isHidden = NO;
 //            _mTools.hidden = NO;
+            _fullTOfull = YES;
             
             _TVPlayView.transform = CGAffineTransformRotate(_TVPlayView.transform, -M_PI_2);
             [_TVPlayView removeFromSuperview];
@@ -117,14 +119,17 @@
     else if(UIInterfaceOrientationIsPortrait(to)){
 //            从横屏的状态转向纵屏：（不管原来的状态均变为非全屏）
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
         [self.view addSubview:_scrollView];
 
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
-            _scrollView.frame = CGRectMake(0, 00, self.view.frame.size.width, self.view.frame.size.height);
+            _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
+            if (_fullTOfull) {
+                _fullTOfull = NO;
+                _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 0);
+            }
         }else
         {
-            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height- 20);
+            _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height- 20);
         }
         
         _mTools.hidden = NO;
@@ -214,6 +219,7 @@
 //    }else
     {
         nav = [self myNavgationBar:CGRectMake(0, 0, _scrollView.frame.size.width, 44) andTitle:self.titleName];
+        nav.tag = 222;
     }
     [_scrollView addSubview:nav];
     nav.autoresizingMask=
@@ -628,7 +634,7 @@ NSString* UrlEncodedString(NSString* sourceText)
             if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
                 _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height -20);
             }else{
-                _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+                _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20);
             }
             
             [_mTools removeFromSuperview];
