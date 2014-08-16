@@ -61,7 +61,7 @@
 
 - (BOOL)shouldAutorotate
 {
-    return NO;
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -73,7 +73,6 @@
 {
 	return YES;
 }
-
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)to duration:(NSTimeInterval)duration
 {
 	if (UIInterfaceOrientationIsLandscape(to)) {

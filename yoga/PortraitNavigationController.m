@@ -8,7 +8,7 @@
 
 #import "PortraitNavigationController.h"
 #import "VideoPlayerController.h"
-
+#import "RL_TVViewController.h"
 
 @interface PortraitNavigationController ()
 
@@ -48,6 +48,8 @@
         if ([((VideoPlayerController *)self.topViewController).titleName isEqualToString:@"视频点播"]){
             return YES;
         }
+    } else  if ([self.topViewController isKindOfClass:[RL_TVViewController class]]) {
+        return YES;
     }
     return NO;
 }
