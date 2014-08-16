@@ -449,18 +449,9 @@
     if (btn.tag == 1) {
         
       
-        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.title];
+        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.title];
         
         NSLog(@"%@",shareStr);
-        
-        //分享
-        // [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
-        
-        //自定义各平台分享内容：
-        [UMSocialData defaultData].extConfig.sinaData.shareText = [NSString stringWithFormat:@"%@http://www.chinayogaonline.com/app",shareStr];
-        
-        
-        //[UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
         
         
         [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
@@ -488,10 +479,10 @@
         [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeDefault;
         [UMSocialData defaultData].extConfig.qqData.title = shareStr;
         [UMSocialData defaultData].extConfig.qqData.shareImage = [UIImage imageNamed:@"icon.png"];
-        [UMSocialData defaultData].extConfig.qzoneData.shareImage = [UIImage imageNamed:@"icon.png"];
         [UMSocialData defaultData].extConfig.qqData.urlResource.url=nil;
-          [UMSocialData defaultData].extConfig.qzoneData.title=shareStr;
         
+        [UMSocialData defaultData].extConfig.qzoneData.title=shareStr;
+        [UMSocialData defaultData].extConfig.qzoneData.shareImage = [UIImage imageNamed:@"icon.png"];
         
         
         [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:nil shareImage:nil shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToDouban, nil] delegate:self];
@@ -522,7 +513,7 @@
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
     
-    NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.title];
+    NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.title];
     
     socialData.shareText = [NSString stringWithFormat:@"%@:http://www.chinayogaonline.com/app",shareStr];
     

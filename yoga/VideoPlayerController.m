@@ -920,7 +920,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 {
    
     if (btn.tag == 1) {
-        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
+        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
         
         NSLog(@"%@",shareStr);
 
@@ -933,6 +933,8 @@ NSString* UrlEncodedString(NSString* sourceText)
         
         //[UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
         
+         [[UMSocialData defaultData].extConfig.sinaData.urlResource setResourceType:UMSocialUrlResourceTypeDefault url:@"http://www.chinayogaonline.com/app"];
+        
         
         [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
         [UMSocialData defaultData].extConfig.tencentData.shareText = shareStr;
@@ -943,6 +945,8 @@ NSString* UrlEncodedString(NSString* sourceText)
 //        [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
 //        [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
 //        //设置wx分享类型
+        
+       
         [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeWeb;
         [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;
         
@@ -1021,9 +1025,14 @@ NSString* UrlEncodedString(NSString* sourceText)
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
     
-        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
-    
+        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
+        
         socialData.shareText = [NSString stringWithFormat:@"%@http://www.chinayogaonline.com/app",shareStr];
+        
+
+
+    
+    
 
    
 }

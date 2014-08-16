@@ -1318,6 +1318,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "任小林";
 				TargetAttributes = {
+					CD0DB98F196DA50300C3A2A8 = {
+						DevelopmentTeam = 4AN3M8Z8YE;
+					};
 					CD0DB9AA196DA50300C3A2A8 = {
 						TestTargetID = CD0DB98F196DA50300C3A2A8;
 					};
@@ -1702,8 +1705,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = yoga/yoga.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1733,7 +1736,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3FA9B154-EF24-46D5-A93C-1B0E97B28DEC";
+				PROVISIONING_PROFILE = "ee88c56a-1451-429c-967e-af0be3eff8d9";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1743,8 +1746,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = yoga/yoga.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1774,7 +1777,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3FA9B154-EF24-46D5-A93C-1B0E97B28DEC";
+				PROVISIONING_PROFILE = "ee88c56a-1451-429c-967e-af0be3eff8d9";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

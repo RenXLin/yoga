@@ -19,6 +19,8 @@
 {
     NSString *normalUSer;
     NSString *VipUSer;
+    
+    NSMutableArray *countArray;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -102,32 +104,22 @@
     
     UserInfo *userInfo = [UserInfo shareUserInfo];
     NSString *userName = [userInfo.userDict objectForKey:@"username"];
-    NSString *email = [[userInfo.userDict objectForKey:@"new_email"] description];
+    NSString *email = [[userInfo.userDict objectForKey:@"email"] description];
+    countArray = [NSMutableArray arrayWithObjects:userName,email, nil];
+    
+    NSLog(@"%@",userInfo.userDict);
     
     NSArray *Rrr = [userInfo.userDict objectForKey:@"roleInfo"];
     for (NSDictionary *dict in Rrr)
     {
-        if([[dict objectForKey:@"code"] isEqualToString:@"user"])
-        {
-            
-          normalUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[dict objectForKey:@"description"],[dict objectForKey:@"expiry_date"]];
-        }
         
-        if([[dict objectForKey:@"code"] isEqualToString:@"mofang"])
-        {
-            VipUSer = [NSString stringWithFormat:@"%@:(到期：%@)",[dict objectForKey:@"description"],[dict objectForKey:@"expiry_date"]];
-        }
+            
+          normalUSer = [NSString stringWithFormat:@"%@(到期：%@)",[dict objectForKey:@"description"],[dict objectForKey:@"expiry_date"]];
+            [countArray addObject:normalUSer];
         
     }
+    bgImgView1.frame = CGRectMake(10,nav.frame.size.height + 20, KscreenWidth-20, 20*countArray.count+10*(countArray.count+1));
     
-       
-        
-       
-        
-        
-        
-        NSArray *countArray = [NSArray arrayWithObjects:userName,email,normalUSer,VipUSer, nil];
-        
         for (int i=0; i<countArray.count; i++) {
             
             UILabel *lab1 = [UIFactory createLabelWithFrame:CGRectMake(100, 10+30*i, 180, 20) text:[countArray objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];

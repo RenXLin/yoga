@@ -628,46 +628,7 @@
 
     if (btn.tag == 1) {
     
-        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@",self.FM_AV,_programMode.title];
-//        
-//        //分享
-//        [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
-//        
-//        //自定义各平台分享内容：
-//        [UMSocialData defaultData].extConfig.sinaData.shareText = shareStr;
-//        [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
-//        
-//        
-//        [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
-//        [UMSocialData defaultData].extConfig.tencentData.shareText = shareStr;
-//        
-//        [UMSocialData defaultData].extConfig.doubanData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到豆瓣
-//        [UMSocialData defaultData].extConfig.doubanData.shareText = shareStr;
-//        NSString *url;
-//        if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
-//            url = CURRENTPLAYFM_URL;
-//        }else{
-//            url = CURRENTPLAYVIDEO_URL;
-//        }
-//        [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeMusic url:url];  //设置微信好友分享url图片
-//        
-//        [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeMusic url:url]; //设置微信朋友圈分享视频
-//        
-//        [UMSocialSnsService presentSnsIconSheetView:self appKey:@"53d4c20456240b2af4103c08" shareText:shareStr shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToDouban, nil] delegate:self];
-        
-        
-        
-//        NSString *shareStr = [NSString stringWithFormat:@"我爱%@",_itemMode.title];
-        
-        NSLog(@"%@",shareStr);
-        
-        //分享
-        //[[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
-        
-        //自定义各平台分享内容：
-        [UMSocialData defaultData].extConfig.sinaData.shareText = shareStr;
-        
-        [UMSocialData defaultData].extConfig.sinaData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到新浪微博图片
+        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@",self.FM_AV,_programMode.title];
         
         
         [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
@@ -676,30 +637,28 @@
         [UMSocialData defaultData].extConfig.doubanData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到豆瓣
         [UMSocialData defaultData].extConfig.doubanData.shareText = shareStr;
         
-        //[[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
-        //[[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
-        //设置wx分享类型
-        [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeText;
-        [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeText;
+        //        [[UMSocialData defaultData].extConfig.wechatSessionData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path];  //设置微信好友分享url图片
+        //        [[UMSocialData defaultData].extConfig.wechatTimelineData.urlResource setResourceType:UMSocialUrlResourceTypeVideo url:_programMode.path]; //设置微信朋友圈分享视频
+        //        //设置wx分享类型
+        [UMSocialData defaultData].extConfig.wechatSessionData.wxMessageType = UMSocialWXMessageTypeWeb;
+        [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;
         
-        [UMSocialData defaultData].extConfig.wechatSessionData.shareText = shareStr;
         
-        [UMSocialData defaultData].extConfig.wechatTimelineData.shareText=shareStr;
-        [UMSocialData defaultData].extConfig.wechatTimelineData.shareImage = [UIImage imageNamed:@"icon.png"];
+        [UMSocialData defaultData].extConfig.wechatSessionData.title = shareStr;
         
+        [UMSocialData defaultData].extConfig.wechatTimelineData.title=shareStr;
         [UMSocialData defaultData].extConfig.wechatTimelineData.url=nil;
-        //[UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;
         
         [UMSocialData defaultData].extConfig.sinaData.urlResource.url=nil;
         
         //qq
         
-        [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage;
-        [UMSocialData defaultData].extConfig.qqData.shareText = shareStr;
+        [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeDefault;
+        [UMSocialData defaultData].extConfig.qqData.title = shareStr;
         [UMSocialData defaultData].extConfig.qqData.shareImage = [UIImage imageNamed:@"icon.png"];
         [UMSocialData defaultData].extConfig.qqData.urlResource.url=nil;
         
-          [UMSocialData defaultData].extConfig.qzoneData.title=shareStr;
+        [UMSocialData defaultData].extConfig.qzoneData.title=shareStr;
         [UMSocialData defaultData].extConfig.qzoneData.shareImage = [UIImage imageNamed:@"icon.png"];
         
         
@@ -733,7 +692,7 @@
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
     
-    NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和丰富内容的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@",self.FM_AV,_programMode.title];
+    NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@",self.FM_AV,_programMode.title];
     
     socialData.shareText = [NSString stringWithFormat:@"%@:http://www.chinayogaonline.com/app",shareStr];
     

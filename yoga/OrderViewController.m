@@ -126,11 +126,11 @@
     //lab
     
         
-        NSString *str1 = [NSString stringWithFormat:@"魔方会员"];
+        NSString *str1 = [NSString stringWithFormat:@"%@",[dataDict objectForKey:@"name"]];
         NSString *str2 = [NSString stringWithFormat:@"价格"];
         NSString *str3 = [NSString stringWithFormat:@"%@",[[dataDict objectForKey:@"price"] description]];
         NSString *str4 = [NSString stringWithFormat:@"说明"];
-        NSString *str5 = [NSString stringWithFormat:@"瑜伽魔方"];
+        NSString *str5 = [NSString stringWithFormat:@"%@",[dataDict objectForKey:@"ldesc"]];
         
         NSArray *arr = [NSArray arrayWithObjects:str1,str2,str3,str4,str5, nil];
         
