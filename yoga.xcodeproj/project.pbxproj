@@ -11,17 +11,6 @@
 		3A101F31199536C500AABE60 /* 开机画面02_240x320.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F1F199536C500AABE60 /* 开机画面02_240x320.jpg */; };
 		3A101F32199536C500AABE60 /* 开机画面02_480x800.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F20199536C500AABE60 /* 开机画面02_480x800.jpg */; };
 		3A101F33199536C500AABE60 /* 开机画面03_240x320.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F21199536C500AABE60 /* 开机画面03_240x320.jpg */; };
-		3A101F34199536C500AABE60 /* 瑜伽魔方LOGO_16x16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F22199536C500AABE60 /* 瑜伽魔方LOGO_16x16.jpg */; };
-		3A101F35199536C500AABE60 /* 瑜伽魔方LOGO_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F23199536C500AABE60 /* 瑜伽魔方LOGO_16x16.png */; };
-		3A101F36199536C500AABE60 /* 瑜伽魔方LOGO_28x28.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F24199536C500AABE60 /* 瑜伽魔方LOGO_28x28.png */; };
-		3A101F37199536C500AABE60 /* 瑜伽魔方LOGO_80x80.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F25199536C500AABE60 /* 瑜伽魔方LOGO_80x80.jpg */; };
-		3A101F38199536C500AABE60 /* 瑜伽魔方LOGO_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F26199536C500AABE60 /* 瑜伽魔方LOGO_80x80.png */; };
-		3A101F39199536C500AABE60 /* 瑜伽魔方LOGO_90x90.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F27199536C500AABE60 /* 瑜伽魔方LOGO_90x90.jpg */; };
-		3A101F3A199536C500AABE60 /* 瑜伽魔方LOGO_90x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F28199536C500AABE60 /* 瑜伽魔方LOGO_90x90.png */; };
-		3A101F3B199536C500AABE60 /* 瑜伽魔方LOGO_108x108.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F29199536C500AABE60 /* 瑜伽魔方LOGO_108x108.jpg */; };
-		3A101F3C199536C500AABE60 /* 瑜伽魔方LOGO_108x108.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F2A199536C500AABE60 /* 瑜伽魔方LOGO_108x108.png */; };
-		3A101F3D199536C500AABE60 /* 瑜伽魔方LOGO_120x120.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F2B199536C500AABE60 /* 瑜伽魔方LOGO_120x120.jpg */; };
-		3A101F3E199536C500AABE60 /* 瑜伽魔方LOGO_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F2C199536C500AABE60 /* 瑜伽魔方LOGO_120x120.png */; };
 		3A101F3F199536C500AABE60 /* start1_320x480.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F2D199536C500AABE60 /* start1_320x480.jpg */; };
 		3A101F40199536C500AABE60 /* start2_320x480.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F2E199536C500AABE60 /* start2_320x480.jpg */; };
 		3A101F41199536C500AABE60 /* start3_320x480.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A101F2F199536C500AABE60 /* start3_320x480.jpg */; };
@@ -170,7 +159,6 @@
 		CD0DBA87196DA52200C3A2A8 /* white_btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA15196DA52200C3A2A8 /* white_btn1.png */; };
 		CD0DBA88196DA52200C3A2A8 /* xlk.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA16196DA52200C3A2A8 /* xlk.png */; };
 		CD0DBA89196DA52200C3A2A8 /* xlk1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA17196DA52200C3A2A8 /* xlk1.png */; };
-		CD0DBAA1196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DBA30196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png */; };
 		CD0F954A1998F80300EB7985 /* PortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0F95491998F80300EB7985 /* PortraitNavigationController.m */; };
 		CD0F95871999358000EB7985 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = CD0F95781999358000EB7985 /* CHANGELOG.md */; };
 		CD0F95881999358000EB7985 /* libffmpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95831999358000EB7985 /* libffmpeg.a */; };
@@ -263,17 +251,6 @@
 		3A101F1F199536C500AABE60 /* 开机画面02_240x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_240x320.jpg"; sourceTree = "<group>"; };
 		3A101F20199536C500AABE60 /* 开机画面02_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_480x800.jpg"; sourceTree = "<group>"; };
 		3A101F21199536C500AABE60 /* 开机画面03_240x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_240x320.jpg"; sourceTree = "<group>"; };
-		3A101F22199536C500AABE60 /* 瑜伽魔方LOGO_16x16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_16x16.jpg"; sourceTree = "<group>"; };
-		3A101F23199536C500AABE60 /* 瑜伽魔方LOGO_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_16x16.png"; sourceTree = "<group>"; };
-		3A101F24199536C500AABE60 /* 瑜伽魔方LOGO_28x28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_28x28.png"; sourceTree = "<group>"; };
-		3A101F25199536C500AABE60 /* 瑜伽魔方LOGO_80x80.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_80x80.jpg"; sourceTree = "<group>"; };
-		3A101F26199536C500AABE60 /* 瑜伽魔方LOGO_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_80x80.png"; sourceTree = "<group>"; };
-		3A101F27199536C500AABE60 /* 瑜伽魔方LOGO_90x90.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_90x90.jpg"; sourceTree = "<group>"; };
-		3A101F28199536C500AABE60 /* 瑜伽魔方LOGO_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_90x90.png"; sourceTree = "<group>"; };
-		3A101F29199536C500AABE60 /* 瑜伽魔方LOGO_108x108.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_108x108.jpg"; sourceTree = "<group>"; };
-		3A101F2A199536C500AABE60 /* 瑜伽魔方LOGO_108x108.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_108x108.png"; sourceTree = "<group>"; };
-		3A101F2B199536C500AABE60 /* 瑜伽魔方LOGO_120x120.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_120x120.jpg"; sourceTree = "<group>"; };
-		3A101F2C199536C500AABE60 /* 瑜伽魔方LOGO_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_120x120.png"; sourceTree = "<group>"; };
 		3A101F2D199536C500AABE60 /* start1_320x480.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start1_320x480.jpg; sourceTree = "<group>"; };
 		3A101F2E199536C500AABE60 /* start2_320x480.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start2_320x480.jpg; sourceTree = "<group>"; };
 		3A101F2F199536C500AABE60 /* start3_320x480.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start3_320x480.jpg; sourceTree = "<group>"; };
@@ -475,17 +452,6 @@
 		CD0DBA1D196DA52200C3A2A8 /* 开机画面02_240x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_240x320.jpg"; sourceTree = "<group>"; };
 		CD0DBA20196DA52200C3A2A8 /* 开机画面02_480x800.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_480x800.jpg"; sourceTree = "<group>"; };
 		CD0DBA21196DA52200C3A2A8 /* 开机画面03_240x320.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_240x320.jpg"; sourceTree = "<group>"; };
-		CD0DBA2A196DA52200C3A2A8 /* 瑜伽魔方LOGO_108x108.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_108x108.jpg"; sourceTree = "<group>"; };
-		CD0DBA2B196DA52200C3A2A8 /* 瑜伽魔方LOGO_108x108.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_108x108.png"; sourceTree = "<group>"; };
-		CD0DBA2C196DA52200C3A2A8 /* 瑜伽魔方LOGO_120x120.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_120x120.jpg"; sourceTree = "<group>"; };
-		CD0DBA2D196DA52200C3A2A8 /* 瑜伽魔方LOGO_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_120x120.png"; sourceTree = "<group>"; };
-		CD0DBA2E196DA52200C3A2A8 /* 瑜伽魔方LOGO_16x16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_16x16.jpg"; sourceTree = "<group>"; };
-		CD0DBA2F196DA52200C3A2A8 /* 瑜伽魔方LOGO_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_16x16.png"; sourceTree = "<group>"; };
-		CD0DBA30196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_28x28.png"; sourceTree = "<group>"; };
-		CD0DBA31196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_80x80.jpg"; sourceTree = "<group>"; };
-		CD0DBA32196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_80x80.png"; sourceTree = "<group>"; };
-		CD0DBA33196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_90x90.jpg"; sourceTree = "<group>"; };
-		CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_90x90.png"; sourceTree = "<group>"; };
 		CD0F95481998F80300EB7985 /* PortraitNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitNavigationController.h; sourceTree = "<group>"; };
 		CD0F95491998F80300EB7985 /* PortraitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitNavigationController.m; sourceTree = "<group>"; };
 		CD0F95781999358000EB7985 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -997,17 +963,6 @@
 				3A101F1F199536C500AABE60 /* 开机画面02_240x320.jpg */,
 				3A101F20199536C500AABE60 /* 开机画面02_480x800.jpg */,
 				3A101F21199536C500AABE60 /* 开机画面03_240x320.jpg */,
-				3A101F22199536C500AABE60 /* 瑜伽魔方LOGO_16x16.jpg */,
-				3A101F23199536C500AABE60 /* 瑜伽魔方LOGO_16x16.png */,
-				3A101F24199536C500AABE60 /* 瑜伽魔方LOGO_28x28.png */,
-				3A101F25199536C500AABE60 /* 瑜伽魔方LOGO_80x80.jpg */,
-				3A101F26199536C500AABE60 /* 瑜伽魔方LOGO_80x80.png */,
-				3A101F27199536C500AABE60 /* 瑜伽魔方LOGO_90x90.jpg */,
-				3A101F28199536C500AABE60 /* 瑜伽魔方LOGO_90x90.png */,
-				3A101F29199536C500AABE60 /* 瑜伽魔方LOGO_108x108.jpg */,
-				3A101F2A199536C500AABE60 /* 瑜伽魔方LOGO_108x108.png */,
-				3A101F2B199536C500AABE60 /* 瑜伽魔方LOGO_120x120.jpg */,
-				3A101F2C199536C500AABE60 /* 瑜伽魔方LOGO_120x120.png */,
 				3A101F2D199536C500AABE60 /* start1_320x480.jpg */,
 				3A101F2E199536C500AABE60 /* start2_320x480.jpg */,
 				3A101F2F199536C500AABE60 /* start3_320x480.jpg */,
@@ -1015,17 +970,6 @@
 				CD0DBA1D196DA52200C3A2A8 /* 开机画面02_240x320.jpg */,
 				CD0DBA20196DA52200C3A2A8 /* 开机画面02_480x800.jpg */,
 				CD0DBA21196DA52200C3A2A8 /* 开机画面03_240x320.jpg */,
-				CD0DBA2A196DA52200C3A2A8 /* 瑜伽魔方LOGO_108x108.jpg */,
-				CD0DBA2B196DA52200C3A2A8 /* 瑜伽魔方LOGO_108x108.png */,
-				CD0DBA2C196DA52200C3A2A8 /* 瑜伽魔方LOGO_120x120.jpg */,
-				CD0DBA2D196DA52200C3A2A8 /* 瑜伽魔方LOGO_120x120.png */,
-				CD0DBA2E196DA52200C3A2A8 /* 瑜伽魔方LOGO_16x16.jpg */,
-				CD0DBA2F196DA52200C3A2A8 /* 瑜伽魔方LOGO_16x16.png */,
-				CD0DBA30196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png */,
-				CD0DBA31196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.jpg */,
-				CD0DBA32196DA52200C3A2A8 /* 瑜伽魔方LOGO_80x80.png */,
-				CD0DBA33196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.jpg */,
-				CD0DBA34196DA52200C3A2A8 /* 瑜伽魔方LOGO_90x90.png */,
 			);
 			path = "图标";
 			sourceTree = "<group>";
@@ -1358,7 +1302,6 @@
 				CD0DBA40196DA52200C3A2A8 /* btngreen1.png in Resources */,
 				CD4654B01989264C00E871DB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				CD0DBA82196DA52200C3A2A8 /* video_jd.png in Resources */,
-				3A101F3A199536C500AABE60 /* 瑜伽魔方LOGO_90x90.png in Resources */,
 				CD0DBA4B196DA52200C3A2A8 /* icon2.png in Resources */,
 				CD2D3F181991282B002D6ADF /* fm1.png in Resources */,
 				CD0DBA37196DA52200C3A2A8 /* bg.png in Resources */,
@@ -1368,12 +1311,10 @@
 				CD0DBA4C196DA52200C3A2A8 /* icon2_1.png in Resources */,
 				CD0DBA44196DA52200C3A2A8 /* c_bg.png in Resources */,
 				9D34ECCE199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg in Resources */,
-				3A101F34199536C500AABE60 /* 瑜伽魔方LOGO_16x16.jpg in Resources */,
 				CD0DBA7C196DA52200C3A2A8 /* video_icon6_1.png in Resources */,
 				CD3E57CE1984E23F000A360A /* UMShareEditViewController.xib in Resources */,
 				CD0DBA54196DA52200C3A2A8 /* icon6_1.png in Resources */,
 				CD26AE05199E404A002613A8 /* 瑜伽魔方LOGO_80x80.png in Resources */,
-				3A101F36199536C500AABE60 /* 瑜伽魔方LOGO_28x28.png in Resources */,
 				CD0DBA5E196DA52200C3A2A8 /* inut.png in Resources */,
 				CD0DBA5F196DA52200C3A2A8 /* inut1.png in Resources */,
 				CD0DBA47196DA52200C3A2A8 /* fm.png in Resources */,
@@ -1387,14 +1328,11 @@
 				CD0DBA7D196DA52200C3A2A8 /* video_icon7.png in Resources */,
 				CD0DBA71196DA52200C3A2A8 /* video_icon1.png in Resources */,
 				CD0DBA3B196DA52200C3A2A8 /* btnblue3.png in Resources */,
-				3A101F35199536C500AABE60 /* 瑜伽魔方LOGO_16x16.png in Resources */,
 				3A101F32199536C500AABE60 /* 开机画面02_480x800.jpg in Resources */,
 				CD3E57C91984E23E000A360A /* UMSocialLocalizable.strings in Resources */,
 				3A101F31199536C500AABE60 /* 开机画面02_240x320.jpg in Resources */,
 				CD0DBA63196DA52200C3A2A8 /* ssk.png in Resources */,
-				3A101F39199536C500AABE60 /* 瑜伽魔方LOGO_90x90.jpg in Resources */,
 				CD26AE00199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png in Resources */,
-				3A101F3E199536C500AABE60 /* 瑜伽魔方LOGO_120x120.png in Resources */,
 				CD0DBA48196DA52200C3A2A8 /* icon0.png in Resources */,
 				CD3E57D31984E23F000A360A /* UMSocialSDKResourcesNew.bundle in Resources */,
 				CD0DBA86196DA52200C3A2A8 /* white_btn.png in Resources */,
@@ -1402,7 +1340,6 @@
 				CD0DBA67196DA52200C3A2A8 /* title_icon1_1.png in Resources */,
 				CD0DB99E196DA50300C3A2A8 /* InfoPlist.strings in Resources */,
 				CD2D3F1419911F19002D6ADF /* 222.png in Resources */,
-				3A101F3C199536C500AABE60 /* 瑜伽魔方LOGO_108x108.png in Resources */,
 				9D34ECCB199C8B6800A4E9EF /* 开机画面02_640x1136.jpg in Resources */,
 				CD0DBA55196DA52200C3A2A8 /* icon7.png in Resources */,
 				CD0DBA7E196DA52200C3A2A8 /* video_icon7_1.png in Resources */,
@@ -1412,7 +1349,6 @@
 				CD0DBA4A196DA52200C3A2A8 /* icon1_1.png in Resources */,
 				CD0DBA83196DA52200C3A2A8 /* video_jd1.png in Resources */,
 				CD4482001997A6090061B535 /* video_pause.png in Resources */,
-				CD0DBAA1196DA52200C3A2A8 /* 瑜伽魔方LOGO_28x28.png in Resources */,
 				CD0DBA7B196DA52200C3A2A8 /* video_icon6.png in Resources */,
 				CD0DBA56196DA52200C3A2A8 /* icon7_1.png in Resources */,
 				CD0F958B1999358000EB7985 /* LICENSE in Resources */,
@@ -1423,13 +1359,11 @@
 				CD0DBA52196DA52200C3A2A8 /* icon5_1.png in Resources */,
 				CD0F95871999358000EB7985 /* CHANGELOG.md in Resources */,
 				CD0DBA6A196DA52200C3A2A8 /* title_icon3_1.png in Resources */,
-				3A101F38199536C500AABE60 /* 瑜伽魔方LOGO_80x80.png in Resources */,
 				3AA9D63519840B74003068D4 /* Alixpay.bundle in Resources */,
 				CD9E69671987DCA100052EE3 /* 1536-2048 .jpg in Resources */,
 				CD0DBA4F196DA52200C3A2A8 /* icon4.png in Resources */,
 				CD0DBA88196DA52200C3A2A8 /* xlk.png in Resources */,
 				3A101F30199536C500AABE60 /* 开机画面01_240x320.jpg in Resources */,
-				3A101F3B199536C500AABE60 /* 瑜伽魔方LOGO_108x108.jpg in Resources */,
 				CD0DBA6E196DA52200C3A2A8 /* title_icon_1.png in Resources */,
 				CD0DBA64196DA52200C3A2A8 /* title.png in Resources */,
 				CD0DBA53196DA52200C3A2A8 /* icon6.png in Resources */,
@@ -1462,13 +1396,11 @@
 				3A101F41199536C500AABE60 /* start3_320x480.jpg in Resources */,
 				CD0DBA76196DA52200C3A2A8 /* video_icon3_1.png in Resources */,
 				CD0DBA43196DA52200C3A2A8 /* btngreen_press.png in Resources */,
-				3A101F37199536C500AABE60 /* 瑜伽魔方LOGO_80x80.jpg in Resources */,
 				CD0DBA60196DA52200C3A2A8 /* jmd_bg.png in Resources */,
 				CD0DBA3A196DA52200C3A2A8 /* btnblue1.png in Resources */,
 				CD0DBA41196DA52200C3A2A8 /* btngreen3.png in Resources */,
 				3A101F40199536C500AABE60 /* start2_320x480.jpg in Resources */,
 				CD0DBA36196DA52200C3A2A8 /* a1.png in Resources */,
-				3A101F3D199536C500AABE60 /* 瑜伽魔方LOGO_120x120.jpg in Resources */,
 				CD0DBA50196DA52200C3A2A8 /* icon4_1.png in Resources */,
 				CD0DBA77196DA52200C3A2A8 /* video_icon4.png in Resources */,
 				CD0DBA5B196DA52200C3A2A8 /* icon_1.png in Resources */,
