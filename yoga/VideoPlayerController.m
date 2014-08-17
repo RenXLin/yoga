@@ -510,7 +510,7 @@
         _urlDic = [responseObject objectForKey:@"data"];
         for (int i = 0; i < [_urlDic count]; i++) {
             NSDictionary *pngUrlDic = [_urlDic objectAtIndex:i];
-            UIImageView *imgV = [_TVPlayView viewWithTag:(i+200)];
+            UIImageView *imgV = (UIImageView *)[_TVPlayView viewWithTag:(i+200)];
             
             NSURL *url;
             if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
@@ -986,7 +986,7 @@ NSString* UrlEncodedString(NSString* sourceText)
         
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
         UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-        BOOL isLike = socialData.isLike;
+//        BOOL isLike = socialData.isLike;
         [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
             //获取请求结果
             NSLog(@"resposne is %@",response);

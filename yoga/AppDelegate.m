@@ -158,11 +158,10 @@
     
     
     NSLog(@"into background");
-    UINavigationController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *rootVc = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     if ([rootVc isKindOfClass:[PortraitNavigationController class]]) {
         NSLog(@"yes");
         UIViewController *vc = rootVc.topViewController;
-        NSString *aa = NSStringFromClass([vc class]);
         if ([vc isKindOfClass:[VideoPlayerController class]]) {
             
             if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
@@ -182,11 +181,10 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     NSLog(@"into foreground");
     
-    UINavigationController *rootVc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController *rootVc = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     if ([rootVc isKindOfClass:[PortraitNavigationController class]]) {
         NSLog(@"yes");
         UIViewController *vc = rootVc.topViewController;
-        NSString *aa = NSStringFromClass([vc class]);
         if ([vc isKindOfClass:[VideoPlayerController class]]) {
             
             if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
