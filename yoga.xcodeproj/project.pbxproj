@@ -48,6 +48,13 @@
 		9DB445D0199793F800839C55 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB445C8199793F800839C55 /* UIView+Extension.m */; };
 		9DD40712197251250061D1DE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD40711197251250061D1DE /* UIFactory.m */; };
 		9DD4071419725ED50061D1DE /* 放大镜0017.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4071319725ED50061D1DE /* 放大镜0017.png */; };
+		9DD49C3619A0D2FC0053ED06 /* 瑜伽魔方LOGO_40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C2F19A0D2FC0053ED06 /* 瑜伽魔方LOGO_40x40.png */; };
+		9DD49C3719A0D2FC0053ED06 /* 瑜伽魔方LOGO_50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3019A0D2FC0053ED06 /* 瑜伽魔方LOGO_50x50.png */; };
+		9DD49C3819A0D2FC0053ED06 /* 瑜伽魔方LOGO_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3119A0D2FC0053ED06 /* 瑜伽魔方LOGO_72x72.png */; };
+		9DD49C3919A0D2FC0053ED06 /* 瑜伽魔方LOGO_76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3219A0D2FC0053ED06 /* 瑜伽魔方LOGO_76x76.png */; };
+		9DD49C3A19A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3319A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png */; };
+		9DD49C3B19A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3419A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png */; };
+		9DD49C3C19A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3519A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png */; };
 		9DE6B23E197E8A9F00393F93 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */; };
 		9DE6B243197E8AC200393F93 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B240197E8AC200393F93 /* LeveyPopListView.m */; };
 		9DE6B244197E8AC200393F93 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B242197E8AC200393F93 /* LeveyPopListViewCell.m */; };
@@ -311,6 +318,13 @@
 		9DD40710197251250061D1DE /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
 		9DD40711197251250061D1DE /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
 		9DD4071319725ED50061D1DE /* 放大镜0017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大镜0017.png"; sourceTree = "<group>"; };
+		9DD49C2F19A0D2FC0053ED06 /* 瑜伽魔方LOGO_40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_40x40.png"; sourceTree = "<group>"; };
+		9DD49C3019A0D2FC0053ED06 /* 瑜伽魔方LOGO_50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_50x50.png"; sourceTree = "<group>"; };
+		9DD49C3119A0D2FC0053ED06 /* 瑜伽魔方LOGO_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_72x72.png"; sourceTree = "<group>"; };
+		9DD49C3219A0D2FC0053ED06 /* 瑜伽魔方LOGO_76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_76x76.png"; sourceTree = "<group>"; };
+		9DD49C3319A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_100x100.png"; sourceTree = "<group>"; };
+		9DD49C3419A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_144x144.png"; sourceTree = "<group>"; };
+		9DD49C3519A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_152x152.png"; sourceTree = "<group>"; };
 		9DE6B23C197E8A9F00393F93 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9DE6B23F197E8AC200393F93 /* LeveyPopListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeveyPopListView.h; sourceTree = "<group>"; };
@@ -976,6 +990,13 @@
 		CD26ADF9199E404A002613A8 /* LOGO */ = {
 			isa = PBXGroup;
 			children = (
+				9DD49C2F19A0D2FC0053ED06 /* 瑜伽魔方LOGO_40x40.png */,
+				9DD49C3019A0D2FC0053ED06 /* 瑜伽魔方LOGO_50x50.png */,
+				9DD49C3119A0D2FC0053ED06 /* 瑜伽魔方LOGO_72x72.png */,
+				9DD49C3219A0D2FC0053ED06 /* 瑜伽魔方LOGO_76x76.png */,
+				9DD49C3319A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png */,
+				9DD49C3419A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png */,
+				9DD49C3519A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png */,
 				CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */,
 				CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */,
 				CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */,
@@ -1288,6 +1309,7 @@
 				CD0DBA35196DA52200C3A2A8 /* a.png in Resources */,
 				CD0DBA5A196DA52200C3A2A8 /* icon9_1.png in Resources */,
 				CD26AE03199E404A002613A8 /* 瑜伽魔方LOGO_57x57.png in Resources */,
+				9DD49C3919A0D2FC0053ED06 /* 瑜伽魔方LOGO_76x76.png in Resources */,
 				CD0DBA7D196DA52200C3A2A8 /* video_icon7.png in Resources */,
 				CD0DBA71196DA52200C3A2A8 /* video_icon1.png in Resources */,
 				CD0DBA3B196DA52200C3A2A8 /* btnblue3.png in Resources */,
@@ -1310,10 +1332,12 @@
 				CD0DBA79196DA52200C3A2A8 /* video_icon5.png in Resources */,
 				CD0DBA51196DA52200C3A2A8 /* icon5.png in Resources */,
 				CD0DBA4A196DA52200C3A2A8 /* icon1_1.png in Resources */,
+				9DD49C3619A0D2FC0053ED06 /* 瑜伽魔方LOGO_40x40.png in Resources */,
 				CD0DBA83196DA52200C3A2A8 /* video_jd1.png in Resources */,
 				CD4482001997A6090061B535 /* video_pause.png in Resources */,
 				CD0DBA7B196DA52200C3A2A8 /* video_icon6.png in Resources */,
 				CD0DBA56196DA52200C3A2A8 /* icon7_1.png in Resources */,
+				9DD49C3719A0D2FC0053ED06 /* 瑜伽魔方LOGO_50x50.png in Resources */,
 				CD0F958B1999358000EB7985 /* LICENSE in Resources */,
 				CD0DBA78196DA52200C3A2A8 /* video_icon4_1.png in Resources */,
 				CD0DBA66196DA52200C3A2A8 /* title_icon1.png in Resources */,
@@ -1339,6 +1363,7 @@
 				CD0DBA3E196DA52200C3A2A8 /* btngreen.9.png in Resources */,
 				CD0DBA80196DA52200C3A2A8 /* video_icon8_1.png in Resources */,
 				CD0DBA49196DA52200C3A2A8 /* icon1.png in Resources */,
+				9DD49C3A19A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png in Resources */,
 				CD0DBA72196DA52200C3A2A8 /* video_icon1_1.png in Resources */,
 				CD0DBA45196DA52200C3A2A8 /* c_bg1.png in Resources */,
 				CD0DBA57196DA52200C3A2A8 /* icon8.png in Resources */,
@@ -1368,6 +1393,7 @@
 				CD0DBA5B196DA52200C3A2A8 /* icon_1.png in Resources */,
 				CD4482011997A6090061B535 /* video_play.png in Resources */,
 				CD0DBA69196DA52200C3A2A8 /* title_icon2_1.png in Resources */,
+				9DD49C3B19A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png in Resources */,
 				CD3E57CC1984E23F000A360A /* UMSCommentInputController.xib in Resources */,
 				CD9E69701987DCA100052EE3 /* Default.jpg in Resources */,
 				CD26AE02199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png in Resources */,
@@ -1381,6 +1407,7 @@
 				CD0DBA65196DA52200C3A2A8 /* title_icon.png in Resources */,
 				CD0DBA6F196DA52200C3A2A8 /* video_bottom.png in Resources */,
 				9D34ECCD199C8B6800A4E9EF /* 开机画面03_640x1136.jpg in Resources */,
+				9DD49C3C19A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png in Resources */,
 				CD0DBA3F196DA52200C3A2A8 /* btngreen.png in Resources */,
 				CD3E57D21984E23F000A360A /* UMSShareListController.xib in Resources */,
 				CDFBB92619A082D9007F33D7 /* Default-568h@2x.png in Resources */,
@@ -1388,6 +1415,7 @@
 				CD0DBA62196DA52200C3A2A8 /* paly_icon.png in Resources */,
 				CD26AE04199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png in Resources */,
 				CD0DBA42196DA52200C3A2A8 /* btngreen_press.9.png in Resources */,
+				9DD49C3819A0D2FC0053ED06 /* 瑜伽魔方LOGO_72x72.png in Resources */,
 				3A101F33199536C500AABE60 /* 开机画面03_240x320.jpg in Resources */,
 				CD4D57DF19A079BA0010B434 /* icon.png in Resources */,
 			);
@@ -1594,8 +1622,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentOpenAPI",
@@ -1624,7 +1652,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "78489baa-7c09-4dd6-90bd-5ca17fc609a6";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1635,8 +1663,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentOpenAPI",
@@ -1665,7 +1693,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "78489baa-7c09-4dd6-90bd-5ca17fc609a6";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
