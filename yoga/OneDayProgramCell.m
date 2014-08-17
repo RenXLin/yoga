@@ -43,13 +43,13 @@
         
         
         _label_Title = [[UILabel alloc] init];
-        _label_Title.frame = CGRectMake(self.frame.size.width / 3, 0, self.frame.size.width * 2 / 3, self.frame.size.height);
+        _label_Title.frame = CGRectMake(self.frame.size.width / 3+10, 0, self.frame.size.width * 2 / 3, self.frame.size.height);
         _label_Title.backgroundColor = [UIColor clearColor];
         _label_Title.font = [UIFont systemFontOfSize:13];
         _label_Title.lineBreakMode = NSLineBreakByTruncatingTail;
         _label_Title.layer.cornerRadius = 5;
         _label_Title.textColor = [UIColor blackColor];
-        _label_Title.textAlignment = NSTextAlignmentCenter;
+        _label_Title.textAlignment = NSTextAlignmentLeft;
         _label_Title.numberOfLines = 0;
         _label_Title.tag = 0;
         _label_Title.adjustsFontSizeToFitWidth = YES;
