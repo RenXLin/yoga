@@ -16,7 +16,7 @@
 
 @implementation SC_popView
 {
-    UIView *bgView;
+    //UIView *bgView;
     UIImageView *img;
     
     UILabel *lab;
