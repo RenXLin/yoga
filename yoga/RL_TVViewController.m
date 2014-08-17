@@ -87,7 +87,7 @@
 	} else {
         
         [_TVPlayView removeFromSuperview];
-        _TVPlayView.frame = CGRectMake(1, 70, self.view.frame.size.width, self.view.frame.size.width *3/4);
+        _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width *3/4);
         [_scrollView addSubview:_TVPlayView];
         [self.view addSubview:_scrollView];
         
