@@ -55,6 +55,7 @@
 		9DD49C3A19A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3319A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png */; };
 		9DD49C3B19A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3419A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png */; };
 		9DD49C3C19A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3519A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png */; };
+		9DD49C3E19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3D19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg */; };
 		9DE6B23E197E8A9F00393F93 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */; };
 		9DE6B243197E8AC200393F93 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B240197E8AC200393F93 /* LeveyPopListView.m */; };
 		9DE6B244197E8AC200393F93 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B242197E8AC200393F93 /* LeveyPopListViewCell.m */; };
@@ -325,6 +326,7 @@
 		9DD49C3319A0D2FC0053ED06 /* 瑜伽魔方LOGO_100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_100x100.png"; sourceTree = "<group>"; };
 		9DD49C3419A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_144x144.png"; sourceTree = "<group>"; };
 		9DD49C3519A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_152x152.png"; sourceTree = "<group>"; };
+		9DD49C3D19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_108x108.jpg"; sourceTree = "<group>"; };
 		9DE6B23C197E8A9F00393F93 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9DE6B23F197E8AC200393F93 /* LeveyPopListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeveyPopListView.h; sourceTree = "<group>"; };
@@ -990,6 +992,7 @@
 		CD26ADF9199E404A002613A8 /* LOGO */ = {
 			isa = PBXGroup;
 			children = (
+				9DD49C3D19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg */,
 				9DD49C2F19A0D2FC0053ED06 /* 瑜伽魔方LOGO_40x40.png */,
 				9DD49C3019A0D2FC0053ED06 /* 瑜伽魔方LOGO_50x50.png */,
 				9DD49C3119A0D2FC0053ED06 /* 瑜伽魔方LOGO_72x72.png */,
@@ -1402,6 +1405,7 @@
 				CD9E696B1987DCA100052EE3 /* Default~ipad.jpg in Resources */,
 				CD0DBA39196DA52200C3A2A8 /* btnblue.png in Resources */,
 				CD0DBA87196DA52200C3A2A8 /* white_btn1.png in Resources */,
+				9DD49C3E19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg in Resources */,
 				CD0DBA3C196DA52200C3A2A8 /* btnblue_press.9.png in Resources */,
 				9D34ECC9199C8B6800A4E9EF /* 开机画面01_640x1136.jpg in Resources */,
 				CD0DBA65196DA52200C3A2A8 /* title_icon.png in Resources */,
@@ -1622,8 +1626,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentOpenAPI",
@@ -1663,8 +1667,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentOpenAPI",
