@@ -9,8 +9,6 @@
 #import "SC_AudioOnLineViewController.h"
 #import "SC_Model.h"
 #import "AudioCell.h"
-#import "ChineseInclude.h"
-#import "PinYinForObjc.h"
 #import "VideoPlayerController.h"
 #import "LeveyPopListView.h"
 
