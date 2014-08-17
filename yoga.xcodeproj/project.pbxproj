@@ -175,7 +175,6 @@
 		CD2D3F161991203E002D6ADF /* 333.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F151991203E002D6ADF /* 333.png */; };
 		CD2D3F181991282B002D6ADF /* fm1.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2D3F171991282B002D6ADF /* fm1.png */; };
 		CD31ECD81984F6D500A208E0 /* RL_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3C48B41975676300AAEAB8 /* RL_LoginViewController.m */; };
-		CD31ECF21985091D00A208E0 /* RL_TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E5118197147A700771960 /* RL_TVViewController.m */; };
 		CD38DD11197430A900D4C20D /* CurrentProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = CD38DD10197430A900D4C20D /* CurrentProgram.m */; };
 		CD3E57C91984E23E000A360A /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD3E57AF1984E23E000A360A /* UMSocialLocalizable.strings */; };
 		CD3E57CA1984E23E000A360A /* libUMSocial_Sdk_4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3E57BD1984E23E000A360A /* libUMSocial_Sdk_4.0.a */; };
@@ -234,6 +233,8 @@
 		CDA734171987FCAE009713D5 /* OneDayProgramCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA734161987FCAE009713D5 /* OneDayProgramCell.m */; };
 		CDB3DCD319951149008A9947 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB3DCD219951149008A9947 /* UIImageView+AFNetworking.m */; };
 		CDF0535C197BAFB60097FAAA /* MedioPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */; };
+		CDFBB92419A0808A007F33D7 /* RL_TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFBB92319A0808A007F33D7 /* RL_TVViewController.m */; };
+		CDFBB92619A082D9007F33D7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDFBB92519A082D9007F33D7 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -537,7 +538,6 @@
 		CD8E5114197131DE00771960 /* RL_FMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_FMViewController.h; sourceTree = "<group>"; };
 		CD8E5115197131DE00771960 /* RL_FMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_FMViewController.m; sourceTree = "<group>"; };
 		CD8E5117197147A700771960 /* RL_TVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_TVViewController.h; sourceTree = "<group>"; };
-		CD8E5118197147A700771960 /* RL_TVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_TVViewController.m; sourceTree = "<group>"; };
 		CD8E511F1971561A00771960 /* RL_SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_SettingViewController.h; sourceTree = "<group>"; };
 		CD8E51201971561A00771960 /* RL_SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_SettingViewController.m; sourceTree = "<group>"; };
 		CD8E51241971586E00771960 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -582,6 +582,8 @@
 		CDB3DCD219951149008A9947 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		CDF0535A197BAFB60097FAAA /* MedioPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedioPlayTool.h; sourceTree = "<group>"; };
 		CDF0535B197BAFB60097FAAA /* MedioPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedioPlayTool.m; sourceTree = "<group>"; };
+		CDFBB92319A0808A007F33D7 /* RL_TVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_TVViewController.m; sourceTree = "<group>"; };
+		CDFBB92519A082D9007F33D7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -757,6 +759,7 @@
 		CD0DB987196DA50300C3A2A8 = {
 			isa = PBXGroup;
 			children = (
+				CDFBB92519A082D9007F33D7 /* Default-568h@2x.png */,
 				3AE04A4A198BD3D700687B52 /* PartnerConfig.h */,
 				9DD40710197251250061D1DE /* UIFactory.h */,
 				9DD40711197251250061D1DE /* UIFactory.m */,
@@ -1141,7 +1144,7 @@
 				CD8E5114197131DE00771960 /* RL_FMViewController.h */,
 				CD8E5115197131DE00771960 /* RL_FMViewController.m */,
 				CD8E5117197147A700771960 /* RL_TVViewController.h */,
-				CD8E5118197147A700771960 /* RL_TVViewController.m */,
+				CDFBB92319A0808A007F33D7 /* RL_TVViewController.m */,
 				CD8E511F1971561A00771960 /* RL_SettingViewController.h */,
 				CD8E51201971561A00771960 /* RL_SettingViewController.m */,
 				CD8E514019717DA500771960 /* RL_RegistViewController.h */,
@@ -1421,6 +1424,7 @@
 				9D34ECCD199C8B6800A4E9EF /* 开机画面03_640x1136.jpg in Resources */,
 				CD0DBA3F196DA52200C3A2A8 /* btngreen.png in Resources */,
 				CD3E57D21984E23F000A360A /* UMSShareListController.xib in Resources */,
+				CDFBB92619A082D9007F33D7 /* Default-568h@2x.png in Resources */,
 				CD0DBA4E196DA52200C3A2A8 /* icon3_1.png in Resources */,
 				CD0DBA62196DA52200C3A2A8 /* paly_icon.png in Resources */,
 				CD26AE04199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png in Resources */,
@@ -1445,7 +1449,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD31ECF21985091D00A208E0 /* RL_TVViewController.m in Sources */,
 				CDB3DCD319951149008A9947 /* UIImageView+AFNetworking.m in Sources */,
 				CD31ECD81984F6D500A208E0 /* RL_LoginViewController.m in Sources */,
 				3AA9D63819840B74003068D4 /* AlixPayOrder.m in Sources */,
@@ -1496,6 +1499,7 @@
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
 				CD0F954A1998F80300EB7985 /* PortraitNavigationController.m in Sources */,
 				9D459BCA199DC8DC00436020 /* UIColor+expanded.m in Sources */,
+				CDFBB92419A0808A007F33D7 /* RL_TVViewController.m in Sources */,
 				9DB445CD199793F800839C55 /* MJRefreshHeaderView.m in Sources */,
 				CD8E5116197131DE00771960 /* RL_FMViewController.m in Sources */,
 				3AC3518B1976BE2400CA643E /* ChineseInclude.m in Sources */,

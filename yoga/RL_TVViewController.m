@@ -253,7 +253,6 @@
     _scrollView.bounces = NO;
 
     
-    
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:CURRENTPLAYVIDEO_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -492,7 +491,6 @@
         
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
         UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-        BOOL isLike = socialData.isLike;
         [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
             //获取请求结果
             NSLog(@"resposne is %@",response);

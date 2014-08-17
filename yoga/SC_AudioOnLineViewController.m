@@ -962,7 +962,7 @@
 {
     // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
     [TableView addHeaderWithTarget:self action:@selector(headerRereshing)];
-#warning 自动刷新(一进入程序就下拉刷新)
+//#warning 自动刷新(一进入程序就下拉刷新)
     //[TableView headerBeginRefreshing];
     
     // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)

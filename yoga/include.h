@@ -122,20 +122,20 @@
 ////参数：
 //
 ////音频点播列表
-#define AUDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getAodList"
+#define AUDIOPICKLIST_URL   @"http://www.chinayogaonline.com/api/getAodList"
 
 ////音频点播分类列表
-#define  SORT_AUDIOLIST_URL@"http://www.chinayogaonline.com/api/getAodCategoryList"
+#define  SORT_AUDIOLIST_URL     @"http://www.chinayogaonline.com/api/getAodCategoryList"
 
 ////视频点播列表
 #define VIDIOPICKLIST_URL @"http://www.chinayogaonline.com/api/getVodList"
 
 ////音频点播分类列表
-#define  SORT_AUDIOPICKLIST_URL@"http://www.chinayogaonline.com/api/getAodCategoryList"
+#define  SORT_AUDIOPICKLIST_URL   @"http://www.chinayogaonline.com/api/getAodCategoryList"
 ////参数：
 //
 ////视频点播分类列表
-#define  SORT_VIDEOLIST_ULR@"http://www.chinayogaonline.com/api/getVodCategoryList"
+#define  SORT_VIDEOLIST_ULR    @"http://www.chinayogaonline.com/api/getVodCategoryList"
 //#define  @"http://www.chinayogaonline.com/api/getVodCategoryList"
 ////参数：cid（分类ID），keywords，limit，offset
 //
@@ -149,8 +149,7 @@
 ///Users/cao/Desktop/yoga/yoga/include.h
 
 ////参数：mobile
-//
-////视频点播详情
+//linker command failed with exit code 1 (use -v to see invocation)////视频点播详情
 //http://www.chinayogaonline.com/api/getVodById
 ////参数：vid(前一个接口，列表中返回的vid)
 //

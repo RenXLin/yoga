@@ -361,8 +361,7 @@
         _urlDic = [responseObject objectForKey:@"data"];
         for (int i = 0; i < [_urlDic count]; i++) {
             NSDictionary *pngUrlDic = [_urlDic objectAtIndex:i];
-            UIView *whiteView = [self.view viewWithTag:5000];
-            UIImageView *imgV = [whiteView viewWithTag:(i+200)];
+            UIImageView *imgV = (UIImageView *)[[self.view viewWithTag:5000] viewWithTag:(i+200)];
             
             NSURL *url;
             if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
@@ -670,7 +669,6 @@
         
         UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"identifier"];
         UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
-        BOOL isLike = socialData.isLike;
         [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
             //获取请求结果
             NSLog(@"resposne is %@",response);
