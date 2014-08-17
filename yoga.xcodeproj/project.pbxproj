@@ -1706,7 +1706,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1736,7 +1736,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee88c56a-1451-429c-967e-af0be3eff8d9";
+				PROVISIONING_PROFILE = "78489baa-7c09-4dd6-90bd-5ca17fc609a6";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1747,7 +1747,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1777,7 +1777,7 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee88c56a-1451-429c-967e-af0be3eff8d9";
+				PROVISIONING_PROFILE = "78489baa-7c09-4dd6-90bd-5ca17fc609a6";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

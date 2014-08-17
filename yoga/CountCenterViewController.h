@@ -14,4 +14,5 @@
 }
 
 @property (nonatomic,copy) NSString *fromStr;
+@property (nonatomic,copy) NSString *regStr;
 @end

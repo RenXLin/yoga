@@ -42,6 +42,11 @@
     
     [self createUI];
     
+    if(self.regStr.length!=0)
+    {
+        KAlert(@"注册成功");
+    }
+    
     
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];

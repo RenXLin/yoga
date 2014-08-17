@@ -259,7 +259,7 @@
     }else if(view.tag == 3){
         //瑜伽TV
         RL_TVViewController *TVV = [[RL_TVViewController alloc] init];
-        [self presentViewController:TVV animated:YES completion:nil];
+        [self.navigationController pushViewController:TVV animated:YES];
 
     }else if(view.tag == 4){
         //音频点播

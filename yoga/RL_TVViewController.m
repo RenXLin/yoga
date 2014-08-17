@@ -363,7 +363,7 @@
     [_mMpayer reset];
     [_mMpayer unSetupPlayer];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)loginBtnClick

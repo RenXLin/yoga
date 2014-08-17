@@ -8,6 +8,7 @@
 
 #import "RL_RegistViewController.h"
 #import "AFNetworking.h"
+#import "CountCenterViewController.h"
 
 @interface RL_RegistViewController ()
 
@@ -226,16 +227,43 @@
         registM.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         
         [registM GET:[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text] parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"success:\n%@",responseObject);
-             NSLog(@"%@",[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text]);
-            NSLog(@"%@",[responseObject objectForKey:@"msg"]);
-            if ([[[responseObject objectForKey:@"data"] objectForKey:@"username"]isEqualToString:_phoneNum.text]) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[responseObject objectForKey:@"msg"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            }else{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
+            
+            if([[responseObject objectForKey:@"code"] intValue] == 200)
+            {
+                
+                
+                Kdefaults;
+                NSArray*arr=@[_phoneNum.text,_passWord.text];
+                [defaults setObject:arr forKey:@"accountAndPassword"];
+                [defaults synchronize];
+                
+                UserInfo *info = [UserInfo shareUserInfo];
+                info.userDict = [responseObject objectForKey:@"data"];
+                
+                
+                UserInfo *userInfo = [UserInfo shareUserInfo];
+                userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];
+                userInfo.userName = [[responseObject objectForKey:@"data"] objectForKey:@"username"];
+                
+                
+                CountCenterViewController *countCenter = [[CountCenterViewController alloc]init];
+                countCenter.regStr = @"regStr";
+                [self.navigationController pushViewController:countCenter animated:YES];
+                
             }
+            
+            
+            
+//            NSLog(@"success:\n%@",responseObject);
+//             NSLog(@"%@",[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text]);
+//            NSLog(@"%@",[responseObject objectForKey:@"msg"]);
+//            if ([[[responseObject objectForKey:@"data"] objectForKey:@"username"]isEqualToString:_phoneNum.text]) {
+//                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[responseObject objectForKey:@"msg"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                [alert show];
+//            }else{
+//                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//                [alert show];
+//            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Failed:%@",error);
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
