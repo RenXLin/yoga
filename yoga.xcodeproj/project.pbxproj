@@ -227,9 +227,9 @@
 		CD8E515419718B0100771960 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515319718B0100771960 /* libstdc++.dylib */; };
 		CD8E515619718B0900771960 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E515519718B0900771960 /* libiconv.dylib */; };
 		CD9E69671987DCA100052EE3 /* 1536-2048 .jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD9E695D1987DCA100052EE3 /* 1536-2048 .jpg */; };
-		CD9E696B1987DCA100052EE3 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69611987DCA100052EE3 /* Default~ipad.png */; };
+		CD9E696B1987DCA100052EE3 /* Default~ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69611987DCA100052EE3 /* Default~ipad.jpg */; };
 		CD9E696C1987DCA100052EE3 /* 640-1136 .jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69621987DCA100052EE3 /* 640-1136 .jpg */; };
-		CD9E69701987DCA100052EE3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69661987DCA100052EE3 /* Default.png */; };
+		CD9E69701987DCA100052EE3 /* Default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD9E69661987DCA100052EE3 /* Default.jpg */; };
 		CDA734141987F49B009713D5 /* OneDayProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA734131987F49B009713D5 /* OneDayProgram.m */; };
 		CDA734171987FCAE009713D5 /* OneDayProgramCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA734161987FCAE009713D5 /* OneDayProgramCell.m */; };
 		CDB3DCD319951149008A9947 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB3DCD219951149008A9947 /* UIImageView+AFNetworking.m */; };
@@ -571,9 +571,9 @@
 		CD8E515319718B0100771960 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		CD8E515519718B0900771960 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		CD9E695D1987DCA100052EE3 /* 1536-2048 .jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1536-2048 .jpg"; sourceTree = "<group>"; };
-		CD9E69611987DCA100052EE3 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = "<group>"; };
+		CD9E69611987DCA100052EE3 /* Default~ipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Default~ipad.jpg"; sourceTree = "<group>"; };
 		CD9E69621987DCA100052EE3 /* 640-1136 .jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "640-1136 .jpg"; sourceTree = "<group>"; };
-		CD9E69661987DCA100052EE3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CD9E69661987DCA100052EE3 /* Default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Default.jpg; sourceTree = "<group>"; };
 		CDA734121987F49B009713D5 /* OneDayProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayProgram.h; sourceTree = "<group>"; };
 		CDA734131987F49B009713D5 /* OneDayProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneDayProgram.m; sourceTree = "<group>"; };
 		CDA734151987FCAE009713D5 /* OneDayProgramCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneDayProgramCell.h; sourceTree = "<group>"; };
@@ -1208,9 +1208,9 @@
 				9D34ECC7199C8B6800A4E9EF /* 开机画面03_640x1136.jpg */,
 				9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */,
 				CD9E695D1987DCA100052EE3 /* 1536-2048 .jpg */,
-				CD9E69611987DCA100052EE3 /* Default~ipad.png */,
+				CD9E69611987DCA100052EE3 /* Default~ipad.jpg */,
 				CD9E69621987DCA100052EE3 /* 640-1136 .jpg */,
-				CD9E69661987DCA100052EE3 /* Default.png */,
+				CD9E69661987DCA100052EE3 /* Default.jpg */,
 			);
 			path = IPAD;
 			sourceTree = "<group>";
@@ -1407,11 +1407,11 @@
 				CD4482011997A6090061B535 /* video_play.png in Resources */,
 				CD0DBA69196DA52200C3A2A8 /* title_icon2_1.png in Resources */,
 				CD3E57CC1984E23F000A360A /* UMSCommentInputController.xib in Resources */,
-				CD9E69701987DCA100052EE3 /* Default.png in Resources */,
+				CD9E69701987DCA100052EE3 /* Default.jpg in Resources */,
 				CD26AE02199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png in Resources */,
 				CD0DBA38196DA52200C3A2A8 /* btnblue.9.png in Resources */,
 				CD2D3F161991203E002D6ADF /* 333.png in Resources */,
-				CD9E696B1987DCA100052EE3 /* Default~ipad.png in Resources */,
+				CD9E696B1987DCA100052EE3 /* Default~ipad.jpg in Resources */,
 				CD0DBA39196DA52200C3A2A8 /* btnblue.png in Resources */,
 				CD0DBA87196DA52200C3A2A8 /* white_btn1.png in Resources */,
 				CD0DBA3C196DA52200C3A2A8 /* btnblue_press.9.png in Resources */,
