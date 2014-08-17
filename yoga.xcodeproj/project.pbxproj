@@ -177,7 +177,6 @@
 		CD0F95891999358000EB7985 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95841999358000EB7985 /* libopenssl.a */; };
 		CD0F958A1999358000EB7985 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95851999358000EB7985 /* libVitamio.a */; };
 		CD0F958B1999358000EB7985 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD0F95861999358000EB7985 /* LICENSE */; };
-		CD179F561995B98200B38933 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD179F551995B98200B38933 /* icon.png */; };
 		CD26AE00199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */; };
 		CD26AE01199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */; };
 		CD26AE02199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */; };
@@ -210,6 +209,7 @@
 		CD4654BE198927FB00E871DB /* libSocialTencentWeibo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4654B5198927FB00E871DB /* libSocialTencentWeibo.a */; };
 		CD4654BF198927FB00E871DB /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4654B8198927FB00E871DB /* libSocialWechat.a */; };
 		CD4654C0198927FB00E871DB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4654B9198927FB00E871DB /* libWeChatSDK.a */; };
+		CD4D57DF19A079BA0010B434 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4D57DE19A079BA0010B434 /* icon.png */; };
 		CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD51F4F61976D49200F9E81F /* VideoPlayerController.m */; };
 		CD53BDDD198929C40058A721 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD53BDDC198929C40058A721 /* CoreTelephony.framework */; };
 		CD53BDE119892B6B0058A721 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD53BDE019892B6B0058A721 /* libsqlite3.dylib */; };
@@ -502,7 +502,6 @@
 		CD0F95851999358000EB7985 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
 		CD0F95861999358000EB7985 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD14D971199CE3EE00EC446E /* yoga.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = yoga.entitlements; sourceTree = "<group>"; };
-		CD179F551995B98200B38933 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_114x114.png"; sourceTree = "<group>"; };
 		CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_120x120.png"; sourceTree = "<group>"; };
 		CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_29x29.png"; sourceTree = "<group>"; };
@@ -555,6 +554,7 @@
 		CD4654BB198927FB00E871DB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		CD4654BC198927FB00E871DB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		CD4A479A1970348700973A29 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = include.h; path = yoga/include.h; sourceTree = "<group>"; };
+		CD4D57DE19A079BA0010B434 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		CD51F4F51976D49200F9E81F /* VideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerController.h; sourceTree = "<group>"; };
 		CD51F4F61976D49200F9E81F /* VideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerController.m; sourceTree = "<group>"; };
 		CD53BDDC198929C40058A721 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -794,9 +794,9 @@
 				3AE04A4A198BD3D700687B52 /* PartnerConfig.h */,
 				9DD40710197251250061D1DE /* UIFactory.h */,
 				9DD40711197251250061D1DE /* UIFactory.m */,
-				CD179F551995B98200B38933 /* icon.png */,
 				9DD4071319725ED50061D1DE /* 放大镜0017.png */,
 				CD4A479A1970348700973A29 /* include.h */,
+				CD4D57DE19A079BA0010B434 /* icon.png */,
 				CD26ADF9199E404A002613A8 /* LOGO */,
 				CD9E695C1987DCA100052EE3 /* IPAD */,
 				CD0DB9C2196DA52200C3A2A8 /* 切图 */,
@@ -1363,7 +1363,6 @@
 				CD2D3F181991282B002D6ADF /* fm1.png in Resources */,
 				CD0DBA37196DA52200C3A2A8 /* bg.png in Resources */,
 				CD0DBA6B196DA52200C3A2A8 /* title_icon4.png in Resources */,
-				CD179F561995B98200B38933 /* icon.png in Resources */,
 				CD0DBA61196DA52200C3A2A8 /* logo.png in Resources */,
 				CD3E57CD1984E23F000A360A /* UMSCommentInputControlleriPad.xib in Resources */,
 				CD0DBA4C196DA52200C3A2A8 /* icon2_1.png in Resources */,
@@ -1495,6 +1494,7 @@
 				CD26AE04199E404A002613A8 /* 瑜伽魔方LOGO_58x58.png in Resources */,
 				CD0DBA42196DA52200C3A2A8 /* btngreen_press.9.png in Resources */,
 				3A101F33199536C500AABE60 /* 开机画面03_240x320.jpg in Resources */,
+				CD4D57DF19A079BA0010B434 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -717,7 +717,6 @@
     if (!_fileList) {
         _fileList = [[NSMutableArray alloc] init];
         [self getCurrentFile];
-        
         UIView *backView = [self.view viewWithTag:5000];
         
         UIView *white = [[UIView alloc] initWithFrame:backView.bounds];
