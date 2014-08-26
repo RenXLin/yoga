@@ -190,6 +190,7 @@
     // Do any additional setup after loading the view.
     
     [self greet];
+    _itemMode = [_sourceArray objectAtIndex:_index];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
@@ -794,7 +795,16 @@ NSString* UrlEncodedString(NSString* sourceText)
         
     }else if (btn.tag == 2){
         //last program
-    
+        [SVProgressHUD showSuccessWithStatus:@"上一首"];
+
+        if (_index > 0) {
+            _index --;
+        }else{
+            _index = [_sourceArray count] - 1;
+        }
+        _itemMode = [_sourceArray objectAtIndex:_index];
+        [self playLastOrNextProgram];
+
     }else if (btn.tag == 3){
         //play or pause
         btn.selected = !btn.selected;
@@ -807,9 +817,44 @@ NSString* UrlEncodedString(NSString* sourceText)
         }
         
     }else if (btn.tag == 4){
+        [SVProgressHUD showSuccessWithStatus:@"下一首"];
+
         //next program
+        if (_index < [_sourceArray count] - 1) {
+            _index ++;
+        }else{
+            _index = 0;
+        }
+        _itemMode = [_sourceArray objectAtIndex:_index];
+        
+        [self playLastOrNextProgram];
         
     }
+}
+-(void)playLastOrNextProgram
+{
+    
+    [_mPlayer reset];
+
+    
+    NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    NSString * urlStr = UrlEncodedString(pathUrl);
+    NSLog(@"encode url :  %@",urlStr);
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+//    _mPlayer = [VMediaPlayer sharedInstance];
+    [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
+    if ([self.titleName isEqualToString:@"音频点播"]) {
+        [_mPlayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
+    }else{
+        [_mPlayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
+    }
+    NSLog(@"%@",self.itemMode.path);
+    [_mPlayer prepareAsync];
+
 }
 
 -(void)videoPause
