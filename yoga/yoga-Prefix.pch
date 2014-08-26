@@ -17,7 +17,7 @@
     #import "UIFactory.h"
     #import "UserInfo.h"
     #import "HelpClass.h"
-    #import"SVProgressHUD.h"
+    #import"SVProgressHUD/SVProgressHUD.h"
     #import"AFHTTPRequestOperationManager.h"
 
 
