@@ -16,6 +16,7 @@
 #import "UserInfo.h"
 #import "SC_popView.h"
 
+#import "SVProgressHUD/SVProgressHUD.h"
 #import "OrderViewController.h"
 #import "CountCenterViewController.h"
 
@@ -146,10 +147,10 @@
             view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
             view.contentMode = UIViewContentModeScaleToFill;
             [whiteView addSubview:view];
-            if (i*3+j+1 != 2 && i*3 +j+1 != 7 && i*3+j+1 != 8 && i*3+j+1 != 9) {
+//            if (i*3+j+1 != 2 && i*3 +j+1 != 7 && i*3+j+1 != 8 && i*3+j+1 != 9) {
                 UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
                 [view addGestureRecognizer:tap];
-            }
+//            }
             view.autoresizingMask =
 //            UIViewAutoresizingFlexibleBottomMargin |
 //            UIViewAutoresizingFlexibleTopMargin |
@@ -283,6 +284,8 @@
             audioView.Title = @"视频点播";
             [self.navigationController pushViewController:audioView animated:YES];
         
+    }else if(view.tag == 2 || view.tag == 7 || view.tag == 8 || view.tag == 9){
+        [SVProgressHUD  showErrorWithStatus:@"无内容"];
     }
 
 }
@@ -307,8 +310,8 @@
 {
 //    RL_SettingViewController *settingV = [[RL_SettingViewController alloc] init];
 //    [self presentViewController:settingV animated:YES completion:nil];
+    
     [SVProgressHUD showErrorWithStatus:@"暂无此功能"];
-  
 
 }
 
@@ -328,7 +331,7 @@
 
         label.textColor = [UIColor colorWithHexString:@"CCCCCC"];
 
-        label.textColor = [UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.00f];
+        label.textColor = [UIColor colorWithRed:0.55f green:0.55f blue:0.55f alpha:1.00f];
 
     }
     label.textAlignment = NSTextAlignmentCenter;
