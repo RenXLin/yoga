@@ -305,8 +305,10 @@
 //设置：
 -(void)SettingBtnClick
 {
-    RL_SettingViewController *settingV = [[RL_SettingViewController alloc] init];
-    [self presentViewController:settingV animated:YES completion:nil];
+//    RL_SettingViewController *settingV = [[RL_SettingViewController alloc] init];
+//    [self presentViewController:settingV animated:YES completion:nil];
+    [SVProgressHUD showErrorWithStatus:@"暂无此功能"];
+  
 
 }
 

@@ -56,7 +56,6 @@
 		9DD49C3B19A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3419A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png */; };
 		9DD49C3C19A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3519A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png */; };
 		9DD49C3E19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD49C3D19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg */; };
-		9DE6B23E197E8A9F00393F93 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */; };
 		9DE6B243197E8AC200393F93 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B240197E8AC200393F93 /* LeveyPopListView.m */; };
 		9DE6B244197E8AC200393F93 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B242197E8AC200393F93 /* LeveyPopListViewCell.m */; };
 		9DE6B247197E8AE400393F93 /* SC_AudioOnLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6B246197E8AE400393F93 /* SC_AudioOnLineViewController.m */; };
@@ -165,6 +164,8 @@
 		CD0F95891999358000EB7985 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95841999358000EB7985 /* libopenssl.a */; };
 		CD0F958A1999358000EB7985 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95851999358000EB7985 /* libVitamio.a */; };
 		CD0F958B1999358000EB7985 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD0F95861999358000EB7985 /* LICENSE */; };
+		CD2255CE19ACCFA50005CE53 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD2255CB19ACCFA50005CE53 /* SVProgressHUD.bundle */; };
+		CD2255CF19ACCFA50005CE53 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2255CD19ACCFA50005CE53 /* SVProgressHUD.m */; };
 		CD26AE00199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */; };
 		CD26AE01199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */; };
 		CD26AE02199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */; };
@@ -327,8 +328,6 @@
 		9DD49C3419A0D2FC0053ED06 /* 瑜伽魔方LOGO_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_144x144.png"; sourceTree = "<group>"; };
 		9DD49C3519A0D2FC0053ED06 /* 瑜伽魔方LOGO_152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_152x152.png"; sourceTree = "<group>"; };
 		9DD49C3D19A0D5C10053ED06 /* 瑜伽魔方LOGO_108x108.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "瑜伽魔方LOGO_108x108.jpg"; sourceTree = "<group>"; };
-		9DE6B23C197E8A9F00393F93 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9DE6B23F197E8AC200393F93 /* LeveyPopListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeveyPopListView.h; sourceTree = "<group>"; };
 		9DE6B240197E8AC200393F93 /* LeveyPopListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeveyPopListView.m; sourceTree = "<group>"; };
 		9DE6B241197E8AC200393F93 /* LeveyPopListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeveyPopListViewCell.h; sourceTree = "<group>"; };
@@ -461,6 +460,10 @@
 		CD0F95851999358000EB7985 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
 		CD0F95861999358000EB7985 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD14D971199CE3EE00EC446E /* yoga.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = yoga.entitlements; sourceTree = "<group>"; };
+		CD2255CA19ACCFA50005CE53 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		CD2255CB19ACCFA50005CE53 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		CD2255CC19ACCFA50005CE53 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		CD2255CD19ACCFA50005CE53 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_114x114.png"; sourceTree = "<group>"; };
 		CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_120x120.png"; sourceTree = "<group>"; };
 		CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_29x29.png"; sourceTree = "<group>"; };
@@ -801,8 +804,6 @@
 				CD0DB9A3196DA50300C3A2A8 /* AppDelegate.m */,
 				CD0F95481998F80300EB7985 /* PortraitNavigationController.h */,
 				CD0F95491998F80300EB7985 /* PortraitNavigationController.m */,
-				9DE6B23C197E8A9F00393F93 /* SVProgressHUD.h */,
-				9DE6B23D197E8A9F00393F93 /* SVProgressHUD.m */,
 				CD8E510D1970D35900771960 /* Controllers */,
 				CD0DB99A196DA50300C3A2A8 /* Supporting Files */,
 			);
@@ -989,6 +990,17 @@
 			path = Vitamio;
 			sourceTree = "<group>";
 		};
+		CD2255C919ACCFA50005CE53 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				CD2255CA19ACCFA50005CE53 /* SVProgressHUD-Prefix.pch */,
+				CD2255CB19ACCFA50005CE53 /* SVProgressHUD.bundle */,
+				CD2255CC19ACCFA50005CE53 /* SVProgressHUD.h */,
+				CD2255CD19ACCFA50005CE53 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		CD26ADF9199E404A002613A8 /* LOGO */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,6 +1159,7 @@
 		CD8E51221971581C00771960 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				CD2255C919ACCFA50005CE53 /* SVProgressHUD */,
 				CD0F95771999358000EB7985 /* Vitamio */,
 				9DB445B8199793F800839C55 /* MJRefresh */,
 				CD3E57AE1984E23E000A360A /* UMSocial_Sdk_4.0 */,
@@ -1388,6 +1401,7 @@
 				CD0DBA43196DA52200C3A2A8 /* btngreen_press.png in Resources */,
 				CD0DBA60196DA52200C3A2A8 /* jmd_bg.png in Resources */,
 				CD0DBA3A196DA52200C3A2A8 /* btnblue1.png in Resources */,
+				CD2255CE19ACCFA50005CE53 /* SVProgressHUD.bundle in Resources */,
 				CD0DBA41196DA52200C3A2A8 /* btngreen3.png in Resources */,
 				3A101F40199536C500AABE60 /* start2_320x480.jpg in Resources */,
 				CD0DBA36196DA52200C3A2A8 /* a1.png in Resources */,
@@ -1454,6 +1468,7 @@
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
 				3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */,
 				CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */,
+				CD2255CF19ACCFA50005CE53 /* SVProgressHUD.m in Sources */,
 				3AA9D63919840B74003068D4 /* AlixPayResult.m in Sources */,
 				CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */,
 				CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */,
@@ -1465,7 +1480,6 @@
 				9DE6B247197E8AE400393F93 /* SC_AudioOnLineViewController.m in Sources */,
 				3AA9D63D19840B74003068D4 /* SBJsonBase.m in Sources */,
 				9DB445CF199793F800839C55 /* UIScrollView+MJRefresh.m in Sources */,
-				9DE6B23E197E8A9F00393F93 /* SVProgressHUD.m in Sources */,
 				CD8E513B1971586E00771960 /* AFSecurityPolicy.m in Sources */,
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
 				9DB445CB199793F800839C55 /* MJRefreshConst.m in Sources */,
