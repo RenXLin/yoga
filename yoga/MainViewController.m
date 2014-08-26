@@ -146,9 +146,10 @@
             view.backgroundColor = [colorArray objectAtIndex:i * 3 +j];
             view.contentMode = UIViewContentModeScaleToFill;
             [whiteView addSubview:view];
-            
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
-            [view addGestureRecognizer:tap];
+            if (i*3+j+1 != 2 && i*3 +j+1 != 7 && i*3+j+1 != 8 && i*3+j+1 != 9) {
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
+                [view addGestureRecognizer:tap];
+            }
             view.autoresizingMask =
 //            UIViewAutoresizingFlexibleBottomMargin |
 //            UIViewAutoresizingFlexibleTopMargin |

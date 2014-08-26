@@ -1031,16 +1031,9 @@ NSString* UrlEncodedString(NSString* sourceText)
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
     
-        NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
-        
-        socialData.shareText = [NSString stringWithFormat:@"%@http://www.chinayogaonline.com/app",shareStr];
-        
-
-
+    NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
     
-    
-
-   
+    socialData.shareText = [NSString stringWithFormat:@"%@http://www.chinayogaonline.com/app",shareStr];
 }
 
 
