@@ -41,9 +41,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 
-    self.view.backgroundColor = [UIColor grayColor];
     UIView *nav;
     if ([[UIDevice currentDevice].systemVersion intValue] >= 7) {
         nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
