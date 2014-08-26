@@ -7,6 +7,8 @@
 //
 
 #import "RL_TVViewController.h"
+#import "RL_LoginViewController.h"
+#import "CountCenterViewController.h"
 #import "MarqueeLabel.h"
 #import "AFNetworking.h"
 #import "CurrentProgram.h"
@@ -187,7 +189,6 @@
     _ad.textColor = [UIColor whiteColor];
     _ad.backgroundColor = [UIColor clearColor];
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.500];
-    _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
     [_scrollView addSubview:_ad];
     
     // logoView
@@ -205,6 +206,8 @@
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
     loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
+    loginView.alpha = 0.8;
+    loginView.enabled = NO;
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:loginView];
@@ -260,8 +263,11 @@
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         if ([[responseObject objectForKey:@"data"] count] > 0) {
-            _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
-            
+            if (_programMode.ad) {
+                _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
+            }else{
+                _ad.text = @" 当    前    无    节    目          当    前    无    节    目          当    前   无   节    目          当    前    无    节    目";
+            }
             NSString * pathUrl = [_programMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
             NSString *urlStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
             
@@ -274,7 +280,7 @@
             }
         }else{
             [SVProgressHUD showWithStatus:@"当前无TV"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
             });
         }
@@ -367,7 +373,17 @@
 
 -(void)loginBtnClick
 {
-    
+    UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length!=0)
+    {
+        CountCenterViewController *count = [[CountCenterViewController alloc]init];
+        [self.navigationController pushViewController:count animated:YES];
+    }else
+    {
+        RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
+        login.fromStr  =@"fromStr";
+        [self.navigationController pushViewController:login animated:YES];
+    }
 }
 -(void)SettingBtnClick
 {

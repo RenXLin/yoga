@@ -7,6 +7,9 @@
 //
 
 #import "VideoPlayerController.h"
+#import "RL_LoginViewController.h"
+#import "CountCenterViewController.h"
+
 #import "MarqueeLabel.h"
 #import "AFNetworking.h"
 #import "CurrentProgram.h"
@@ -430,6 +433,8 @@
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
     loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 5, 40, 40);
+    loginView.alpha = 0.8;
+    loginView.enabled = NO;
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:loginView];
@@ -464,6 +469,8 @@
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
     settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 3, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    settingView.alpha = 0.8;
+    settingView.enabled = NO;
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:settingView];
 //    settingView.autoresizingMask =
@@ -908,7 +915,18 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 -(void)loginBtnClick
 {
-    
+    UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length!=0)
+    {
+        CountCenterViewController *count = [[CountCenterViewController alloc]init];
+        [self.navigationController pushViewController:count animated:YES];
+    }else
+    {
+        RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
+        login.fromStr  =@"fromStr";
+        [self.navigationController pushViewController:login animated:YES];
+    }
+
 }
 -(void)SettingBtnClick
 {

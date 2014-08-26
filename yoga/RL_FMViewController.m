@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 任小林. All rights reserved.
 //
 
+#import "RL_LoginViewController.h"
+#import "CountCenterViewController.h"
 #import "RL_FMViewController.h"
 #import "MarqueeLabel.h"
 #import "AFNetworking.h"
@@ -88,7 +90,7 @@
     
     UIScrollView *scrolView;
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
-        scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
+        scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     }else{
         scrolView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20)];
     }
@@ -107,7 +109,7 @@
     [scrolView addSubview:nav];
     
     //添加白色底板
-    whiteView = [[UIView alloc] initWithFrame:CGRectMake(5, nav.frame.origin.y + nav.frame.size.height + 10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
+    whiteView = [[UIView alloc] initWithFrame:CGRectMake(5,  nav.frame.size.height + nav.frame.origin.y + 10, [UIScreen mainScreen].bounds.size.width-10, [UIScreen mainScreen].bounds.size.width-10)];
     whiteView.tag = 5000;
     whiteView.backgroundColor = [UIColor whiteColor];
     [scrolView addSubview:whiteView];
@@ -215,7 +217,6 @@
     _ad.textColor = [UIColor whiteColor];
     _ad.backgroundColor = [UIColor clearColor];
     _ad.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.500];
-    _ad.text = @" 当 前 无 节 目         当 前 无 节 目          当 前 无 节 目          当 前 无 节 目";
     [scrolView addSubview:_ad];
     _ad.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
@@ -228,6 +229,7 @@
     // logoView
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width - 150 )/2, _ad.frame.origin.y +_ad.frame.size.height + 5, 150, 45)];
     logoView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"logo" ofType:@"png"]];
+    
     [scrolView addSubview:logoView];
     logoView.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
@@ -241,6 +243,8 @@
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
     loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, logoView.frame.origin.y + logoView.frame.size.height + 20, 40, 40);
     [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    loginView.alpha = 0.8;
+    loginView.enabled = NO;
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     [scrolView addSubview:loginView];
     loginView.autoresizingMask =
@@ -274,6 +278,9 @@
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
     settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 17, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    settingView.alpha = 0.8;
+    settingView.enabled = NO;
+
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [scrolView addSubview:settingView];
     settingView.autoresizingMask =
@@ -301,17 +308,11 @@
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         
-//        CGSize size;
-//        if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
-//            NSDictionary *fontDic = [NSDictionary dictionaryWithObjectsAndKeys:_ad.font,NSFontAttributeName   , nil];
-//             size =[_ad.text boundingRectWithSize:CGSizeMake(MAXFLOAT, 30) options:NSStringDrawingUsesLineFragmentOrigin attributes:fontDic context:nil].size;
-//        }else{
-//            size = [_ad.text sizeWithFont:_ad.font];
-//        }
-//        if (size.width < self.view.frame.size.width) {
-//            _ad.labelize = YES;
-//        }
-        _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
+        if (_programMode.ad) {
+            _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
+        }else{
+            _ad.text = @" 当    前    无    节    目          当    前    无    节    目          当    前   无   节    目          当    前    无    节    目";
+        }
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
             NSLog(@"%@",pathUrl);
@@ -334,7 +335,7 @@
 
         }else{
             [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"当前无%@",_FM_AV]];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
             });
         }
@@ -499,12 +500,22 @@
 
     [_mMpayer unSetupPlayer];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)loginBtnClick
 {
-
+    UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length!=0)
+    {
+        CountCenterViewController *count = [[CountCenterViewController alloc]init];
+        [self.navigationController pushViewController:count animated:YES];
+    }else
+    {
+        RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
+        login.fromStr  =@"fromStr";
+        [self.navigationController pushViewController:login animated:YES];
+    }
 }
 -(void)SettingBtnClick
 {

@@ -63,4 +63,6 @@ typedef enum {
 //创建textField
 +(UITextField *)createTextFieldWithFrame:(CGRect)frame borderStyle:(UITextBorderStyle)style placeHolder:(NSString *)placeHolder secureEntry:(BOOL)secure delegate:(id)delegate;
 
+
+
 @end

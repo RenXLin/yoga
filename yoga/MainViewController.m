@@ -256,7 +256,7 @@
         //推出魔方FM视图控制器：
         RL_FMViewController * fmV= [[RL_FMViewController alloc] init];
         fmV.FM_AV = @"瑜伽FM";
-        [self presentViewController:fmV animated:YES completion:nil];
+        [self.navigationController pushViewController:fmV animated:YES];
     }else if(view.tag == 3){
         //瑜伽TV
         RL_TVViewController *TVV = [[RL_TVViewController alloc] init];
@@ -276,7 +276,7 @@
         //瑜伽音乐
         RL_FMViewController * AV= [[RL_FMViewController alloc] init];
         AV.FM_AV = @"魔方音乐台";
-        [self presentViewController:AV animated:YES completion:nil];
+        [self.navigationController pushViewController:AV animated:YES];
     }else if (view.tag == 6){
        
             SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
@@ -300,9 +300,7 @@
         RL_LoginViewController *login = [[RL_LoginViewController alloc] init];
         login.fromStr  =@"fromStr";
         [self.navigationController pushViewController:login animated:YES];
-        
     }
-    
 }
 //设置：
 -(void)SettingBtnClick
