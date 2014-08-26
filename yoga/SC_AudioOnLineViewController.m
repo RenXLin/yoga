@@ -133,10 +133,13 @@
             
             
         }else{
+            [SVProgressHUD dismiss];
             
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
         
+        [SVProgressHUD dismiss];
     }];
     
     //                }
