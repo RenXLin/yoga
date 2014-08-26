@@ -343,12 +343,16 @@
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    loginView.alpha = 0.8;
+    loginView.enabled = NO;
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     loginView.tag = 112;
     [bgImgView addSubview:loginView];
     
         //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
+    settingView.alpha = 0.8;
+    settingView.enabled = NO;
     
     [settingView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
