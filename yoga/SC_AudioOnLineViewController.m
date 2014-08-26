@@ -707,6 +707,8 @@
                 //推出播放器视图：
                 VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
                 vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
+                vpc.sourceArray = pageDataArray;
+                vpc.index = indexPath.row;
                 vpc.titleName = self.Title;
                 vpc.audoOrNot = self.audio!=nil?@"音频":@"视频";
                 //            [self.na presentViewController:vpc animated:YES completion:nil];
