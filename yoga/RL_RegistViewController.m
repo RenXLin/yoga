@@ -46,9 +46,9 @@
 
     UIView *nav;
     if ([[UIDevice currentDevice].systemVersion intValue] >= 7) {
-        nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"登陆"];
+        nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"注册"];
     }else{
-        nav = [self myNavgationBar:CGRectMake(0, 0, self.view.frame.size.width, 44) andTitle:@"登陆"];    }
+        nav = [self myNavgationBar:CGRectMake(0, 0, self.view.frame.size.width, 44) andTitle:@"注册"];    }
     [self.view addSubview:nav];
     nav.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
