@@ -148,7 +148,6 @@
                      UIActivityIndicatorViewStyleWhiteLarge];
 	[_TVPlayView addSubview:_activityView];
     _activityView.center = _TVPlayView.center;
-    [_activityView startAnimating];
     _activityView.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
@@ -277,6 +276,7 @@
                 [_mMpayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
                 [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
                 [_mMpayer prepareAsync];
+                [_activityView startAnimating];
             }
         }else{
             [SVProgressHUD showWithStatus:@"当前无TV"];

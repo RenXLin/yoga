@@ -284,8 +284,10 @@
             audioView.Title = @"视频点播";
             [self.navigationController pushViewController:audioView animated:YES];
         
-    }else if(view.tag == 2 || view.tag == 7 || view.tag == 8 || view.tag == 9){
+    }else if(view.tag == 2 || view.tag == 8){
         [SVProgressHUD  showErrorWithStatus:@"无内容"];
+    }else if ( view.tag == 7 || view.tag == 9){
+        [SVProgressHUD  showErrorWithStatus:@"暂未开发"];
     }
 
 }

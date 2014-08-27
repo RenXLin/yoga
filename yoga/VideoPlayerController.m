@@ -250,7 +250,6 @@
 						  UIActivityIndicatorViewStyleWhiteLarge];
 	[_TVPlayView addSubview:_activityView];
     _activityView.center = _TVPlayView.center;
-    [_activityView startAnimating];
     _activityView.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleTopMargin |
@@ -496,6 +495,7 @@
         [session setCategory:AVAudioSessionCategoryPlayback error:nil];
 
     if (!_mPlayer) {
+        [_activityView startAnimating];
         _mPlayer = [VMediaPlayer sharedInstance];
         [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
         if ([self.titleName isEqualToString:@"音频点播"]) {
