@@ -91,7 +91,10 @@
     
     limit = 10;
     
+    
     [NSThread detachNewThreadSelector:@selector(request1) toTarget:self withObject:nil];
+    
+    
     
 }
 - (void)request1
@@ -101,12 +104,12 @@
     
     NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOPICKLIST_URL:SORT_VIDEOLIST_ULR];
     //      待加入缓冲提示：
-    SVProgressHUDShow;
+    //SVProgressHUDShow;
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
-            [SVProgressHUD dismiss];
+           // [SVProgressHUD dismiss];
             NSLog(@"%@",responseObject);
             
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
@@ -472,6 +475,8 @@
             //分类筛选
         case 0:
         {
+            
+            
             if(dataArray1.count!=0)
             {
                 LeveyPopListView *lplv1 = [[LeveyPopListView alloc] initWithTitle:@"分类选择" options:_options];
