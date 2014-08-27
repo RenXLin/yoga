@@ -34,6 +34,7 @@
     BOOL isFullScreen;
     UILabel *goodTimes;
     BOOL _fullTOfull;
+    BOOL _isCanChangeProgrom;
 }
 @end
 
@@ -179,7 +180,7 @@
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     }
     self.navigationController.navigationBarHidden = YES;
-
+    _isCanChangeProgrom = YES;
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -669,6 +670,8 @@ NSString* UrlEncodedString(NSString* sourceText)
     [player start];
     [_activityView stopAnimating];
     _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/3 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
+    
+    _isCanChangeProgrom = YES;
 
     if ([self.titleName isEqualToString:@"音频点播"]) {
         return;
@@ -691,17 +694,10 @@ NSString* UrlEncodedString(NSString* sourceText)
     [session setActive:YES error:nil];
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
-    if (!_mPlayer) {
-        _mPlayer = [VMediaPlayer sharedInstance];
-        [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
-        if ([self.titleName isEqualToString:@"音频点播"]) {
-            [_mPlayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
-        }else{
-            [_mPlayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
-        }
-        NSLog(@"%@",self.itemMode.path);
-        [_mPlayer prepareAsync];
-    }
+    _isCanChangeProgrom = YES;
+    
+    [self playLastOrNextProgram];
+    
 
 }
 
@@ -710,6 +706,9 @@ NSString* UrlEncodedString(NSString* sourceText)
 	NSLog(@"player error %@",arg);
     UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"播放失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [aleart show];
+    
+    _isCanChangeProgrom = YES;
+
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
@@ -720,9 +719,24 @@ NSString* UrlEncodedString(NSString* sourceText)
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
 {
-    long current = [_mPlayer getCurrentPosition];
+    long current;
+    static int aaa = 0;
+    current = [_mPlayer getCurrentPosition];
+    
     NSLog(@">>>>>>>>>>%ld  , %ld",current,lastDuration);
-   
+    if (current == -1 && lastDuration ==-1) {
+        aaa ++;
+        if (aaa > 300) {
+            aaa=0;
+            _isCanChangeProgrom = YES;
+            
+            [self playLastOrNextProgram];
+
+        }
+    }else{
+        aaa = 0;
+    }
+    NSLog(@"%d",aaa);
     if (current > lastDuration)
     {
 
@@ -841,8 +855,10 @@ NSString* UrlEncodedString(NSString* sourceText)
 -(void)playLastOrNextProgram
 {
     
-    [_mPlayer reset];
-
+    if (!_isCanChangeProgrom) {
+        return;
+    }
+    _isCanChangeProgrom = NO;
     
     NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSString * urlStr = UrlEncodedString(pathUrl);
@@ -853,6 +869,8 @@ NSString* UrlEncodedString(NSString* sourceText)
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
 //    _mPlayer = [VMediaPlayer sharedInstance];
+    [_mPlayer reset];
+    [_mPlayer unSetupPlayer];
     [_mPlayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
     if ([self.titleName isEqualToString:@"音频点播"]) {
         [_mPlayer setDataSource:[NSURL URLWithString:urlStr] header:nil];
