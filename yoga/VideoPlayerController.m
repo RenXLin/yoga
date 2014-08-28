@@ -487,6 +487,14 @@
 //    NSString *urlStr = [self removeSpace:self.itemMode.path];
 //    NSString * urlStr = [self.itemMode.path stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 
+    
+    if ([HttpConnectStatus isConnectToInitnet] == NO) {
+        UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前未连接网络！" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [aleart show];
+        return;
+    }
+    
+
     NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSString * urlStr = UrlEncodedString(pathUrl);
     NSLog(@"encode url :  %@",urlStr);

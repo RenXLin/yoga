@@ -19,7 +19,7 @@
     #import "HelpClass.h"
     #import"SVProgressHUD/SVProgressHUD.h"
     #import"AFHTTPRequestOperationManager.h"
-
+    #import"HttpConnectStatus.h"
 
 
 #endif

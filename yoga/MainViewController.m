@@ -245,7 +245,13 @@
         info.onliePeople = _onlinePeople.text;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     }];
-
+    
+    if ([HttpConnectStatus isConnectToInitnet] == NO) {
+        UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前未连接网络！" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [aleart show];
+        return;
+    }
+    
 }
 
 

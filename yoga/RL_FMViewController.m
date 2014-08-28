@@ -17,6 +17,8 @@
 #import "OneDayProgramCell.h"
 #import "UIImageView+AFNetworking.h"
 #import <AVFoundation/AVFoundation.h>
+#import "HttpConnectStatus.h"
+
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -299,6 +301,12 @@
         url = CURRENTPLAYFM_URL;
     }else{
         url = CURRENTPLAYAUDIO_URL;
+    }
+    
+    if ([HttpConnectStatus isConnectToInitnet] == NO) {
+        UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前未连接网络！" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [aleart show];
+        return;
     }
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];

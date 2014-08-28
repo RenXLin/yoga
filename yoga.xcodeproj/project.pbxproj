@@ -188,6 +188,8 @@
 		CD3E57D11984E23F000A360A /* UMSnsAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3E57C51984E23E000A360A /* UMSnsAccountViewController.xib */; };
 		CD3E57D21984E23F000A360A /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3E57C61984E23E000A360A /* UMSShareListController.xib */; };
 		CD3E57D31984E23F000A360A /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD3E57C71984E23E000A360A /* UMSocialSDKResourcesNew.bundle */; };
+		CD44638A19AF656E0027CB06 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CD44638919AF656E0027CB06 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CD44638D19AF674A0027CB06 /* HttpConnectStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CD44638C19AF674A0027CB06 /* HttpConnectStatus.m */; };
 		CD4482001997A6090061B535 /* video_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4481FE1997A6090061B535 /* video_pause.png */; };
 		CD4482011997A6090061B535 /* video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = CD4481FF1997A6090061B535 /* video_play.png */; };
 		CD4654AE1989264C00E871DB /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4654AA1989264C00E871DB /* libSocialQQ.a */; };
@@ -500,6 +502,10 @@
 		CD3E57C61984E23E000A360A /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		CD3E57C71984E23E000A360A /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		CD3E57C81984E23E000A360A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
+		CD44638819AF656E0027CB06 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CD44638919AF656E0027CB06 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CD44638B19AF674A0027CB06 /* HttpConnectStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpConnectStatus.h; sourceTree = "<group>"; };
+		CD44638C19AF674A0027CB06 /* HttpConnectStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpConnectStatus.m; sourceTree = "<group>"; };
 		CD4481FE1997A6090061B535 /* video_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_pause.png; sourceTree = "<group>"; };
 		CD4481FF1997A6090061B535 /* video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_play.png; sourceTree = "<group>"; };
 		CD4654AA1989264C00E871DB /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
@@ -731,6 +737,8 @@
 				CD38DD10197430A900D4C20D /* CurrentProgram.m */,
 				CDA734121987F49B009713D5 /* OneDayProgram.h */,
 				CDA734131987F49B009713D5 /* OneDayProgram.m */,
+				CD44638B19AF674A0027CB06 /* HttpConnectStatus.h */,
+				CD44638C19AF674A0027CB06 /* HttpConnectStatus.m */,
 			);
 			name = Modes;
 			sourceTree = "<group>";
@@ -1159,6 +1167,8 @@
 		CD8E51221971581C00771960 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				CD44638819AF656E0027CB06 /* Reachability.h */,
+				CD44638919AF656E0027CB06 /* Reachability.m */,
 				CD2255C919ACCFA50005CE53 /* SVProgressHUD */,
 				CD0F95771999358000EB7985 /* Vitamio */,
 				9DB445B8199793F800839C55 /* MJRefresh */,
@@ -1479,6 +1489,7 @@
 				CD08AEF91972830F00C50184 /* UserInfo.m in Sources */,
 				9DE6B247197E8AE400393F93 /* SC_AudioOnLineViewController.m in Sources */,
 				3AA9D63D19840B74003068D4 /* SBJsonBase.m in Sources */,
+				CD44638D19AF674A0027CB06 /* HttpConnectStatus.m in Sources */,
 				9DB445CF199793F800839C55 /* UIScrollView+MJRefresh.m in Sources */,
 				CD8E513B1971586E00771960 /* AFSecurityPolicy.m in Sources */,
 				CD8E51371971586E00771960 /* AFHTTPRequestOperation.m in Sources */,
@@ -1506,6 +1517,7 @@
 				9DE6B24A197EA57C00393F93 /* SC_popView.m in Sources */,
 				3AA9D63B19840B74003068D4 /* NSString+SBJSON.m in Sources */,
 				3AA9D63C19840B74003068D4 /* SBJSON.m in Sources */,
+				CD44638A19AF656E0027CB06 /* Reachability.m in Sources */,
 				CD8E51381971586E00771960 /* AFHTTPRequestOperationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
