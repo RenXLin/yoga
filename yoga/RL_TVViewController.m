@@ -241,7 +241,7 @@
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
     settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, logoView.frame.origin.y + logoView.frame.size.height + 17, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    settingView.alpha = 0.8;
+    settingView.alpha = 0.5;
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
     [_scrollView addSubview:settingView];
     settingView.autoresizingMask =
