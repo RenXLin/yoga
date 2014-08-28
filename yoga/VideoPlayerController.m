@@ -657,6 +657,9 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
+
+    [SVProgressHUD dismiss];
+    
     NSLog(@"start>>>>>>>>>>>>");
     lastDuration = 0;
     _duration  = [player getDuration];
@@ -818,8 +821,10 @@ NSString* UrlEncodedString(NSString* sourceText)
     }else if (btn.tag == 2){
         //last program
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
-            [SVProgressHUD showSuccessWithStatus:@"下一首"];
-            
+            [SVProgressHUD showWithStatus:@"上一节目！"];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [SVProgressHUD dismiss];
+//            });
         }
         if (_index > 0) {
             _index --;
@@ -845,8 +850,10 @@ NSString* UrlEncodedString(NSString* sourceText)
         
     }else if (btn.tag == 4){
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
-            [SVProgressHUD showSuccessWithStatus:@"下一首"];
-
+            [SVProgressHUD showWithStatus:@"下一节目！"];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [SVProgressHUD dismiss];
+//            });
         }
 
         //next program
