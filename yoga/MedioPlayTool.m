@@ -122,8 +122,14 @@
         [_lastProgram setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin |
          UIViewAutoresizingFlexibleBottomMargin |
          UIViewAutoresizingFlexibleWidth];
+        
+        
     }
     return self;
+}
+-(void)noResTap
+{
+
 }
 -(void)setBtnDelegate:(id)target andSEL:(SEL)sel andSliderSel:(SEL)sliderChange andTapGesture:(SEL)GestureSel
 {

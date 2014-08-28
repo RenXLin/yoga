@@ -831,9 +831,12 @@ NSString* UrlEncodedString(NSString* sourceText)
         btn.selected = !btn.selected;
         
         if ([_mPlayer isPlaying]) {
-            [_mPlayer pause];
             [btn setSelected:YES];
+
+            [_mPlayer pause];
         }else{
+            [btn setSelected:NO];
+
             [_mPlayer start];
         }
         
