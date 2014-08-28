@@ -313,6 +313,9 @@
         }else{
             _ad.text = @" 当    前    无    节    目          当    前    无    节    目          当    前   无   节    目          当    前    无    节    目";
         }
+        
+        responseObject = nil;
+        
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
             NSLog(@"%@",pathUrl);
