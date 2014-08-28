@@ -817,8 +817,10 @@ NSString* UrlEncodedString(NSString* sourceText)
         
     }else if (btn.tag == 2){
         //last program
-        [SVProgressHUD showSuccessWithStatus:@"上一首"];
-
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
+            [SVProgressHUD showSuccessWithStatus:@"下一首"];
+            
+        }
         if (_index > 0) {
             _index --;
         }else{
@@ -842,7 +844,10 @@ NSString* UrlEncodedString(NSString* sourceText)
         }
         
     }else if (btn.tag == 4){
-        [SVProgressHUD showSuccessWithStatus:@"下一首"];
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
+            [SVProgressHUD showSuccessWithStatus:@"下一首"];
+
+        }
 
         //next program
         if (_index < [_sourceArray count] - 1) {
