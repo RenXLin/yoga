@@ -16,12 +16,10 @@
 
 +(BOOL)isConnectToInitnet
 {
-    Reachability *reach = [Reachability reachabilityWithHostName:@"http://www.baidu.com"];
-    if ([reach currentReachabilityStatus] == NotReachable) {
-        return  NO;
+    if (![[Reachability reachabilityForInternetConnection] isReachableViaWWAN] && ![[Reachability reachabilityForInternetConnection] isReachableViaWiFi]) {
+        return NO;
     }
-
-    return YES;
+    return YES;;
 }
 
 
