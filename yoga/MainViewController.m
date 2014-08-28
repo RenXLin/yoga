@@ -287,9 +287,10 @@
             [self.navigationController pushViewController:audioView animated:YES];
         
     }else if(view.tag == 2 || view.tag == 8){
-        [SVProgressHUD  showErrorWithStatus:@"无内容"];
+       KAlert(@"暂未开发");
     }else if ( view.tag == 7 || view.tag == 9){
-        [SVProgressHUD  showErrorWithStatus:@"暂未开发"];
+        
+        KAlert(@"暂未开发");
     }
 
 }
@@ -315,7 +316,7 @@
 //    RL_SettingViewController *settingV = [[RL_SettingViewController alloc] init];
 //    [self presentViewController:settingV animated:YES completion:nil];
     
-    [SVProgressHUD showErrorWithStatus:@"暂无此功能"];
+    KAlert(@"暂未开发");
 
 }
 
