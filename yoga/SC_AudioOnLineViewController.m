@@ -99,17 +99,24 @@
 }
 - (void)request1
 {
+    if(iOS7)
+    {
+        SVProgressHUDShow;
+    }
+    
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
     NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOPICKLIST_URL:SORT_VIDEOLIST_ULR];
     //      待加入缓冲提示：
-    //SVProgressHUDShow;
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
-            
-           // [SVProgressHUD dismiss];
+            if(iOS7)
+            {
+                [SVProgressHUD dismiss];
+ 
+            }
             NSLog(@"%@",responseObject);
             
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
@@ -118,7 +125,7 @@
                 for(NSDictionary *dict in [responseObject objectForKey:@"data"])
                 {
                     
-                    
+                   
                     SC_Model *model = [[SC_Model alloc]init];
                     [model setValuesForKeysWithDictionary:dict];
                     [dataArray1 addObject:model];
@@ -136,13 +143,26 @@
             
             
         }else{
-            [SVProgressHUD dismiss];
+            if(iOS7)
+            {
+                [SVProgressHUD dismiss];
+                
+            }
+            
+            NSString *str = [responseObject objectForKey:@"msg"];
+            KAlert(str);
             
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
         
-        [SVProgressHUD dismiss];
+        if(iOS7)
+        {
+            [SVProgressHUD dismiss];
+            
+        }
+        KAlert(@"加载失败");
+        
     }];
     
     //                }
@@ -155,14 +175,23 @@
 }
 - (void)request
 {
+    if(iOS7)
+    {
+       SVProgressHUDShow;
+    }
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
     NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL];
     //      待加入缓冲提示：
+    
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            if(iOS7)
+            {
+                 [SVProgressHUD dismiss];
+            }
             
             NSLog(@"%@",responseObject);
             [pageDataArray removeAllObjects];
@@ -189,9 +218,22 @@
             [TableView reloadData];
         }else{
             [TableView headerEndRefreshing];
+            if(iOS7)
+            {
+                [SVProgressHUD dismiss];
+            }
+
+            
+            NSString *str = [responseObject objectForKey:@"msg"];
+            KAlert(str);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [TableView headerEndRefreshing];
+        if(iOS7)
+        {
+            [SVProgressHUD dismiss];
+        }
+         KAlert(@"加载失败");
     }];
     
 
@@ -897,9 +939,19 @@
     
     NSString *URLStr = [NSString stringWithFormat:@"%@?cid=%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL,model.Id];
     //      待加入缓冲提示：
+    if(iOS7)
+    {
+       SVProgressHUDShow;
+    }
+    
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            if(iOS7)
+            {
+             [SVProgressHUD dismiss];
+            }
+            
             
             NSLog(@"%@",responseObject);
             
@@ -927,9 +979,21 @@
             
             [TableView reloadData];
         }else{
+            if(iOS7)
+            {
+               [SVProgressHUD dismiss];
+            }
             
+            NSString *str = [responseObject objectForKey:@"msg"];
+            KAlert(str);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if(iOS7)
+        {
+            [SVProgressHUD dismiss];
+        }
+        KAlert(@"加载失败");
         
     }];
     

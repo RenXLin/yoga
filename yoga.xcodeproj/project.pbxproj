@@ -1263,7 +1263,7 @@
 				ORGANIZATIONNAME = "任小林";
 				TargetAttributes = {
 					CD0DB98F196DA50300C3A2A8 = {
-						DevelopmentTeam = FA78T6VRG8;
+						DevelopmentTeam = PZN2B5DWMJ;
 					};
 					CD0DB9AA196DA50300C3A2A8 = {
 						TestTargetID = CD0DB98F196DA50300C3A2A8;
@@ -1649,7 +1649,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "yoga/yoga-Prefix.pch";
 				INFOPLIST_FILE = "yoga/yoga-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/Vitamio",
@@ -1690,7 +1690,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "yoga/yoga-Prefix.pch";
 				INFOPLIST_FILE = "yoga/yoga-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/Vitamio",
