@@ -213,9 +213,9 @@
                 }
                 
             }
-            
-            [TableView headerEndRefreshing];
             [TableView reloadData];
+            [TableView headerEndRefreshing];
+            
         }else{
             [TableView headerEndRefreshing];
             if(iOS7)
@@ -459,12 +459,20 @@
     
     NSLog(@"%@",URLStr);
     //      待加入缓冲提示：
-    SVProgressHUDShow;
+    if(iOS7)
+    {
+       SVProgressHUDShow;
+    }
+    
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            if(iOS7)
+            {
+               [SVProgressHUD dismiss];
+            }
             
-            [SVProgressHUD dismiss];
+           
             NSLog(@"%@",responseObject);
             
             [pageDataArray removeAllObjects];
@@ -486,8 +494,6 @@
                         [dataArray addObject:model];
                     }
                     
-                    
-                    
                 }
                 
             }
@@ -496,10 +502,18 @@
             
             
         }else{
-            [SVProgressHUD dismiss];
+            if(iOS7)
+            {
+              [SVProgressHUD dismiss];
+            }
+            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
+        if(iOS7)
+        {
+          [SVProgressHUD dismiss];
+        }
+        
     }];
 
     

@@ -35,6 +35,10 @@
 {
     self.navigationController.navigationBarHidden =YES;
 }
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -185,7 +189,7 @@
             //[self presentViewController:order animated:YES completion:nil];
             order.oid = [dataDict objectForKey:@"oid"];
             order.price = [dataDict objectForKey:@"price"];
-            [self.navigationController pushViewController:order animated:YES];
+            [self.navigationController pushViewController:order animated:NO];
             
         }
             break;

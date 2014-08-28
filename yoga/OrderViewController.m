@@ -46,7 +46,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
     self.navigationController.navigationBarHidden =YES;
+    [self request];
     
 }
 
@@ -54,7 +56,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self request];
+    
     
     if([[UIDevice currentDevice].systemVersion doubleValue]>7)
     {
@@ -74,11 +76,18 @@
     
     NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/getMoFangInfo"];
     //      待加入缓冲提示：
+    if(iOS7)
+    {
+        SVProgressHUDShow;
+    }
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
-            
+            if(iOS7)
+            {
+                [SVProgressHUD dismiss];
+            }
             
             dataDict = [responseObject objectForKey:@"data"];
             
@@ -89,9 +98,20 @@
             
             
         }else{
+            if(iOS7)
+            {
+                [SVProgressHUD dismiss];
+            }
             
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        
+        if(iOS7)
+        {
+            [SVProgressHUD dismiss];
+        }
+       
         
     }];
 
@@ -131,11 +151,25 @@
         NSString *str3 = [NSString stringWithFormat:@"%@",[[dataDict objectForKey:@"price"] description]];
         NSString *str4 = [NSString stringWithFormat:@"说明"];
         NSString *str5 = [NSString stringWithFormat:@"%@",[dataDict objectForKey:@"ldesc"]];
+    
+       float Height = [self autoSizeWidthWith:str5];
+    NSLog(@"%ld",(long)Height);
+    
         
         NSArray *arr = [NSArray arrayWithObjects:str1,str2,str3,str4,str5, nil];
         
         for (int i=0; i<5; i++) {
-            UILabel *lab  = [UIFactory createLabelWithFrame:CGRectMake(10, 10+30*i, 200, 20) text:[arr objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
+            
+            
+            UILabel *lab  = [UIFactory createLabelWithFrame:CGRectMake(10, 10+30*i, 300, 20) text:[arr objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
+            
+            
+            if(i==4)
+            {
+               lab.numberOfLines = 0;
+                lab.frame = CGRectMake(lab.frame.origin.x, lab.frame.origin.y, lab.frame.size.width, Height);
+                bgImgView1.frame = CGRectMake(0,nav.frame.size.height + 20, KscreenWidth, 160+Height);
+            }
             [bgImgView1 addSubview:lab];
         
         
@@ -145,6 +179,30 @@
     
     
 }
+- (CGFloat)autoSizeWidthWith:(NSString *)lab
+{
+    if(iOS7)
+    {
+        
+        CGSize constraint = CGSizeMake(300, 20000.0f);
+        
+        NSAttributedString *attributedText = [[NSAttributedString alloc]initWithString:lab attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+        CGRect rect = [attributedText boundingRectWithSize:constraint
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                   context:nil];
+        
+        
+//        NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:13]};
+//        CGRect rect = [lab boundingRectWithSize:CGSizeMake(300,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+        return rect.size.height;
+    }else
+    {
+        CGSize size = [lab sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(300,CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+        return size.height;
+        
+    }
+}
+
 - (void)createUI
 {
 
