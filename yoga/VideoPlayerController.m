@@ -715,6 +715,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 {
     NSLog(@"跳转完成！");
     [_activityView stopAnimating];
+    [_mPlayer start];
 }
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
@@ -726,7 +727,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     NSLog(@">>>>>>>>>>%ld  , %ld",current,lastDuration);
     if (current == -1 && lastDuration ==-1) {
         aaa ++;
-        if (aaa > 200) {
+        if (aaa > 50) {
             aaa=0;
             _isCanChangeProgrom = YES;
             
@@ -786,7 +787,6 @@ NSString* UrlEncodedString(NSString* sourceText)
 	NSLog(@"seek = %ld", seek);
 	[_activityView startAnimating];
     [_mPlayer seekTo:seek];
-    [_mPlayer setPlaybackSpeed:0.5];
 }
 -(void)sliderChange:(UISlider*)slider
 {
@@ -794,6 +794,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     [_activityView startAnimating];
     long seek = _duration * slider.value;
     [_mPlayer seekTo:seek];
+    
     
 }
 -(void)playSettingChange:(UIButton *)btn
