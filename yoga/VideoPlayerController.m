@@ -726,7 +726,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     NSLog(@">>>>>>>>>>%ld  , %ld",current,lastDuration);
     if (current == -1 && lastDuration ==-1) {
         aaa ++;
-        if (aaa > 300) {
+        if (aaa > 200) {
             aaa=0;
             _isCanChangeProgrom = YES;
             
