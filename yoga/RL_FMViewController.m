@@ -306,6 +306,7 @@
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
+
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         
         if (_programMode.ad) {
@@ -313,8 +314,6 @@
         }else{
             _ad.text = @" 当    前    无    节    目          当    前    无    节    目          当    前   无   节    目          当    前    无    节    目";
         }
-        
-        responseObject = nil;
         
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
@@ -338,7 +337,7 @@
 
         }else{
             [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"当前无%@",_FM_AV]];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
             });
         }

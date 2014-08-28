@@ -261,6 +261,7 @@
     [manager GET:CURRENTPLAYVIDEO_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
+
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             if (_programMode.ad) {
@@ -281,7 +282,7 @@
             }
         }else{
             [SVProgressHUD showWithStatus:@"当前无TV"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
             });
         }
