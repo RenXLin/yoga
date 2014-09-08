@@ -44,6 +44,9 @@
 
 - (BOOL)shouldAutorotate
 {
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        return NO;
+    }
     if ([self.topViewController isKindOfClass:[VideoPlayerController class]]) {
         if ([((VideoPlayerController *)self.topViewController).titleName isEqualToString:@"视频点播"]){
             return YES;
