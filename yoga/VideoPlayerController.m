@@ -95,7 +95,6 @@
 //            从纵屏的状态转向横屏：
             
             //非全屏的时候选择切换全屏：
-
             [_TVPlayView removeFromSuperview];
             _TVPlayView.frame = self.view.bounds;
             [self.view addSubview:_TVPlayView];
