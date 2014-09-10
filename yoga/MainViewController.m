@@ -135,7 +135,7 @@
     [colorArray addObject:color9];
     
     
-    NSArray *titleArray = [NSArray arrayWithObjects:@"瑜伽 FM",@"瑜伽 TV",@"魔方音乐台",@"音频直播",@"视频直播", nil];
+    NSArray *titleArray = [NSArray arrayWithObjects:@"瑜伽 FM",@"瑜伽 TV",@"魔方音乐台", nil];
     NSArray *clickArray = @[@"音频点播",@"视频点播"];
 //    NSArray *imageArray = [NSArray arrayWithObjects:@"fm.png",@"string",@"<#string#>",@"<#string#>", nil];
     CGFloat rect_width = (whiteView.frame.size.width - GAP_WITH * 4) / 3;
@@ -163,7 +163,7 @@
             
             //加入名称或图标：
             if (i * 3 + j + 1 == 7 || i * 3 + j + 1 == 9) {
-                [view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:YES]];
+                //[view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:YES]];
             }else if ((i * 3 + j + 1) %2 == 1) {
                 [view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:NO]];
             }else if((i * 3 + j + 1) == 4 || (i * 3 + j + 1) == 6){
@@ -227,6 +227,8 @@
     settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, loginView.frame.origin.y - 2, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
+    settingView.enabled = NO;
+    settingView.alpha = 0.8;
     [self.view addSubview:settingView];
     settingView.autoresizingMask=
     UIViewAutoresizingFlexibleBottomMargin |
@@ -258,9 +260,9 @@
 //魔方功能视图切换：
 -(void)tapClick:(UITapGestureRecognizer *)tap
 {
-    NSLog(@"gestuer tap");
+    //NSLog(@"gestuer tap");
     UIView *view = tap.view;
-    NSLog(@"%ld",(long)view.tag);
+   // NSLog(@"%ld",(long)view.tag);
     if (view.tag == 1) {
         //推出魔方FM视图控制器：
         RL_FMViewController * fmV= [[RL_FMViewController alloc] init];
@@ -293,10 +295,10 @@
             [self.navigationController pushViewController:audioView animated:YES];
         
     }else if(view.tag == 2 || view.tag == 8){
-       KAlert(@"暂未开发");
+       //KAlert(@"暂未开发");
     }else if ( view.tag == 7 || view.tag == 9){
         
-        KAlert(@"暂未开发");
+        //KAlert(@"暂未开发");
     }
 
 }
@@ -322,7 +324,7 @@
 //    RL_SettingViewController *settingV = [[RL_SettingViewController alloc] init];
 //    [self presentViewController:settingV animated:YES completion:nil];
     
-    KAlert(@"暂未开发");
+    //KAlert(@"暂未开发");
 
 }
 

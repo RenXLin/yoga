@@ -154,7 +154,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-	NSLog(@"NAL 2HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
+	//NSLog(@"NAL 2HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
 }
 
 //刷新在线人数 method
@@ -496,7 +496,7 @@
 
     NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSString * urlStr = UrlEncodedString(pathUrl);
-    NSLog(@"encode url :  %@",urlStr);
+    //NSLog(@"encode url :  %@",urlStr);
     
         AVAudioSession *session = [AVAudioSession sharedInstance];
         [session setActive:YES error:nil];
@@ -511,7 +511,7 @@
         }else{
             [_mPlayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
         }
-        NSLog(@"%@",self.itemMode.path);
+        //NSLog(@"%@",self.itemMode.path);
         [_mPlayer prepareAsync];
     }
 }
@@ -541,7 +541,7 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed: %@",error);
+        //NSLog(@"failed: %@",error);
         
     }];
 }
@@ -598,7 +598,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 
     if ([self.titleName isEqualToString:@"视频点播"]) {
 
-        NSLog(@"%d",self.interfaceOrientation);
+        //NSLog(@"%d",self.interfaceOrientation);
     
         if (isFullScreen == NO && (
             self.interfaceOrientation == UIInterfaceOrientationPortrait ||
@@ -633,7 +633,7 @@ NSString* UrlEncodedString(NSString* sourceText)
             [[UIApplication sharedApplication] setStatusBarHidden:NO];
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
-            NSLog(@"非全屏播放");
+           // NSLog(@"非全屏播放");
             isFullScreen = NO;
             _mTools.isHidden = NO;
             _mTools.hidden = NO;
@@ -667,7 +667,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 
     [SVProgressHUD dismiss];
     
-    NSLog(@"start>>>>>>>>>>>>");
+    //NSLog(@"start>>>>>>>>>>>>");
     lastDuration = 0;
     _duration  = [player getDuration];
     long second = _duration / 1000;
@@ -690,7 +690,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
-    NSLog(@"player complete");
+    //NSLog(@"player complete");
     [_mPlayer reset];
     [player unSetupPlayer];
     _mPlayer = nil;
@@ -698,7 +698,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     
     NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSString * urlStr = UrlEncodedString(pathUrl);
-    NSLog(@"encode url :  %@",urlStr);
+   // NSLog(@"encode url :  %@",urlStr);
     
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:nil];
@@ -713,7 +713,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
-	NSLog(@"player error %@",arg);
+	//NSLog(@"player error %@",arg);
     UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"播放失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [aleart show];
     
@@ -723,7 +723,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 - (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
 {
-    NSLog(@"跳转完成！");
+   // NSLog(@"跳转完成！");
     [_activityView stopAnimating];
     [_mPlayer start];
 }
@@ -734,7 +734,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     static int aaa = 0;
     current = [_mPlayer getCurrentPosition];
     
-    NSLog(@">>>>>>>>>>%ld  , %ld",current,lastDuration);
+   // NSLog(@">>>>>>>>>>%ld  , %ld",current,lastDuration);
     if (current == -1 && lastDuration ==-1) {
         aaa ++;
         if (aaa > 50) {
@@ -747,7 +747,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     }else{
         aaa = 0;
     }
-    NSLog(@"%d",aaa);
+    //NSLog(@"%d",aaa);
     if (current > lastDuration)
     {
 
@@ -794,7 +794,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     CGFloat value = s.minimumValue + delta;
     [s setValue:value animated:YES];
     long seek = percentage * _duration;
-	NSLog(@"seek = %ld", seek);
+	//NSLog(@"seek = %ld", seek);
 	[_activityView startAnimating];
     [_mPlayer seekTo:seek];
 }
@@ -809,7 +809,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 }
 -(void)playSettingChange:(UIButton *)btn
 {
-    NSLog(@"%ld",(long)btn.tag);
+   // NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 1) {
 
         //当为视频界面时切换全屏
@@ -885,7 +885,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     
     NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSString * urlStr = UrlEncodedString(pathUrl);
-    NSLog(@"encode url :  %@",urlStr);
+   // NSLog(@"encode url :  %@",urlStr);
     
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:nil];
@@ -900,7 +900,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     }else{
         [_mPlayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
     }
-    NSLog(@"%@",self.itemMode.path);
+   // NSLog(@"%@",self.itemMode.path);
     [_mPlayer prepareAsync];
 
 }
@@ -1032,7 +1032,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     if (btn.tag == 1) {
         NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的%@:%@", self.audoOrNot,_itemMode.title];
         
-        NSLog(@"%@",shareStr);
+        //NSLog(@"%@",shareStr);
 
         //分享
        // [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:@"http://www.chinayogaonline.com/upload/ad/001.jpg"];
@@ -1093,7 +1093,7 @@ NSString* UrlEncodedString(NSString* sourceText)
 //        BOOL isLike = socialData.isLike;
         [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
             //获取请求结果
-            NSLog(@"resposne is %@",response);
+            //NSLog(@"resposne is %@",response);
         }];
         
         
@@ -1148,7 +1148,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     if(response.responseCode == UMSResponseCodeSuccess)
     {
         //得到分享到的微博平台名
-        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功" message:[NSString stringWithFormat:@"已分享到%@",[[response.data allKeys] objectAtIndex:0]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
     }

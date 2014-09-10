@@ -84,7 +84,7 @@
         _TVPlayView.frame = self.view.bounds;
         [self.view addSubview:_TVPlayView];
         
-        NSLog(@"%@",NSStringFromCGRect(_TVPlayView.frame));
+        //NSLog(@"%@",NSStringFromCGRect(_TVPlayView.frame));
         
 	} else {
         
@@ -94,7 +94,7 @@
         [self.view addSubview:_scrollView];
         
 	}
-	NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
+	//NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
 }
 
 //刷新在线人数 method
@@ -124,7 +124,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
-    NSLog(@"%@",[UIDevice currentDevice].systemVersion);
+    //NSLog(@"%@",[UIDevice currentDevice].systemVersion);
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     }else{
@@ -265,7 +265,7 @@
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:CURRENTPLAYVIDEO_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success:%@",responseObject);
+        //NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
 
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
@@ -294,7 +294,7 @@
         }
        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed:%@",error);
+       // NSLog(@"failed:%@",error);
         
     }];
     
@@ -313,12 +313,12 @@
 {
     [player start];
     [_activityView stopAnimating];
-    NSLog(@"start>>>>>>>>>>>>");
+    //NSLog(@"start>>>>>>>>>>>>");
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
-    NSLog(@"player complete");
+    //NSLog(@"player complete");
     [player reset];
     [player unSetupPlayer];
     
@@ -329,7 +329,7 @@
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:CURRENTPLAYVIDEO_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success:%@",responseObject);
+       // NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         if ([[responseObject objectForKey:@"data"] count] > 0) {
@@ -353,7 +353,7 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed:%@",error);
+        //NSLog(@"failed:%@",error);
         
     }];
 
@@ -361,7 +361,7 @@
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
-	NSLog(@"player error");
+	//NSLog(@"player error");
 }
 
 - (void)didReceiveMemoryWarning
@@ -474,7 +474,7 @@
       
         NSString *shareStr = [NSString stringWithFormat:@"分享一款实用和内容丰富的瑜伽APP《瑜伽魔方》，这里有我喜欢的瑜伽TV:%@",_programMode.title];
         
-        NSLog(@"%@",shareStr);
+      //  NSLog(@"%@",shareStr);
         
         
         [UMSocialData defaultData].extConfig.tencentData.shareImage = [UIImage imageNamed:@"icon.png"]; //分享到腾讯微博图片
@@ -517,7 +517,7 @@
         UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
         [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
             //获取请求结果
-            NSLog(@"resposne is %@",response);
+            //NSLog(@"resposne is %@",response);
         }];
         
         
@@ -548,7 +548,7 @@
     if(response.responseCode == UMSResponseCodeSuccess)
     {
         //得到分享到的微博平台名
-        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+       // NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功" message:[NSString stringWithFormat:@"已分享到%@",[[response.data allKeys] objectAtIndex:0]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
     }
@@ -600,7 +600,7 @@
     _fileList = [[NSMutableArray alloc] init];
 
     [manager GET:VIDEOLIST_ULR parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success:%@",responseObject);
+        //NSLog(@"success:%@",responseObject);
         NSArray *dataArr = [responseObject objectForKey:@"data"];
         for (NSDictionary *dic in dataArr) {
             OneDayProgram *oneProgram = [[OneDayProgram alloc] init];
@@ -609,7 +609,7 @@
         }
         [fileTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed:%@",error);
+       // NSLog(@"failed:%@",error);
     }];
 }
 -(OneDayProgramCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

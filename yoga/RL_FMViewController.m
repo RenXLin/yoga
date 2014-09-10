@@ -312,7 +312,7 @@
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success:%@",responseObject);
+        //NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
 
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
@@ -325,7 +325,7 @@
         
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
-            NSLog(@"%@",pathUrl);
+            //NSLog(@"%@",pathUrl);
 
 //            pathUrl = [self removeSpace:pathUrl];
             pathUrl = [pathUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
@@ -351,7 +351,7 @@
         }
         
         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed:%@",error);
+        //NSLog(@"failed:%@",error);
             UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求播放路径失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [aleart show];
     }];
@@ -386,7 +386,7 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed: %@",error);
+       // NSLog(@"failed: %@",error);
         
     }];
     
@@ -428,12 +428,12 @@
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
     [player start];
-    NSLog(@"start>>>>>>>>>>>>");
+   // NSLog(@"start>>>>>>>>>>>>");
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
-    NSLog(@"player complete");
+    //NSLog(@"player complete");
     [player reset];
     [player unSetupPlayer];
     
@@ -447,14 +447,14 @@
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success:%@",responseObject);
+        //NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
         
         _ad.text = [NSString stringWithFormat:@"%@                     %@                           %@",_programMode.ad,_programMode.ad,_programMode.ad];
         if ([[responseObject objectForKey:@"data"] count] > 0) {
             NSString *pathUrl = [[responseObject objectForKey:@"data"] objectForKey:@"path"];
-            NSLog(@"%@",pathUrl);
+           // NSLog(@"%@",pathUrl);
             
             pathUrl = [pathUrl stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
             pathUrl = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
@@ -479,7 +479,7 @@
         }
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed:%@",error);
+        //NSLog(@"failed:%@",error);
         UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求播放路径失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [aleart show];
     }];
@@ -488,7 +488,7 @@
 
 - (void)mediaPlayer:(VMediaPlayer *)player error:(id)arg
 {
-	NSLog(@"player erro:r%@",arg);
+	//NSLog(@"player erro:r%@",arg);
     [_mMpayer reset];
     
     [_mMpayer unSetupPlayer];
@@ -692,7 +692,7 @@
         UMSocialDataService *socialDataService = [[UMSocialDataService alloc] initWithUMSocialData:socialData];
         [socialDataService postAddLikeOrCancelWithCompletion:^(UMSocialResponseEntity *response){
             //获取请求结果
-            NSLog(@"resposne is %@",response);
+           // NSLog(@"resposne is %@",response);
         }];
         
         
@@ -724,7 +724,7 @@
     if(response.responseCode == UMSResponseCodeSuccess)
     {
         //得到分享到的微博平台名
-        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+        //NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功" message:[NSString stringWithFormat:@"已分享到%@",[[response.data allKeys] objectAtIndex:0]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
     }
@@ -812,7 +812,7 @@
         url = AUDIOLIST_URL;
     
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success:%@",responseObject);
+        //NSLog(@"success:%@",responseObject);
         NSArray *dataArr = [responseObject objectForKey:@"data"];
         for (NSDictionary *dic in dataArr) {
             OneDayProgram *oneProgram = [[OneDayProgram alloc] init];
@@ -821,7 +821,7 @@
         }
         [fileTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed:%@",error);
+       // NSLog(@"failed:%@",error);
     }];
 }
 

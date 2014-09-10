@@ -60,7 +60,7 @@
     NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/createOrder?token=%@",info.token];
     //      待加入缓冲提示：
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
             
@@ -116,7 +116,7 @@
     NSString *email = [[userInfo.userDict objectForKey:@"email"] description];
     countArray = [NSMutableArray arrayWithObjects:userName,email, nil];
     
-    NSLog(@"%@",userInfo.userDict);
+   // NSLog(@"%@",userInfo.userDict);
     
     NSArray *Rrr = [userInfo.userDict objectForKey:@"roleInfo"];
     for (NSDictionary *dict in Rrr)

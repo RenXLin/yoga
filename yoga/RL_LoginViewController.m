@@ -153,7 +153,7 @@
 }
 -(void)btnClick:(UIButton *)btn
 {
-    NSLog(@"%ld",(long)btn.tag);
+    //NSLog(@"%ld",(long)btn.tag);
     if (btn.tag == 2) {
         
         if(_account.text.length == 0)
@@ -175,9 +175,9 @@
             //待加入缓冲提示：
             [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 
-                NSLog(@"%@",responseObject);
+              //  NSLog(@"%@",responseObject);
                 if ([[responseObject objectForKey:@"code"] intValue] == 200) {
-                    NSLog(@"登陆成功");
+                    //NSLog(@"登陆成功");
                     
                     UserInfo *userInfo = [UserInfo shareUserInfo];
                     userInfo.token = [[responseObject objectForKey:@"data"] objectForKey:@"token"];

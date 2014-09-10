@@ -66,7 +66,7 @@
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
     BOOL isFirst = [usrDef boolForKey:@"isFirst"];
     if (!isFirst) {
-        NSLog(@"第一次启动应用");
+        //NSLog(@"第一次启动应用");
         [usrDef setBool:YES forKey:@"isFirst"];
         [usrDef synchronize];
     //加入引导界面
@@ -80,7 +80,7 @@
 
         for (int i = 0; i < 3; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * [UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-            NSLog(@"%@",[UIDevice currentDevice].model);
+           // NSLog(@"%@",[UIDevice currentDevice].model);
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
                 if (MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height) < 500) {
                     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"start%d_320x480.jpg",i+1]];
@@ -134,7 +134,7 @@
 }
 -(void)StartBtnClick
 {
-    NSLog(@"start");
+   // NSLog(@"start");
     [launchScrollView removeFromSuperview];
     [pageControl removeFromSuperview];
     MainViewController *mvc = [[MainViewController alloc] init];
@@ -157,17 +157,17 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     
-    NSLog(@"into background");
+   // NSLog(@"into background");
     UINavigationController *rootVc = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     if ([rootVc isKindOfClass:[PortraitNavigationController class]]) {
-        NSLog(@"yes");
+        //NSLog(@"yes");
         UIViewController *vc = rootVc.topViewController;
         if ([vc isKindOfClass:[VideoPlayerController class]]) {
             
             if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
-                NSLog(@"音频点播");
+                //NSLog(@"音频点播");
             }else{
-                NSLog(@"视频点播");
+                //NSLog(@"视频点播");
                 [((VideoPlayerController *)vc) videoPause];
             }
         }
@@ -179,18 +179,18 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    NSLog(@"into foreground");
+   // NSLog(@"into foreground");
     
     UINavigationController *rootVc = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     if ([rootVc isKindOfClass:[PortraitNavigationController class]]) {
-        NSLog(@"yes");
+        //NSLog(@"yes");
         UIViewController *vc = rootVc.topViewController;
         if ([vc isKindOfClass:[VideoPlayerController class]]) {
             
             if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
-                NSLog(@"音频点播");
+                //NSLog(@"音频点播");
             }else{
-                NSLog(@"视频点播");
+               // NSLog(@"视频点播");
                 [((VideoPlayerController *)vc) videoStart];
             }
         }
@@ -210,7 +210,7 @@
 //独立客户端回调函数
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    NSLog(@"1233131313131313");
+    //NSLog(@"1233131313131313");
 	
 	[self parse:url application:application];
 	return YES || [UMSocialSnsService handleOpenURL:url];
@@ -236,7 +236,7 @@
 			/*
 			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
 			 */
-            NSLog(@"123");
+            //NSLog(@"123");
             //交易成功
             NSString* key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
             id<DataVerifier> verifier;
@@ -245,7 +245,7 @@
             if ([verifier verifyString:result.resultString withSign:result.signString])
             {
                 
-                NSLog(@"123");
+               // NSLog(@"123");
                 
                 AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
                 manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -255,10 +255,10 @@
                 NSString *URLStr = [NSString stringWithFormat:@"%@?token=%@",GETUSERINFO_Url,info.token];
                 //      待加入缓冲提示：
                 [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    NSLog(@"%@",responseObject);
+                    //NSLog(@"%@",responseObject);
                     if ([[responseObject objectForKey:@"code"] intValue] == 200) {
                         
-                        NSLog(@"%@",responseObject);
+                        //NSLog(@"%@",responseObject);
                         
                         self.userDict = nil;
             
@@ -285,13 +285,13 @@
         }
         else
         {
-             NSLog(@"1233131313131313");
+            // NSLog(@"1233131313131313");
             //交易失败
         }
     }
     else
     {
-         NSLog(@"1233131313131313");
+        // NSLog(@"1233131313131313");
         //失败
     }
     

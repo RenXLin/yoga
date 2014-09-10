@@ -81,7 +81,7 @@
         SVProgressHUDShow;
     }
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
             if(iOS7)
@@ -153,7 +153,7 @@
         NSString *str5 = [NSString stringWithFormat:@"%@",[dataDict objectForKey:@"ldesc"]];
     
        float Height = [self autoSizeWidthWith:str5];
-    NSLog(@"%ld",(long)Height);
+    //NSLog(@"%ld",(long)Height);
     
         
         NSArray *arr = [NSArray arrayWithObjects:str1,str2,str3,str4,str5, nil];
@@ -261,7 +261,7 @@
         NSString* orderInfo = [self getOrderInfo:0];
         NSString* signedStr = [self doRsa:orderInfo];
         
-        NSLog(@"%@",signedStr);
+       // NSLog(@"%@",signedStr);
         
         NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
                                  orderInfo, signedStr, @"RSA"];
@@ -365,7 +365,7 @@
 
 -(void)paymentResultDelegate:(NSString *)result
 {
-    NSLog(@"%@",result);
+   // NSLog(@"%@",result);
 }
 
 
@@ -428,7 +428,7 @@
             {
                 //验证签名成功，交易结果无篡改
                 
-                NSLog(@"123");
+                //NSLog(@"123");
 			}
         }
         else

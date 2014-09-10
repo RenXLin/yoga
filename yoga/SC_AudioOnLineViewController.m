@@ -75,7 +75,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"--------------%@",KDEVICE);
+   // NSLog(@"--------------%@",KDEVICE);
     self.view.backgroundColor = KCOLOR(57, 61, 44, 1);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
@@ -110,14 +110,14 @@
     NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?SORT_AUDIOPICKLIST_URL:SORT_VIDEOLIST_ULR];
     //      待加入缓冲提示：
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+       // NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             if(iOS7)
             {
                 [SVProgressHUD dismiss];
  
             }
-            NSLog(@"%@",responseObject);
+           // NSLog(@"%@",responseObject);
             
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
             {
@@ -186,14 +186,14 @@
     //      待加入缓冲提示：
     
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             if(iOS7)
             {
                  [SVProgressHUD dismiss];
             }
             
-            NSLog(@"%@",responseObject);
+           // NSLog(@"%@",responseObject);
             [pageDataArray removeAllObjects];
             [dataArray removeAllObjects];
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
@@ -453,11 +453,11 @@
     }
     
     NSString *URLStr = [NSString stringWithFormat:@"%@?cid=%@&keywords=%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL,cid,searchBar.text];
-    NSLog(@"%@",URLStr);
+    //NSLog(@"%@",URLStr);
     URLStr = [URLStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
-    NSLog(@"%@",URLStr);
+    //NSLog(@"%@",URLStr);
     //      待加入缓冲提示：
     if(iOS7)
     {
@@ -465,7 +465,7 @@
     }
     
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             if(iOS7)
             {
@@ -473,7 +473,7 @@
             }
             
            
-            NSLog(@"%@",responseObject);
+            //NSLog(@"%@",responseObject);
             
             [pageDataArray removeAllObjects];
             [dataArray removeAllObjects];
@@ -695,7 +695,7 @@
     if (tableView == searchDisplayController.searchResultsTableView) {
         return searchResults.count;
         
-        NSLog(@"%lu",(unsigned long)searchResults.count);
+       // NSLog(@"%lu",(unsigned long)searchResults.count);
     }else if (tableView == TableView1)
     {
         return dataArray1.count;
@@ -959,7 +959,7 @@
     }
     
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             if(iOS7)
             {
@@ -967,7 +967,7 @@
             }
             
             
-            NSLog(@"%@",responseObject);
+           // NSLog(@"%@",responseObject);
             
             [pageDataArray removeAllObjects];
             
