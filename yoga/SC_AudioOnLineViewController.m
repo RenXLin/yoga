@@ -161,7 +161,7 @@
             [SVProgressHUD dismiss];
             
         }
-        KAlert(@"加载失败");
+        //KAlert(@"加载失败");
         
     }];
     
