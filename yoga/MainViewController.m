@@ -163,11 +163,12 @@
             
             //加入名称或图标：
             if (i * 3 + j + 1 == 7 || i * 3 + j + 1 == 9) {
+                  [view addSubview:[self getLabelWithTitel:[clickArray objectAtIndex:count1++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:NO]];
                 //[view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:YES]];
             }else if ((i * 3 + j + 1) %2 == 1) {
                 [view addSubview:[self getLabelWithTitel:[titleArray objectAtIndex:count++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:NO]];
             }else if((i * 3 + j + 1) == 4 || (i * 3 + j + 1) == 6){
-                [view addSubview:[self getLabelWithTitel:[clickArray objectAtIndex:count1++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:NO]];
+//                [view addSubview:[self getLabelWithTitel:[clickArray objectAtIndex:count1++] andRect:CGRectMake(0, view.frame.size.height/2 -15, view.frame.size.width, 30) andIsDisable:NO]];
             }else if (i*3 +j+1 == 2){
                 [view addSubview:[self getImageViewWithName:@"222" andFrame:view.bounds]];
 
@@ -273,7 +274,7 @@
         RL_TVViewController *TVV = [[RL_TVViewController alloc] init];
         [self.navigationController pushViewController:TVV animated:YES];
 
-    }else if(view.tag == 4){
+    }else if(view.tag == 7){
         //音频点播
         
         SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
@@ -288,7 +289,7 @@
         RL_FMViewController * AV= [[RL_FMViewController alloc] init];
         AV.FM_AV = @"魔方音乐台";
         [self.navigationController pushViewController:AV animated:YES];
-    }else if (view.tag == 6){
+    }else if (view.tag == 9){
        
             SC_AudioOnLineViewController *audioView = [[SC_AudioOnLineViewController alloc]init];
             audioView.Title = @"视频点播";
@@ -296,7 +297,7 @@
         
     }else if(view.tag == 2 || view.tag == 8){
        //KAlert(@"暂未开发");
-    }else if ( view.tag == 7 || view.tag == 9){
+    }else if ( view.tag == 4 || view.tag == 6){
         
         //KAlert(@"暂未开发");
     }

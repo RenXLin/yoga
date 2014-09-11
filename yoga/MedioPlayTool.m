@@ -88,7 +88,7 @@
         
         //下一首
         _nextProgram = [UIButton buttonWithType:UIButtonTypeCustom];
-        _nextProgram.frame = CGRectMake(self.frame.size.width - 50, TimeLabel_height, self_Height - TimeLabel_height, self_Height - TimeLabel_height);
+        _nextProgram.frame = CGRectMake(self.frame.size.width - 50, TimeLabel_height+10, self_Height - TimeLabel_height, self_Height - TimeLabel_height-10);
         _nextProgram.backgroundColor = [UIColor clearColor];
         [_nextProgram setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon6" ofType:@"png"]] forState:UIControlStateNormal];
         [_nextProgram setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon6_1" ofType:@"png"]] forState:UIControlStateHighlighted];
@@ -100,7 +100,7 @@
         
         //播放或暂停
         _isPlayOrPause = [UIButton buttonWithType:UIButtonTypeCustom];
-        _isPlayOrPause.frame = CGRectMake(self.frame.size.width - 100, TimeLabel_height, self_Height - TimeLabel_height, self_Height - TimeLabel_height);
+        _isPlayOrPause.frame = CGRectMake(self.frame.size.width - 100, TimeLabel_height+10, self_Height - TimeLabel_height, self_Height - TimeLabel_height-10);
         _isPlayOrPause.backgroundColor = [UIColor clearColor];
         [_isPlayOrPause setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_pause" ofType:@"png"]] forState:UIControlStateNormal];
         [_isPlayOrPause setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_play" ofType:@"png"]] forState:UIControlStateSelected];
@@ -113,7 +113,7 @@
         
         //上一首
         _lastProgram = [UIButton buttonWithType:UIButtonTypeCustom];
-        _lastProgram.frame = CGRectMake(self.frame.size.width - 150, TimeLabel_height, self_Height - TimeLabel_height, self_Height - TimeLabel_height);
+        _lastProgram.frame = CGRectMake(self.frame.size.width - 150, TimeLabel_height+10, self_Height - TimeLabel_height, self_Height - TimeLabel_height-10);
         _lastProgram.backgroundColor = [UIColor clearColor];
         [_lastProgram setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon5" ofType:@"png"]] forState:UIControlStateNormal];
         [_lastProgram setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon5_1" ofType:@"png"]] forState:UIControlStateHighlighted];
