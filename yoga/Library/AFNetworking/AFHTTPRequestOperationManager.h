@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <SystemConfiguration/SystemConfiguration.h>
+//#import <SystemConfiguration/SystemConfiguration.h>
 #import <Availability.h>
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
