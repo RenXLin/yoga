@@ -35,35 +35,110 @@
 
     UIView *nav;
     if ([[UIDevice currentDevice].systemVersion intValue] > 7) {
-        nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"设置"];
+        nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"关于"];
     }else{
-        nav = [self myNavgationBar:CGRectMake(0, 0, self.view.frame.size.width, 44) andTitle:@"设置"];    }
+        nav = [self myNavgationBar:CGRectMake(0, 0, self.view.frame.size.width, 44) andTitle:@"关于"];    }
     [self.view addSubview:nav];
 
     //loginview
-    UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, self.view.frame.size.height - 60, 40, 40);
-    [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.view addSubview:loginView];
-    
-    //当前在线人数
-    UILabel * _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
-    UserInfo *info = [UserInfo shareUserInfo];
-    _onlinePeople.backgroundColor = [UIColor clearColor];
-    _onlinePeople.text = info.onliePeople;//暂定
-    _onlinePeople.adjustsFontSizeToFitWidth = YES;
-    _onlinePeople.textAlignment = NSTextAlignmentCenter;
-    _onlinePeople.textColor = [UIColor whiteColor];
-    [self.view addSubview:_onlinePeople];
-    
-    //settting View
-    UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, loginView.frame.origin.y , 40, 40);
-    [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.view addSubview:settingView];
+//    UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
+//    loginView.frame = CGRectMake((self.view.frame.size.width - 140 - 40*2)/2, self.view.frame.size.height - 60, 40, 40);
+//    [loginView addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
+//    [self.view addSubview:loginView];
+//    
+//    //当前在线人数
+//    UILabel * _onlinePeople = [[UILabel alloc] initWithFrame:CGRectMake(loginView.frame.size.width + loginView.frame.origin.x, loginView.frame.origin.y, 140, loginView.frame.size.height)];
+//    UserInfo *info = [UserInfo shareUserInfo];
+//    _onlinePeople.backgroundColor = [UIColor clearColor];
+//    _onlinePeople.text = info.onliePeople;//暂定
+//    _onlinePeople.adjustsFontSizeToFitWidth = YES;
+//    _onlinePeople.textAlignment = NSTextAlignmentCenter;
+//    _onlinePeople.textColor = [UIColor whiteColor];
+//    [self.view addSubview:_onlinePeople];
+//    
+//    //settting View
+//    UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
+//    settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, loginView.frame.origin.y , 40, 40);
+//    [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
+//    [self.view addSubview:settingView];
 
+    
+    UILabel *aboutLab = [[UILabel alloc]initWithFrame:CGRectMake(10, iOS7?44:44, KscreenWidth-20, KscreenHeight-(iOS7?44:64))];
+    aboutLab.textAlignment = NSTextAlignmentLeft;
+    aboutLab.textColor = [UIColor whiteColor];
+    aboutLab.backgroundColor = [UIColor clearColor];
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        aboutLab.font = [UIFont systemFontOfSize:20];
+    }else
+    {
+        aboutLab.font = [UIFont systemFontOfSize:15];
+    }
+   
+    [self.view addSubview:aboutLab];
+    
+    
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    
+    NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/about"];
+    //      待加入缓冲提示：
+    if(iOS7)
+    {
+        SVProgressHUDShow;
+    }
+    [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"%@",responseObject);
+        if ([[responseObject objectForKey:@"code"] intValue] == 200) {
+            
+            if(iOS7)
+            {
+                [SVProgressHUD dismiss];
+            }
+            NSLog(@"%@",responseObject)
+            
+            dataDict = responseObject ;
+            
+           
+
+            NSLog(@"%@",dataDict);
+            
+            if(dataDict)
+            {
+                aboutLab.text = [dataDict objectForKey:@"data"];
+            }
+            
+            aboutLab.numberOfLines = 0;
+           
+            
+            
+   
+        }else{
+            if(iOS7)
+            {
+                [SVProgressHUD dismiss];
+            }
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+         if(iOS7)
+         {
+             [SVProgressHUD dismiss];
+         }
+         
+         
+     }];
+    
+   
+  
+
+    
     
 }
 
@@ -95,7 +170,7 @@
 
 -(void)backBtnClick
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)loginBtnClick
 {

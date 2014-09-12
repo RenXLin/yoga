@@ -18,6 +18,7 @@
 #import "OrderViewController.h"
 #import "MJRefresh.h"
 #import "CountCenterViewController.h"
+#import "RL_SettingViewController.h"
 @interface SC_AudioOnLineViewController ()<LeveyPopListViewDelegate>
 {
     //当前在线人数
@@ -68,6 +69,10 @@
 {
     UserInfo *info =[UserInfo shareUserInfo];
     _onlinePeople.text = info.onliePeople;
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden =YES;
 }
 
 - (void)viewDidLoad
@@ -391,16 +396,13 @@
     //loginview
     UIButton *loginView = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    loginView.alpha = 0.8;
-    loginView.enabled = NO;
+   
     [loginView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue1" ofType:@"png"]] forState:UIControlStateNormal];
     loginView.tag = 112;
     [bgImgView addSubview:loginView];
     
         //settting View
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
-    settingView.alpha = 0.8;
-    settingView.enabled = NO;
     
     [settingView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
@@ -552,12 +554,26 @@
             //login
         case 2:
         {
+            UserInfo *info = [UserInfo shareUserInfo];
+            if(info.token.length!=0)
+            {
+                CountCenterViewController *count = [[CountCenterViewController alloc]init];
+                [self.navigationController pushViewController:count animated:YES];
+            }else
+            {
+
+            RL_LoginViewController *login  = [[RL_LoginViewController alloc]init];
+            [self.navigationController pushViewController:login animated:YES];
+            }
             
         }
             break;
             //setting
         case 3:
         {
+            RL_SettingViewController *setting  = [[RL_SettingViewController alloc]init];
+            [self.navigationController pushViewController:setting animated:YES];
+            
             
         }
             break;

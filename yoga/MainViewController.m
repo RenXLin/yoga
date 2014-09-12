@@ -228,8 +228,7 @@
     settingView.frame = CGRectMake(loginView.frame.size.width+loginView.frame.origin.x + 140, loginView.frame.origin.y - 2, 40, 40);
     [settingView addTarget:self action:@selector(SettingBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
-    settingView.enabled = NO;
-    settingView.alpha = 0.8;
+   
     [self.view addSubview:settingView];
     settingView.autoresizingMask=
     UIViewAutoresizingFlexibleBottomMargin |
@@ -322,10 +321,9 @@
 //设置：
 -(void)SettingBtnClick
 {
-//    RL_SettingViewController *settingV = [[RL_SettingViewController alloc] init];
-//    [self presentViewController:settingV animated:YES completion:nil];
+    RL_SettingViewController *setting = [[RL_SettingViewController alloc] init];
+    [self.navigationController pushViewController:setting animated:YES];
     
-    //KAlert(@"暂未开发");
 
 }
 

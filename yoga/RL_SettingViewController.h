@@ -10,4 +10,8 @@
 
 @interface RL_SettingViewController : UIViewController
 
+{
+    NSDictionary *dataDict;
+    
+}
 @end
