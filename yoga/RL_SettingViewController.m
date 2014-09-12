@@ -34,7 +34,7 @@
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 
     UIView *nav;
-    if ([[UIDevice currentDevice].systemVersion intValue] > 7) {
+    if ([[UIDevice currentDevice].systemVersion intValue] >= 7) {
         nav = [self myNavgationBar:CGRectMake(0, 20, self.view.frame.size.width, 44) andTitle:@"关于"];
     }else{
         nav = [self myNavgationBar:CGRectMake(0, 0, self.view.frame.size.width, 44) andTitle:@"关于"];    }
