@@ -351,7 +351,7 @@
         }
         
         }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //NSLog(@"failed:%@",error);
+//            NSLog(@"failed:%@",error);
             UIAlertView *aleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求播放路径失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [aleart show];
     }];

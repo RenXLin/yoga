@@ -295,7 +295,7 @@
             [self.navigationController pushViewController:audioView animated:YES];
         
     }else if(view.tag == 2 || view.tag == 8){
-       //KAlert(@"暂未开发");
+//       KAlert(@"暂未开发");
     }else if ( view.tag == 4 || view.tag == 6){
         
         //KAlert(@"暂未开发");
