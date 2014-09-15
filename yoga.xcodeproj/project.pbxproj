@@ -1271,7 +1271,7 @@
 				ORGANIZATIONNAME = "任小林";
 				TargetAttributes = {
 					CD0DB98F196DA50300C3A2A8 = {
-						DevelopmentTeam = 4AN3M8Z8YE;
+						DevelopmentTeam = FA78T6VRG8;
 					};
 					CD0DB9AA196DA50300C3A2A8 = {
 						TestTargetID = CD0DB98F196DA50300C3A2A8;
