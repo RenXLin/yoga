@@ -399,7 +399,7 @@
     UIButton *settingView = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [settingView addTarget:self action:@selector(sortBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
+    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"png"]] forState:UIControlStateNormal];
     settingView.tag = 113;
     [bgImgView addSubview:settingView];
     

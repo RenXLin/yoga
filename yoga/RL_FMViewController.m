@@ -283,7 +283,7 @@
     settingView.alpha = 0.8;
     settingView.enabled = NO;
 
-    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_blue" ofType:@"png"]] forState:UIControlStateNormal];
+    [settingView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about" ofType:@"png"]] forState:UIControlStateNormal];
     [scrolView addSubview:settingView];
     settingView.autoresizingMask =
     UIViewAutoresizingFlexibleBottomMargin |
