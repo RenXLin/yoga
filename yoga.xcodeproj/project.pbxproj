@@ -36,6 +36,7 @@
 		9D34ECCD199C8B6800A4E9EF /* 开机画面03_640x1136.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC7199C8B6800A4E9EF /* 开机画面03_640x1136.jpg */; };
 		9D34ECCE199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */; };
 		9D459BCA199DC8DC00436020 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D459BC9199DC8DC00436020 /* UIColor+expanded.m */; };
+		9D5F33B719C6926B00E05A6C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5F33B619C6926B00E05A6C /* SVProgressHUD.m */; };
 		9D65B0CD19821ACD0011D5B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */; };
 		9D65B0CF19821ADA0011D5B3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */; };
 		9DB445C9199793F800839C55 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DB445B9199793F800839C55 /* MJRefresh.bundle */; };
@@ -164,8 +165,6 @@
 		CD0F95891999358000EB7985 /* libopenssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95841999358000EB7985 /* libopenssl.a */; };
 		CD0F958A1999358000EB7985 /* libVitamio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0F95851999358000EB7985 /* libVitamio.a */; };
 		CD0F958B1999358000EB7985 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD0F95861999358000EB7985 /* LICENSE */; };
-		CD2255CE19ACCFA50005CE53 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD2255CB19ACCFA50005CE53 /* SVProgressHUD.bundle */; };
-		CD2255CF19ACCFA50005CE53 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2255CD19ACCFA50005CE53 /* SVProgressHUD.m */; };
 		CD26AE00199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */; };
 		CD26AE01199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */; };
 		CD26AE02199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */; };
@@ -300,6 +299,8 @@
 		9D34ECC8199C8B6800A4E9EF /* 开机画面03_1536x2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面03_1536x2048.jpg"; sourceTree = "<group>"; };
 		9D459BC8199DC8DC00436020 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
 		9D459BC9199DC8DC00436020 /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
+		9D5F33B519C6926B00E05A6C /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = yoga/SVProgressHUD.h; sourceTree = SOURCE_ROOT; };
+		9D5F33B619C6926B00E05A6C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = yoga/SVProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlipayRsaLib.a; path = ../yoga2/yoga/AlipayRsaLib.a; sourceTree = "<group>"; };
 		9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -462,10 +463,6 @@
 		CD0F95851999358000EB7985 /* libVitamio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVitamio.a; sourceTree = "<group>"; };
 		CD0F95861999358000EB7985 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CD14D971199CE3EE00EC446E /* yoga.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = yoga.entitlements; sourceTree = "<group>"; };
-		CD2255CA19ACCFA50005CE53 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		CD2255CB19ACCFA50005CE53 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		CD2255CC19ACCFA50005CE53 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		CD2255CD19ACCFA50005CE53 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CD26ADFA199E404A002613A8 /* 瑜伽魔方LOGO_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_114x114.png"; sourceTree = "<group>"; };
 		CD26ADFB199E404A002613A8 /* 瑜伽魔方LOGO_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_120x120.png"; sourceTree = "<group>"; };
 		CD26ADFC199E404A002613A8 /* 瑜伽魔方LOGO_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑜伽魔方LOGO_29x29.png"; sourceTree = "<group>"; };
@@ -1001,10 +998,8 @@
 		CD2255C919ACCFA50005CE53 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				CD2255CA19ACCFA50005CE53 /* SVProgressHUD-Prefix.pch */,
-				CD2255CB19ACCFA50005CE53 /* SVProgressHUD.bundle */,
-				CD2255CC19ACCFA50005CE53 /* SVProgressHUD.h */,
-				CD2255CD19ACCFA50005CE53 /* SVProgressHUD.m */,
+				9D5F33B519C6926B00E05A6C /* SVProgressHUD.h */,
+				9D5F33B619C6926B00E05A6C /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -1273,7 +1268,7 @@
 				ORGANIZATIONNAME = "任小林";
 				TargetAttributes = {
 					CD0DB98F196DA50300C3A2A8 = {
-						DevelopmentTeam = FA78T6VRG8;
+						DevelopmentTeam = 4AN3M8Z8YE;
 					};
 					CD0DB9AA196DA50300C3A2A8 = {
 						TestTargetID = CD0DB98F196DA50300C3A2A8;
@@ -1411,7 +1406,6 @@
 				CD0DBA43196DA52200C3A2A8 /* btngreen_press.png in Resources */,
 				CD0DBA60196DA52200C3A2A8 /* jmd_bg.png in Resources */,
 				CD0DBA3A196DA52200C3A2A8 /* btnblue1.png in Resources */,
-				CD2255CE19ACCFA50005CE53 /* SVProgressHUD.bundle in Resources */,
 				CD0DBA41196DA52200C3A2A8 /* btngreen3.png in Resources */,
 				3A101F40199536C500AABE60 /* start2_320x480.jpg in Resources */,
 				CD0DBA36196DA52200C3A2A8 /* a1.png in Resources */,
@@ -1478,7 +1472,6 @@
 				CD8E51211971561A00771960 /* RL_SettingViewController.m in Sources */,
 				3A9A8FE91978292D00A00425 /* AudioCell.m in Sources */,
 				CD51F4F71976D49200F9E81F /* VideoPlayerController.m in Sources */,
-				CD2255CF19ACCFA50005CE53 /* SVProgressHUD.m in Sources */,
 				3AA9D63919840B74003068D4 /* AlixPayResult.m in Sources */,
 				CD08AEFC1972882B00C50184 /* HelpClass.m in Sources */,
 				CD8E513E1971586E00771960 /* AFURLResponseSerialization.m in Sources */,
@@ -1507,6 +1500,7 @@
 				CD0DB9A0196DA50300C3A2A8 /* main.m in Sources */,
 				9DD40712197251250061D1DE /* UIFactory.m in Sources */,
 				CD8E51391971586E00771960 /* AFHTTPSessionManager.m in Sources */,
+				9D5F33B719C6926B00E05A6C /* SVProgressHUD.m in Sources */,
 				CD0F954A1998F80300EB7985 /* PortraitNavigationController.m in Sources */,
 				9D459BCA199DC8DC00436020 /* UIColor+expanded.m in Sources */,
 				CDFBB92419A0808A007F33D7 /* RL_TVViewController.m in Sources */,

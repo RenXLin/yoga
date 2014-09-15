@@ -9,7 +9,6 @@
 #import "VideoPlayerController.h"
 #import "RL_LoginViewController.h"
 #import "CountCenterViewController.h"
-#import "SVProgressHUD/SVProgressHUD.h"
 #import "MarqueeLabel.h"
 #import "AFNetworking.h"
 #import "CurrentProgram.h"
@@ -696,8 +695,8 @@ NSString* UrlEncodedString(NSString* sourceText)
     _mPlayer = nil;
     
     
-    NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-    NSString * urlStr = UrlEncodedString(pathUrl);
+   // NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+   // NSString * urlStr = UrlEncodedString(pathUrl);
    // NSLog(@"encode url :  %@",urlStr);
     
     AVAudioSession *session = [AVAudioSession sharedInstance];

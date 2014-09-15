@@ -99,7 +99,7 @@
             {
                 [SVProgressHUD dismiss];
             }
-            NSLog(@"%@",responseObject)
+           
             
             dataDict = responseObject ;
             

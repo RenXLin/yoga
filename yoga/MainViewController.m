@@ -16,7 +16,7 @@
 #import "UserInfo.h"
 #import "SC_popView.h"
 
-#import "SVProgressHUD/SVProgressHUD.h"
+
 #import "OrderViewController.h"
 #import "CountCenterViewController.h"
 
