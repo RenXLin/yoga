@@ -7,16 +7,10 @@
 //
 
 #import "OrderViewController.h"
-
-
-#import "PartnerConfig.h"
-#import "DataSigner.h"
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
-#import "AlixPayOrder.h"
 #import "UserInfo.h"
-
 #import "RL_LoginViewController.h"
+
+#import "RootViewController.h"
 
 @implementation Product
 @synthesize price = _price;
@@ -48,7 +42,7 @@
 {
     
     self.navigationController.navigationBarHidden =YES;
-    [self request];
+    
     
 }
 
@@ -57,14 +51,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    [self request];
     if([[UIDevice currentDevice].systemVersion doubleValue]>7)
     {
         
     }
    
-
-    _result = @selector(paymentResult:);
     [self generateData];
 
 }
@@ -74,20 +66,18 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
     
-    NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/getMoFangInfo"];
+    NSString *URLStr = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/getMoFangInfo?clientType=ios"];
     //      待加入缓冲提示：
-    if(iOS7)
-    {
+    
         SVProgressHUDShow;
-    }
+    
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
-            if(iOS7)
-            {
+            
                 [SVProgressHUD dismiss];
-            }
+            
             
             dataDict = [responseObject objectForKey:@"data"];
             
@@ -160,9 +150,15 @@
         
         for (int i=0; i<5; i++) {
             
-            
-            UILabel *lab  = [UIFactory createLabelWithFrame:CGRectMake(10, 10+30*i, 300, 20) text:[arr objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
-            
+            UILabel *lab ;
+             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+             {
+                  lab  = [UIFactory createLabelWithFrame:CGRectMake(10, 10+30*i, 300, 20) text:[arr objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
+             }else
+             {
+                 lab  = [UIFactory createLabelWithFrame:CGRectMake(10, 10+30*i, bgImgView1.frame.size.width-20, 20) text:[arr objectAtIndex:i] textColor:[UIColor whiteColor] textFont:Kfont(13) textAlignment:0];
+             }
+
             
             if(i==4)
             {
@@ -226,7 +222,7 @@
         [btn setTitle:@"尚未登录，请先登录" forState:UIControlStateNormal];
     }else
     {
-     [btn setTitle:@"支付宝付款" forState:UIControlStateNormal];
+     [btn setTitle:@"会员" forState:UIControlStateNormal];
     }
     
     [btn addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
@@ -246,28 +242,8 @@
     }else
     {
         
-        /*
-         *生成订单信息及签名
-         *由于demo的局限性，采用了将私钥放在本地签名的方法，商户可以根据自身情况选择签名方法(为安全起见，在条件允许的前提下，我们推荐从商户服务器获取完整的订单信息)
-         */
-        
-        
-        
-
-        
-        
-        
-        NSString *appScheme = @"yoga";
-        NSString* orderInfo = [self getOrderInfo:0];
-        NSString* signedStr = [self doRsa:orderInfo];
-        
-       // NSLog(@"%@",signedStr);
-        
-        NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                                 orderInfo, signedStr, @"RSA"];
-        
-        [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
-        
+        RootViewController *root = [[RootViewController alloc]init];
+        [self.navigationController pushViewController:root animated:NO];
     }
     
 
@@ -306,24 +282,6 @@
 #endif
 }
 
--(NSString*)getOrderInfo:(NSInteger)index
-{
-    /*
-	 *点击获取prodcut实例并初始化订单信息
-	 */
-	Product *product = [_products objectAtIndex:index];
-    AlixPayOrder *order = [[AlixPayOrder alloc] init];
-    order.partner = PartnerID;
-    order.seller = SellerID;
-    
-    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
-	order.productName = product.subject; //商品标题
-	order.productDescription = product.body; //商品描述
-	order.amount = [NSString stringWithFormat:@"%.2f",product.price]; //商品价格
-	order.notifyURL =  @"http://www.chinayogaonline.com/api/notify_url"; //回调URL
-	
-	return [order description];
-}
 
 - (NSString *)generateTradeNO
 {
@@ -355,13 +313,6 @@
     	return [NSString stringWithFormat:@"%@-%@-%@",self.oid,result,result1];
 }
 
--(NSString*)doRsa:(NSString*)orderInfo
-{
-    id<DataSigner> signer;
-    signer = CreateRSADataSigner(PartnerPrivKey);
-    NSString *signedString = [signer signString:orderInfo];
-    return signedString;
-}
 
 -(void)paymentResultDelegate:(NSString *)result
 {
@@ -401,47 +352,6 @@
 }
 
 
-//wap回调函数
--(void)paymentResult:(NSString *)resultd
-{
-    //结果处理
-#if ! __has_feature(objc_arc)
-    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
-#else
-    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
-#endif
-	if (result)
-    {
-		
-		if (result.statusCode == 9000)
-        {
-			/*
-			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
-			 */
-            
-            //交易成功
-            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
-			id<DataVerifier> verifier;
-            verifier = CreateRSADataVerifier(key);
-            
-			if ([verifier verifyString:result.resultString withSign:result.signString])
-            {
-                //验证签名成功，交易结果无篡改
-                
-                //NSLog(@"123");
-			}
-        }
-        else
-        {
-            //交易失败
-        }
-    }
-    else
-    {
-        //失败
-    }
-    
-}
 
 - (void)didReceiveMemoryWarning
 {

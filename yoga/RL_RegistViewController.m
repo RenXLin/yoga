@@ -228,6 +228,7 @@
         
         [registM GET:[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text] parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
+            NSLog(@"%@",responseObject);
             if([[responseObject objectForKey:@"code"] intValue] == 200)
             {
                 
@@ -250,6 +251,12 @@
                 countCenter.regStr = @"regStr";
                 [self.navigationController pushViewController:countCenter animated:YES];
                 
+            }else
+            {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@",[responseObject objectForKey:@"msg"]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                
+                [alert show];
+                
             }
             
             
@@ -266,7 +273,7 @@
 //            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
            // NSLog(@"Failed:%@",error);
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"注册失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }];
     }

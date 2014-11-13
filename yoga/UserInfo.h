@@ -14,7 +14,8 @@
 @property(strong,nonatomic)NSString *userName;
 @property(strong,nonatomic)NSString *token;
 @property(strong,nonatomic)NSString *onliePeople;
-
+@property(strong,nonatomic)NSString *role;
+@property(strong,nonatomic)NSString *ifbuy;
 
 +(id)shareUserInfo;
 @end

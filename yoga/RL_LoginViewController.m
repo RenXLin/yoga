@@ -175,7 +175,7 @@
             //待加入缓冲提示：
             [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 
-              //  NSLog(@"%@",responseObject);
+                NSLog(@"%@",responseObject);
                 if ([[responseObject objectForKey:@"code"] intValue] == 200) {
                     //NSLog(@"登陆成功");
                     
@@ -185,6 +185,18 @@
                     
                     
                     userInfo.userDict = [responseObject objectForKey:@"data"];
+                    
+                    
+                    
+                    for (NSDictionary *dic in [userInfo.userDict objectForKey:@"roleInfo"])
+                    {
+                        if((![[dic objectForKey:@"code"] isEqualToString:@""] && ![[dic objectForKey:@"code"] isEqualToString:@"user"]))
+                        {
+                            userInfo.ifbuy = [dic objectForKey:@"code"];
+                        }
+                    }
+                    
+                    
                     
                     
                     Kdefaults;

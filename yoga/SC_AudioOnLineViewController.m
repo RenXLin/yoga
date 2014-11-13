@@ -775,9 +775,9 @@
         
         for (NSDictionary *dic in roleArr)
         {
-            if([[dic objectForKey:@"code"] isEqualToString:@"mofang"])
+            if((![[dic objectForKey:@"code"] isEqualToString:@""] && ![[dic objectForKey:@"code"] isEqualToString:@"user"]) || userinfo.role.length>0)
             {
-                
+                userinfo.role = [dic objectForKey:@"code"];
                 //推出播放器视图：
                 VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
                 vpc.itemMode = [dataArray objectAtIndex:indexPath.row];

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlixLibService.h"
+
 
 @interface Product : NSObject{
 @private
@@ -35,5 +35,5 @@
 @property (nonatomic,assign) SEL result;//这里声明为属性方便在于外部传入。
 @property (nonatomic,assign) NSString *oid;
 @property (nonatomic,assign) NSString *price;
--(void)paymentResult:(NSString *)result;
+
 @end

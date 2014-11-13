@@ -11,9 +11,7 @@
 #import "PortraitNavigationController.h"
 #import "VideoPlayerController.h"
 
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
-#import "AlixLibService.h"
+
 
 
 #import "UMSocial.h"
@@ -21,7 +19,7 @@
 #import "UMSocialSinaHandler.h"
 #import "UMSocialTencentWeiboHandler.h"
 #import "UMSocialWechatHandler.h"
-
+#import "InAppRageIAPHelper.h"
 @implementation AppDelegate
 {
     UIScrollView * launchScrollView;
@@ -61,6 +59,8 @@
 //    [UMSocialData defaultData].extConfig.wechatTimelineData.wxMessageType = UMSocialWXMessageTypeWeb;  //设置微信朋友圈分享纯图片
 //    
 
+  
+     [[SKPaymentQueue defaultQueue] addTransactionObserver:[InAppRageIAPHelper sharedHelper]];
     
     //判断是否首次启动
     NSUserDefaults *usrDef = [NSUserDefaults standardUserDefaults];
@@ -212,108 +212,15 @@
     
     //NSLog(@"1233131313131313");
 	
-	[self parse:url application:application];
+	
 	return YES || [UMSocialSnsService handleOpenURL:url];
     
 
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    [self parse:url application:application];
+   
     return YES || [UMSocialSnsService handleOpenURL:url];
-}
-
-- (void)parse:(NSURL *)url application:(UIApplication *)application {
-    
-    //结果处理
-    AlixPayResult* result = [self handleOpenURL:url];
-    
-	if (result)
-    {
-		
-		if (result.statusCode == 9000)
-        {
-			/*
-			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
-			 */
-            //NSLog(@"123");
-            //交易成功
-            NSString* key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
-            id<DataVerifier> verifier;
-            verifier = CreateRSADataVerifier(key);
-    
-            if ([verifier verifyString:result.resultString withSign:result.signString])
-            {
-                
-               // NSLog(@"123");
-                
-                AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
-                manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-                
-                UserInfo *info = [UserInfo shareUserInfo];
-
-                NSString *URLStr = [NSString stringWithFormat:@"%@?token=%@",GETUSERINFO_Url,info.token];
-                //      待加入缓冲提示：
-                [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    //NSLog(@"%@",responseObject);
-                    if ([[responseObject objectForKey:@"code"] intValue] == 200) {
-                        
-                        //NSLog(@"%@",responseObject);
-                        
-                        self.userDict = nil;
-            
-                      
-                        if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
-                        {
-                            
-                            self.userDict = [responseObject objectForKey:@"data"];
-                            
-                        }
-                        
-                      
-                    }else{
-                                           }
-                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    
-                }];
-                
-
-                
-                
-            }
-            
-        }
-        else
-        {
-            // NSLog(@"1233131313131313");
-            //交易失败
-        }
-    }
-    else
-    {
-        // NSLog(@"1233131313131313");
-        //失败
-    }
-    
-}
-
-- (AlixPayResult *)resultFromURL:(NSURL *)url {
-	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-#if ! __has_feature(objc_arc)
-    return [[[AlixPayResult alloc] initWithString:query] autorelease];
-#else
-	return [[AlixPayResult alloc] initWithString:query];
-#endif
-}
-
-- (AlixPayResult *)handleOpenURL:(NSURL *)url {
-	AlixPayResult * result = nil;
-	
-	if (url != nil && [[url host] compare:@"safepay"] == 0) {
-		result = [self resultFromURL:url];
-	}
-    
-	return result;
 }
 
 
