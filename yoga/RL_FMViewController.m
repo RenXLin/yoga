@@ -18,7 +18,7 @@
 #import "UIImageView+AFNetworking.h"
 #import <AVFoundation/AVFoundation.h>
 #import "HttpConnectStatus.h"
-
+#import "SVProgressHUD.h"
 
 #define GAP_WITH  2.5  //定义白色边框的大小：
 
@@ -81,7 +81,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self greet];//获取点赞数
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
@@ -213,7 +213,7 @@
     _ad = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0,imageV.frame.origin.y + imageV.frame.size.height + 2, self.view.frame.size.width, 30) rate:50.0f andFadeLength:10.0f];
     _ad.numberOfLines = 1;
     _ad.opaque = NO;
-    _ad.enabled = YES;
+    _ad.enabled = NO;
     _ad.shadowOffset = CGSizeMake(0.0, -1.0);
     _ad.textAlignment = NSTextAlignmentCenter;
     _ad.textColor = [UIColor whiteColor];
@@ -312,7 +312,7 @@
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"success:%@",responseObject);
+        NSLog(@"success:%@",responseObject);
         _programMode = [[CurrentProgram alloc] init];
 
         [_programMode setValuesForKeysWithDictionary:[responseObject objectForKey:@"data"]];
@@ -463,16 +463,17 @@
             [session setActive:YES error:nil];
             [session setCategory:AVAudioSessionCategoryPlayback error:nil];
             
-            if (!_mMpayer && pathUrl) {
+//            if (!_mMpayer && pathUrl)
+            {
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:whiteView withDelegate:self];
                 [_mMpayer setDataSource:[NSURL URLWithString:pathUrl]];
                 [_mMpayer prepareAsync];
-                
             }
             
         }else{
             [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"当前无%@",_FM_AV]];
+            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
             });
@@ -497,6 +498,13 @@
     [aleart show];
 }
 
+//后台暂定后继续播放：
+-(void)startIntoForground
+{
+    if (_mMpayer) {
+        [_mMpayer start];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

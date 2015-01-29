@@ -82,7 +82,7 @@
 - (void)request1With:(NSString *)receiptdata
 {
      UserInfo *userinfo = [UserInfo shareUserInfo];
-    NSString *urlString = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/IPAValidate?token=%@",[userinfo.userDict objectForKey:@"token"]];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.chinayogaonline.com/api/IPAValidate?token=%@%@",[userinfo.userDict objectForKey:@"token"],Kversion];
     NSLog(@"%@",urlString);
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
@@ -127,6 +127,8 @@
     
 }
 
+/*   获取构面凭证  */
+
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
     
     NSLog(@"completeTransaction...");
@@ -139,8 +141,6 @@
     
     NSString*encodingStr = [[transaction transactionReceipt] base64Encoding];
 //    encodingStr = [encodingStr cs];
-  
-    
     [self request1With:encodingStr];
     
     

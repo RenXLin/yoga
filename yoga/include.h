@@ -15,6 +15,8 @@
 
 
 #define iOS7 ([[[UIDevice currentDevice]systemVersion]floatValue]>=7.0)
+#define IS_IOS8 [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0
+#define ISNot_IOS8  [[[UIDevice currentDevice] systemVersion] doubleValue] < 8.0
 
 //当前屏幕尺寸
 #define KscreenHeight   [[UIScreen mainScreen] bounds].size.height
@@ -55,12 +57,15 @@
 #define NOT_refreshOnlinePeople   @"Notification_refreshOnlinePeople"
 
 
+/* 版本号   和平台标识 */
+#define Kversion      @"&version=1.0.5&clientType=ios"
+
 
 //登录：
 
 //#define LOGIN_url  @"http://www.chinayogaonline.com/api/login?"
 
-#define LOGIN_url  @"http://www.chinayogaonline.com/api/login?username=%@&password=%@"
+#define LOGIN_url  @"http://www.chinayogaonline.com/api/login?username=%@&password=%@%@"
 
 //参数 username password
 

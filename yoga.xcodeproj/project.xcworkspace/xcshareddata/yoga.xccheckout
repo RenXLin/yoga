@@ -14,7 +14,7 @@
 		<string>https://github.com/RenXLin/yoga.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>yoga.xcodeproj/project.xcworkspace</string>
+	<string>yoga.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>FE86F9E87DABEAA9FD304B7A528C292E363613FA</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>FE86F9E87DABEAA9FD304B7A528C292E363613FA</string>
 			<key>IDESourceControlWCCName</key>
-			<string>yoga</string>
+			<string>yoga%202</string>
 		</dict>
 	</array>
 </dict>

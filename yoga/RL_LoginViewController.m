@@ -171,7 +171,8 @@
         {
             AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
             manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-            NSString *URLStr = [NSString stringWithFormat:LOGIN_url,_account.text,_passWord.text];
+            NSString *URLStr = [NSString stringWithFormat:LOGIN_url,_account.text,_passWord.text,Kversion];
+            
             //待加入缓冲提示：
             [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 

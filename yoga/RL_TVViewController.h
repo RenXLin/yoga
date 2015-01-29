@@ -11,4 +11,7 @@
 
 @interface RL_TVViewController : UIViewController<VMediaPlayerDelegate,UITableViewDataSource,UITableViewDelegate>
 
+-(void)startIntoForground;
+-(void)pauseIntoBackground;
+
 @end

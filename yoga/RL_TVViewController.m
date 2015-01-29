@@ -76,6 +76,7 @@
 	return YES;
 }
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)to duration:(NSTimeInterval)duration
+
 {
 	if (UIInterfaceOrientationIsLandscape(to)) {
         
@@ -93,6 +94,9 @@
         [_scrollView addSubview:_TVPlayView];
         [self.view addSubview:_scrollView];
         
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8) {
+            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+        }
 	}
 	//NSLog(@"NAL 1HUI &&&&&&&&& frame=%@", NSStringFromCGRect(self.view.frame));
 }
@@ -139,7 +143,7 @@
     [_scrollView addSubview:nav];
     
     //添加视频播放视图
-    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(2, nav.frame.size.height + nav.frame.origin.y + 10, self.view.frame.size.width-4, self.view.frame.size.width * 3 / 4)];
+    _TVPlayView = [[UIView alloc] initWithFrame:CGRectMake(0, nav.frame.size.height + nav.frame.origin.y + 10, self.view.frame.size.width, self.view.frame.size.width * 3 / 4)];
     _TVPlayView.backgroundColor = [UIColor blackColor];
 //    TVPlayView.alpha = 0.2;
     [_scrollView addSubview:_TVPlayView];
@@ -324,8 +328,6 @@
     
     player = nil;
     
-    
-    
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:CURRENTPLAYVIDEO_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -339,7 +341,8 @@
             NSString *urlStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)pathUrl,NULL,CFSTR("!*'();:@&=+$,/?%#[]"),kCFStringEncodingUTF8));
             
             //加入FM播放器：
-            if (!_mMpayer && urlStr) {
+//            if (!_mMpayer && urlStr)
+            {
                 _mMpayer = [VMediaPlayer sharedInstance];
                 [_mMpayer setupPlayerWithCarrierView:_TVPlayView withDelegate:self];
                 [_mMpayer setDataSource:[NSURL URLWithString:pathUrl] header:nil];
@@ -364,6 +367,20 @@
 	//NSLog(@"player error");
 }
 
+
+-(void)startIntoForground
+{
+    if (_mMpayer) {
+        [_mMpayer start];
+    }
+}
+
+-(void)pauseIntoBackground
+{
+    if (_mMpayer) {
+        [_mMpayer pause];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

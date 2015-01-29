@@ -42,6 +42,7 @@ static InAppRageIAPHelper * _sharedHelper;
     return self;
     
 }
+/*  每次进入支付界面从我们本地的服务器获取产品标识（就是在添加产品的时候，设定的标识，拿到这些标识，才可以从苹果服务器获取产品信息，例如价格、描述...等，也就是说，在添加完产品的时候，要顺便把这些标识添加在自己服务器） */
 - (void)request1
 {
     NSString *urlString = @"http://www.chinayogaonline.com/api/IAPProductId";
@@ -57,7 +58,7 @@ static InAppRageIAPHelper * _sharedHelper;
                  NSDictionary * dict=[NSDictionary dictionaryWithDictionary:responseObject];
                  if([[dict valueForKey:@"code"]intValue]==200) //请求成功
                  {
-                    arr = [dict objectForKey:@"data"];
+                     arr = [dict objectForKey:@"data"];
                      NSSet *productIdentifiers = [NSSet setWithArray:arr];
                      [self initWithProductIdentifiers:productIdentifiers];
                      

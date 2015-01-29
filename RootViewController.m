@@ -24,9 +24,6 @@
     
     //    self.title = @"Vip";
     
-    
-    
-    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -40,15 +37,6 @@
     //
     //    UIBarButtonItem*RightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     //    self.navigationItem.rightBarButtonItem= RightItem;
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 }
@@ -133,8 +121,6 @@
     TableView.delegate = self;
     TableView.dataSource = self;
     TableView.backgroundColor = [UIColor clearColor];
-    
-    
     [self.view addSubview:TableView];
     
     //自定义导航条
@@ -143,16 +129,11 @@
 
     
     self.navigationController.navigationBarHidden =YES;
-    
     TableView.hidden = TRUE;
-    
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productsLoaded:) name:kProductsLoadedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:kProductPurchasedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(productPurchaseFailed:) name:kProductPurchaseFailedNotification object: nil];
-    
-    
     
     
     if ([SKPaymentQueue canMakePayments]) {
@@ -270,14 +251,15 @@
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     UserInfo *userinfo = [UserInfo shareUserInfo];
-    //    [userinfo.userDict objectForKey:@""]  || userinfo.ifbuy.length>0
+    
+    
     if ([[InAppRageIAPHelper sharedHelper].purchasedProducts containsObject:product.productIdentifier] || userinfo.ifbuy.length>0) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.accessoryView = nil;
     } else {
         UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         buyButton.frame = CGRectMake(0, 0, 72, 37);
-        [buyButton setTitle:@"Buy" forState:UIControlStateNormal];
+        [buyButton setTitle:@"购买" forState:UIControlStateNormal];
         [buyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         buyButton.backgroundColor = KCOLOR(26, 148, 223, 1);
         buyButton.layer.cornerRadius = 3;
@@ -382,7 +364,6 @@
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-    
     NSString *productIdentifier = (NSString *) notification.object;
     NSLog(@"-----Purchased: %@", productIdentifier);
     NSLog(@"2");

@@ -196,7 +196,10 @@
 
             AFHTTPRequestOperationManager *regsieMg = [AFHTTPRequestOperationManager manager];
             regsieMg.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-            [regsieMg GET:[NSString stringWithFormat:@"%@%@",GETVERTIFY_URL,_phoneNum.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSString *url = [NSString stringWithFormat:@"%@%@",GETVERTIFY_URL,_phoneNum.text];
+            NSLog(@"%@",url);
+            [regsieMg GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                // NSLog(@"success:\n%@",[responseObject objectForKey:@"msg"]);
                 if ([[responseObject objectForKey:@"msg"] isEqualToString:@"ok"]) {
                     
@@ -212,7 +215,7 @@
                     [alert show];
                 }
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-               // NSLog(@"Failed:%@",error);
+                NSLog(@"Failed:%@",error.localizedDescription);
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证码发送失败" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }];
@@ -226,7 +229,7 @@
                                      _email.text,@"email",nil];
         registM.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         
-        [registM GET:[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text] parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [registM GET:[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text,Kversion] parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             NSLog(@"%@",responseObject);
             if([[responseObject objectForKey:@"code"] intValue] == 200)

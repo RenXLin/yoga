@@ -37,6 +37,16 @@
     
     BOOL isloading;
     UIView *bgView;
+    
+    BOOL playRight;
+    NSInteger _pageCount;
+    
+    
+    
+   
+    
+    
+    
 }
 
 @end
@@ -73,9 +83,34 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden =YES;
+    playRight = NO;
+    [self getPlayRight];
+
 }
 
+- (void)getPlayRight
+{
+    UserInfo *info = [UserInfo shareUserInfo];
+    if(info.token.length!= 0)
+    {
+        
+        UserInfo *userinfo = [UserInfo shareUserInfo];
+        NSMutableArray *roleArr = [userinfo.userDict objectForKey:@"roleInfo"];
+        
+        
+        NSLog(@"%@",userinfo.role);
+        
+        for (NSDictionary *dic in roleArr)
+        {
+            if((![[dic objectForKey:@"code"] isEqualToString:@""] && ![[dic objectForKey:@"code"] isEqualToString:@"user"]) || userinfo.role.length>0)
+            {
+                playRight = YES;
+                
+            }
+        }
+    }
 
+}
 
 - (void)viewDidLoad
 {
@@ -91,14 +126,11 @@
     dataArray = [[NSMutableArray alloc]init];
     pageDataArray = [[NSMutableArray alloc]init];
     dataArray1 = [[NSMutableArray alloc]init];
+   
     [self creatUI];
-    [self request];
-    
+    [self getRequestWithlimitNum:10 offset:0];
+    _pageCount = -10;
     [self  setupRefresh];
-    
-    limit = 10;
-    
-    
     [NSThread detachNewThreadSelector:@selector(request1) toTarget:self withObject:nil];
     
     
@@ -176,29 +208,37 @@
 
 
 }
-- (void)request
+- (void)getRequestWithlimitNum:(NSInteger)num offset:(NSInteger)offset
 {
     
        SVProgressHUDShow;
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSString *audioUrl = [NSString stringWithFormat:@"%@?limit=%d&offset=%d",AUDIOPICKLIST_URL,num,offset];
+    NSString *vidioUrl = [NSString stringWithFormat:@"%@?limit=%d&offset=%d",VIDIOPICKLIST_URL,num,offset];
     
-    NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?AUDIOPICKLIST_URL:VIDIOPICKLIST_URL];
+    NSString *URLStr = [NSString stringWithFormat:@"%@",self.audio!=nil?audioUrl:vidioUrl];
     //      待加入缓冲提示：
     
+    NSLog(@"%@",URLStr);
     [manager GET:URLStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         if ([[responseObject objectForKey:@"code"] intValue] == 200) {
             
-                 [SVProgressHUD dismiss];
-            
+            [SVProgressHUD dismiss];
+            [TableView headerEndRefreshing];
+            [TableView footerEndRefreshing];
             
            // NSLog(@"%@",responseObject);
-            [pageDataArray removeAllObjects];
-            [dataArray removeAllObjects];
+//            [pageDataArray removeAllObjects];
+//            [dataArray removeAllObjects];
             if([[responseObject objectForKey:@"data"] isKindOfClass:[NSArray class]]&&[responseObject objectForKey:@"data"]!=nil)
             {
+                if(pageDataArray.count>0)
+                {
+                    [pageDataArray removeAllObjects];
+                }
                 
                 for(NSDictionary *dict in [responseObject objectForKey:@"data"])
                 {
@@ -206,33 +246,78 @@
                     [model setValuesForKeysWithDictionary:dict];
                     [pageDataArray addObject:model];
                     
-                    if(dataArray.count<10)
+                    
+                }
+//
+//            }
+//            
+//           
+//            [TableView reloadData];
+//            [TableView headerEndRefreshing];
+//            
+//        }else{
+//            [TableView headerEndRefreshing];
+//            
+//                [SVProgressHUD dismiss];
+//            
+//
+//            
+//            NSString *str = [responseObject objectForKey:@"msg"];
+//            KAlert(str);
+//        }
+                
+                
+                if(_pageCount==0)
+                {
+                    [dataArray removeAllObjects];
+                    if(pageDataArray.count==0)
                     {
-                        [dataArray addObject:model];
+                        [TableView reloadData];
+                        
+                    }
+                    else
+                    {
+                        for(int i=0;i<pageDataArray.count;i++)
+                        {
+                           
+                            [dataArray addObject:[pageDataArray objectAtIndex:i]];
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    
+                    if(pageDataArray.count!=0)
+                    {
+                        for(int i=0;i<pageDataArray.count;i++)
+                        {
+                            
+                            [dataArray addObject:[pageDataArray objectAtIndex:i]];
+                            
+                        }
                     }
                     
                 }
                 
             }
-            [TableView reloadData];
-            [TableView headerEndRefreshing];
             
-        }else{
-            [TableView headerEndRefreshing];
             
-                [SVProgressHUD dismiss];
+            if(dataArray.count>0)
+            {
+                [TableView reloadData];
+                
+            }
             
-
-            
-            NSString *str = [responseObject objectForKey:@"msg"];
-            KAlert(str);
         }
+
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [TableView headerEndRefreshing];
-        
-            [SVProgressHUD dismiss];
-        
-         KAlert(@"加载失败");
+        [TableView footerEndRefreshing];
+        [SVProgressHUD dismiss];
+        KAlert(@"加载失败");
     }];
     
 
@@ -765,23 +850,25 @@
 {
     
     
-    UserInfo *info = [UserInfo shareUserInfo];
-    if(info.token.length!= 0)
-    {
-        
-        UserInfo *userinfo = [UserInfo shareUserInfo];
-        NSMutableArray *roleArr = [userinfo.userDict objectForKey:@"roleInfo"];
-        
-        
-        for (NSDictionary *dic in roleArr)
-        {
-            if((![[dic objectForKey:@"code"] isEqualToString:@""] && ![[dic objectForKey:@"code"] isEqualToString:@"user"]) || userinfo.role.length>0)
+//    UserInfo *info = [UserInfo shareUserInfo];
+//    if(info.token.length!= 0)
+//    {
+//        
+//        UserInfo *userinfo = [UserInfo shareUserInfo];
+//        NSMutableArray *roleArr = [userinfo.userDict objectForKey:@"roleInfo"];
+//        
+//        
+//        NSLog(@"%@",userinfo.role);
+//        
+//        for (NSDictionary *dic in roleArr)
+//        {
+        if(playRight == YES)
             {
-                userinfo.role = [dic objectForKey:@"code"];
+                 
                 //推出播放器视图：
                 VideoPlayerController *vpc = [[VideoPlayerController alloc] init];
                 vpc.itemMode = [dataArray objectAtIndex:indexPath.row];
-                vpc.sourceArray = pageDataArray;
+                vpc.sourceArray = dataArray;
                 vpc.index = indexPath.row;
                 vpc.titleName = self.Title;
                 vpc.audoOrNot = self.audio!=nil?@"音频":@"视频";
@@ -808,22 +895,22 @@
                 
             }
 
-        }
+//        }
+    
         
         
-        
-    }else
-    {
-       
-        lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:Lbtn With:Rbtn1];
-        //lplv.delegLbtnnn = self;
-        [lplv showInView:self.view animated:YES];
-        
-        [self creatBtn];
-        
-
-   
-    }
+//    }else
+//    {
+//       
+//        lplv = [[SC_popView alloc] initWithTitle:@"没有访问权限，请登录或升级位魔方会员" options:nil With:Lbtn With:Rbtn1];
+//        //lplv.delegLbtnnn = self;
+//        [lplv showInView:self.view animated:YES];
+//        
+//        [self creatBtn];
+//        
+//
+//   
+//    }
     
 }
 
@@ -1078,10 +1165,8 @@
 - (void)headerRereshing
 {
     // 1.添加假数据
-    limit =10;
-    [self request];
-    
-    
+    _pageCount+=10;
+    [self getRequestWithlimitNum:10 offset:_pageCount];
     // 2.2秒后刷新表格UI
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        // 刷新表格
@@ -1095,28 +1180,8 @@
 - (void)footerRereshing
 {
     
-    [dataArray removeAllObjects];
-    limit+=10;
-    if(limit>pageDataArray.count)
-    {
-        limit = pageDataArray.count;
-        
-    }
-    for (int i=0; i<limit; i++) {
-        
-        [dataArray addObject:[pageDataArray objectAtIndex:i]];
-    }
-    
-    
-    // 2.2秒后刷新表格UI
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // 刷新表格
-        [TableView reloadData];
-        
-        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [TableView footerEndRefreshing];
-    });
-}
+    _pageCount+=10;
+    [self getRequestWithlimitNum:10 offset:_pageCount];}
 
 
 @end

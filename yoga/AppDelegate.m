@@ -10,8 +10,8 @@
 #import "MainViewController.h"
 #import "PortraitNavigationController.h"
 #import "VideoPlayerController.h"
-
-
+#import "RL_FMViewController.h"
+#import "RL_TVViewController.h"
 
 
 #import "UMSocial.h"
@@ -170,6 +170,9 @@
                 //NSLog(@"视频点播");
                 [((VideoPlayerController *)vc) videoPause];
             }
+        }else if ([vc isKindOfClass:[RL_TVViewController class]]){
+            [((RL_TVViewController *)vc) pauseIntoBackground];
+
         }
     }
     
@@ -187,12 +190,16 @@
         UIViewController *vc = rootVc.topViewController;
         if ([vc isKindOfClass:[VideoPlayerController class]]) {
             
-            if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
-                //NSLog(@"音频点播");
-            }else{
-               // NSLog(@"视频点播");
+//            if ([((VideoPlayerController *)vc).titleName isEqualToString:@"音频点播"]) {
+//                //NSLog(@"音频点播");
+//            }else{
+//                NSLog(@"视频点播");
                 [((VideoPlayerController *)vc) videoStart];
-            }
+//            }
+        }else if ([vc isKindOfClass:[RL_FMViewController class]]){
+            [(RL_FMViewController *)vc startIntoForground];
+        }else if ([vc isKindOfClass:[RL_TVViewController class]]){
+            [(RL_TVViewController *)vc startIntoForground];
         }
     }
 

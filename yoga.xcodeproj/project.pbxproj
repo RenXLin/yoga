@@ -214,7 +214,6 @@
 		CD8E513F1971586E00771960 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E51361971586E00771960 /* AFURLSessionManager.m */; };
 		CD8E514219717DA500771960 /* RL_RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8E514119717DA500771960 /* RL_RegistViewController.m */; };
 		CD8E514419718A6500771960 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514319718A6500771960 /* AVFoundation.framework */; };
-		CD8E514619718A7400771960 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514519718A7400771960 /* AudioToolbox.framework */; };
 		CD8E514819718A8600771960 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514719718A8600771960 /* CoreMedia.framework */; };
 		CD8E514A19718AAD00771960 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514919718AAD00771960 /* MediaPlayer.framework */; };
 		CD8E514C19718AB800771960 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8E514B19718AB800771960 /* OpenGLES.framework */; };
@@ -256,7 +255,6 @@
 		3A9A8FE5197828B800A00425 /* SC_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SC_Model.m; sourceTree = "<group>"; };
 		3A9A8FE71978292D00A00425 /* AudioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
 		3A9A8FE81978292D00A00425 /* AudioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
-		3AA9D64519840CD6003068D4 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = yoga/libssl.a; sourceTree = "<group>"; };
 		3AA9D65C19853973003068D4 /* CountCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountCenterViewController.h; sourceTree = "<group>"; };
 		3AA9D65D19853973003068D4 /* CountCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountCenterViewController.m; sourceTree = "<group>"; };
 		3AE049ED1985646C00687B52 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 		9D5F33B519C6926B00E05A6C /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = yoga/SVProgressHUD.h; sourceTree = SOURCE_ROOT; };
 		9D5F33B619C6926B00E05A6C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = yoga/SVProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		9D5F33B819C6A72000E05A6C /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
-		9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = AlipayRsaLib.a; path = ../yoga2/yoga/AlipayRsaLib.a; sourceTree = "<group>"; };
 		9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9DA15C481A04EF80006B33E1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -539,7 +536,6 @@
 		CD8E514019717DA500771960 /* RL_RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RL_RegistViewController.h; sourceTree = "<group>"; };
 		CD8E514119717DA500771960 /* RL_RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RL_RegistViewController.m; sourceTree = "<group>"; };
 		CD8E514319718A6500771960 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CD8E514519718A7400771960 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CD8E514719718A8600771960 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		CD8E514919718AAD00771960 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CD8E514B19718AB800771960 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -591,7 +587,6 @@
 				CD0F95891999358000EB7985 /* libopenssl.a in Frameworks */,
 				CD8E514819718A8600771960 /* CoreMedia.framework in Frameworks */,
 				CD0DB996196DA50300C3A2A8 /* CoreGraphics.framework in Frameworks */,
-				CD8E514619718A7400771960 /* AudioToolbox.framework in Frameworks */,
 				CD8E514419718A6500771960 /* AVFoundation.framework in Frameworks */,
 				CD0DB998196DA50300C3A2A8 /* UIKit.framework in Frameworks */,
 				CD4654BF198927FB00E871DB /* libSocialWechat.a in Frameworks */,
@@ -722,10 +717,8 @@
 				CD53BDE019892B6B0058A721 /* libsqlite3.dylib */,
 				CD53BDDE19892A300058A721 /* AdSupport.framework */,
 				CD53BDDC198929C40058A721 /* CoreTelephony.framework */,
-				3AA9D64519840CD6003068D4 /* libssl.a */,
 				9D65B0CE19821ADA0011D5B3 /* CFNetwork.framework */,
 				9D65B0CC19821ACD0011D5B3 /* SystemConfiguration.framework */,
-				9D65B0C919821A870011D5B3 /* AlipayRsaLib.a */,
 				CD63827A197583C900DFF19F /* CoreVideo.framework */,
 				CD6382781975834F00DFF19F /* libbz2.dylib */,
 				CD8E515519718B0900771960 /* libiconv.dylib */,
@@ -735,7 +728,6 @@
 				CD8E514B19718AB800771960 /* OpenGLES.framework */,
 				CD8E514919718AAD00771960 /* MediaPlayer.framework */,
 				CD8E514719718A8600771960 /* CoreMedia.framework */,
-				CD8E514519718A7400771960 /* AudioToolbox.framework */,
 				CD8E514319718A6500771960 /* AVFoundation.framework */,
 				CD0DB993196DA50300C3A2A8 /* Foundation.framework */,
 				CD0DB995196DA50300C3A2A8 /* CoreGraphics.framework */,
@@ -1214,16 +1206,18 @@
 				ORGANIZATIONNAME = "任小林";
 				TargetAttributes = {
 					CD0DB98F196DA50300C3A2A8 = {
-<<<<<<< Updated upstream
-						DevelopmentTeam = FA78T6VRG8;
-=======
 						DevelopmentTeam = 4AN3M8Z8YE;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
 						};
->>>>>>> Stashed changes
 					};
 					CD0DB9AA196DA50300C3A2A8 = {
 						TestTargetID = CD0DB98F196DA50300C3A2A8;
@@ -1600,9 +1594,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentOpenAPI",
@@ -1632,7 +1625,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "29b970f8-3519-4c78-9383-5f6e375b1fc3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1642,9 +1635,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tao Zhang (4AN3M8Z8YE)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tao Zhang (4D334G7Y9Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yoga/UMSocial_Sdk_4.0/TencentOpenAPI",
@@ -1674,7 +1666,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "29b970f8-3519-4c78-9383-5f6e375b1fc3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

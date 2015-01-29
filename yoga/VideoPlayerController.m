@@ -79,6 +79,7 @@
 	return UIInterfaceOrientationMaskAll;
 }
 
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
@@ -141,12 +142,17 @@
         [_TVPlayView removeFromSuperview];
         [_mTools removeFromSuperview];
         
-        _TVPlayView.frame = CGRectMake(1, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
+        _TVPlayView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.width * self.view.frame.size.width / self.view.frame.size.height);
         [_scrollView addSubview:_TVPlayView];
         
         
         _mTools.frame = CGRectMake(0, _TVPlayView.frame.size.height + _TVPlayView.frame.origin.y, _TVPlayView.frame.size.width, 60);
         [_scrollView addSubview:_mTools];
+        
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8) {
+            _scrollView.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
+        }
+
 	}
 
 }
@@ -692,7 +698,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     //NSLog(@"player complete");
     [_mPlayer reset];
     [player unSetupPlayer];
-    _mPlayer = nil;
+//    _mPlayer = nil;
     
     
    // NSString * pathUrl = [self.itemMode.path stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
@@ -705,7 +711,30 @@ NSString* UrlEncodedString(NSString* sourceText)
     
     _isCanChangeProgrom = YES;
     
-    [self playLastOrNextProgram];
+    if ([self.titleName isEqualToString:@"音频点播"]) {
+        if (_mTools.fullScreenOrNot.selected == NO) {
+            [self playLastOrNextProgram];
+        }else{
+            if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
+                [SVProgressHUD showWithStatus:@"下一节目！"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                });
+            }
+            
+            //next program
+            if (_index < [_sourceArray count] - 1) {
+                _index ++;
+            }else{
+                _index = 0;
+            }
+            _itemMode = [_sourceArray objectAtIndex:_index];
+            
+            [self playLastOrNextProgram];
+        }
+    }else{
+        [self playLastOrNextProgram];
+    }
     
 
 }
@@ -828,9 +857,9 @@ NSString* UrlEncodedString(NSString* sourceText)
         //last program
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
             [SVProgressHUD showWithStatus:@"上一节目！"];
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [SVProgressHUD dismiss];
-//            });
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
         }
         if (_index > 0) {
             _index --;
@@ -857,9 +886,9 @@ NSString* UrlEncodedString(NSString* sourceText)
     }else if (btn.tag == 4){
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
             [SVProgressHUD showWithStatus:@"下一节目！"];
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [SVProgressHUD dismiss];
-//            });
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
         }
 
         //next program
