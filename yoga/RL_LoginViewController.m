@@ -271,6 +271,13 @@
     UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
+    
+    UIButton *forgetPassW = [UIButton buttonWithType:UIButtonTypeCustom];
+    forgetPassW.frame = CGRectMake(rect.size.width - 120, 0, 100, rect.size.height);
+    [forgetPassW setTitle:@"忘记密码?" forState:UIControlStateNormal];
+    [forgetPassW addTarget:self action:@selector(forgetPassWord:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:forgetPassW];
+    
     return view;
 }
 -(void)backBtnClick
@@ -278,6 +285,17 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//忘记密码：
+-(void)forgetPassWord:(UIButton *)btn
+{
+    btn.alpha = 0.5;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        btn.alpha = 1;
+    });
+    
+    
+
+}
 
 //账户未输入动画
 - (void)animateIncorrectMessage:(UIView *)view
