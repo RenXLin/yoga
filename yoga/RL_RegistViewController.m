@@ -19,6 +19,7 @@
     UITextField *_phoneNum;
     UITextField *_verifyNum;
     UITextField *_passWord;
+    UITextField *_passWord2;
     UITextField *_email;
     UIButton *verify;
     NSTimer *_timer;
@@ -133,8 +134,29 @@
     UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleWidth;
     
+    _passWord2 = [[UITextField alloc] init];
+    _passWord2.frame = CGRectMake(10, 220, self.view.frame.size.width - 20, 45);
+    _passWord2.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
+    _passWord2.placeholder = @"请确认密码";
+    _passWord2.clearButtonMode = UITextFieldViewModeAlways;
+    _passWord2.textColor = [UIColor blackColor];
+    _passWord2.secureTextEntry = YES;
+    _passWord2.backgroundColor = [UIColor whiteColor];
+    _passWord2.delegate = self;
+    _passWord2.tag = 100;
+    _passWord2.returnKeyType = UIReturnKeyDone;
+    [self.view addSubview:_passWord2];
+    _passWord2.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
+
+    
     _email = [[UITextField alloc] init];
-    _email.frame = CGRectMake(10, 220, self.view.frame.size.width - 20, 45);
+    _email.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
     _email.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
     _email.placeholder = @"请输入Email";
     _email.clearButtonMode = UITextFieldViewModeAlways;
@@ -222,6 +244,30 @@
         }
     }else if(btn.tag == 2){
         //注册
+        if ([_phoneNum.text length] == 0) {
+            [self animateIncorrectMessage:_phoneNum];
+
+            [SVProgressHUD showErrorWithStatus:@"请输入手机号！"];
+            return;
+        }
+        
+        if ([_verifyNum.text length] == 0) {
+            [self animateIncorrectMessage:_verifyNum];
+            [SVProgressHUD showErrorWithStatus:@"请输入验证码！"];
+            return;
+        }
+        if ([_passWord.text length] == 0) {
+            [self animateIncorrectMessage:_passWord];
+            [SVProgressHUD showErrorWithStatus:@"请输入密码" ];
+            return;
+        }
+        
+        if (![_passWord.text isEqualToString:_passWord2.text]) {
+            [SVProgressHUD showErrorWithStatus:@"两次密码不一致！"];
+            [self animateIncorrectMessage:_passWord2];
+            return;
+        }
+        
         AFHTTPRequestOperationManager *registM = [AFHTTPRequestOperationManager manager];
         NSDictionary *paramterDic = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum.text,@"mobile",
                                      _passWord.text,@"password",
@@ -331,5 +377,35 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//账户未输入动画
+- (void)animateIncorrectMessage:(UIView *)view
+{
+    
+    CGAffineTransform moveRight = CGAffineTransformTranslate(CGAffineTransformIdentity, 8, 0);
+    CGAffineTransform moveLeft = CGAffineTransformTranslate(CGAffineTransformIdentity, -8, 0);
+    CGAffineTransform resetTransform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, 0);
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        view.transform = moveLeft;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            view.transform = moveRight;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.1 animations:^{
+                view.transform = moveLeft;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.1 animations:^{
+                    view.transform = moveRight;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        view.transform = resetTransform;
+                    }];
+                }];
+            }];
+        }];
+    }];
+}
+
 
 @end

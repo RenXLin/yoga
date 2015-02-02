@@ -44,6 +44,8 @@
     NSArray *_urlDic;
     
     UIView *whiteView;
+    
+    DataBase *_shareDB;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -86,6 +88,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     self.view.autoresizesSubviews = YES;
+    _shareDB = [DataBase sharedDataBase];
     
     //刷新当前人数通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
@@ -299,8 +302,11 @@
     NSString *url;
     if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
         url = CURRENTPLAYFM_URL;
+        [_shareDB createTableWithObject:[[CurrentProgram alloc] init] andTableName:FMTable];
+
     }else{
         url = CURRENTPLAYAUDIO_URL;
+        [_shareDB createTableWithObject:[[CurrentProgram alloc] init] andTableName:MusicTable];
     }
     
     if ([HttpConnectStatus isConnectToInitnet] == NO) {
@@ -356,6 +362,7 @@
             [aleart show];
     }];
 }
+
 #pragma mark 请求获取九宫格图片url
 -(void)getPNGurl
 {
@@ -428,9 +435,36 @@
 - (void)mediaPlayer:(VMediaPlayer *)player didPrepared:(id)arg
 {
     [player start];
+    
+    NSString *tableName;
+    if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
+        tableName = FMTable;
+    }else{
+        tableName = MusicTable;
+    }
+    
+    NSDictionary *dic = [[_shareDB selectAllItemInTable:tableName WithClass:[CurrentProgram class]] firstObject];
+    if ([dic count] != 0 && [_programMode.path isEqualToString:[dic objectForKey:@"path"]]) {
+        long duration = [player getDuration];
+        CurrentProgram *cp = [[CurrentProgram alloc] init];
+        [cp setValuesForKeysWithDictionary:dic];
+        long seek = duration * [cp.progress doubleValue];
+        [_mMpayer seekTo:seek];
+
+    }
+
+
    // NSLog(@"start>>>>>>>>>>>>");
 }
+- (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
+{
+    NSLog(@"seek success");
+}
 
+- (void)mediaPlayer:(VMediaPlayer *)player notSeekable:(id)arg
+{
+    NSLog(@"seek failed");
+}
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
     //NSLog(@"player complete");
@@ -514,9 +548,22 @@
 
 -(void)backBtnClick
 {
-    [_mMpayer reset];
 
+    long current,durationTime;
+    durationTime = [_mMpayer getDuration];
+    current = [_mMpayer getCurrentPosition];
+    if (durationTime > 0 && current > 0) {
+        _programMode.progress = [NSString stringWithFormat:@"%f",(double)current/durationTime];
+        if ([self.FM_AV isEqualToString:@"瑜伽FM"]) {
+            [_shareDB setCurrentProgrem:FMTable andObj:_programMode];
+        }else{
+            [_shareDB setCurrentProgrem:MusicTable andObj:_programMode];
+        }
+    }
+
+    [_mMpayer reset];
     [_mMpayer unSetupPlayer];
+    
 
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -830,6 +877,8 @@
         [fileTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
        // NSLog(@"failed:%@",error);
+        _fileList = nil;
+
     }];
 }
 

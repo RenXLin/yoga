@@ -20,6 +20,7 @@
     #import "SVProgressHUD.h"
     #import"AFHTTPRequestOperationManager.h"
     #import"HttpConnectStatus.h"
+    #import "DataBase.h"
 
 
 #endif

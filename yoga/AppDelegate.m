@@ -28,7 +28,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    DataBase *shareDB = [DataBase sharedDataBase];
+    [shareDB createDataBase];
+    
+    // Override  point for customization after application launch.
     //友盟分享：
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     

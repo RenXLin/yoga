@@ -34,6 +34,8 @@
     UILabel *goodTimes;
     BOOL _fullTOfull;
     BOOL _isCanChangeProgrom;
+    
+    DataBase *_shareDB;
 }
 @end
 
@@ -199,7 +201,8 @@
     
     [self greet];
     _itemMode = [_sourceArray objectAtIndex:_index];
-    
+    _shareDB = [DataBase sharedDataBase];
+
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
@@ -387,9 +390,13 @@
         imageV.frame = CGRectMake((self.view.frame.size.width - 60 )/2, titleLabel.frame.origin.y +titleLabel.frame.size.height, 60, 60);
         [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon" ofType:@"png"]] forState:UIControlStateNormal];
 
+        [_shareDB createTableWithObject:[[SC_Model alloc] init] andTableName:AudioTable];
+        
     }else{
         imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"333" ofType:@"png"]];
         [_mTools.fullScreenOrNot setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"video_icon3" ofType:@"png"]] forState:UIControlStateNormal];
+  
+        [_shareDB createTableWithObject:[[SC_Model alloc] init] andTableName:VideoTable];
 
     }
     
@@ -683,14 +690,31 @@ NSString* UrlEncodedString(NSString* sourceText)
     
     _mTools.totalPlay.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec];
     [player start];
-    [_activityView stopAnimating];
+    
     _seekTimser = [NSTimer scheduledTimerWithTimeInterval:1.0/3 target:self selector:@selector(syncUIStatus) userInfo:nil repeats:YES];
     
     _isCanChangeProgrom = YES;
 
+    
+    NSString *tableName;
     if ([self.titleName isEqualToString:@"音频点播"]) {
-        return;
+        tableName = AudioTable;
+    }else{
+        tableName = VideoTable;
     }
+    
+    NSDictionary *dic = [_shareDB selectTable:tableName saveClass:[self.itemMode class]withCondition:@"path" andConditionData:self.itemMode.path];
+    if ([dic count] != 0) {
+        long duration = [player getDuration];
+        CurrentProgram *cp = [[CurrentProgram alloc] init];
+        [cp setValuesForKeysWithDictionary:dic];
+        long seek = duration * [cp.progress doubleValue];
+        [_activityView startAnimating];
+        [_mPlayer seekTo:seek];
+    }else{
+        [_activityView stopAnimating];
+    }
+
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
@@ -749,12 +773,19 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 }
 
+- (void)mediaPlayer:(VMediaPlayer *)player notSeekable:(id)arg
+{
+    [_activityView stopAnimating];
+    NSLog(@"seek failed");
+}
+
 - (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
 {
    // NSLog(@"跳转完成！");
     [_activityView stopAnimating];
     [_mPlayer start];
 }
+
 #pragma mark 定时更新进度条：
 -(void)syncUIStatus
 {
@@ -838,6 +869,22 @@ NSString* UrlEncodedString(NSString* sourceText)
 -(void)playSettingChange:(UIButton *)btn
 {
    // NSLog(@"%ld",(long)btn.tag);
+    [SVProgressHUD dismiss];
+    if (btn.tag == 2 || btn.tag == 4) {
+        long current,durationTime;
+        durationTime = [_mPlayer getDuration];
+        current = [_mPlayer getCurrentPosition];
+        if (durationTime > 0 && current > 0) {
+            self.itemMode.progress = [NSString stringWithFormat:@"%f",(double)current/durationTime];
+            
+            if ([self.titleName isEqualToString:@"音频点播"]) {
+                [_shareDB setCurProgram_avTv:AudioTable andObj:self.itemMode];
+            }else{
+                [_shareDB setCurProgram_avTv:VideoTable andObj:self.itemMode];
+            }
+        }
+    }
+    
     if (btn.tag == 1) {
 
         //当为视频界面时切换全屏
@@ -856,6 +903,7 @@ NSString* UrlEncodedString(NSString* sourceText)
     }else if (btn.tag == 2){
         //last program
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0) {
+            
             [SVProgressHUD showWithStatus:@"上一节目！"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
@@ -974,6 +1022,20 @@ NSString* UrlEncodedString(NSString* sourceText)
 
 -(void)backBtnClick
 {
+    
+    long current,durationTime;
+    durationTime = [_mPlayer getDuration];
+    current = [_mPlayer getCurrentPosition];
+    if (durationTime > 0 && current > 0) {
+        self.itemMode.progress = [NSString stringWithFormat:@"%f",(double)current/durationTime];
+
+        if ([self.titleName isEqualToString:@"音频点播"]) {
+            [_shareDB setCurProgram_avTv:AudioTable andObj:self.itemMode];
+        }else{
+            [_shareDB setCurProgram_avTv:VideoTable andObj:self.itemMode];
+        }
+    }
+
     [_mPlayer reset];
     [_mPlayer unSetupPlayer];
     _mPlayer = nil;

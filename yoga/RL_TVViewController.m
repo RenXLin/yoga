@@ -15,13 +15,13 @@
 #import "UMSocial.h"
 #import "OneDayProgram.h"
 #import "OneDayProgramCell.h"
-#import "SVProgressHUD.h"
 
 @interface RL_TVViewController ()<UIGestureRecognizerDelegate,UMSocialUIDelegate>
 {
     VMediaPlayer *_mMpayer;
     UITableView *fileTable;
     UILabel *goodTimes;
+    DataBase *_shareDB;
 }
 
 @end
@@ -126,7 +126,9 @@
     [self greet];//获取点赞数
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
-
+    _shareDB = [DataBase sharedDataBase];
+    [_shareDB createTableWithObject:[[CurrentProgram alloc] init] andTableName:TVTable];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPeople) name:NOT_refreshOnlinePeople object:nil];
     //NSLog(@"%@",[UIDevice currentDevice].systemVersion);
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7) {
@@ -317,9 +319,29 @@
 {
     [player start];
     [_activityView stopAnimating];
+    
+    
+    NSDictionary *dic = [[_shareDB selectAllItemInTable:TVTable WithClass:[CurrentProgram class]] firstObject];
+    if ([dic count] != 0 && [_programMode.path isEqualToString:[dic objectForKey:@"path"]]) {
+        long duration = [player getDuration];
+        CurrentProgram *cp = [[CurrentProgram alloc] init];
+        [cp setValuesForKeysWithDictionary:dic];
+        long seek = duration * [cp.progress doubleValue];
+        [_mMpayer seekTo:seek];
+        
+    }
+
     //NSLog(@"start>>>>>>>>>>>>");
 }
+- (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
+{
+    NSLog(@"seek success");
+}
 
+- (void)mediaPlayer:(VMediaPlayer *)player notSeekable:(id)arg
+{
+    NSLog(@"seek failed");
+}
 - (void)mediaPlayer:(VMediaPlayer *)player playbackComplete:(id)arg
 {
     //NSLog(@"player complete");
@@ -390,6 +412,15 @@
 
 -(void)backBtnClick
 {
+    long current,durationTime;
+    durationTime = [_mMpayer getDuration];
+    current = [_mMpayer getCurrentPosition];
+    if (durationTime > 0 && current > 0) {
+        _programMode.progress = [NSString stringWithFormat:@"%f",(double)current/durationTime];
+        [_shareDB setCurrentProgrem:TVTable andObj:_programMode];
+    }
+    
+    
     [_mMpayer reset];
     [_mMpayer unSetupPlayer];
 
@@ -627,6 +658,7 @@
         [fileTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
        // NSLog(@"failed:%@",error);
+        _fileList = nil;
     }];
 }
 -(OneDayProgramCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

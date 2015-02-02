@@ -560,7 +560,7 @@
  * @param fillMode The mode in `emVMVideoFillMode`
  * @see emVMVideoFillMode
  */
-- (void)setVideoFillMode:(emVMVideoFillMode)fillMode;
+- (void) :(emVMVideoFillMode)fillMode;
 
 /**
  * Get video fill mode of playback view using.

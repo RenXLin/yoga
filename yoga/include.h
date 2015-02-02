@@ -168,3 +168,13 @@
 //http://www.chinayogaonline.com/api/createOrder
 ////参数 token(登录时获取)
 
+
+
+#define   FMTable       @"FMTable"
+#define   TVTable       @"TVTable"
+#define   MusicTable    @"MusicTable"
+#define   AudioTable    @"AudioTable"
+#define   VideoTable    @"VideoTable"
+
+
+

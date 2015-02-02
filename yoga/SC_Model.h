@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface SC_Model : NSObject
+
+//rxl 加入进度字段
+@property (nonatomic,copy) NSString *progress;
+
+
 @property (nonatomic,copy) NSString *ad;
 @property (nonatomic,copy) NSString *aid;
 @property (nonatomic,copy) NSString *cid;
@@ -29,6 +34,9 @@
 @property (nonatomic,copy) NSString *corder;
 @property (nonatomic,copy) NSString *Id;
 @property (nonatomic,copy) NSString *pid;
+
+
+
 
 
 @end
