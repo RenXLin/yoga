@@ -273,6 +273,13 @@
             [self animateIncorrectMessage:_name];
             return;
         }
+        
+        if ([_passWord.text length]<6) {
+            [SVProgressHUD showErrorWithStatus:@"密码长度必须大于6！"];
+            [self animateIncorrectMessage:_passWord];
+            [self animateIncorrectMessage:_passWord2];
+            return;
+        }
 
         AFHTTPRequestOperationManager *registM = [AFHTTPRequestOperationManager manager];
         NSDictionary *paramterDic = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum.text,@"mobile",
