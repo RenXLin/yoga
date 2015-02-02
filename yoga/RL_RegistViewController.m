@@ -20,7 +20,7 @@
     UITextField *_verifyNum;
     UITextField *_passWord;
     UITextField *_passWord2;
-    UITextField *_email;
+    UITextField *_name;
     UIButton *verify;
     NSTimer *_timer;
 }
@@ -155,27 +155,27 @@
     UIViewAutoresizingFlexibleWidth;
 
     
-//    _email = [[UITextField alloc] init];
-//    _email.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
-//    _email.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-//    _email.placeholder = @"请输入Email";
-//    _email.clearButtonMode = UITextFieldViewModeAlways;
-//    _email.textColor = [UIColor blackColor];
-//    _email.backgroundColor = [UIColor whiteColor];
-//    _email.delegate = self;
-//    _email.tag = 100;
-//    _email.returnKeyType = UIReturnKeyDone;
-//    [self.view addSubview:_email];
-//    _email.autoresizingMask =
-//    UIViewAutoresizingFlexibleBottomMargin |
-//    //    UIViewAutoresizingFlexibleTopMargin |
-//    UIViewAutoresizingFlexibleHeight |
-//    UIViewAutoresizingFlexibleLeftMargin |
-//    UIViewAutoresizingFlexibleRightMargin |
-//    UIViewAutoresizingFlexibleWidth;
+    _name = [[UITextField alloc] init];
+    _name.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
+    _name.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
+    _name.placeholder = @"请输入姓名";
+    _name.clearButtonMode = UITextFieldViewModeAlways;
+    _name.textColor = [UIColor blackColor];
+    _name.backgroundColor = [UIColor whiteColor];
+    _name.delegate = self;
+    _name.tag = 100;
+    _name.returnKeyType = UIReturnKeyDone;
+    [self.view addSubview:_name];
+    _name.autoresizingMask =
+    UIViewAutoresizingFlexibleBottomMargin |
+    //    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleWidth;
     
     UIButton *assign = [UIButton buttonWithType:UIButtonTypeCustom];
-    assign.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
+    assign.frame = CGRectMake(10, 320, self.view.frame.size.width - 20, 45);
     assign.backgroundColor = [UIColor colorWithRed:0.23f green:0.90f blue:1.00f alpha:1.00f];
     [assign setTitle:@"注册" forState:UIControlStateNormal];
     assign.showsTouchWhenHighlighted = YES;
@@ -258,24 +258,30 @@
         }
         if ([_passWord.text length] == 0) {
             [self animateIncorrectMessage:_passWord];
-            [SVProgressHUD showErrorWithStatus:@"请输入密码" ];
+            [SVProgressHUD showErrorWithStatus:@"请输入密码！" ];
             return;
         }
         
         if (![_passWord.text isEqualToString:_passWord2.text]) {
-            [SVProgressHUD showErrorWithStatus:@"两次密码不一致！"];
+            [SVProgressHUD showErrorWithStatus:@"两次输入密码不一致！"];
             [self animateIncorrectMessage:_passWord2];
             return;
         }
         
+        if (![_passWord.text isEqualToString:_name.text]) {
+            [SVProgressHUD showErrorWithStatus:@"请输入姓名！"];
+            [self animateIncorrectMessage:_name];
+            return;
+        }
+
         AFHTTPRequestOperationManager *registM = [AFHTTPRequestOperationManager manager];
         NSDictionary *paramterDic = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum.text,@"mobile",
                                      _passWord.text,@"password",
                                      _verifyNum.text,@"code",
-                                     _email.text,@"email",nil];
+                                     _name.text,@"email",nil];
         registM.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         
-        [registM GET:[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&email=%@%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_email.text,Kversion] parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [registM GET:[NSString stringWithFormat:@"%@mobile=%@&password=%@&code=%@&name=%@%@",REGIST_URL,_phoneNum.text,_passWord.text,_verifyNum.text,_name.text,Kversion] parameters:paramterDic success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             NSLog(@"%@",responseObject);
             if([[responseObject objectForKey:@"code"] intValue] == 200)
