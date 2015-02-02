@@ -155,24 +155,24 @@
     UIViewAutoresizingFlexibleWidth;
 
     
-    _email = [[UITextField alloc] init];
-    _email.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
-    _email.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
-    _email.placeholder = @"请输入Email";
-    _email.clearButtonMode = UITextFieldViewModeAlways;
-    _email.textColor = [UIColor blackColor];
-    _email.backgroundColor = [UIColor whiteColor];
-    _email.delegate = self;
-    _email.tag = 100;
-    _email.returnKeyType = UIReturnKeyDone;
-    [self.view addSubview:_email];
-    _email.autoresizingMask =
-    UIViewAutoresizingFlexibleBottomMargin |
-    //    UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleHeight |
-    UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleRightMargin |
-    UIViewAutoresizingFlexibleWidth;
+//    _email = [[UITextField alloc] init];
+//    _email.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
+//    _email.borderStyle = UITextBorderStyleRoundedRect;//设置边框样式
+//    _email.placeholder = @"请输入Email";
+//    _email.clearButtonMode = UITextFieldViewModeAlways;
+//    _email.textColor = [UIColor blackColor];
+//    _email.backgroundColor = [UIColor whiteColor];
+//    _email.delegate = self;
+//    _email.tag = 100;
+//    _email.returnKeyType = UIReturnKeyDone;
+//    [self.view addSubview:_email];
+//    _email.autoresizingMask =
+//    UIViewAutoresizingFlexibleBottomMargin |
+//    //    UIViewAutoresizingFlexibleTopMargin |
+//    UIViewAutoresizingFlexibleHeight |
+//    UIViewAutoresizingFlexibleLeftMargin |
+//    UIViewAutoresizingFlexibleRightMargin |
+//    UIViewAutoresizingFlexibleWidth;
     
     UIButton *assign = [UIButton buttonWithType:UIButtonTypeCustom];
     assign.frame = CGRectMake(10, 270, self.view.frame.size.width - 20, 45);
