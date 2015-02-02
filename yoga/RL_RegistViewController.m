@@ -268,7 +268,7 @@
             return;
         }
         
-        if (![_passWord.text isEqualToString:_name.text]) {
+        if (![_name.text isEqualToString:_name.text]) {
             [SVProgressHUD showErrorWithStatus:@"请输入姓名！"];
             [self animateIncorrectMessage:_name];
             return;
