@@ -273,8 +273,10 @@
     UIViewAutoresizingFlexibleWidth;
     
     UIButton *forgetPassW = [UIButton buttonWithType:UIButtonTypeCustom];
-    forgetPassW.frame = CGRectMake(rect.size.width - 120, 0, 100, rect.size.height);
+    forgetPassW.frame = CGRectMake(rect.size.width - 100, 0, 100, rect.size.height);
     [forgetPassW setTitle:@"忘记密码?" forState:UIControlStateNormal];
+    forgetPassW.titleLabel.font = [UIFont systemFontOfSize:13];
+    forgetPassW.titleLabel.textAlignment = NSTextAlignmentRight;
     [forgetPassW addTarget:self action:@selector(forgetPassWord:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:forgetPassW];
     
