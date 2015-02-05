@@ -19,6 +19,8 @@
 		3AA9D65E19853973003068D4 /* CountCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA9D65D19853973003068D4 /* CountCenterViewController.m */; };
 		3AE049EF1985646C00687B52 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AE049EE1985646C00687B52 /* OrderViewController.m */; };
 		9D2247421A076B1200A9B146 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2247411A076B1200A9B146 /* StoreKit.framework */; };
+		9D22D2941A81B39800A4D2CE /* GetBackPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D22D2921A81B39800A4D2CE /* GetBackPasswordViewController.m */; };
+		9D22D2951A81B39800A4D2CE /* GetBackPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D22D2931A81B39800A4D2CE /* GetBackPasswordViewController.xib */; };
 		9D34ECC9199C8B6800A4E9EF /* 开机画面01_640x1136.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC3199C8B6800A4E9EF /* 开机画面01_640x1136.jpg */; };
 		9D34ECCA199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC4199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg */; };
 		9D34ECCB199C8B6800A4E9EF /* 开机画面02_640x1136.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D34ECC5199C8B6800A4E9EF /* 开机画面02_640x1136.jpg */; };
@@ -269,6 +271,9 @@
 		3AE049EE1985646C00687B52 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		3AE04A4A198BD3D700687B52 /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PartnerConfig.h; path = yoga/PartnerConfig.h; sourceTree = "<group>"; };
 		9D2247411A076B1200A9B146 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9D22D2911A81B39800A4D2CE /* GetBackPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetBackPasswordViewController.h; sourceTree = "<group>"; };
+		9D22D2921A81B39800A4D2CE /* GetBackPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetBackPasswordViewController.m; sourceTree = "<group>"; };
+		9D22D2931A81B39800A4D2CE /* GetBackPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetBackPasswordViewController.xib; sourceTree = "<group>"; };
 		9D34ECC3199C8B6800A4E9EF /* 开机画面01_640x1136.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面01_640x1136.jpg"; sourceTree = "<group>"; };
 		9D34ECC4199C8B6800A4E9EF /* 开机画面01_1536x2048.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面01_1536x2048.jpg"; sourceTree = "<group>"; };
 		9D34ECC5199C8B6800A4E9EF /* 开机画面02_640x1136.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "开机画面02_640x1136.jpg"; sourceTree = "<group>"; };
@@ -1141,6 +1146,9 @@
 				3AA9D65C19853973003068D4 /* CountCenterViewController.h */,
 				3AA9D65D19853973003068D4 /* CountCenterViewController.m */,
 				CD0DB9A5196DA50300C3A2A8 /* Images.xcassets */,
+				9D22D2911A81B39800A4D2CE /* GetBackPasswordViewController.h */,
+				9D22D2921A81B39800A4D2CE /* GetBackPasswordViewController.m */,
+				9D22D2931A81B39800A4D2CE /* GetBackPasswordViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1400,6 +1408,7 @@
 				3A101F41199536C500AABE60 /* start3_320x480.jpg in Resources */,
 				CD0DBA76196DA52200C3A2A8 /* video_icon3_1.png in Resources */,
 				CD0DBA43196DA52200C3A2A8 /* btngreen_press.png in Resources */,
+				9D22D2951A81B39800A4D2CE /* GetBackPasswordViewController.xib in Resources */,
 				CD0DBA60196DA52200C3A2A8 /* jmd_bg.png in Resources */,
 				CD0DBA3A196DA52200C3A2A8 /* btnblue1.png in Resources */,
 				CD0DBA41196DA52200C3A2A8 /* btngreen3.png in Resources */,
@@ -1497,6 +1506,7 @@
 				CD8E510C1970D34C00771960 /* MainViewController.m in Sources */,
 				9DB445D0199793F800839C55 /* UIView+Extension.m in Sources */,
 				3AA9D65E19853973003068D4 /* CountCenterViewController.m in Sources */,
+				9D22D2941A81B39800A4D2CE /* GetBackPasswordViewController.m in Sources */,
 				9DE6B244197E8AC200393F93 /* LeveyPopListViewCell.m in Sources */,
 				CD813ACE1972DAB30040E1EB /* MarqueeLabel.m in Sources */,
 				9DB445CE199793F800839C55 /* UIScrollView+Extension.m in Sources */,

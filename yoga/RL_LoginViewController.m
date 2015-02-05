@@ -12,6 +12,9 @@
 
 #import "CountCenterViewController.h"
 #import "AppDelegate.h"
+#import "GetBackPasswordViewController.h"
+
+
 @interface RL_LoginViewController ()
 
 @end
@@ -293,6 +296,11 @@
     btn.alpha = 0.5;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         btn.alpha = 1;
+        
+        GetBackPasswordViewController *backView = [[GetBackPasswordViewController alloc]init];
+        
+        [self.navigationController pushViewController:backView animated:YES];
+        
     });
     
     

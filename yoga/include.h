@@ -73,6 +73,10 @@
 #define REGIST_URL  @"http://www.chinayogaonline.com/api/reg?"
 //参数 mobile $email $password $code(短信验证码)
 
+//密码找回：
+#define GETBACK_URL  @"http://www.chinayogaonline.com/api/setPassword?"
+
+
 //查用户信息：
 #define GETUSERINFO_Url  @"http://www.chinayogaonline.com/api/getUserInfo"
 //参数 token(登录时获取)

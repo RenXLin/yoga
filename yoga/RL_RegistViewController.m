@@ -203,6 +203,7 @@
 {
     [_phoneNum resignFirstResponder];
     [_passWord resignFirstResponder];
+    [_passWord2 resignFirstResponder];
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
